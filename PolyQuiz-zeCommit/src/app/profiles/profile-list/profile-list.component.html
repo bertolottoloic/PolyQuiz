@@ -1,1 +1,10 @@
 <p>profile-list works!</p>
+
+<div class="profile-list">
+    <div class="profile" *ngFor="let profile of profiles">
+        <!--Inputs & Output allow communication between parent & child components.-->
+        <!--More information: https://angular.io/guide/component-interaction-->
+        <app-profile [profile]="profile" (profileSelected)="profileSelected($event)" (profileDeleted)="quizDeleted($event)"></app-profile>
+    </div>
+        
+  </div>
