@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accueil',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(private router: Router) { 
+    this.router = router;
+  }
 
   ngOnInit() {
+  }
+
+  onClick() {
+      this.router.navigate(['profileListPage']);
   }
 
 }
