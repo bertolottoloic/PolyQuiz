@@ -22,9 +22,7 @@ import { Profile } from '../models/profile.model';
       this.http.get<{profiles: Profile[]}>(this.URL).subscribe((result: {profiles: Profile[]}) =>{
         this.profiles = result.profiles;
         this.profiles$.next(this.profiles);
-      });
-      console.log(this.profiles$);
-  
+      });  
     }
 
 
