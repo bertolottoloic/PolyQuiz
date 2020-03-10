@@ -3,14 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule} from './app.routing.module';
+import { ProfileListPageComponent } from './profile/profile-list-page/profile-list-page.component';
+import { ProfileListComponent } from './profile/profile-list/profile-list.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent
+    AccueilComponent,
+    HeaderComponent,
+    ProfileListPageComponent,
+    ProfileListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
