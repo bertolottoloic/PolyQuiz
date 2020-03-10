@@ -6,7 +6,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule} from './app.routing.module';
 import { ProfileListPageComponent } from './profile/profile-list-page/profile-list-page.component';
-import { ProfileListComponent } from './profile/profile-list/profile-list.component'
+import { ProfileListComponent } from './profile/profile-list/profile-list.component';
+import { ProfileComponent } from './profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ProfileListComponent } from './profile/profile-list/profile-list.compon
     AccueilComponent,
     HeaderComponent,
     ProfileListPageComponent,
-    ProfileListComponent
+    ProfileListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
