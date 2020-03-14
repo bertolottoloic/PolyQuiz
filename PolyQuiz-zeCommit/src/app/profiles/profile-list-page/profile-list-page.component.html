@@ -1,3 +1,5 @@
-<p>profile-list-page works!</p>
+<div *ngFor="let profile of profileList">
+    <app-profile [profile]="profile"></app-profile>
+</div>
 
 <app-profile-list></app-profile-list>

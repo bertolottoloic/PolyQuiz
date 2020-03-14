@@ -15,8 +15,6 @@ export class AccueilComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick() {
-      this.router.navigate(['profileListPage']);
-  }
+  
 
 }
