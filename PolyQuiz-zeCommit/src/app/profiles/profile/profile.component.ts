@@ -11,7 +11,21 @@ export class ProfileComponent implements OnInit {
   @Input()
   profile: Profile;
 
+  @Output()
+  profileSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @Output()
+  profileDeleted: EventEmitter<Profile> = new EventEmitter<Profile>();
+
   ngOnInit() {
+  }
+
+  selectQuiz() {
+    this.profileSelected.emit(true);
+  }
+
+  deleteQuiz() {
+    this.profileDeleted.emit(this.profile);
   }
 
 }
