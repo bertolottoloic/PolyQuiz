@@ -10,5 +10,7 @@ export interface Profile {
     firstName: string;
     id:string;
     trouble: Handicap;
+    image: string;
+
     
 }
