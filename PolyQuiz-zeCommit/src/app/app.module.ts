@@ -8,6 +8,7 @@ import { AppRoutingModule} from './app.routing.module';
 import { ProfileListPageComponent } from './profiles/profile-list-page/profile-list-page.component';
 import { ProfileListComponent } from './profiles/profile-list/profile-list.component';
 import { ProfileComponent } from './profiles/profile/profile.component'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProfileComponent } from './profiles/profile/profile.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
 
   ],
   providers: [],
