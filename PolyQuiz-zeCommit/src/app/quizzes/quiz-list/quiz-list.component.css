@@ -1,0 +1,14 @@
+.quizBox {
+    margin : 10px 0px 0px 10px;
+    width: 150px;
+}
+
+.main {
+    overflow:auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 520px;
+    height: 520px;
+    border : 2px solid black;
+}

@@ -9,6 +9,9 @@ import { ProfileListPageComponent } from './profiles/profile-list-page/profile-l
 import { ProfileListComponent } from './profiles/profile-list/profile-list.component';
 import { ProfileComponent } from './profiles/profile/profile.component'
 import { HttpClientModule } from '@angular/common/http';
+import { QuizListPageComponent } from './quizzes/quiz-list-page/quiz-list-page.component';
+import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
+import { QuizComponent } from './quizzes/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     ProfileListPageComponent,
     ProfileListComponent,
-    ProfileComponent
+    ProfileComponent,
+    QuizListPageComponent,
+    QuizListComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

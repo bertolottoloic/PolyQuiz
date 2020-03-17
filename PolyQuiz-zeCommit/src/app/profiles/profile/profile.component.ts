@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { Profile } from '../../models/profile.model';
+import { Profile } from '../../models/profile.models';
 
 @Component({
   selector: 'app-profile',
@@ -20,12 +20,5 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectQuiz() {
-    this.profileSelected.emit(true);
-  }
-
-  deleteQuiz() {
-    this.profileDeleted.emit(this.profile);
-  }
 
 }

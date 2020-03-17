@@ -1,8 +1,4 @@
-export enum Handicap{
-    Memoire="memoire",
-    Vue="vue",
-    Moteur="moteur"
-}
+import {Handicap} from './handicap.models'
 
 export interface Profile {
 

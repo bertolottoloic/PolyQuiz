@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Profile } from '../models/profile.model';
+import { Profile } from '../models/profile.models';
 import { PROFILE_LIST } from '../mocks/profiles-list.mock';
 
 @Injectable({

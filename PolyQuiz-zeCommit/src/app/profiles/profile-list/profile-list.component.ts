@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
-import { Profile } from '../../models/profile.model';
-import { PROFILE_LIST } from 'src/app/mocks/profiles-list.mock'
-import { Handicap } from 'src/app/models/profile.model'
+import { Profile } from '../../models/profile.models';
+
 
 
 @Component({

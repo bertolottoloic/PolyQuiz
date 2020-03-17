@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ProfileListPageComponent implements OnInit {
 
   
-  private trouble:string = "test";
+  trouble:string = "";
 
   constructor(private router: Router) { 
 

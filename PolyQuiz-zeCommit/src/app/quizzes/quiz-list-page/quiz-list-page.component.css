@@ -1,0 +1,17 @@
+.btn {
+    padding: 20px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-size: 2em;
+}
+
+p {
+    font-size: 3em;
+    text-align: center;
+}
+
+.main {
+    padding: 20px;
+    display : flex;
+    justify-content: space-between;
+}
