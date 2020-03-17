@@ -12,5 +12,11 @@ export const PROFILE_LIST: Profile[] = [
         firstName: 'Nathan',
         id:'2',
         trouble: Handicap.Moteur
+    },
+    {
+        name: 'Delm',
+        firstName: 'Vinze',
+        id:'3',
+        trouble: Handicap.Vue
     }
 ]
