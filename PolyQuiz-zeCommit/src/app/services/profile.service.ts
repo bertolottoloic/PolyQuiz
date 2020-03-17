@@ -14,7 +14,7 @@ export class ProfileService {
   private URL : string;
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
 
-  constructor(private http: HttpClient) {
+  constructor() {
     
   }
 
@@ -28,12 +28,12 @@ export class ProfileService {
     this.profiles$.next(this.profiles);
   }
 
-  setProfilesFromUrl(){
-    this.http.get<{profiles: Profile[]}>(this.URL).subscribe((result: {profiles: Profile[]}) =>{
-      this.profiles = result.profiles;
-      this.profiles$.next(this.profiles);
-    });  
-  }
+  //setProfilesFromUrl(){
+  //  this.http.get<{profiles: Profile[]}>(this.URL).subscribe((result: {profiles: Profile[]}) =>{
+  //    this.profiles = result.profiles;
+  //    this.profiles$.next(this.profiles);
+  //  });  
+  //}
 
 
 }
