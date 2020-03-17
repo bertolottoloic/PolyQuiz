@@ -17,6 +17,7 @@ export const PROFILE_LIST: Profile[] = [
     },
     {
         lastName: 'Delm',
+
         firstName: 'Vinze',
         id:'3',
         trouble: Handicap.Vue,
@@ -80,6 +81,7 @@ export const PROFILE_LIST: Profile[] = [
     },
     {
         lastName: 'Delm',
+
         firstName: 'Vinze',
         id:'3',
         trouble: Handicap.Vue,
