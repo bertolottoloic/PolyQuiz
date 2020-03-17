@@ -1,5 +1,8 @@
-<div class="profile-list">
+<div class="main">
     <div class="quiz" *ngFor="let profile of profileList">
-        <app-profile [profile]="profile"></app-profile>
+        <div class="profileBox">
+            <app-profile [profile]="profile"></app-profile>
+        </div>
     </div>
 </div>
+
