@@ -12,10 +12,9 @@ export class ProfileService {
   private profiles: Profile[] =[];
 
   private URL : string;
-
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
 
-  constructor() {
+  constructor(private http:HttpClient) {
     
   }
 
