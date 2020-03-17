@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from '../models/profile.model';
+import { PROFILE_LIST } from '../mocks/profiles-list.mock';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,7 @@ import { Profile } from '../models/profile.model';
 
 export class ProfileService {
 
-  private profiles: Profile[] =[];
+  private profiles: Profile[] = PROFILE_LIST;
 
   private URL : string;
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);

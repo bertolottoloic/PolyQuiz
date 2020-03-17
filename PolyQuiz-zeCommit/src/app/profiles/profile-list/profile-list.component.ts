@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
 import { Profile } from '../../models/profile.model';
 import { PROFILE_LIST } from 'src/app/mocks/profiles-list.mock'
+import { Handicap } from 'src/app/models/profile.model'
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ProfileListComponent implements OnInit {
   public profileList: Profile[] = [];
 
   constructor(public profileService: ProfileService) {
-    this.profileService.profiles$.subscribe((profile) => this.profileList = profile);
+    this.profileService.profiles$.subscribe((profiles: Profile[]) => {this.profileList = profiles;});
   }
 
   ngOnInit() {

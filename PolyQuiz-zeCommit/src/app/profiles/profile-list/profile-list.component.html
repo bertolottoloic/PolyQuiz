@@ -1,7 +1,5 @@
-<p>profile-list works!</p>
-
 <div class="profile-list">
     <div class="quiz" *ngFor="let profile of profileList">
-        <app-profile [profile]="profile" profileSelected($event)="profileSelected" profileDeleted($event)="profileDeleted"></app-profile>
+        <app-profile [profile]="profile"></app-profile>
     </div>
 </div>
