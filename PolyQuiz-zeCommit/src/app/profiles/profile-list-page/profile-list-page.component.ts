@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,15 +11,21 @@ import { Location } from '@angular/common';
 })
 export class ProfileListPageComponent implements OnInit {
 
-  private state$: Observable<object>;
+  
+  private trouble:string = "test";
 
+  constructor(private router: Router) { 
 
-  constructor(private location:Location) { }
+  }
 
   ngOnInit() {
-    console.log(this.location.getState());
+    this.setTrouble()
+  }
 
-
+  setTrouble() {
+    if(this.router.url.endsWith("memoire")){ this.trouble="Mémoire" }
+    if(this.router.url.endsWith("vue")){ this.trouble="Vue" }
+    if(this.router.url.endsWith("moteur")){ this.trouble="Moteur" }
   }
 
 }
