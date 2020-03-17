@@ -23,9 +23,10 @@ export class ProfileListPageComponent implements OnInit {
   }
 
   setTrouble() {
-    if(this.router.url.endsWith("memoire")){ this.trouble="Mémoire" }
-    if(this.router.url.endsWith("vue")){ this.trouble="Vue" }
-    if(this.router.url.endsWith("moteur")){ this.trouble="Moteur" }
+    console.log(this.router.url)
+    if(this.router.url.startsWith("/memoire")){ this.trouble="Mémoire" }
+    if(this.router.url.startsWith("/vue")){ this.trouble="Vue" }
+    if(this.router.url.startsWith("/moteur")){ this.trouble="Moteur" }
   }
 
 }
