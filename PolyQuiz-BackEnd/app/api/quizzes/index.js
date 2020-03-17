@@ -1,6 +1,6 @@
 const { Router } = require('express')
 
-const { Quiz, Question } = require('../../models')
+const { Quiz, Question, Answer } = require('../../models')
 const QuestionRouter = require('./questions')
 
 const router = new Router()
@@ -10,7 +10,11 @@ router.get('/', (req, res) => {
   try {
     quizzes = Quiz.get()
     quizzes.forEach(element => {
-      element.questions = addQuestions(element.id)
+      questions = addQuestions(element.id)
+      questions.forEach( ques => {
+        ques.answers = addAnswers(ques.id)
+      });
+      element.questions = questions
     });
     res.status(200).json(Quiz.get())
   } catch (err) {
@@ -22,13 +26,23 @@ router.get('/', (req, res) => {
 function addQuestions(quizId){
   questions = []
   try {
-    console.log("try")
     questions = Question.get().filter((ques)=>ques.quizId == quizId)
   } catch (err) {
     res.status(500).json(err)
   }
   return questions
 }
+
+function addAnswers(questionId){
+  answers = []
+  try {
+    answers = Answer.get().filter((ans)=>ans.questionId == questionId)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+  return answers
+}
+
 
 router.get('/:quizId', (req, res) => {
   try {
