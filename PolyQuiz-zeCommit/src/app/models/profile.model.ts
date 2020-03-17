@@ -6,7 +6,7 @@ export enum Handicap{
 
 export interface Profile {
 
-    name: string;
+    lastName: string;
     firstName: string;
     id:string;
     trouble: Handicap;

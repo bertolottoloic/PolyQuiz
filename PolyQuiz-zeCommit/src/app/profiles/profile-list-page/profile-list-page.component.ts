@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-profile-list-page',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileListPageComponent implements OnInit {
 
-  constructor() { }
+  private state$: Observable<object>;
+
+
+  constructor(private location:Location) { }
 
   ngOnInit() {
+    console.log(this.location.getState());
+
+
   }
 
 }
