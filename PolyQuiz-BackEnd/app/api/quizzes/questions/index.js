@@ -1,21 +1,41 @@
 const { Router } = require('express')
 
-const { Question } = require('../../../models')
+const { Question, Answer } = require('../../../models')
+const AnswerRouter = require('./answers')
 
 const router = new Router({mergeParams: true})
+router.use('/:questionId/answers', AnswerRouter)
 
 router.get('/', (req, res) => {
     try {
-      res.status(200).json(Question.get().filter((ques)=>ques.quizId == req.params.quizId))
+      questions = Question.get().filter((ques)=>ques.quizId == req.params.quizId)
+      questions.forEach(element => {
+        element.answers = addAnswers(element.id)
+      });
+      res.status(200).json(questions)
     } catch (err) {
       res.status(500).json(err)
     }
   })
 
+  function addAnswers(questionId){
+    answers = []
+    try {
+      answers = Answer.get().filter((ans)=>ans.questionId == questionId)
+    } catch (err) {
+      res.status(500).json(err)
+    }
+    return answers
+  }
+
 router.get('/:questionId', (req, res) => {
     try {
-      if(Question.getById(req.params.questionId).quizId == req.params.quizId)
-        res.status(200).json(Question.getById(req.params.questionId))
+      question = Question.getById(req.params.questionId)
+      if(question.quizId == req.params.quizId)
+        {
+        question = addAnswers(question.id)
+        res.status(200).json(question)
+      }
       else throw Error
     } catch (err) {
       res.status(404).json(err)
