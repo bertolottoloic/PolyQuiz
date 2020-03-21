@@ -1,7 +1,7 @@
 import { Answer} from './answer.models'
 export interface Question {
 
-    question: string;
+    text: string;
     id:string;
     answers :Answer[];
     rightAnswer: Answer;

@@ -1,1 +1,13 @@
 <p>question works!</p>
+<div class="main">
+    <div class="question">
+        {{question.text}}
+    </div>
+   
+    <div class="answers" *ngFor="let answer of question.answers">
+        <button class="answer">
+            {{answer.text}}
+        </button>
+    </div>
+    
+</div>
