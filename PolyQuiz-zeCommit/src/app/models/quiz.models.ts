@@ -1,4 +1,5 @@
 import {Handicap} from './handicap.models'
+import { Question} from './question.models'
 
 export interface Quiz {
 
@@ -7,4 +8,5 @@ export interface Quiz {
     id:string;
     trouble: Handicap;
     image: string;
+    questions: Question[],
 }

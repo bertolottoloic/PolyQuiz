@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../../models/quiz.models';
-import{ quizService} from '../../services/quiz.service';
+import{ quizListService} from '../../services/quizList.service';
 
 @Component({
   selector: 'app-quiz-list',
@@ -11,7 +11,7 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(public quizService: quizService) {
+  constructor(public quizService: quizListService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {this.quizList = quizzes;});
    }
 

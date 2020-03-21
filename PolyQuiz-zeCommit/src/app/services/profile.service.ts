@@ -16,7 +16,7 @@ export class ProfileService {
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
 
   constructor(private http:HttpClient) {
-    
+    this.setProfilesFromUrl
   }
 
   addProfile(profile: Profile) {

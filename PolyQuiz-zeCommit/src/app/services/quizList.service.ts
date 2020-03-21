@@ -8,7 +8,7 @@ import { QUIZ_LIST } from '../mocks/quizzes-list.mock';
     providedIn: 'root'
 })
 
-export class quizService {
+export class quizListService {
 
   private quizzes: Quiz[] = QUIZ_LIST;
 
@@ -16,20 +16,24 @@ export class quizService {
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
 
   constructor(private http:HttpClient) {
-    
+    this.setQuizzesFromUrl
   }
 
-  addProfile(quiz: Quiz) {
+  addQuiz(quiz: Quiz) {
     this.quizzes.push(quiz);
     this.quizzes$.next(this.quizzes);
   }
 
-  deleteProfile(quiz: Quiz) {
+  getQuiz(id){
+    return this.quizzes.filter((quiz)=>quiz.id==id)[0]
+  }
+
+  deleteQuiz(quiz: Quiz) {
     this.quizzes.splice(this.quizzes.indexOf(quiz,1));
     this.quizzes$.next(this.quizzes);
   }
 
-  setProfilesFromUrl(){
+  setQuizzesFromUrl(){
     this.http.get<{quizzes: Quiz[]}>(this.URL).subscribe((result: {quizzes: Quiz[]}) =>{
       this.quizzes = result.quizzes;
       this.quizzes$.next(this.quizzes);
