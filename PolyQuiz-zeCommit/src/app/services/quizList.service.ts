@@ -11,7 +11,7 @@ import { serverUrl, httpOptionsBase } from '../../configs/server.config';
 
 export class QuizListService {
 
-  private quizzes: Quiz[];
+  private quizzes: Quiz[]=QUIZ_LIST;
 
   private URL : string = serverUrl + "/quizzes";
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
