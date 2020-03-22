@@ -24,6 +24,9 @@ export class QuestionComponent implements OnInit {
     if(this.isCorrect(answer)){
       this.nextQ.emit(1)
     }
+    else{
+      answer.display='hidden';
+    }
   }
 
   isCorrect(answer: Answer):boolean{

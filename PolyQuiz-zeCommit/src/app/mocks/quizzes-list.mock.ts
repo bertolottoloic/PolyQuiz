@@ -14,10 +14,13 @@ export const QUIZ_LIST: Quiz[] = [
                     id:"1",
                     text:"reponse 1",
                     isCorrect: true,
+                    display:'visible'
+
                 },{
                     id:"2",
                     text:"reponse 2 fausse",
                     isCorrect: false,
+                    display:'visible'
                 },
                 ],
     
@@ -30,10 +33,14 @@ export const QUIZ_LIST: Quiz[] = [
                     id:"1",
                     text:"reponse 1",
                     isCorrect: false,
+                    display:'visible'
+
                 },{
                     id:"2",
                     text:"reponse 2",
                     isCorrect: true,
+                    display:'visible'
+
                 },
                 ]
             },
