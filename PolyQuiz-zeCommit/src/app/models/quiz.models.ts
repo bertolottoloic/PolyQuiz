@@ -5,7 +5,7 @@ export interface Quiz {
 
     name: string;
     theme: string;
-    id:string;
+    id:number;
     trouble: Handicap;
     image: string;
     questions: Question[],

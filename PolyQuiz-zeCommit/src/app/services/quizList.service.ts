@@ -3,20 +3,21 @@ import { BehaviorSubject, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../models/quiz.models';
 import { QUIZ_LIST } from '../mocks/quizzes-list.mock';
+import { serverUrl, httpOptionsBase } from '../../configs/server.config';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class quizListService {
+export class QuizListService {
 
-  private quizzes: Quiz[] = QUIZ_LIST;
+  private quizzes: Quiz[];
 
-  private URL : string;
+  private URL : string = serverUrl + "/quizzes";
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
 
   constructor(private http:HttpClient) {
-    this.setQuizzesFromUrl
+    this.setQuizzesFromUrl()
   }
 
   addQuiz(quiz: Quiz) {
@@ -34,8 +35,9 @@ export class quizListService {
   }
 
   setQuizzesFromUrl(){
-    this.http.get<{quizzes: Quiz[]}>(this.URL).subscribe((result: {quizzes: Quiz[]}) =>{
-      this.quizzes = result.quizzes;
+    this.http.get<Quiz[]>(this.URL).subscribe((result) =>{
+      console.log(result)
+      this.quizzes = result;
       this.quizzes$.next(this.quizzes);
     });  
   }

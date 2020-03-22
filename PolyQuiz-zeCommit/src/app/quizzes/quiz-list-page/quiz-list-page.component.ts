@@ -22,4 +22,5 @@ export class QuizListPageComponent implements OnInit {
     if(this.router.url.startsWith("/vue")){ this.trouble="Vue" }
     if(this.router.url.startsWith("/moteur")){ this.trouble="Moteur" }
   }
+  
 }

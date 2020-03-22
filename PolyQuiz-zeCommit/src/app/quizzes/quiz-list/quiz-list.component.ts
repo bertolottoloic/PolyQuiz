@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../../models/quiz.models';
-import{ quizListService} from '../../services/quizList.service';
+import{ QuizListService} from '../../services/quizList.service';
 
 @Component({
   selector: 'app-quiz-list',
@@ -11,11 +11,13 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(public quizService: quizListService) {
-    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {this.quizList = quizzes;});
-   }
+  constructor(public quizListService: QuizListService) {
+    this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes)
+  }
 
   ngOnInit() {
   }
+
+
 
 }

@@ -22,6 +22,9 @@ router.get('/', (req, res) => {
     answers = []
     try {
       answers = Answer.get().filter((ans)=>ans.questionId == questionId)
+      answers.forEach(element => {
+        answers.removeAttribute("id")
+      });
     } catch (err) {
       res.status(500).json(err)
     }
@@ -34,6 +37,7 @@ router.get('/:questionId', (req, res) => {
       if(question.quizId == req.params.quizId)
         {
         question = addAnswers(question.id)
+        question.removeAttribute("id")
         res.status(200).json(question)
       }
       else throw Error

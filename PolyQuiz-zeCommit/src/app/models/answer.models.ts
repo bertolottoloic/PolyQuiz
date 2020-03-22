@@ -1,8 +1,8 @@
 export interface Answer{
 
-    id : string;
+    id : number;
     text : string;
-    isCorrect : boolean
-    display:string
+    isCorrect : boolean;
+    display:string;
     image?: string;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Quiz} from '../../models/quiz.models';
-import{ quizListService} from '../../services/quizList.service';
+import{ QuizListService} from '../../services/quizList.service';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/models/question.models';
 
@@ -16,7 +16,7 @@ export class QuizPageComponent implements OnInit {
   public question: Question;
   public index: number;
 
-  constructor(public quizService: quizListService,private router: Router) {
+  constructor(public quizService: QuizListService,private router: Router) {
     this.quiz=this.quizService.getQuiz(this.router.url.split("/")[5])
     this.questionList=this.quiz.questions;
     this.question=this.questionList[this.index];

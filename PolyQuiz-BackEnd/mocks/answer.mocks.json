@@ -1,12 +1,30 @@
 [
-    {
-        "value":"Oslo",
-        "isCorrect" : false,
-        "questionId" : 1583221196791
-    } ,
-    {
-        "value" : "Apollo et Hyacinthus",
-        "isCorrect" : true,
-        "questionId" : 1583222131545
-    }
+  {
+    "text": "Oslo",
+    "isCorrect": false,
+    "display": "visible",
+    "questionId": 1584900865372,
+    "id": 1584900920288
+  },
+  {
+    "text": "Stockholm",
+    "isCorrect": true,
+    "display": "visible",
+    "questionId": 1584900865372,
+    "id": 1584900946780
+  },
+  {
+    "text": "Apollo et Hyacinthus",
+    "isCorrect": true,
+    "display": "visible",
+    "questionId": 1584900802781,
+    "id": 1584901133964
+  },
+  {
+    "text": "Symphonie 40",
+    "isCorrect": false,
+    "display": "visible",
+    "questionId": 1584900802781,
+    "id": 1584901149799
+  }
 ]

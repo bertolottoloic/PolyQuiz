@@ -2,7 +2,9 @@ const Joi = require('joi')
 const BaseModel = require('../utils/base-model.js')
 
 module.exports = new BaseModel('Answer', {
-  value: Joi.string().required(),
+  text: Joi.string().required(),
   isCorrect: Joi.bool().required(),
+  display: Joi.string().required(),
   questionId: Joi.number(),
+  image: Joi.string()
 })

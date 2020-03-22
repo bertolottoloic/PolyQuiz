@@ -4,7 +4,7 @@ export interface Profile {
 
     lastName: string;
     firstName: string;
-    id:string;
+    id: number;
     trouble: Handicap;
     image: string;
 
