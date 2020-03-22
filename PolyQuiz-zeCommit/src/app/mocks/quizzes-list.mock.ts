@@ -12,16 +12,15 @@ export const QUIZ_LIST: Quiz[] = [
                 id:"1",
                 answers:[{
                     id:"1",
-                    text:"reponse 1"
+                    text:"reponse 1",
+                    isCorrect: true,
                 },{
                     id:"2",
-                    text:"reponse 2 fausse"
+                    text:"reponse 2 fausse",
+                    isCorrect: false,
                 },
                 ],
-                rightAnswer:{
-                    id:"1",
-                    text:"reponse 1"
-                }
+    
 
 
             },{
@@ -29,18 +28,14 @@ export const QUIZ_LIST: Quiz[] = [
                 id:"1",
                 answers:[{
                     id:"1",
-                    text:"reponse 1"
+                    text:"reponse 1",
+                    isCorrect: false,
                 },{
                     id:"2",
-                    text:"reponse 2"
+                    text:"reponse 2",
+                    isCorrect: true,
                 },
-                ],
-                rightAnswer:{
-                    id:"1",
-                    text:"reponse 1"
-                }
-
-
+                ]
             },
         ],
         trouble: Handicap.Memoire,

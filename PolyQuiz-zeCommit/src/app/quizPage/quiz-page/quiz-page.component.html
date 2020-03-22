@@ -5,4 +5,4 @@
 <div class="bttn">
     <button type="button" class="btn btn-primary" routerLink="..">Retour</button> 
 </div>
-<app-question [question]="question"></app-question>
+<app-question [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>

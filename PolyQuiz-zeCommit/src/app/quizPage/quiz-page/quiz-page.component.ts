@@ -14,17 +14,24 @@ export class QuizPageComponent implements OnInit {
   public quiz: Quiz;
   public questionList: Question[];
   public question: Question;
+  public index: number;
 
   constructor(public quizService: quizListService,private router: Router) {
     this.quiz=this.quizService.getQuiz(this.router.url.split("/")[5])
     this.questionList=this.quiz.questions;
-    this.question=this.questionList[0]
+    this.question=this.questionList[this.index];
+    this.index=0;
     //QUESTION SUR CE POINT : OBSERVABLE REQUIRED ? ou simple return 
-    console.log(this.quiz)
+    //Creer uun service pour gerer les stats de quiz ?
   }
 
   ngOnInit() {
   }
 
+  receiveQ($event){
+    if(this.index+$event<this.questionList.length){
+      this.index+=$event
+    }
+  }
 
 }
