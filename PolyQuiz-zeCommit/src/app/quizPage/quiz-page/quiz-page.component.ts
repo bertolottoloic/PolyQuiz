@@ -34,4 +34,8 @@ export class QuizPageComponent implements OnInit {
     }
   }
 
+  skipQ(n){
+    this.index=n;
+  }
+
 }

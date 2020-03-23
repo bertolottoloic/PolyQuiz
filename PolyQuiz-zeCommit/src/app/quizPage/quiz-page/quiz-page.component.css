@@ -8,6 +8,10 @@
     display: flex;
 }
 
+.questions{
+    display: flex;
+}
+
 .btn {
     padding: 20px 20px;
     font-size: 20px;
