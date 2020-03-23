@@ -8,20 +8,33 @@ export const QUIZ_LIST: Quiz[] = [
         id:1,
         questions: [
             {
-                text:"test ?",
+                text:"Question test 1?",
                 id:1,
                 answers:[{
                     id:1,
-                    text:"reponse 1",
+                    text:"reponse 1 true",
                     isCorrect: true,
                     display:'visible'
 
-                },{
-                    id:1,
-                    text:"reponse 2 fausse",
+                },
+                {
+                    id:2,
+                    text:"reponse 2 false",
                     isCorrect: false,
                     display:'visible'
                 },
+                {
+                    id:3,
+                    text:"reponse 3 false",
+                    isCorrect: false,
+                    display:'visible'
+                },
+                {
+                    id:4,
+                    text:"reponse 4 false",
+                    isCorrect: false,
+                    display:'visible'
+                }
                 ],
     
 
