@@ -15,3 +15,11 @@ p {
     display : flex;
     justify-content: space-between;
 }
+
+.menu {
+    display: flex;
+}
+
+#menu-btn {
+    margin-right: 15px;
+}
