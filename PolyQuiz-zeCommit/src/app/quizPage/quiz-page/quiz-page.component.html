@@ -15,7 +15,3 @@
     </div>
 </div>
 <app-question [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
-
-<div class="questions" *ngFor="let question of questionList; let n=index">
-    <button (click)="skipQ(n)" >Q{{n+1}}</button>
-</div>

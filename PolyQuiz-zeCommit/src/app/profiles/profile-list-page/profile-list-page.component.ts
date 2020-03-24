@@ -11,22 +11,28 @@ import { Router } from '@angular/router';
 })
 export class ProfileListPageComponent implements OnInit {
 
-  
-  trouble:string = "";
 
-  constructor(private router: Router) { 
+  trouble = '';
+
+  constructor(private router: Router) {
 
   }
 
   ngOnInit() {
-    this.setTrouble()
+    this.setTrouble();
   }
 
   setTrouble() {
-    console.log(this.router.url)
-    if(this.router.url.startsWith("/memoire")){ this.trouble="Mémoire" }
-    if(this.router.url.startsWith("/vue")){ this.trouble="Vue" }
-    if(this.router.url.startsWith("/moteur")){ this.trouble="Moteur" }
+    console.log(this.router.url);
+    if (this.router.url.startsWith('/memoire')) {
+      this.trouble = 'Mémoire';
+    }
+    if (this.router.url.startsWith('/vue')) {
+      this.trouble = 'Vue';
+    }
+    if (this.router.url.startsWith('/moteur')) {
+      this.trouble = 'Moteur';
+    }
   }
 
 }

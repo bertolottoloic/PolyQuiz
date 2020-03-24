@@ -9,7 +9,8 @@ import { Answer } from 'src/app/models/answer.models';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
@@ -17,24 +18,22 @@ export class QuestionComponent implements OnInit {
   @Input()
   question: Question
 
-  @Output() 
-  nextQ :EventEmitter<number> = new EventEmitter();
+  @Output()
+  nextQ: EventEmitter<number> = new EventEmitter();
 
-  nextQuestion(answer:Answer){
-    if(this.isCorrect(answer)){
-      this.nextQ.emit(1)
-    }
-    else{
-      answer.display='hidden';
+  nextQuestion(answer: Answer) {
+    if (this.isCorrect(answer)) {
+      this.nextQ.emit(1);
+    } else {
+      answer.display = 'hidden';
     }
   }
 
-  isCorrect(answer: Answer):boolean{
-    if(answer.isCorrect){
-      return true
-    }
-    else{
-      return false
+  isCorrect(answer: Answer): boolean {
+    if (answer.isCorrect) {
+      return true;
+    } else {
+      return false;
     }
   }
 

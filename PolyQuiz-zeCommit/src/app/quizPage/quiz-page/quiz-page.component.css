@@ -19,10 +19,12 @@
     font-size: 20px;
     border-radius: 10px;
     font-size: 2em;
+
 }
 
 .titre {
     font-size: 3em;
+    margin-left: 20px;
     text-align: center;
 
 }
