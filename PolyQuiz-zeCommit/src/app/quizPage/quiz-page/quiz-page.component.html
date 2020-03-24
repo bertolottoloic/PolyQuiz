@@ -14,8 +14,9 @@
         <h1>Quiz : {{ Quiz }}</h1>
     </div>
 </div>
-<app-question [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
+<app-question *ngIf="!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
+<app-end-quiz *ngIf="quizDone" [score]="stat.score"></app-end-quiz>
 
 <div class="questions" *ngFor="let question of questionList; let n=index">
-    <button (click)="skipQ(n)" >Q{{n+1}}</button>
+    <button *ngIf="!quizDone" (click)="skipQ(n)" >Q{{n+1}}</button>
 </div>

@@ -14,6 +14,7 @@ import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { QuizPageComponent } from './quizPage/quiz-page/quiz-page.component';
 import { QuestionComponent } from './quizPage/question/question.component';
+import { EndQuizComponent } from './end-quiz/end-quiz.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { QuestionComponent } from './quizPage/question/question.component';
     QuizListComponent,
     QuizComponent,
     QuizPageComponent,
-    QuestionComponent
+    QuestionComponent,
+    EndQuizComponent
   ],
   imports: [
     BrowserModule,
