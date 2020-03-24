@@ -37,6 +37,7 @@ export class QuizPageComponent implements OnInit {
     }
     else {
       this.quizDone = true;
+      console.log("troue");
     }
   }
 
