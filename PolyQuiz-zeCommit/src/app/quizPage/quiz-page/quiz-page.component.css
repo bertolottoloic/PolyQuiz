@@ -1,10 +1,16 @@
 .main {
     padding: 20px;
     display : flex;
+
     
 }
 
 .menu {
+    display: flex;
+
+}
+
+.questions{
     display: flex;
 }
 
@@ -14,4 +20,5 @@
     border-radius: 10px;
     font-size: 2em;
 }
+
 

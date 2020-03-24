@@ -34,4 +34,19 @@ export class QuizPageComponent implements OnInit {
     }
   }
 
+  skipQ(n){
+    this.index=n;
+  }
+
+  isEnd($event) {
+    if(this.index+$event !=this.questionList.length) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+
+
 }
