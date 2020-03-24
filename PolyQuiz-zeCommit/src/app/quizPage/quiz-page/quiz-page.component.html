@@ -1,13 +1,17 @@
 <div class="main">
     <div class="menu">
+    
+        <div class="bttn" id="menu-btn">
+            <button type="button" class="btn btn-primary" routerLink="">Accueil</button> 
+        </div>
         
-        <button type="button" class="btn btn-primary" routerLink="">Accueil</button> 
-        
-        
-        <button type="button" class="btn btn-primary" routerLink="..">Retour</button> 
-        
-    </div>
+        <div class="bttn">
+            <button type="button" class="btn btn-primary" routerLink="..">Retour</button> 
+        </div>
 
-    <h1>Quiz : {{ Quiz }}</h1>
+    </div>
+    <div class="titre">
+        <h1>Quiz : {{ Quiz }}</h1>
+    </div>
 </div>
 <app-question [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
