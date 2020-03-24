@@ -2,6 +2,8 @@ const { Router } = require('express')
 
 const { Quiz, Question, Answer } = require('../../models')
 const QuestionRouter = require('./questions')
+const { addQuestions, addAnswers } = require('./Manage')
+
 
 const router = new Router()
 router.use('/:quizId/questions', QuestionRouter)
@@ -10,43 +12,19 @@ router.get('/', (req, res) => {
   try {
     quizzes = Quiz.get()
     quizzes.forEach(element => {
-      questions = addQuestions(element.id)
-      questions.forEach( ques => {
-        ques.answers = addAnswers(ques.id)
-      });
-      element.questions = questions
+      element.questions = addQuestions(element.id)
     });
-    res.status(200).json(Quiz.get())
+    res.status(200).json(quizzes)
   } catch (err) {
     res.status(500).json(err)
   }
 })
 
-
-function addQuestions(quizId){
-  questions = []
-  try {
-    questions = Question.get().filter((ques)=>ques.quizId == quizId)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-  return questions
-}
-
-function addAnswers(questionId){
-  answers = []
-  try {
-    answers = Answer.get().filter((ans)=>ans.questionId == questionId)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-  return answers
-}
-
-
 router.get('/:quizId', (req, res) => {
   try {
-    res.status(200).json(Quiz.getById(req.params.quizId))
+    quiz = Quiz.getById(req.params.quizId)
+    quiz.questions = addQuestions(quiz.id)
+    res.status(200).json(quiz)
   } catch (err) {
     res.status(404).json(err)
   }

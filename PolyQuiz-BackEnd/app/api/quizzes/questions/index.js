@@ -1,7 +1,8 @@
 const { Router } = require('express')
 
-const { Question, Answer } = require('../../../models')
+const { Question } = require('../../../models')
 const AnswerRouter = require('./answers')
+const { addAnswers } = require('../Manage')
 
 const router = new Router({mergeParams: true})
 router.use('/:questionId/answers', AnswerRouter)
@@ -18,26 +19,12 @@ router.get('/', (req, res) => {
     }
   })
 
-  function addAnswers(questionId){
-    answers = []
-    try {
-      answers = Answer.get().filter((ans)=>ans.questionId == questionId)
-      answers.forEach(element => {
-        answers.removeAttribute("id")
-      });
-    } catch (err) {
-      res.status(500).json(err)
-    }
-    return answers
-  }
-
 router.get('/:questionId', (req, res) => {
     try {
       question = Question.getById(req.params.questionId)
       if(question.quizId == req.params.quizId)
         {
-        question = addAnswers(question.id)
-        question.removeAttribute("id")
+        question.answers = addAnswers(question.id)
         res.status(200).json(question)
       }
       else throw Error
