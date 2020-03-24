@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ProfileListPageComponent } from './profiles/profile-list-page/profile-list-page.component';
 import { QuizListPageComponent} from './quizzes/quiz-list-page/quiz-list-page.component';
-import { QuizPageComponent } from './quizPage/quiz-page/quiz-page.component';
+import { QuizPageMemoryComponent } from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
 
 const routes: Routes = [
   { path: '', component : AccueilComponent },
-  { path: ':trouble/profileListPage', component : ProfileListPageComponent },
-  { path: ':trouble/profileListPage/:idProfile/quizListPage', component : QuizListPageComponent },
-  { path: ':trouble/profileListPage/:idProfile/quizListPage/:idQuiz', component : QuizPageComponent},
-  { path: ':Vue/profileListPage/:idProfile/quizListPage/:idQuiz', component : QuizPageVueComponent},
+  { path: ':trouble/profile-list-page', component : ProfileListPageComponent },
+  { path: ':trouble/profile-list-page/:idProfile/quiz-list-page', component : QuizListPageComponent },
+  { path: 'memoire/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMemoryComponent},
+  { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageVueComponent},
 
 
 ]

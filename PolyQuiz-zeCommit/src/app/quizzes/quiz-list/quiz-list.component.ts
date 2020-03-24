@@ -13,8 +13,6 @@ export class QuizListComponent implements OnInit {
 
   constructor(public quizListService: QuizListService) {
     this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes);
-
-    // this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes.filter((quiz) => quiz.trouble==Handicap.Memoire));
   }
 
 

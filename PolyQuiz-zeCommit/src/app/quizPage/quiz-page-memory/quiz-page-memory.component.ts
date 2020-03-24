@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/models/question.models';
 
 @Component({
-  selector: 'app-quiz-page',
-  templateUrl: './quiz-page.component.html',
-  styleUrls: ['./quiz-page.component.css']
+  selector: 'app-quiz-page-memory',
+  templateUrl: './quiz-page-memory.component.html',
+  styleUrls: ['./quiz-page-memory.component.css']
 })
-export class QuizPageComponent implements OnInit {
+export class QuizPageMemoryComponent implements OnInit {
 
   public quiz: Quiz;
   public questionList: Question[];

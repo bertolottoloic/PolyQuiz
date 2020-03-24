@@ -11,10 +11,10 @@
 
     </div>
     <div class="titre">
-        <h1>Quiz : {{ quiz.name }}</h1>
+        <h1 *ngIf="quiz">Quiz : {{ quiz.name }}</h1>
     </div>
 </div>
-<app-question *ngIf="!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
+<app-question *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
 <app-end-quiz *ngIf="quizDone" [score]="score"></app-end-quiz>
 
 <div  class="questions" *ngFor="let question of questionList; let n=index">

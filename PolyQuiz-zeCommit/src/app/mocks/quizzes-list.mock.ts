@@ -10,7 +10,9 @@ export const QUIZ_LIST: Quiz[] = [
             {
                 text:"Question test 1?",
                 id:1,
+                quizId:1,
                 answers:[{
+                    quetionId:1,
                     id:1,
                     text:"reponse 1 true",
                     isCorrect: true,
@@ -18,19 +20,22 @@ export const QUIZ_LIST: Quiz[] = [
                 },
                 {
                     id:2,
+                    quetionId:1,
                     text:"reponse 2 false",
                     isCorrect: false,
                 },
                 {
                     id:3,
+                    quetionId:1,
                     text:"reponse 3 false",
                     isCorrect: false,
                 },
                 {
                     id:4,
+                    quetionId:1,
                     text:"reponse 4 false",
                     isCorrect: false,
-                }
+                },
                 ],
     
 
@@ -38,15 +43,18 @@ export const QUIZ_LIST: Quiz[] = [
             },{
                 text:"Ceci est une réelle question ?",
                 id:2,
+                quizId:1,
                 answers:[{
                     id:1,
                     text:"reponse 1",
                     isCorrect: false,
+                    quetionId:2,
 
                 },{
                     id:2,
                     text:"reponse 2",
                     isCorrect: true,
+                    quetionId:2,
 
                 },
                 ]

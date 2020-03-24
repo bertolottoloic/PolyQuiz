@@ -10,7 +10,7 @@ import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 })
 export class QuestionComponent implements OnInit {
 
-  public answers :Answer[]=[]; //a faire //ng update
+  public answers :Answer[]=[];
 
   public nextQ: EventEmitter<number> = new EventEmitter<number>();
   constructor() {

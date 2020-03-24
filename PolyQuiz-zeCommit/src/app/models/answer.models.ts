@@ -4,4 +4,5 @@ export interface Answer{
     text : string;
     isCorrect : boolean;
     image?: string;
+    quetionId:number
 }

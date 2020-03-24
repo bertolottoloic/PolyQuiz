@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuizListPageComponent } from './quizzes/quiz-list-page/quiz-list-page.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
-import { QuizPageComponent } from './quizPage/quiz-page/quiz-page.component';
+import { QuizPageMemoryComponent } from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import { QuestionComponent } from './quizPage/question/question.component';
 import { QuizPageVueComponent } from './quizPage/quiz-page-vue/quiz-page-vue.component';
 import { EndQuizComponent } from './end-quiz/end-quiz.component';
@@ -28,7 +28,7 @@ import { EndQuizComponent } from './end-quiz/end-quiz.component';
     QuizListPageComponent,
     QuizListComponent,
     QuizComponent,
-    QuizPageComponent,
+    QuizPageMemoryComponent,
     QuestionComponent,
     QuizPageVueComponent,
     EndQuizComponent
