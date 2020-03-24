@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../models/quiz.models';
 import { QUIZ_LIST } from '../mocks/quizzes-list.mock';
 import { serverUrl, httpOptionsBase } from '../../configs/server.config';
+import { Handicap } from '../models/handicap.models';
 
 @Injectable({
     providedIn: 'root'
@@ -41,6 +42,5 @@ export class QuizListService {
       this.quizzes$.next(this.quizzes);
     });  
   }
-
 
 }
