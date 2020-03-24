@@ -2,12 +2,21 @@
   {
     "text": "Quelle est la première musique de Mozart",
     "quizId": 1584900604498,
-    "id": 1584900802781,
-    "answers": []
+    "id": 1584900802781
   },
   {
     "text": "Quelle est la capitale de la Suède ?",
     "quizId": 1584900544972,
     "id": 1584900865372
+  },
+  {
+    "text": "Qui est le meilleur buteur ?",
+    "quizId": 1585040762008,
+    "id": 1585040838017
+  },
+  {
+    "text": "Quelle équipe a été championne du monde ?",
+    "quizId": 1585040762008,
+    "id": 1585040894041
   }
 ]

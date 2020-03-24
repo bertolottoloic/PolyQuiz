@@ -10,5 +10,11 @@
     "name": "Mozart",
     "image": "../../../assets/img/Papy-Brossard.jpg",
     "id": 1584900604498
+  },
+  {
+    "theme": "Sport",
+    "name": "Football",
+    "image": "../../../assets/img/pere-fouras.jpg",
+    "id": 1585040762008
   }
 ]
