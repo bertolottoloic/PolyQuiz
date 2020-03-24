@@ -43,16 +43,4 @@ export class QuizListService {
     });  
   }
 
-
-  getMemoryQuiz(): Quiz[] {
-    return this.quizzes.filter((quiz) => quiz.trouble==Handicap.Memoire)
-  }
-
-  getMotorQuiz(): Quiz[] {
-    return this.quizzes.filter((quiz) => quiz.trouble==Handicap.Moteur)
-  }
-
-  getVieuwQuiz(): Quiz[] {
-    return this.quizzes.filter((quiz) => quiz.trouble==Handicap.Vue)
-  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../../models/quiz.models';
 import{ QuizListService} from '../../services/quizList.service';
+import { Handicap } from '../models/handicap.models';
 
 @Component({
   selector: 'app-quiz-list',
@@ -13,7 +14,9 @@ export class QuizListComponent implements OnInit {
 
   constructor(public quizListService: QuizListService) {
     this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes);
+    //this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes.filter((quiz) => quiz.trouble==Handicap.Memoire));
   }
+
 
   ngOnInit() {
   }
