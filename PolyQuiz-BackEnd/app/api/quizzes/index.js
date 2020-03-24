@@ -12,15 +12,9 @@ router.get('/', (req, res) => {
   try {
     quizzes = Quiz.get()
     quizzes.forEach(element => {
-      console.log("before")
-      questions = addQuestions(element.id)
-      console.log("after")
-      questions.forEach( ques => {
-        ques.answers = addAnswers(ques.id)
-      });
-      element.questions = questions
+      element.questions = addQuestions(element.id)
     });
-    res.status(200).json(Quiz.get())
+    res.status(200).json(quizzes)
   } catch (err) {
     res.status(500).json(err)
   }
@@ -28,7 +22,9 @@ router.get('/', (req, res) => {
 
 router.get('/:quizId', (req, res) => {
   try {
-    res.status(200).json(Quiz.getById(req.params.quizId))
+    quiz = Quiz.getById(req.params.quizId)
+    quiz.questions = addQuestions(quiz.id)
+    res.status(200).json(quiz)
   } catch (err) {
     res.status(404).json(err)
   }

@@ -24,8 +24,7 @@ router.get('/:questionId', (req, res) => {
       question = Question.getById(req.params.questionId)
       if(question.quizId == req.params.quizId)
         {
-        question = addAnswers(question.id)
-        question.removeAttribute("id")
+        question.answers = addAnswers(question.id)
         res.status(200).json(question)
       }
       else throw Error
