@@ -2,7 +2,7 @@
     padding: 20px;
     display : flex;
 
-    
+
 }
 
 .menu {
@@ -23,8 +23,9 @@
 }
 
 .titre {
-    font-size: 3em;
-    margin-left: 20px;
-    text-align: center;
-
+  font-size: 3em;
+  margin-left: 20px;
+  text-align: center;
 }
+
+

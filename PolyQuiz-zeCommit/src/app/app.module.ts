@@ -15,7 +15,7 @@ import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { QuizPageComponent } from './quizPage/quiz-page/quiz-page.component';
 import { QuestionComponent } from './quizPage/question/question.component';
 import { QuizPageVueComponent } from './quizPage/quiz-page-vue/quiz-page-vue.component';
-
+import { EndQuizComponent } from './end-quiz/end-quiz.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { QuizPageVueComponent } from './quizPage/quiz-page-vue/quiz-page-vue.com
     QuizComponent,
     QuizPageComponent,
     QuestionComponent,
-    QuizPageVueComponent
+    QuizPageVueComponent,
+    EndQuizComponent
   ],
   imports: [
     BrowserModule,

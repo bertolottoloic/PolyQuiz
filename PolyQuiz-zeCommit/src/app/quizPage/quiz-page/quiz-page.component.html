@@ -1,17 +1,22 @@
 <div class="main">
     <div class="menu">
-    
+
         <div class="bttn" id="menu-btn">
-            <button type="button" class="btn btn-primary" routerLink="">Accueil</button> 
+            <button type="button" class="btn btn-primary" routerLink="">Accueil</button>
         </div>
-        
+
         <div class="bttn">
-            <button type="button" class="btn btn-primary" routerLink="..">Retour</button> 
+            <button type="button" class="btn btn-primary" routerLink="..">Retour</button>
         </div>
 
     </div>
     <div class="titre">
-        <h1>Quiz : {{ Quiz }}</h1>
+        <h1>Quiz : {{ quiz.name }}</h1>
     </div>
 </div>
-<app-question [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
+<app-question *ngIf="!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
+<app-end-quiz *ngIf="quizDone" [score]="score"></app-end-quiz>
+
+<div  class="questions" *ngFor="let question of questionList; let n=index">
+    <button *ngIf="!quizDone" (click)="skipQ(n)" >Q{{n+1}}</button>
+</div>

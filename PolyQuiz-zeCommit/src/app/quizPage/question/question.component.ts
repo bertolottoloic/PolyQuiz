@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { Question } from 'src/app/models/question.models';
 import { Answer } from 'src/app/models/answer.models';
+import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 
 @Component({
   selector: 'app-question',
@@ -16,7 +17,10 @@ export class QuestionComponent implements OnInit {
   }
 
   @Input()
-  question: Question
+  question: Question;
+
+  @Input()
+  lastQuestion: boolean;
 
   @Output()
   nextQ: EventEmitter<number> = new EventEmitter();
@@ -36,5 +40,4 @@ export class QuestionComponent implements OnInit {
       return false;
     }
   }
-
 }
