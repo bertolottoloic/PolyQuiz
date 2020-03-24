@@ -3,6 +3,7 @@ import { BehaviorSubject, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from '../models/profile.models';
 import { PROFILE_LIST } from '../mocks/profiles-list.mock';
+import { serverUrl } from '../../configs/server.config';
 
 @Injectable({
     providedIn: 'root'
@@ -12,11 +13,11 @@ export class ProfileService {
 
   private profiles: Profile[] = PROFILE_LIST;
 
-  private URL : string;
+  private URL : string = serverUrl+"/profiles";
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
 
   constructor(private http:HttpClient) {
-    this.setProfilesFromUrl
+    this.setProfilesFromUrl()
   }
 
   addProfile(profile: Profile) {
@@ -30,8 +31,8 @@ export class ProfileService {
   }
 
   setProfilesFromUrl(){
-    this.http.get<{profiles: Profile[]}>(this.URL).subscribe((result: {profiles: Profile[]}) =>{
-      this.profiles = result.profiles;
+    this.http.get<Profile[]>(this.URL).subscribe((profiles) =>{
+      this.profiles = profiles;
       this.profiles$.next(this.profiles);
     });  
   }
