@@ -3,9 +3,9 @@
         <h3>{{question.text}}</h3>
     </div>
    
-    <p class="answers" *ngFor="let answer of question.answers">
-        <button [style.visibility]="answer.display" class="answer" (click)="nextQuestion(answer)">
+    <div class="answers" *ngFor="let answer of question.answers">
+        <button [style.visibility]="this.answers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
             {{answer.text}}
         </button>
-    </p>
+    </div>
 </div>

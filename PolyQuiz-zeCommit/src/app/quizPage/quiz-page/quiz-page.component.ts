@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Quiz} from '../../models/quiz.models';
-import { QuizListService} from '../../services/quizList.service';
-import { Router } from '@angular/router';
+import{ QuizListService} from '../../services/quizList.service';
+import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/models/question.models';
-import { stat } from 'fs';
 
 @Component({
   selector: 'app-quiz-page',
@@ -15,22 +14,26 @@ export class QuizPageComponent implements OnInit {
   public quiz: Quiz;
   public questionList: Question[];
   public question: Question;
-  public index: number;
-
+  public index: number=0;
   public quizDone: boolean;
 
-  constructor(public quizService: QuizListService, private router: Router) {
-    this.quiz = this.quizService.getQuiz(this.router.url.split('/')[5]);
-    this.questionList = this.quiz.questions;
-    this.question = this.questionList[this.index];
-    this.index = 0;
-    this.quizDone = false;
-    // QUESTION SUR CE POINT : OBSERVABLE REQUIRED ? ou simple return
-    // Creer uun service pour gerer les stats de quiz ?
-
-  }
+  constructor(public quizService: QuizListService,private route: ActivatedRoute) {
+    let id:number;
+    this.route.paramMap.subscribe(params => {
+      id=Number(params.get('idQuiz'))
+      this.quizService.quizzes$.subscribe((quizzes) => {
+        let quiz= quizzes.filter((quiz)=>quiz.id==id)[0]
+        if(quiz){
+          this.quiz=quiz
+          this.questionList=quiz.questions
+          this.question=quiz.questions[this.index];
+        }
+      })
+    })
+}
 
   ngOnInit() {
+    
   }
 
   receiveQ($event) {
@@ -38,7 +41,6 @@ export class QuizPageComponent implements OnInit {
       this.index += $event;
     } else {
       this.quizDone = true;
-      console.log('troue');
     }
   }
 

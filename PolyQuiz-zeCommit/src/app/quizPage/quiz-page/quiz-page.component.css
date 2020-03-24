@@ -11,7 +11,13 @@
 }
 
 .questions{
+    justify-content: center;
+    display: flex
+}
+
+.tree{
     display: flex;
+    flex-direction: row;
 }
 
 .btn {

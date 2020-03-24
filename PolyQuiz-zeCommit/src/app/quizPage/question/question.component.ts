@@ -10,8 +10,11 @@ import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 })
 export class QuestionComponent implements OnInit {
 
+  public answers :Answer[]=[]; //a faire //ng update
+
+  public nextQ: EventEmitter<number> = new EventEmitter<number>();
   constructor() {
-  }
+   }
 
   ngOnInit() {
   }
@@ -22,22 +25,12 @@ export class QuestionComponent implements OnInit {
   @Input()
   lastQuestion: boolean;
 
-  @Output()
-  nextQ: EventEmitter<number> = new EventEmitter();
-
-  nextQuestion(answer: Answer) {
-    if (this.isCorrect(answer)) {
-      this.nextQ.emit(1);
-    } else {
-      answer.display = 'hidden';
+  nextQuestion(answer:Answer){
+    if(answer.isCorrect){
+      this.nextQ.emit(1)
     }
-  }
-
-  isCorrect(answer: Answer): boolean {
-    if (answer.isCorrect) {
-      return true;
-    } else {
-      return false;
+    else{
+      this.answers.push(answer)
     }
   }
 }
