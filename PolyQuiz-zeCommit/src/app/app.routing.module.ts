@@ -4,12 +4,14 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ProfileListPageComponent } from './profiles/profile-list-page/profile-list-page.component';
 import { QuizListPageComponent} from './quizzes/quiz-list-page/quiz-list-page.component';
 import { QuizPageComponent } from './quizPage/quiz-page/quiz-page.component';
+import { QuizCreatePageComponent } from './quizzes/creation-page/quiz-create-page/quiz-create-page.component';
 
 const routes:Routes=[
   { path: '', component : AccueilComponent },
   { path: ':trouble/profileListPage', component : ProfileListPageComponent },
   { path: ':trouble/profileListPage/:idProfile/quizListPage', component : QuizListPageComponent },
-  { path: ':trouble/profileListPage/:idProfile/quizListPage/:idQuiz', component : QuizPageComponent},
+  { path: ':trouble/profileListPage/:idProfile/quizListPage/:idQuiz', component : QuizPageComponent },
+  { path: ':trouble/profileListPage/:idProfile/quiz-create-page', component : QuizCreatePageComponent },
   
 ]
 
