@@ -44,6 +44,7 @@ export const QUIZ_LIST: Quiz[] = [
                 text:"Ceci est une réelle question ?",
                 id:2,
                 quizId:1,
+                image:"../../../assets/img/question.jpg",
                 answers:[{
                     id:1,
                     text:"reponse 1",

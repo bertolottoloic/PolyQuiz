@@ -15,3 +15,8 @@ button {
 .answers {
     display: inline;
 }
+
+img{
+    width:128px;
+    height:128px;
+}
