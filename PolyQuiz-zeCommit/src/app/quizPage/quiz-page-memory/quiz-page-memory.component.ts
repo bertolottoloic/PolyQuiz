@@ -3,6 +3,7 @@ import { Quiz} from '../../models/quiz.models';
 import{ QuizListService} from '../../services/quizList.service';
 import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/models/question.models';
+import { StatMemory } from 'src/app/models/stat.models';
 
 @Component({
   selector: 'app-quiz-page-memory',
@@ -16,6 +17,8 @@ export class QuizPageMemoryComponent implements OnInit {
   public question: Question;
   public index: number=0;
   public quizDone: boolean;
+  public stats: StatMemory;
+  private timer: number;
 
   constructor(public quizService: QuizListService,private route: ActivatedRoute) {
     let id:number;
@@ -30,6 +33,9 @@ export class QuizPageMemoryComponent implements OnInit {
         }
       })
     })
+    this.stats=new StatMemory(); //creation objet stat
+    this.timer=Date.now(); //debut chrono
+
 }
 
   ngOnInit() {
@@ -40,11 +46,12 @@ export class QuizPageMemoryComponent implements OnInit {
     if (this.index + $event < this.questionList.length) {
       this.index += $event;
     } else {
-      this.quizDone = true;
+      this.stats.time=Date.now()-this.timer //temps mis pour completer le quiz
+      this.quizDone = true; //fin du quiz
     }
   }
 
-  skipQ(n) {
+  skipQ(n) { // saute n question(s)
     this.index = n;
   }
 }
