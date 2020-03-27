@@ -10,10 +10,10 @@ import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 })
 export class QuestionComponent implements OnInit {
 
-  public answers :Answer[]=[];
+  public wrongAnswers :Answer[]=[];
 
   @Output()
-  public nextQ: EventEmitter<number> = new EventEmitter();
+  public nextQ: EventEmitter<Answer> = new EventEmitter();
 
   constructor() {
    }
@@ -28,12 +28,10 @@ export class QuestionComponent implements OnInit {
   lastQuestion: boolean;
 
   nextQuestion(answer:Answer){
-    if(answer.isCorrect){
-      this.nextQ.emit(1)
-      console.log("emit")
+    this.nextQ.emit(answer)
+
+    if(!answer.isCorrect){
+      this.wrongAnswers.push(answer)
     }
-    else{
-      this.answers.push(answer)
-    }
-  }
+  } 
 }

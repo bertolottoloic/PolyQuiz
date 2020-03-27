@@ -4,6 +4,8 @@ import{ QuizListService} from '../../services/quizList.service';
 import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/models/question.models';
 import { StatMemory } from 'src/app/models/stat.models';
+import { stat } from 'fs';
+import { Answer } from 'src/app/models/answer.models';
 
 @Component({
   selector: 'app-quiz-page-memory',
@@ -16,9 +18,11 @@ export class QuizPageMemoryComponent implements OnInit {
   public questionList: Question[];
   public question: Question;
   public index: number=0;
+
   public quizDone: boolean;
   public stats: StatMemory;
   private timer: number;
+
 
   constructor(public quizService: QuizListService,private route: ActivatedRoute) {
     let id:number;
@@ -28,27 +32,50 @@ export class QuizPageMemoryComponent implements OnInit {
         let quiz= quizzes.filter((quiz)=>quiz.id==id)[0]
         if(quiz){
           this.quiz=quiz
+          this.stats=new StatMemory(quiz); //creation objet stat
           this.questionList=quiz.questions
           this.question=quiz.questions[this.index];
         }
       })
     })
-    this.stats=new StatMemory(); //creation objet stat
     this.timer=Date.now(); //debut chrono
 
 }
 
   ngOnInit() {
-    
+  }
+
+  isCompleted(){
+    if(this.stats.questionsDone.length==this.questionList.length){
+      this.stats.time=Date.now()-this.timer //temps mis pour completer le quiz
+      this.quizDone=true;
+    }
+  }
+
+  terminateQuiz(){
+    this.stats.time=Date.now()-this.timer //temps mis pour completer le quiz
+    this.quizDone=true;
+  }
+
+  UpdateMapStats(asw:Answer):void{
+    if(this.stats.trial.get(asw.questionId)==null){
+      this.stats.trial.set(asw.questionId,0);
+    }
+    this.stats.trial.set(asw.questionId,this.stats.trial.get(asw.questionId)+1);
   }
 
   receiveQ($event) {
-    if (this.index + $event < this.questionList.length) {
-      this.index += $event;
-    } else {
-      this.stats.time=Date.now()-this.timer //temps mis pour completer le quiz
-      this.quizDone = true; //fin du quiz
+    this.UpdateMapStats($event);
+    if($event.isCorrect){
+      this.stats.questionsDone.push($event.questionId) //incrémente de 1 le nombre de question fini
+      if (this.index + 1 < this.questionList.length) {
+        this.index += 1; //passe à la question suivante si possible
+      }
+      else{
+        //revient a une question non terminée
+      }
     }
+    this.isCompleted();
   }
 
   skipQ(n) { // saute n question(s)

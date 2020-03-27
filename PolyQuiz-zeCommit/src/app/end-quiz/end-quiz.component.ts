@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StatMemory } from '../models/stat.models';
 
 @Component({
   selector: 'app-end-quiz',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EndQuizComponent implements OnInit {
 
-  @Input() score: number;
+  @Input() stats: StatMemory;
 
   constructor() { }
 
