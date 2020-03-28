@@ -1,12 +1,37 @@
-button {
+.btn {
+  padding: 20px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  font-size: 2em;
+}
+#button1 {
+
+   min-height: 100px;
+   min-width: 20%;
+   font-size: 3em;
+   margin-top: 20px;
+ }
+#button2 {
 
   min-height: 100px;
   min-width: 20%;
   font-size: 4em;
   margin-top: 20px;
 }
+#button3 {
 
+  min-height: 100px;
+  min-width: 20%;
+  font-size: 5em;
+  margin-top: 20px;
+}
+#button4 {
 
+  min-height: 100px;
+  min-width: 20%;
+  font-size: 6em;
+  margin-top: 20px;
+}
 
 
 div {
