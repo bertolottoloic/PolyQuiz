@@ -31,7 +31,7 @@ import { EndQuizComponent } from './end-quiz/end-quiz.component';
     QuizPageMemoryComponent,
     QuestionComponent,
     QuizPageVueComponent,
-    EndQuizComponent
+    EndQuizComponent,
   ],
   imports: [
     BrowserModule,

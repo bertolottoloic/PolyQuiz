@@ -1,0 +1,22 @@
+button {
+
+  min-height: 100px;
+  min-width: 20%;
+  font-size: 4em;
+  margin-top: 20px;
+}
+
+
+
+
+div {
+  display: flex;
+  justify-content: space-around;
+}
+
+#title {
+  font-size: 3em;
+  text-align: center;
+  margin: 70px;
+}
+

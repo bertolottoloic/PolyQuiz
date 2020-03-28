@@ -10,8 +10,10 @@ import { Question } from 'src/app/models/question.models';
   styleUrls: ['./quiz-page-vue.component.css']
 })
 export class QuizPageVueComponent implements OnInit {
+  public size: number;
 
   constructor(private router: Router) {
+
 
   }
 
