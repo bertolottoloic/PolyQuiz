@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { Question } from 'src/app/models/question.models';
 
 @Component({
-  selector: 'app-quiz-page-vue',
-  templateUrl: './quiz-page-vue.component.html',
-  styleUrls: ['./quiz-page-vue.component.css']
+  selector: 'app-quiz-page-size-selection',
+  templateUrl: './quiz-page-size-selection.component.html',
+  styleUrls: ['./quiz-page-size-selection.component.css']
 })
-export class QuizPageVueComponent implements OnInit {
+export class QuizPageSizeSelectionComponent implements OnInit {
   public size = 3;
 
   constructor(private router: Router) {
