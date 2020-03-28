@@ -3,7 +3,7 @@
         <div *ngIf="question.image">
             <img src={{question.image}} alt="">
         </div>
-        <h3>{{question.text}}</h3>
+        <div class="question">{{question.text}}</div>
     </div>
    
     <div class="answers" *ngFor="let answer of question.answers">
