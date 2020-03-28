@@ -1,5 +1,4 @@
 import { Quiz } from './quiz.models';
-import { Question } from './question.models';
 
 export class StatMemory {
 
@@ -19,6 +18,13 @@ export class StatMemory {
         this.questionsDone=[];
         this.nbRightAnswers=0;
         this.nbWrongAnswers=0;
+        this.initStats();
+    }
+
+    initStats(){
+        this.quiz.questions.forEach(element => {
+            this.trial.set(element.id,0);
+        });
     }
 
 
