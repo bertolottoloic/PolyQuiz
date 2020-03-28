@@ -10,7 +10,7 @@ import { Question } from 'src/app/models/question.models';
   styleUrls: ['./quiz-page-vue.component.css']
 })
 export class QuizPageVueComponent implements OnInit {
-  public size: number;
+  public size = 3;
 
   constructor(private router: Router) {
 
@@ -18,11 +18,13 @@ export class QuizPageVueComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setSize();
   }
 
 
-
-
+  private setSize() {
+    this.size = 3;
+  }
 }
 
 
