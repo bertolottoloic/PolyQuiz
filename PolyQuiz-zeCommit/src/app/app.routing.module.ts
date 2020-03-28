@@ -4,7 +4,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ProfileListPageComponent } from './profiles/profile-list-page/profile-list-page.component';
 import { QuizListPageComponent} from './quizzes/quiz-list-page/quiz-list-page.component';
 import { QuizPageMemoryComponent } from './quizPage/quiz-page-memory/quiz-page-memory.component';
-import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-size-selection/quiz-page-size-selection.component';
+import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
 
 const routes: Routes = [
   { path: '', component : AccueilComponent },

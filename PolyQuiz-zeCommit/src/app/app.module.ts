@@ -14,8 +14,9 @@ import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { QuizPageMemoryComponent } from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import { QuestionComponent } from './quizPage/question/question.component';
-import { QuizPageSizeSelectionComponent } from './quizPage/quiz-page-size-selection/quiz-page-size-selection.component';
+import { QuizPageSizeSelectionComponent } from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
 import { EndQuizComponent } from './end-quiz/end-quiz.component';
+import { QuizPageVueComponent } from './quizPage/quiz-page-vue/quiz-page-vue.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EndQuizComponent } from './end-quiz/end-quiz.component';
     QuestionComponent,
     QuizPageSizeSelectionComponent,
     EndQuizComponent,
+    QuizPageVueComponent,
   ],
   imports: [
     BrowserModule,
