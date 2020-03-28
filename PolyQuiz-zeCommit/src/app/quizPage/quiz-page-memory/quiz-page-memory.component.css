@@ -2,7 +2,6 @@
     padding: 20px;
     display : flex;
 
-
 }
 
 .menu {
@@ -10,11 +9,6 @@
 
 }
 
-.questions{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 .btn {
@@ -27,15 +21,25 @@
 }
 
 .btnTree {
+    margin-top: 5%;
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    flex-direction: column ;
+    justify-content: center;
     align-items: center;
 }
 
 .titre {
-  font-size: 3em;
-  margin-left: 20px;
-  text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 3em;
+    margin-left: 20px;
+    text-align: center;
+}
+
+app-profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 

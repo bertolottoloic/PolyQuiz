@@ -23,6 +23,10 @@ button {
     display: inline;
 }
 
+.answer{
+    font-size: 2em;
+}
+
 img{
     width:128px;
     height:128px;

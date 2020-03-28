@@ -1,10 +1,12 @@
-<div>
-    Vous avez mis {{ stats.time }} ms pour finir le quiz
-</div>
-<div>
-    Vous avez {{stats.questionsDone.length}} bonnes réponses sur {{stats.quiz.questions.length}}
-</div>
-Questions :
-<div *ngFor="let question of stats.quiz.questions">
-    {{question.text}} - {{stats.questionsDone.includes(question.id)}} - tentatives : {{stats.trial.get(question.id)}}
+<div class="end">
+    <div>
+        Vous avez mis {{ stats.time }} ms pour finir le quiz
+    </div>
+    <div>
+        Vous avez {{stats.questionsDone.length}} bonnes réponses sur {{stats.quiz.questions.length}}
+    </div>
+    Questions :
+    <div *ngFor="let question of stats.quiz.questions">
+        {{question.text}} - {{stats.questionsDone.includes(question.id)}} - tentatives : {{stats.trial.get(question.id)}}
+    </div>
 </div>

@@ -1,14 +1,13 @@
 .card {
     border: 1px solid black;
-    width: 150px;
-    height: 150px;
+    
     display: flex;
     flex-direction: column;
 }
 
 .cardTop {
     width: 150px;
-    height: 130px;
+    height: 150px;
 }
 
 .cardBot {
