@@ -1,35 +1,5 @@
-<div *ngIf="quiz.trouble=='Vue'; then thenBlock else elseBlock"></div>
-
-<ng-template #thenBlock >
-  <button type="button" routerLink="{{quiz.id}}/quiz-page-size-selection">
-    <div class="card" >
-      <div class="cardTop">
-        <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
-      </div>
-      <div class="cardBot">
-        <p>{{ quiz.name }}-{{ quiz.theme }}</p>
-      </div>
-    </div>
-  </button>
-</ng-template>
-
-
-
-<ng-template #elseBlock>
-  <button type="button" routerLink="{{quiz.id}}">
-      <div class="card" >
-        <div class="cardTop">
-          <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
-        </div>
-        <div class="cardBot">
-          <p>{{ quiz.name }}-{{ quiz.theme }}</p>
-        </div>
-      </div>
-    </button>
-</ng-template>
-
 <div [ngSwitch]="quiz.trouble">
-  <ng-template *ngSwitchCase="'vue'" >
+  <ng-template [ngSwitchCase]="'Vue'" >
     <button type="button" routerLink="{{quiz.id}}/quiz-page-size-selection">
       <div class="card" >
         <div class="cardTop">
@@ -42,8 +12,8 @@
     </button>
   </ng-template>
 
-  <ng-template *ngSwitchCase="'memoire'">
-    <button type="button" routerLink="{{quiz.id}}/quiz-page-size-selection">
+  <ng-template [ngSwitchCase]="'Memoire'">
+    <button type="button" routerLink="{{quiz.id}}">
       <div class="card" >
         <div class="cardTop">
           <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
@@ -55,8 +25,8 @@
     </button>
   </ng-template>
 
-  <ng-template *ngSwitchCase="'moteur'">
-    <button type="button" routerLink="{{quiz.id}}/quiz-page-size-selection">
+  <ng-template ngSwitchDefault>
+    <button type="button" routerLink="{{quiz.id}}">
       <div class="card" >
         <div class="cardTop">
           <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
