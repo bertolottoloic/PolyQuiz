@@ -15,6 +15,8 @@ export class QuestionComponent implements OnInit {
 
   public wrongAnswers: Answer[] = [];
   public size: number;
+  public trouble: string;
+
 
   @Output()
   public nextQ: EventEmitter<Answer> = new EventEmitter();
@@ -26,6 +28,7 @@ export class QuestionComponent implements OnInit {
   lastQuestion: boolean;
 
   ngOnInit() {
+    this.setTrouble();
     this.setQuizSize();
   }
 
@@ -42,6 +45,19 @@ export class QuestionComponent implements OnInit {
 
     if (!answer.isCorrect) {
       this.wrongAnswers.push(answer);
+    }
+  }
+
+  setTrouble() {
+    console.log(this.router.url);
+    if (this.router.url.startsWith('/memoire')) {
+      this.trouble = 'Mémoire';
+    }
+    if (this.router.url.startsWith('/vue')) {
+      this.trouble = 'Vue';
+    }
+    if (this.router.url.startsWith('/moteur')) {
+      this.trouble = 'Moteur';
     }
   }
 }

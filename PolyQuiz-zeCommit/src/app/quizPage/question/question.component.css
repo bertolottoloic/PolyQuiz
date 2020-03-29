@@ -9,6 +9,8 @@ button {
     min-width: 500px;
     min-height: 200px;
     margin: 25px;
+    border-width: 1em;
+
 
 }
 
