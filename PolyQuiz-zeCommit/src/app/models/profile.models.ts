@@ -1,4 +1,4 @@
-import {Handicap} from './handicap.models'
+import {Handicap} from './handicap.models';
 
 export interface Profile {
 
@@ -8,5 +8,4 @@ export interface Profile {
     trouble: Handicap;
     image: string;
 
-    
 }

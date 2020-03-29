@@ -12,10 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuizListPageComponent } from './quizzes/quiz-list-page/quiz-list-page.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
-import { QuizPageComponent } from './quizPage/quiz-page/quiz-page.component';
+import { QuizPageMemoryComponent } from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import { QuestionComponent } from './quizPage/question/question.component';
 import { QuizCreateComponent } from './quizzes/creation-page/quiz-create/quiz-create.component';
 import { QuizCreatePageComponent } from './quizzes/creation-page/quiz-create-page/quiz-create-page.component';
+import { QuizPageSizeSelectionComponent } from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
+import { EndQuizComponent } from './end-quiz/end-quiz.component';
+import { QuizPageVueComponent } from './quizPage/quiz-page-vue/quiz-page-vue.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +31,13 @@ import { QuizCreatePageComponent } from './quizzes/creation-page/quiz-create-pag
     QuizListPageComponent,
     QuizListComponent,
     QuizComponent,
-    QuizPageComponent,
-    QuestionComponent,
     QuizCreateComponent,
-    QuizCreatePageComponent
+    QuizCreatePageComponent,
+    QuizPageMemoryComponent,
+    QuestionComponent,
+    QuizPageSizeSelectionComponent,
+    EndQuizComponent,
+    QuizPageVueComponent,
   ],
   imports: [
     BrowserModule,

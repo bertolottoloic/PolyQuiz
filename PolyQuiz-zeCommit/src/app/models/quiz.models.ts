@@ -5,8 +5,8 @@ export interface Quiz {
 
     name: string;
     theme: string;
-    id:number;
+    id: number;
     trouble: Handicap;
     image: string;
-    questions: Question[],
+    questions: Question[];
 }

@@ -8,19 +8,26 @@ import { Router } from '@angular/router';
 })
 export class QuizListPageComponent implements OnInit {
 
-  trouble:string = "";
+  trouble = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
-    this.setTrouble()
+    this.setTrouble();
   }
 
   setTrouble() {
-    console.log(this.router.url)
-    if(this.router.url.startsWith("/memoire")){ this.trouble="Mémoire" }
-    if(this.router.url.startsWith("/vue")){ this.trouble="Vue" }
-    if(this.router.url.startsWith("/moteur")){ this.trouble="Moteur" }
+    console.log(this.router.url);
+    if (this.router.url.startsWith('/memoire')) {
+      this.trouble = 'Mémoire';
+    }
+    if (this.router.url.startsWith('/vue')) {
+      this.trouble = 'Vue';
+    }
+    if (this.router.url.startsWith('/moteur')) {
+      this.trouble = 'Moteur';
+    }
   }
-  
+
 }

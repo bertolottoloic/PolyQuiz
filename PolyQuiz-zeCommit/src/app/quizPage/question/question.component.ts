@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { Question } from 'src/app/models/question.models';
 import { Answer } from 'src/app/models/answer.models';
+import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 
 @Component({
   selector: 'app-question',
@@ -9,33 +10,28 @@ import { Answer } from 'src/app/models/answer.models';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  public wrongAnswers :Answer[]=[];
+
+  @Output()
+  public nextQ: EventEmitter<Answer> = new EventEmitter();
+
+  constructor() {
+   }
 
   ngOnInit() {
   }
 
   @Input()
-  question: Question
+  question: Question;
 
-  @Output() 
-  nextQ :EventEmitter<number> = new EventEmitter();
+  @Input()
+  lastQuestion: boolean;
 
   nextQuestion(answer:Answer){
-    if(this.isCorrect(answer)){
-      this.nextQ.emit(1)
-    }
-    else{
-      answer.display='hidden';
-    }
-  }
+    this.nextQ.emit(answer)
 
-  isCorrect(answer: Answer):boolean{
-    if(answer.isCorrect){
-      return true
+    if(!answer.isCorrect){
+      this.wrongAnswers.push(answer)
     }
-    else{
-      return false
-    }
-  }
-
+  } 
 }

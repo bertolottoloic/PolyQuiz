@@ -1,0 +1,54 @@
+.btn {
+  padding: 20px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  font-size: 2em;
+}
+#menu-btn {
+  margin-right: 15px;
+}
+
+p {
+  font-size: 3em;
+  text-align: center;
+}
+
+.main {
+  padding: 20px;
+  display : flex;
+  justify-content: left;
+}
+
+div {
+  display: flex;
+  justify-content: space-around;
+}
+
+#button1 {
+   min-height: 100px;
+   min-width: 20%;
+   font-size: 3em;
+   margin-top: 20px;
+ }
+#button2 {
+  min-height: 100px;
+  min-width: 20%;
+  font-size: 4em;
+  margin-top: 20px;
+}
+#button3 {
+  min-height: 100px;
+  min-width: 20%;
+  font-size: 5em;
+  margin-top: 20px;
+}
+#button4 {
+  min-height: 100px;
+  min-width: 20%;
+  font-size: 6em;
+  margin-top: 20px;
+}
+
+
+
+

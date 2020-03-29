@@ -1,8 +1,8 @@
-export interface Answer{
+export interface Answer {
 
-    id : number;
-    text : string;
-    isCorrect : boolean;
-    display:string;
-    image?: string;
+  id: number;
+  text: string;
+  isCorrect: boolean;
+  image?: string;
+  questionId: number;
 }

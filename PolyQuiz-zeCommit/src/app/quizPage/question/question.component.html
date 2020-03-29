@@ -1,11 +1,16 @@
 <div class="main">
     <div class="question">
-        <h3>{{question.text}}</h3>
+        <div *ngIf="question.image">
+            <img src={{question.image}} alt="">
+        </div>
+        <div class="question">{{question.text}}</div>
     </div>
    
-    <p class="answers" *ngFor="let answer of question.answers">
-        <button [style.visibility]="answer.display" class="answer" (click)="nextQuestion(answer)">
+    <div class="answers" *ngFor="let answer of question.answers">
+        <button [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
             {{answer.text}}
+            <img *ngIf="answer.image" src={{answer.image}} alt="">
+
         </button>
-    </p>
+    </div>
 </div>

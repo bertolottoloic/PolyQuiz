@@ -7,14 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-  
-  constructor(private router: Router) { 
+
+  constructor(private router: Router) {
     this.router = router;
   }
 
   ngOnInit() {
   }
 
-  
+
 
 }
