@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from 'src/app/models/question.models';
 import {Answer} from 'src/app/models/answer.models';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -10,28 +10,32 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class QuestionComponent implements OnInit {
 
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
+
   public wrongAnswers: Answer[] = [];
   public size: number;
 
   @Output()
   public nextQ: EventEmitter<Answer> = new EventEmitter();
 
-  constructor(private route: ActivatedRoute) {
-  }
+  @Input()
+  question: Question;
+
+  @Input()
+  lastQuestion: boolean;
 
   ngOnInit() {
     this.setQuizSize();
   }
 
   setQuizSize() {
-    this.size = Number(this.route.snapshot.paramMap.get('size'));
+    if (this.router.url.startsWith('/vue')) {
+      this.size = Number(this.route.snapshot.paramMap.get('size'));
+    } else {
+      this.size = 1;
+    }
   }
-
-  @Input()
-  question: Question;
-
-  @Input()
-  lastQuestion: boolean;
 
   nextQuestion(answer: Answer) {
     this.nextQ.emit(answer);
