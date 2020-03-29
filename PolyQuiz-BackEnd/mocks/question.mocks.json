@@ -10,6 +10,12 @@
     "id": 1584900802782
   },
   {
+    "text": "Quel est cet instrument dont Mozart jouait ?",
+    "quizId": 1584900604498,
+    "id": 1584900802783,
+    "image": "../../../assets/img/piano.jpg"
+  },
+  {
     "text": "Quelle est la capitale de la Suède ?",
     "quizId": 1584900544972,
     "id": 1584900865372

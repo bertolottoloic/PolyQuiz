@@ -1,16 +1,21 @@
 <div class="main">
-    <div class="question">
-        <div *ngIf="question.image">
-            <img src={{question.image}} alt="">
-        </div>
+
+  <div *ngIf="question.image; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <img id="im-qu" src={{question.image}} alt="">
         <div class="question" >
           <p *ngIf="size==1" class="size1">{{question.text}}</p>
           <p *ngIf="size==2" class="size2">{{question.text}}</p>
-          <p *ngIf="size==3" class="size3">{{question.text}}</p>
-          <p *ngIf="size==4" class="size4">{{question.text}}</p>
-
+          <p *ngIf="size==3" class="size2">{{question.text}}</p> <!--avec une image on limite à size 2-->
         </div>
-    </div>
+    </ng-template>
+    <ng-template #elseBlock>
+      <div class="question" >
+        <p *ngIf="size==1" class="size1">{{question.text}}</p>
+        <p *ngIf="size==2" class="size2">{{question.text}}</p>
+        <p *ngIf="size==3" class="size3">{{question.text}}</p>
+      </div>
+    </ng-template>
 
   <div *ngIf="trouble=='Vue'">
       <div class="answers" *ngFor="let answer of question.answers">
