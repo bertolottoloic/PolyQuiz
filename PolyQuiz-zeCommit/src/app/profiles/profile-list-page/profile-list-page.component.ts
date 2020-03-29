@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class ProfileListPageComponent implements OnInit {
 
 
-  trouble = '';
+  public trouble = '';
 
   constructor(private router: Router) {
 
