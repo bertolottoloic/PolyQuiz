@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import { Question } from 'src/app/models/question.models';
-import { Answer } from 'src/app/models/answer.models';
-import { AbstractExtendedWebDriver } from 'protractor/built/browser';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Question} from 'src/app/models/question.models';
+import {Answer} from 'src/app/models/answer.models';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -10,15 +10,21 @@ import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 })
 export class QuestionComponent implements OnInit {
 
-  public wrongAnswers :Answer[]=[];
+  public wrongAnswers: Answer[] = [];
+  public size: number;
 
   @Output()
   public nextQ: EventEmitter<Answer> = new EventEmitter();
 
-  constructor() {
-   }
+  constructor(private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.setQuizSize();
+  }
+
+  setQuizSize() {
+    this.size = Number(this.route.snapshot.paramMap.get('size'));
   }
 
   @Input()
@@ -27,11 +33,11 @@ export class QuestionComponent implements OnInit {
   @Input()
   lastQuestion: boolean;
 
-  nextQuestion(answer:Answer){
-    this.nextQ.emit(answer)
+  nextQuestion(answer: Answer) {
+    this.nextQ.emit(answer);
 
-    if(!answer.isCorrect){
-      this.wrongAnswers.push(answer)
+    if (!answer.isCorrect) {
+      this.wrongAnswers.push(answer);
     }
-  } 
+  }
 }

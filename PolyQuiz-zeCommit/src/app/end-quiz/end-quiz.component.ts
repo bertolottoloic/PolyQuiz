@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { StatMemory } from '../models/stat.models';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {StatMemory} from '../models/stat.models';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-end-quiz',

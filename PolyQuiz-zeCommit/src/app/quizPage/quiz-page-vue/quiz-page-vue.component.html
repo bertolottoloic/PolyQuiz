@@ -17,7 +17,7 @@
 </div>
 <div class="row">
   <div class="col-md-2 btnTree" *ngIf="!quizDone">
-    <div class="questions" appHighlight *ngFor="let question of questionList; let n=index">
+    <div class="questions"  *ngFor="let question of questionList; let n=index">
       <button [disabled]="this.stats.questionsDone.includes(question.id)? true : false"
               [class]="this.stats.questionsDone.includes(question.id)? 'btn btn-success' : 'btn btn-primary'"
               (click)="skipQ(n)" >Q{{n+1}}</button>

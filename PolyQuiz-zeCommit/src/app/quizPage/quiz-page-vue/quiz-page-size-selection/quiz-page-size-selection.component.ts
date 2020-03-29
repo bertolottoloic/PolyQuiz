@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Quiz} from '../../../models/quiz.models';
-import { QuizListService} from '../../../services/quizList.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import { Question } from 'src/app/models/question.models';
-import {StatMemory} from '../../../models/stat.models';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-page-size-selection',

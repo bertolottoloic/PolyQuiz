@@ -1,14 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Quiz} from '../../models/quiz.models';
-import{ QuizListService} from '../../services/quizList.service';
-import{ ProfileService} from '../../services/profile.service';
+import {Component, OnInit} from '@angular/core';
+import {Quiz} from '../../models/quiz.models';
+import {QuizListService} from '../../services/quizList.service';
+import {ProfileService} from '../../services/profile.service';
 
-import { ActivatedRoute } from '@angular/router';
-import { Question } from 'src/app/models/question.models';
-import { StatMemory } from 'src/app/models/stat.models';
-import { stat } from 'fs';
-import { Answer } from 'src/app/models/answer.models';
-import { Profile } from 'src/app/models/profile.models';
+import {ActivatedRoute} from '@angular/router';
+import {Question} from 'src/app/models/question.models';
+import {StatMemory} from 'src/app/models/stat.models';
+import {Answer} from 'src/app/models/answer.models';
+import {Profile} from 'src/app/models/profile.models';
 
 @Component({
   selector: 'app-quiz-page-memory',

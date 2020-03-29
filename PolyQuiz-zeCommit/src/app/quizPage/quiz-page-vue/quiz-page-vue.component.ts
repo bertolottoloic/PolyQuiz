@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Profile} from '../../models/profile.models';
 import {Quiz} from '../../models/quiz.models';
 import {Question} from '../../models/question.models';

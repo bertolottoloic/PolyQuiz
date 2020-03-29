@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, from } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Quiz } from '../models/quiz.models';
-import { QUIZ_LIST } from '../mocks/quizzes-list.mock';
-import { serverUrl, httpOptionsBase } from '../../configs/server.config';
-import { Handicap } from '../models/handicap.models';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Quiz} from '../models/quiz.models';
+import {QUIZ_LIST} from '../mocks/quizzes-list.mock';
+import {serverUrl} from '../../configs/server.config';
 
 @Injectable({
     providedIn: 'root'
@@ -24,8 +23,8 @@ export class QuizListService {
     this.http.get<Quiz[]>(this.URL).subscribe((result) =>{
       this.quizzes = result;
       this.quizzes$.next(this.quizzes);
-      
-    });  
+
+    });
   }
 
   deleteQuiz(quiz: Quiz) {

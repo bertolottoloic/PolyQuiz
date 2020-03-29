@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Quiz } from '../../models/quiz.models';
-import { QuizListService} from '../../services/quizList.service';
+import {Component, OnInit} from '@angular/core';
+import {Quiz} from '../../models/quiz.models';
+import {QuizListService} from '../../services/quizList.service';
 
 @Component({
   selector: 'app-quiz-list',

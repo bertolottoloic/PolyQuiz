@@ -1,4 +1,4 @@
-import { Quiz } from './quiz.models';
+import {Quiz} from './quiz.models';
 
 export class StatMemory {
 

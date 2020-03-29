@@ -1,5 +1,5 @@
 import {Handicap} from './handicap.models';
-import { Question} from './question.models';
+import {Question} from './question.models';
 
 export interface Quiz {
 

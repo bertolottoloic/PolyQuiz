@@ -1,5 +1,5 @@
-import { Profile } from '../models/profile.models';
-import { Handicap } from '../models/handicap.models';
+import {Profile} from '../models/profile.models';
+import {Handicap} from '../models/handicap.models';
 
 export const PROFILE_LIST: Profile[] = [
     {

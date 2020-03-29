@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, from } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Profile } from '../models/profile.models';
-import { PROFILE_LIST } from '../mocks/profiles-list.mock';
-import { serverUrl } from '../../configs/server.config';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Profile} from '../models/profile.models';
+import {PROFILE_LIST} from '../mocks/profiles-list.mock';
+import {serverUrl} from '../../configs/server.config';
 
 @Injectable({
     providedIn: 'root'
@@ -34,7 +34,7 @@ export class ProfileService {
     this.http.get<Profile[]>(this.URL).subscribe((profiles) =>{
       this.profiles = profiles;
       this.profiles$.next(this.profiles);
-    });  
+    });
   }
 
 
