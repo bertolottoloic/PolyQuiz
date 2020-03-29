@@ -18,6 +18,7 @@ import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page
 import {EndQuizComponent} from './end-quiz/end-quiz.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
 import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight.directive';
+import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight
     EndQuizComponent,
     QuizPageVueComponent,
     HighlightDirective,
+    QuizPageMoteurComponent,
   ],
   imports: [
     BrowserModule,
