@@ -4,5 +4,6 @@ const BaseModel = require('../utils/base-model.js')
 module.exports = new BaseModel('Quiz', {
   name: Joi.string().required(),
   theme: Joi.string().required(),
-  image: Joi.string()
+  image: Joi.string(),
+  trouble: Joi.string(),
 })

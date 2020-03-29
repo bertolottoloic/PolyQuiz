@@ -5,13 +5,16 @@ import { ProfileListPageComponent } from './profiles/profile-list-page/profile-l
 import { QuizListPageComponent} from './quizzes/quiz-list-page/quiz-list-page.component';
 import { QuizPageMemoryComponent } from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
+import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
 
 const routes: Routes = [
   { path: '', component : AccueilComponent },
   { path: ':trouble/profile-list-page', component : ProfileListPageComponent },
   { path: ':trouble/profile-list-page/:idProfile/quiz-list-page', component : QuizListPageComponent },
   { path: 'memoire/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMemoryComponent},
-  { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageSizeSelectionComponent},
+  { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection', component : QuizPageSizeSelectionComponent},
+  { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection/:size', component : QuizPageVueComponent},
+
 
 
 ]
