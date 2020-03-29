@@ -11,30 +11,13 @@ import {StatMemory} from '../../../models/stat.models';
   styleUrls: ['./quiz-page-size-selection.component.css']
 })
 export class QuizPageSizeSelectionComponent implements OnInit {
-  public size = 3;
-  public id: number;
 
   constructor(private route: ActivatedRoute) {
-
-
   }
 
   ngOnInit() {
-    this.setQuizId();
   }
 
-  ngOnClick() {
-    this.setSize();
-  }
-
-
-  private setSize() {
-    this.size = 4;
-  }
-
-  setQuizId() {
-      this.id = Number(this.route.snapshot.paramMap.get('QuizId'));
-      }
 }
 
 
