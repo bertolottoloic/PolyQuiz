@@ -2,21 +2,21 @@
   {
     "theme": "Geographie",
     "name": "Capitales",
-    "image": "../../../assets/img/Papy-Brossard.jpg",
+    "image": "../../../assets/img/geographie.jpg",
     "trouble": "Moteur",
     "id": 1584900544972
   },
   {
     "theme": "Musique",
     "name": "Mozart",
-    "image": "../../../assets/img/Papy-Brossard.jpg",
+    "image": "../../../assets/img/mozart.jpg",
     "trouble": "Vue",
     "id": 1584900604498
   },
   {
     "theme": "Sport",
     "name": "Football",
-    "image": "../../../assets/img/pere-fouras.jpg",
+    "image": "../../../assets/img/foot.jpg",
     "trouble": "Memoire",
     "id": 1585040762008
   }
