@@ -7,8 +7,6 @@ import {ProfileService} from '../../services/profile.service';
 import {QuizListService} from '../../services/quizList.service';
 import {ActivatedRoute} from '@angular/router';
 import {Answer} from '../../models/answer.models';
-import { Directive, ElementRef, HostListener } from '@angular/core';
-
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -28,7 +26,7 @@ export class QuizPageVueComponent implements OnInit {
   public size: number;
 
 
-  constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute, private el: ElementRef) {
+  constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute) {
     this.loadQuiz();
     this.loadProfile();
 
@@ -36,17 +34,6 @@ export class QuizPageVueComponent implements OnInit {
 
   setQuizSize() {
     this.size = Number(this.route.snapshot.paramMap.get('size'));
-  }
-
-  @HostListener('mouseenter') onMouseEnter() {
-    this.highlight('yellow');
-  }
-
-  @HostListener('mouseleave') onMouseLeave() {
-    this.highlight(null);
-  }
-  private highlight(color: string) {
-    this.el.nativeElement.style.backgroundColor = color;
   }
 
   loadQuiz() {
