@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from 'src/app/models/quiz.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -8,7 +9,8 @@ import {Quiz} from 'src/app/models/quiz.models';
 })
 export class QuizComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,4 +24,12 @@ export class QuizComponent implements OnInit {
   @Output()
   quizDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
+
+  isMemory() {
+    return this.router.url.startsWith('/memoire')
+  }
+
+  isMotor() {
+    return this.router.url.startsWith('/moteur')
+  }
 }
