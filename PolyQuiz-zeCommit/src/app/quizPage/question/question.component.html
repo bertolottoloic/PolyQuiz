@@ -26,10 +26,6 @@
           {{answer.text}}
           <img *ngIf="answer.image" src={{answer.image}} alt="">
         </button>
-        <button appHighlight *ngIf="size==4" class="size4" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" (click)="nextQuestion(answer)">
-          {{answer.text}}
-          <img *ngIf="answer.image" src={{answer.image}} alt="">
-        </button>
       </div>
   </div>
 

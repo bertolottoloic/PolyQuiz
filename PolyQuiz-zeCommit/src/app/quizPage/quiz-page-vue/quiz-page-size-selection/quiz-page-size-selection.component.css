@@ -9,7 +9,7 @@
 }
 
 p {
-  font-size: 3em;
+  font-size: 40px;
   text-align: center;
 }
 
@@ -40,12 +40,6 @@ div {
   min-height: 100px;
   min-width: 20%;
   font-size: 5em;
-  margin-top: 20px;
-}
-#button4 {
-  min-height: 100px;
-  min-width: 20%;
-  font-size: 6em;
   margin-top: 20px;
 }
 

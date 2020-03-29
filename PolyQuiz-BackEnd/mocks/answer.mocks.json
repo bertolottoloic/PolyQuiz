@@ -82,5 +82,33 @@
     "display": "visible",
     "questionId": 1585040894041,
     "id": 1585042380504
+  },
+  {
+    "text": "4 ans",
+    "isCorrect": false,
+    "display": "visible",
+    "questionId": 1584900802782,
+    "id": 1584900604498
+  },
+  {
+    "text": "6 ans",
+    "isCorrect": true,
+    "display": "visible",
+    "questionId": 1584900802782,
+    "id": 1584900604498
+  },
+  {
+    "text": "12 ans",
+    "isCorrect": false,
+    "display": "visible",
+    "questionId": 1584900802782,
+    "id": 1584900604498
+  },
+  {
+    "text": "15 ans",
+    "isCorrect": false,
+    "display": "visible",
+    "questionId": 1584900802782,
+    "id": 1584900604498
   }
 ]
