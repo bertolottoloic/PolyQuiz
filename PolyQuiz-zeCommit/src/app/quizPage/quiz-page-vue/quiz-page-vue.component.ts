@@ -42,10 +42,11 @@ export class QuizPageVueComponent implements OnInit {
       id = Number(params.get('idQuiz'))
       this.quizService.quizzes$.subscribe((quizzes) => {
         let quiz = quizzes.filter((quiz) => quiz.id == id)[0]
+        console.log(quiz);
         if (quiz) {
-          this.quiz = quiz
+          this.quiz = quiz;
           this.stats = new StatMemory(quiz);
-          this.questionList = quiz.questions
+          this.questionList = quiz.questions;
           this.question = quiz.questions[this.index];
         }
       });
