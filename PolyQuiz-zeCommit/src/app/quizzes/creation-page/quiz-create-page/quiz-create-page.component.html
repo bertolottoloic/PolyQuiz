@@ -1,1 +1,21 @@
-<p>quiz-create-page works!</p>
+<div class="main">
+    <div class="menu">
+        <div class="bttn" id="menu-btn">
+            <button type="button" class="btn btn-primary" routerLink="">Accueil</button> 
+        </div>
+        <div class="bttn">
+            <button type="button" class="btn btn-primary" routerLink="../..">Retour</button> 
+        </div>
+    </div>
+    <div>
+        <p>Création d'un quiz</p>
+    </div>
+    <div>
+        <p>{{trouble}}</p><br>
+    </div>
+</div>
+<div class="page-content">
+    <app-quiz-create-entrance *ngIf="route==='quiz'" (quizId)="receiptQuizId($event)"></app-quiz-create-entrance>
+    <app-quiz-create-question *ngIf="route==='question'" ></app-quiz-create-question>
+    <app-quiz-create-question-page quizId="{{quizId}}" *ngIf="route==='answer'" ></app-quiz-create-question-page>
+</div>

@@ -1,0 +1,19 @@
+<form [formGroup]="questionForm">
+    <label for="text">
+      Texte <br>
+      <input class="input-custom" type="text" id="name" [formControlName]="'text'">
+    </label>
+    <div formArrayName="answers" *ngFor="let elm of formData.controls; let i = index" >
+        <div [formGroupName]="i">
+            <label for="titre" >
+                Réponse {{ i+1 }} <br/>
+                <input type="text" id="text" [formControlName]="'text'">
+            </label>
+            <label for="isCorrect">
+                Réponse vraie
+                <input type="checkbox" id="isCorrect" [formControlName]="'isCorrect'" (change)="affiche()">
+            </label>
+        </div>
+    </div>
+</form>
+<button class="answer" (click)="changeRoute('question');addQuestion();">Valider le quiz</button>

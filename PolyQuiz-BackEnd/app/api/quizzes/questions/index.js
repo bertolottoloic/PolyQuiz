@@ -1,6 +1,8 @@
 const { Router } = require('express')
 
 const { Question } = require('../../../models')
+const { Answer } = require('../../../models')
+
 const AnswerRouter = require('./answers')
 const { addAnswers } = require('../Manage')
 
@@ -35,7 +37,17 @@ router.get('/:questionId', (req, res) => {
   
   router.post('/', (req, res) => {
     try {
-      const question = Question.create({ ...req.body })
+      console.log("1")
+      const quizId = parseInt(req.params.quizId, 10)
+      console.log("2")
+      let question = Question.create({ text:req.body.text, quizId})
+      console.log(question)
+      if (req.body.answers && req.body.answers.length > 0) {
+        console.log("in")
+        const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
+        console.log(answers)
+        question = {...question, answers}
+      }
       res.status(201).json(question)
     } catch (err) {
       if (err.name === 'ValidationError') {
