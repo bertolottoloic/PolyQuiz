@@ -1,31 +1,15 @@
-<div *ngIf="quiz.trouble=='Vue'; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock >
-  <button type="button" routerLink="{{quiz.id}}/quiz-page-size-selection">
-    <div class="card" >
-      <div class="cardTop">
-        <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
-      </div>
-      <div class="cardBot">
-        <p>{{ quiz.name }}.{{ quiz.theme }}</p>
-      </div>
-    </div>
-  </button>
-</ng-template>
-
-
-
-<ng-template #elseBlock>
-  <button type="button" routerLink="{{quiz.id}}">
+<div>
+    <button type="button" routerLink="{{quiz.id}}">
       <div class="card" >
         <div class="cardTop">
           <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
         </div>
         <div class="cardBot">
-          <p>{{ quiz.name }}.{{ quiz.theme }}</p>
+          <p>{{ quiz.name }}-{{ quiz.theme }}</p>
         </div>
       </div>
     </button>
-</ng-template>
+</div>
 
 
 

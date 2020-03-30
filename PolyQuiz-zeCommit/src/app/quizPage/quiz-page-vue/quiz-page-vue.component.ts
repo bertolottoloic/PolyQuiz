@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Profile} from '../../models/profile.models';
 import {Quiz} from '../../models/quiz.models';
 import {Question} from '../../models/question.models';
@@ -20,12 +20,15 @@ export class QuizPageVueComponent implements OnInit {
   public questionList: Question[];
   public question: Question;
   public index = 0;
-
+  public startQuiz: boolean;
   public quizDone: boolean;
   public stats: StatMemory;
-
+  @Output()
+  public size: EventEmitter<number> = new EventEmitter();
 
   constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute) {
+    this.startQuiz = false;
+    this.quizDone = false;
     this.loadQuiz();
     this.loadProfile();
 
@@ -34,30 +37,40 @@ export class QuizPageVueComponent implements OnInit {
   loadQuiz() {
     let id: number;
     this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idQuiz'))
+      id = Number(params.get('idQuiz'));
       this.quizService.quizzes$.subscribe((quizzes) => {
-        let quiz = quizzes.filter((quiz) => quiz.id == id)[0]
+        const quiz = quizzes.filter((quiz) => quiz.id === id)[0];
         if (quiz) {
-          this.quiz = quiz
-          this.stats = new StatMemory(quiz);
-          this.questionList = quiz.questions
+          this.quiz = quiz;
+          this.stats = new StatMemory(quiz); // creation objet stat
+          this.questionList = quiz.questions;
           this.question = quiz.questions[this.index];
         }
       });
     });
   }
 
+  getSize($event) {
+    this.size = $event;
+    this.startQuiz = true;
+  }
+
+  setSize(n: number) {
+    this.size.emit(n);
+  }
+
+
   loadProfile() {
     let id: number;
     this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idProfile'))
+      id = Number(params.get('idProfile'));
       this.profileService.profiles$.subscribe((profiles) => {
-        let profil = profiles.filter((prf) => prf.id == id)[0]
+        const profil = profiles.filter((prf) => prf.id == id)[0];
         if (profil) {
           this.profile = profil;
         }
-      })
-    })
+      });
+    });
   }
 
 
@@ -84,11 +97,11 @@ export class QuizPageVueComponent implements OnInit {
   receiveQ($event) {
     this.UpdateMapStats($event);
     if ($event.isCorrect) {
-      this.stats.questionsDone.push($event.questionId) //incrémente de 1 le nombre de question fini
+      this.stats.questionsDone.push($event.questionId); // incrémente de 1 le nombre de question fini
       if (this.index + 1 < this.questionList.length) {
-        this.index += 1; //passe à la question suivante si possible
+        this.index += 1; // passe à la question suivante si possible
       } else {
-        //revient a une question non terminée
+        // revient a une question non terminée
       }
     }
     this.isCompleted();

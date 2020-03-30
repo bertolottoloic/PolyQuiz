@@ -7,6 +7,7 @@ import { QuizCreatePageComponent } from './quizzes/creation-page/quiz-create-pag
 import { QuizPageMemoryComponent } from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
+import {QuizPageMoteurComponent} from './quizPage/quiz-page-moteur/quiz-page-moteur.component'
 
 const routes: Routes = [
   { path: '', component : AccueilComponent },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection/:size', component : QuizPageVueComponent},
   { path: ':trouble/profileListPage/:idProfile/quiz-create-page', component : QuizCreatePageComponent },
   
+  { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageVueComponent},
+  { path: 'moteur/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMoteurComponent}
 
 
 ]

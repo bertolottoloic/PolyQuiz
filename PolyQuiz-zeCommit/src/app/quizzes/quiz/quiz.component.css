@@ -23,3 +23,9 @@ img {
 p {
     text-align: center;
 }
+
+button {
+    background-color:rgb(245, 245, 245);
+    margin: 5px;
+    padding: 3px;
+}

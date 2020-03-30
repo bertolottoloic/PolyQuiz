@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { QuizPageSizeSelectionComponent } from './quiz-page-size-selection.component';
+import {QuizPageSizeSelectionComponent} from './quiz-page-size-selection.component';
 
 describe('QuizPageSizeSelectionComponent', () => {
   let component: QuizPageSizeSelectionComponent;

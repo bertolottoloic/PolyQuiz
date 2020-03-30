@@ -1,8 +1,19 @@
 [
   {
-    "text": "Quelle est la première musique de Mozart",
+    "text": "Quelle est la première musique de Mozart ?",
     "quizId": 1584900604498,
     "id": 1584900802781
+  },
+  {
+    "text": "A quel âge Mozart a-t-il commencé à composer ?",
+    "quizId": 1584900604498,
+    "id": 1584900802782
+  },
+  {
+    "text": "Quel est cet instrument dont Mozart jouait ?",
+    "quizId": 1584900604498,
+    "id": 1584900802783,
+    "image": "../../../assets/img/logo/piano.jpg"
   },
   {
     "text": "Quelle est la capitale de la Suède ?",

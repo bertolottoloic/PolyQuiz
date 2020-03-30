@@ -1,0 +1,30 @@
+<div class="main">
+
+  <div>
+    <div *ngIf="question.image">
+      <img id="im-qu" src={{question.image}} alt="">
+    </div>
+    <div class="question" >
+      <p *ngIf="size==1" class="size1">{{question.text}}</p>
+      <p *ngIf="size==2" class="size2">{{question.text}}</p>
+      <p *ngIf="size==3" class="size2">{{question.text}}</p> <!--avec une image on limite à size 2-->
+    </div>
+  </div>
+
+  <div>
+    <div class="answers" *ngFor="let answer of question.answers">
+      <button appHighlight *ngIf="size==1" class="size1" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" (click)="nextQuestion(answer)">
+        {{answer.text}}
+        <img *ngIf="answer.image" src={{answer.image}} alt="">
+      </button>
+      <button appHighlight *ngIf="size==2" class="size2" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" (click)="nextQuestion(answer)">
+        {{answer.text}}
+        <img *ngIf="answer.image" src={{answer.image}} alt="">
+      </button>
+      <button appHighlight *ngIf="size==3" class="size3" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'"  (click)="nextQuestion(answer)">
+        {{answer.text}}
+        <img *ngIf="answer.image" src={{answer.image}} alt="">
+      </button>
+    </div>
+  </div>
+</div>

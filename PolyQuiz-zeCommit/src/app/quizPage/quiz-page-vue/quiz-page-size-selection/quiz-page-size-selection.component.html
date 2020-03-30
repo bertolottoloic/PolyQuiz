@@ -1,30 +1,24 @@
-<div class="main">
-  <div class="menu">
-    <div class="bttn" id="menu-btn">
-      <button type="button" class="btn btn-primary" routerLink="">Accueil</button>
-    </div>
-    <div class="bttn">
-      <button type="button" class="btn btn-primary" routerLink="../..">Retour</button>
-    </div>
+<div class="size-selection">
+
+  <div class="title">
+    <p id="title">Choix de la taille</p>
   </div>
+
 </div>
 
-<p id="title">Choix de la taille</p><br>
+<br>
 
 
 <div>
-  <button id="button1" class="btn btn-primary" routerLink="3" > Exemple de taille 1</button>
+  <button id="button1" class="btn btn-primary" (click)="setSize(1)" > Exemple de taille 1</button>
 </div>
 
 <div>
-  <button id="button2" class="btn btn-primary" routerLink="4" >Exemple de taille 2</button>
+  <button id="button2" class="btn btn-primary" (click)="setSize(2)" >Exemple de taille 2</button>
 </div>
 
 <div>
-  <button id="button3" class="btn btn-primary" routerLink="5" >Exemple de taille 3</button>
+  <button id="button3" class="btn btn-primary" (click)="setSize(3)">Exemple de taille 3</button>
 </div>
 
-<div>
-  <button id="button4" class="btn btn-primary" routerLink="6" >Exemple de taille 4</button>
-</div>
 

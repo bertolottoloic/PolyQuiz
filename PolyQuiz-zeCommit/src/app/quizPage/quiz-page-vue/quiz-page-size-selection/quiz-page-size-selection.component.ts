@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Quiz} from '../../../models/quiz.models';
-import { QuizListService} from '../../../services/quizList.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import { Question } from 'src/app/models/question.models';
-import {StatMemory} from '../../../models/stat.models';
+import {Component,EventEmitter, OnInit, Output} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-page-size-selection',
@@ -11,30 +7,20 @@ import {StatMemory} from '../../../models/stat.models';
   styleUrls: ['./quiz-page-size-selection.component.css']
 })
 export class QuizPageSizeSelectionComponent implements OnInit {
-  public size = 3;
-  public id: number;
 
-  constructor(private route: ActivatedRoute) {
+  @Output()
+  public size: EventEmitter<number> = new EventEmitter();
 
-
+  constructor() {
   }
 
   ngOnInit() {
-    this.setQuizId();
   }
 
-  ngOnClick() {
-    this.setSize();
+  setSize(n: number) {
+    this.size.emit(n);
   }
 
-
-  private setSize() {
-    this.size = 4;
-  }
-
-  setQuizId() {
-      this.id = Number(this.route.snapshot.paramMap.get('QuizId'));
-      }
 }
 
 

@@ -1,19 +1,18 @@
-<div class="main">
-    <div class="menu">
+<div class="menu">
 
-        <div class="bttn" id="menu-btn">
+    <div class="menu-btn"> 
+        <div>
             <button type="button" class="btn btn-primary" routerLink="">Accueil</button>
         </div>
-
-        <div class="bttn">
+        <div>
             <button type="button" class="btn btn-primary" routerLink="..">Retour</button>
         </div>
+    </div>
 
-    </div>
-    <div class="titre col-md-10">
-        <h1 *ngIf="quiz">Quiz : {{ quiz.name }}</h1>
-    </div>
+    <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
+    
     <app-profile [profile]="profile"></app-profile>
+    
 </div>
 <div class="row">
     <div class="col-md-2 btnTree" *ngIf="!quizDone">
@@ -25,7 +24,7 @@
     </div>
     <app-question class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
     <div class="col-md-2 btnTree" *ngIf="!quizDone">
-        <button class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
+        <button id="finish" class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
     </div>
 </div>
 

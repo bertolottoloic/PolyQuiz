@@ -1,12 +1,19 @@
 <div class="end">
-    <div>
+
+    <div style="font-size: 0.9em;" *ngIf="trouble!='Vue'">
         Vous avez mis {{ stats.time }} ms pour finir le quiz
     </div>
-    <div>
-        Vous avez {{stats.questionsDone.length}} bonnes réponses sur {{stats.quiz.questions.length}}
+
+    <div style="padding-top: 20px;">
+        <p style="font-size: 0.9em;">Vous avez {{stats.questionsDone.length}} bonne(s) réponse(s) sur {{stats.quiz.questions.length}}</p>
     </div>
-    Questions :
-    <div *ngFor="let question of stats.quiz.questions">
-        {{question.text}} - {{stats.questionsDone.includes(question.id)}} - tentatives : {{stats.trial.get(question.id)}}
+
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+        <p style="font-size: 0.9em;">Résumé des questions: </p>
     </div>
+
+    <div id="resume" *ngFor="let question of stats.quiz.questions">
+        <p> *{{question.text}} - tentatives : {{stats.trial.get(question.id)}}</p>
+    </div>
+
 </div>

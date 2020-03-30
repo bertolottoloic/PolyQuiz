@@ -6,8 +6,8 @@
 
 .menu {
   display: flex;
-
 }
+
 .btn {
   margin: 20px;
   padding: 20px 20px;
@@ -26,17 +26,24 @@
 }
 
 .titre {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 3em;
-  margin-left: 20px;
-  text-align: center;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 
+#select {
+  display: table-row;
+  align-content: center;
+}
 app-profile{
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+
+
+#finish {
+  font-size: 20px;
+  margin-top: 150%;
+}
+
 

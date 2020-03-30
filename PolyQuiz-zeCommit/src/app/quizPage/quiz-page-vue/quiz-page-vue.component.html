@@ -1,32 +1,24 @@
 <div class="main">
   <div class="menu">
-
-    <div class="bttn" id="menu-btn">
+    <div>
       <button type="button" class="btn btn-primary" routerLink="">Accueil</button>
     </div>
-
-    <div class="bttn">
+    <div>
       <button type="button" class="btn btn-primary" routerLink="..">Retour</button>
     </div>
+  </div>
+  <app-quiz-page-size-selection id="select" *ngIf="!startQuiz" (size)="getSize($event)"></app-quiz-page-size-selection>
+  <div *ngIf="startQuiz" >
+    <div class="titre col-md-10">
+      <h1 *ngIf="quiz">Quiz : {{ quiz.name }}</h1>
+    </div>
+    <app-profile [profile]="profile"></app-profile>
+    <div class="row">
 
-  </div>
-  <div class="titre col-md-10">
-    <h1 *ngIf="quiz">Quiz : {{ quiz.name }}</h1>
-  </div>
-  <app-profile [profile]="profile"></app-profile>
-</div>
-<div class="row">
-  <div class="col-md-2 btnTree" *ngIf="!quizDone">
-    <div class="questions" *ngFor="let question of questionList; let n=index">
-      <button [disabled]="this.stats.questionsDone.includes(question.id)? true : false"
-              [class]="this.stats.questionsDone.includes(question.id)? 'btn btn-success' : 'btn btn-primary'"
-              (click)="skipQ(n)" >Q{{n+1}}</button>
+      <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [size]="size" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question-vue>
+      <div class="col-md-2 btnTree" *ngIf="!quizDone">
+      </div>
+      <app-end-quiz *ngIf="quizDone" [stats]="stats"></app-end-quiz>
     </div>
   </div>
-  <app-question class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
-  <div class="col-md-2 btnTree" *ngIf="!quizDone">
-    <button class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
-  </div>
 </div>
-
-<app-end-quiz *ngIf="quizDone" [stats]="stats"></app-end-quiz>

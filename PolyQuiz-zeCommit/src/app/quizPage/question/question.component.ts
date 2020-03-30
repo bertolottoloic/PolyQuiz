@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import { Question } from 'src/app/models/question.models';
-import { Answer } from 'src/app/models/answer.models';
-import { AbstractExtendedWebDriver } from 'protractor/built/browser';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Question} from 'src/app/models/question.models';
+import {Answer} from 'src/app/models/answer.models';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -10,16 +10,16 @@ import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 })
 export class QuestionComponent implements OnInit {
 
-  public wrongAnswers :Answer[]=[];
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
+
+  public wrongAnswers: Answer[] = [];
+  public size: number;
+  public trouble: string;
+
 
   @Output()
   public nextQ: EventEmitter<Answer> = new EventEmitter();
-
-  constructor() {
-   }
-
-  ngOnInit() {
-  }
 
   @Input()
   question: Question;
@@ -27,11 +27,37 @@ export class QuestionComponent implements OnInit {
   @Input()
   lastQuestion: boolean;
 
-  nextQuestion(answer:Answer){
-    this.nextQ.emit(answer)
+  ngOnInit() {
+    this.setTrouble();
+    this.setQuizSize();
+  }
 
-    if(!answer.isCorrect){
-      this.wrongAnswers.push(answer)
+  setQuizSize() {
+    if (this.router.url.startsWith('/vue')) {
+      this.size = Number(this.route.snapshot.paramMap.get('size'));
+    } else {
+      this.size = 1;
     }
-  } 
+  }
+
+  nextQuestion(answer: Answer) {
+    this.nextQ.emit(answer);
+
+    if (!answer.isCorrect) {
+      this.wrongAnswers.push(answer);
+    }
+  }
+
+  setTrouble() {
+    console.log(this.router.url);
+    if (this.router.url.startsWith('/memoire')) {
+      this.trouble = 'Mémoire';
+    }
+    if (this.router.url.startsWith('/vue')) {
+      this.trouble = 'Vue';
+    }
+    if (this.router.url.startsWith('/moteur')) {
+      this.trouble = 'Moteur';
+    }
+  }
 }

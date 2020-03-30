@@ -1,5 +1,5 @@
-import { Quiz } from '../models/quiz.models';
-import { Handicap } from '../models/handicap.models';
+import {Quiz} from '../models/quiz.models';
+import {Handicap} from '../models/handicap.models';
 
 export const QUIZ_LIST: Quiz[] = [
     {
@@ -37,7 +37,7 @@ export const QUIZ_LIST: Quiz[] = [
                     isCorrect: false,
                 },
                 ],
-    
+
 
 
             },{

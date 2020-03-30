@@ -1,16 +1,15 @@
 <div class="main">
-    <div class="question">
-        <div *ngIf="question.image">
-            <img src={{question.image}} alt="">
-        </div>
-        <div class="question">{{question.text}}</div>
+  <div>
+    <div *ngIf="question.image">
+      <img id="im-qu" src={{question.image}} alt="">
     </div>
-   
-    <div class="answers" *ngFor="let answer of question.answers">
-        <button [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
-            {{answer.text}}
-            <img *ngIf="answer.image" src={{answer.image}} alt="">
+    <div class="question">{{question.text}}</div>
+  </div>
 
-        </button>
-    </div>
+  <div class="answers" *ngFor="let answer of question.answers">
+    <button [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
+      {{answer.text}}
+      <img *ngIf="answer.image" src={{answer.image}} alt="">
+    </button>
+  </div>
 </div>
