@@ -1,19 +1,15 @@
 <div class="main">
-    <div class="menu">
 
-        <div class="bttn" id="menu-btn">
-            <button type="button" class="btn btn-primary" routerLink="">Accueil</button>
-        </div>
-
-        <div class="bttn">
-            <button type="button" class="btn btn-primary" routerLink="..">Retour</button>
-        </div>
-
+    <div class="menu"> 
+        <button type="button" class="btn btn-primary" routerLink="">Accueil</button>
+        <button type="button" class="btn btn-primary" routerLink="..">Retour</button>
     </div>
+
     <div class="titre col-md-10">
         <h1 *ngIf="quiz">Quiz : {{ quiz.name }}</h1>
     </div>
     <app-profile [profile]="profile"></app-profile>
+    
 </div>
 <div class="row">
     <div class="col-md-2 btnTree" *ngIf="!quizDone">

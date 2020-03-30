@@ -1,46 +1,45 @@
 .main {
     padding: 20px;
     display : flex;
-}
-
-.menu {
+    justify-content: space-between;
+  
+  }
+  
+  .menu {
     display: flex;
-
-}
-.btn {
+  
+  }
+  .btn {
     margin: 20px;
     padding: 20px 20px;
     font-size: 20px;
     border-radius: 10px;
     font-size: 2em;
-
-}
-
-#finish {
-    font-size: 20px;
-    margin-top: 150%;
+  
   }
-
-.btnTree {
+  
+  .btnTree {
     margin-top: 5%;
     display: flex;
     flex-direction: column ;
     justify-content: center;
     align-items: center;
-}
-
-.titre {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 3em;
-    margin-left: 20px;
-    text-align: center;
-}
-
-app-profile{
+  }
+  
+  .titre {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  
+  app-profile{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-}
+  }
+  
+  #finish {
+    font-size: 20px;
+    margin-top: 150%;
+  }
+  
 
