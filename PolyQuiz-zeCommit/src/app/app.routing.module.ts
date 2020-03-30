@@ -12,10 +12,10 @@ const routes: Routes = [
   { path: '', component : AccueilComponent },
   { path: ':trouble/profile-list-page', component : ProfileListPageComponent },
   { path: ':trouble/profile-list-page/:idProfile/quiz-list-page', component : QuizListPageComponent },
-  { path: 'memoire/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMemoryComponent},
+  { path: 'memoire/profile-list-page/:idProfile/quiz-list-page/:idQuiz/memoire', component : QuizPageMemoryComponent},
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection', component : QuizPageSizeSelectionComponent},
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection/:size', component : QuizPageVueComponent},
-  { path: 'moteur/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMoteurComponent}
+  { path: 'moteur/profile-list-page/:idProfile/quiz-list-page/:idQuiz/moteur', component : QuizPageMoteurComponent}
 
 
 ]
