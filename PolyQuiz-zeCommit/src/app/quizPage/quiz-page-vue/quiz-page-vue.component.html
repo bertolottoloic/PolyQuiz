@@ -7,7 +7,7 @@
       <button type="button" class="btn btn-primary" routerLink="..">Retour</button>
     </div>
   </div>
-  <app-quiz-page-size-selection *ngIf="!startQuiz" (size)="getSize($event)"></app-quiz-page-size-selection>
+  <app-quiz-page-size-selection id="select" *ngIf="!startQuiz" (size)="getSize($event)"></app-quiz-page-size-selection>
   <div *ngIf="startQuiz" >
     <div class="titre col-md-10">
       <h1 *ngIf="quiz">Quiz : {{ quiz.name }}</h1>
@@ -17,7 +17,6 @@
 
       <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [size]="size" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question-vue>
       <div class="col-md-2 btnTree" *ngIf="!quizDone">
-        <button id="finish" class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
       </div>
       <app-end-quiz *ngIf="quizDone" [stats]="stats"></app-end-quiz>
     </div>

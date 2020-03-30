@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div *ngIf="trouble=='Vue'">
+  <div>
     <div class="answers" *ngFor="let answer of question.answers">
       <button appHighlight *ngIf="size==1" class="size1" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" (click)="nextQuestion(answer)">
         {{answer.text}}
@@ -27,3 +27,4 @@
       </button>
     </div>
   </div>
+</div>
