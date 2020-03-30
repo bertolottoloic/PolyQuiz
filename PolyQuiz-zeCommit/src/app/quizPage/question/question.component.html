@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="question">
+  <div>
     <div *ngIf="question.image">
       <img id="im-qu" src={{question.image}} alt="">
     </div>
@@ -10,7 +10,6 @@
     <button [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
       {{answer.text}}
       <img *ngIf="answer.image" src={{answer.image}} alt="">
-
     </button>
   </div>
 </div>

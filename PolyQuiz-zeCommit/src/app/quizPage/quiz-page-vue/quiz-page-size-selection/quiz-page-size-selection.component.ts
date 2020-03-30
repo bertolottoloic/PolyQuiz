@@ -17,7 +17,7 @@ export class QuizPageSizeSelectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  setSize(n:number){
+  setSize(n: number) {
     this.size.emit(n);
   }
 

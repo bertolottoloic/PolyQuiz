@@ -23,6 +23,8 @@ button {
 #im-qu {
    width:250px;
    height:250px;
+  margin-right: auto;
+  margin-left: 35%;
 }
 .img{
     width:128px;

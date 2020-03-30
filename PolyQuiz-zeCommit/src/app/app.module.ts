@@ -19,6 +19,7 @@ import {EndQuizComponent} from './end-quiz/end-quiz.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
 import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight.directive';
 import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
+import { QuestionVueComponent } from './quizPage/question/question-vue/question-vue.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-m
     QuizPageVueComponent,
     HighlightDirective,
     QuizPageMoteurComponent,
+    QuestionVueComponent,
   ],
   imports: [
     BrowserModule,
