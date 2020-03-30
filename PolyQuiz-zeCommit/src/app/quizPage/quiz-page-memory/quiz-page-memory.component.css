@@ -16,6 +16,11 @@
 
 }
 
+#finish {
+    font-size: 20px;
+    margin-top: 150%;
+  }
+
 .btnTree {
     margin-top: 5%;
     display: flex;
