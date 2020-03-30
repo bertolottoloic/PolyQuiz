@@ -11,7 +11,7 @@ export class QuizPageSizeSelectionComponent implements OnInit {
   @Output()
   public size: EventEmitter<number> = new EventEmitter();
 
-  constructor(private route: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit() {

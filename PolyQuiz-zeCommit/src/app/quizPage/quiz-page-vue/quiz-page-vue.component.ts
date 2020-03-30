@@ -20,22 +20,18 @@ export class QuizPageVueComponent implements OnInit {
   public questionList: Question[];
   public question: Question;
   public index = 0;
-  public startQuiz:boolean
+  public startQuiz: boolean
   public quizDone: boolean;
   public stats: StatMemory;
   public size: number;
 
 
   constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute) {
-    this.startQuiz=false;
-    this.quizDone=false;
+    this.startQuiz = false;
+    this.quizDone = false;
     this.loadQuiz();
     this.loadProfile();
 
-  }
-
-  setQuizSize() {
-    this.size = Number(this.route.snapshot.paramMap.get('size'));
   }
 
   loadQuiz() {
@@ -43,21 +39,20 @@ export class QuizPageVueComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       id = Number(params.get('idQuiz'))
       this.quizService.quizzes$.subscribe((quizzes) => {
-        let quiz = quizzes.filter((quiz) => quiz.id == id)[0]
+        let quiz = quizzes.filter((quiz) => quiz.id === id)[0]
         if (quiz) {
-          this.quiz = quiz;
-          this.stats = new StatMemory(quiz);
-          this.questionList = quiz.questions;
+          this.quiz = quiz
+          this.stats = new StatMemory(quiz); //creation objet stat
+          this.questionList = quiz.questions
           this.question = quiz.questions[this.index];
-          console.log(this.quiz)
         }
-      });
-    });
+      })
+    })
   }
 
-  getSize($event){
-    this.size=$event;
-    this.startQuiz=true
+  getSize($event) {
+    this.size = $event;
+    this.startQuiz = true;
   }
 
   loadProfile() {
@@ -75,7 +70,6 @@ export class QuizPageVueComponent implements OnInit {
 
 
   ngOnInit() {
-    this.setQuizSize();
   }
 
   isCompleted() {

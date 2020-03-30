@@ -14,7 +14,7 @@
     </div>
     <app-profile [profile]="profile"></app-profile>
     <div class="row">
-      
+
       <app-question class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question>
       <div class="col-md-2 btnTree" *ngIf="!quizDone">
         <button id="finish" class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
