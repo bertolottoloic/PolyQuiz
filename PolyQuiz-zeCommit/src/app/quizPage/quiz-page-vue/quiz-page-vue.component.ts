@@ -20,13 +20,15 @@ export class QuizPageVueComponent implements OnInit {
   public questionList: Question[];
   public question: Question;
   public index = 0;
-
+  public startQuiz:boolean
   public quizDone: boolean;
   public stats: StatMemory;
   public size: number;
 
 
   constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute) {
+    this.startQuiz=false;
+    this.quizDone=false;
     this.loadQuiz();
     this.loadProfile();
 
@@ -42,15 +44,20 @@ export class QuizPageVueComponent implements OnInit {
       id = Number(params.get('idQuiz'))
       this.quizService.quizzes$.subscribe((quizzes) => {
         let quiz = quizzes.filter((quiz) => quiz.id == id)[0]
-        console.log(quiz);
         if (quiz) {
           this.quiz = quiz;
           this.stats = new StatMemory(quiz);
           this.questionList = quiz.questions;
           this.question = quiz.questions[this.index];
+          console.log(this.quiz)
         }
       });
     });
+  }
+
+  getSize($event){
+    this.size=$event;
+    this.startQuiz=true
   }
 
   loadProfile() {

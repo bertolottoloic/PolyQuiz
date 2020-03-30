@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component,EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -8,10 +8,17 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class QuizPageSizeSelectionComponent implements OnInit {
 
+  @Output()
+  public size: EventEmitter<number> = new EventEmitter();
+
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+  }
+
+  setSize(n:number){
+    this.size.emit(n);
   }
 
 }
