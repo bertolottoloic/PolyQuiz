@@ -2,112 +2,112 @@
   {
     "lastName": "Borelli",
     "firstName": "Nancy",
-    "trouble": "moteur",
+    "trouble": "Moteur",
     "image": "../../../assets/img/profil/profil1.jpg",
     "id": 1584902873502
   },
   {
     "lastName": "Deschamps",
     "firstName": "Didier",
-    "trouble": "memoire",
+    "trouble": "Memoire",
     "image": "../../../assets/img/profil/didier-deschamps.jpeg",
     "id": 1584902873501
   },
   {
     "lastName": "Favreau",
     "firstName": "Jean-Paul",
-    "trouble": "memoire",
+    "trouble": "Memoire",
     "image": "../../../assets/img/profil/profil4.jpg",
     "id": 1584902882676
   },
   {
     "lastName": "Lepers",
     "firstName": "Julien",
-    "trouble": "memoire",
+    "trouble": "Memoire",
     "image": "../../../assets/img/profil/julien-lepers.jpg",
     "id": 1584902882675
   },
   {
     "lastName": "Loiselle",
     "firstName": "Yohan",
-    "trouble": "vue",
+    "trouble": "Vue",
     "image": "../../../assets/img/profil/profil6.jpg",
     "id": 1584904957379
   },
   {
     "lastName": "Chazal",
     "firstName": "Claire",
-    "trouble": "memoire",
+    "trouble": "Memoire",
     "image": "../../../assets/img/profil/claire-chazal.jpg",
     "id": 1584902883651
   },
   {
     "lastName": "Dupont",
     "firstName": "Rose",
-    "trouble": "memoire",
+    "trouble": "Memoire",
     "image": "../../../assets/img/profil/profil5.jpg",
     "id": 1559602957497
   },
   {
     "lastName": "Beccaro",
     "firstName": "Thierry",
-    "trouble": "moteur",
+    "trouble": "Moteur",
     "image": "../../../assets/img/profil/thierry-beccaro.jpeg",
     "id": 1584902957377
   },
   {
     "lastName": "Pernaut",
     "firstName": "Jean-Pierre",
-    "trouble": "moteur",
+    "trouble": "Moteur",
     "image": "../../../assets/img/profil/jpp.png",
     "id": 1584991446028
   },
   {
     "lastName": "Meulle",
     "firstName": "Nathan",
-    "trouble": "moteur",
+    "trouble": "Moteur",
     "image": "../../../assets/img/profil/Papy-Brossard.jpg",
     "id": 1584991447527
   },
   {
     "lastName": "Delm",
     "firstName": "Vinze",
-    "trouble": "vue",
+    "trouble": "Vue",
     "image": "../../../assets/img/profil/Papy-Brossard.jpg",
     "id": 1584991546456
   },
   {
     "lastName": "Delm",
     "firstName": "Vinze",
-    "trouble": "vue",
+    "trouble": "Vue",
     "image": "../../../assets/img/profil/Papy-Brossard.jpg",
     "id": 1584991548525
   },
   {
     "lastName": "Delm",
     "firstName": "Vinze",
-    "trouble": "vue",
+    "trouble": "Vue",
     "image": "../../../assets/img/profil/Papy-Brossard.jpg",
     "id": 1584991549891
   },
   {
     "lastName": "Delm",
     "firstName": "Vinze",
-    "trouble": "vue",
+    "trouble": "Vue",
     "image": "../../../assets/img/profil/Papy-Brossard.jpg",
     "id": 1584991895615
   },
   {
     "lastName": "Meulle",
     "firstName": "Nathan",
-    "trouble": "moteur",
+    "trouble": "Moteur",
     "image": "../../../assets/img/profil/Papy-Brossard.jpg",
     "id": 1584991900984
   },
   {
     "lastName": "Deschamps",
     "firstName": "Didier",
-    "trouble": "memoire",
+    "trouble": "Vemoire",
     "image": "../../../assets/img/profil/pere-fouras.jpg",
     "id": 1584991921540
   }
