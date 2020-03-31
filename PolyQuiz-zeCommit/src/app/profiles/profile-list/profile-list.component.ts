@@ -3,7 +3,8 @@ import {ProfileService} from '../../services/profile.service';
 import {Profile} from '../../models/profile.models';
 import { Router } from '@angular/router';
 import { Handicap } from 'src/app/models/handicap.models';
-
+import { Subscriber, Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile-list',
@@ -16,7 +17,12 @@ export class ProfileListComponent implements OnInit {
 
   constructor(public profileService: ProfileService, private router: Router) {
     this.profileService.profiles$.subscribe((profiles: Profile[]) => {this.profileList = profiles;});
-    console.log(this.profileList);
+/*
+    this.profileService.profiles$.subscribe((profiles) => {
+      this.profileList = profiles.filter(profile => profile.trouble === this.profileService.currentTrouble);
+    }); 
+*/
+
     this.profileList = this.getSpecifyProfil();
   }
 

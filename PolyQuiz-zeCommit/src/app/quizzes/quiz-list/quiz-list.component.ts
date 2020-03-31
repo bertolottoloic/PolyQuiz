@@ -12,11 +12,16 @@ import { Router } from '@angular/router';
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
-  public specList: Quiz[] = [];
 
   constructor(public quizListService: QuizListService, private router: Router) {
-    this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes);
-    this.quizList = this.getSpecifyQuiz();
+    //this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes);
+
+
+    this.quizListService.quizzes$.subscribe((profiles) => {
+      this.quizList = profiles.filter(profile => profile.trouble === this.quizListService.currentTrouble);
+    }); 
+
+    //this.quizList = this.getSpecifyQuiz();
   }
 
   ngOnInit() {
