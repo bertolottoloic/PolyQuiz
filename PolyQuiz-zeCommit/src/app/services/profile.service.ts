@@ -16,7 +16,6 @@ export class ProfileService {
 
   private URL : string = serverUrl+"/profiles";
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
-  public currentTrouble:Handicap;
 
   constructor(private http:HttpClient) {
     this.setProfilesFromUrl()

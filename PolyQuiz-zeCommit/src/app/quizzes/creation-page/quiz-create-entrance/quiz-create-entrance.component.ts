@@ -7,6 +7,7 @@ import { QuizCreatePageComponent } from '../quiz-create-page/quiz-create-page.co
 import { Quiz } from '../../../models/quiz.models'
 import { EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Handicap } from 'src/app/models/handicap.models';
 
 @Component({
   selector: 'app-quiz-create-entrance',
@@ -16,11 +17,12 @@ import { Observable } from 'rxjs';
 export class QuizCreateEntranceComponent implements OnInit {
 
   
-
+  private trouble:Handicap;
   public quizForm: FormGroup;
   public quizCreate$:Observable<Quiz>;
 
   constructor(public formBuilder:FormBuilder, public quizListService:QuizListService, private router:Router) { 
+    this.setTrouble();
     this.quizForm = this.formBuilder.group({
       name:[''],
       theme:[''],
@@ -36,7 +38,7 @@ export class QuizCreateEntranceComponent implements OnInit {
 
   addQuiz() {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-    quizToCreate.trouble = this.quizListService.currentTrouble; 
+    quizToCreate.trouble = this.trouble; 
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result)=>{
       this.quizListService.setQuizzesFromUrl();
@@ -44,6 +46,19 @@ export class QuizCreateEntranceComponent implements OnInit {
       this.changeRoute();
     })
     
+  }
+
+  setTrouble() {
+    console.log(this.router.url);
+    if (this.router.url.startsWith('/memoire')) {
+      this.trouble = Handicap.Memoire;
+    }
+    if (this.router.url.startsWith('/vue')) {
+      this.trouble = Handicap.Vue;
+    }
+    if (this.router.url.startsWith('/moteur')) {
+      this.trouble = Handicap.Moteur;
+    }
   }
   
 

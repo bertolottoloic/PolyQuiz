@@ -21,10 +21,10 @@ export class QuizListService {
   public quizSelected$: Subject<Quiz> = new Subject();
   private httpOptions = httpOptionsBase;
   private questionsPath = 'questions';
-  public currentTrouble:Handicap;
 
   constructor(private http:HttpClient) {
-    this.setQuizzesFromUrl()
+    this.setQuizzesFromUrl();
+
   }
 
 
