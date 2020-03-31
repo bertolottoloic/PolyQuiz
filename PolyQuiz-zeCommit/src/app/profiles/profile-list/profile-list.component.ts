@@ -16,21 +16,14 @@ export class ProfileListComponent implements OnInit {
   public profileList: Profile[] = [];
 
   constructor(public profileService: ProfileService, private router: Router) {
-    this.profileService.profiles$.subscribe((profiles: Profile[]) => {this.profileList = profiles;});
-/*
+    
     this.profileService.profiles$.subscribe((profiles) => {
       this.profileList = profiles.filter(profile => profile.trouble === this.profileService.currentTrouble);
     }); 
-*/
 
-    this.profileList = this.getSpecifyProfil();
   }
 
   ngOnInit() {
-  }
-
-  profileSelected(selected: boolean) {
-    console.log('event received from child:', selected);
   }
 
   profileDeleted(profile: Profile) {
@@ -38,15 +31,4 @@ export class ProfileListComponent implements OnInit {
     this.profileService.deleteProfile(profile);
   }
 
-  getSpecifyProfil() {
-    if (this.router.url.startsWith('/memoire')) {
-       return this.profileList.filter(profile => profile.trouble === Handicap.Memoire);
-    }
-    if (this.router.url.startsWith('/vue')) {
-      return this.profileList.filter(profile => profile.trouble === Handicap.Vue);
-    }
-    if (this.router.url.startsWith('/moteur')) {
-      return this.profileList.filter(profile => profile.trouble === Handicap.Moteur);
-    }
-  }
 }
