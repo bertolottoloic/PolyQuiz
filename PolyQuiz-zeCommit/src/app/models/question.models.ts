@@ -5,6 +5,6 @@ export interface Question {
   text: string;
   id: number;
   answers: Answer[];
-  quizId: number;
+  quizId?: number;
   image?: string;
 }
