@@ -44,7 +44,7 @@ export class QuizCreateEntranceComponent implements OnInit {
       this.quizListService.setQuizzesFromUrl();
       this.quizListService.postQuiz = result;
       this.changeRoute();
-    })
+    }) 
     
   }
 
