@@ -28,6 +28,7 @@ export class QuestionComponent implements OnInit {
   lastQuestion: boolean;
 
   ngOnInit() {
+    console.log(this.question)
     this.setTrouble();
     this.setQuizSize();
   }

@@ -67,11 +67,11 @@ export class QuizPageMemoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  isCompleted() {
+  isCompleted():boolean {
     if (this.stats.questionsDone.length == this.questionList.length) {
-      this.stats.time = Date.now() - this.timer //temps mis pour completer le quiz
-      this.quizDone = true;
+      this.terminateQuiz();
     }
+    return false;
   }
 
   terminateQuiz() {
@@ -89,15 +89,24 @@ export class QuizPageMemoryComponent implements OnInit {
   receiveQ($event) {
     this.UpdateMapStats($event);
     if ($event.isCorrect) {
-      this.stats.questionsDone.push($event.questionId) //incrémente de 1 le nombre de question fini
-      if (this.index + 1 < this.questionList.length) {
-        this.index += 1; //passe à la question suivante si possible
-      } else {
-        //revient a une question non terminée
+      if(!this.stats.questionsDone.includes($event.questionId)){
+        this.stats.questionsDone.push($event.questionId)} //incrémente de 1 le nombre de question fini
+      if(!this.isCompleted()){
+        this.searchNextQuestion()
       }
     }
     this.isCompleted();
   }
+
+  searchNextQuestion(){
+    for(let i=0; i<this.questionList.length;i++){
+      if(!this.stats.questionsDone.includes(this.questionList[i].id)){
+        this.index=i;
+        break;
+      }
+    }
+  }
+  
 
   skipQ(n) { // saute n question(s)
     this.index = n;

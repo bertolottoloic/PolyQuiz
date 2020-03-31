@@ -11,13 +11,13 @@
 
     <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
     
-    <app-profile [profile]="profile"></app-profile>
+    <app-profile *ngIf="profile" [profile]="profile"></app-profile>
     
 </div>
 <div class="row">
     <div class="col-md-2 btnTree" *ngIf="!quizDone">
         <div class="questions" *ngFor="let question of questionList; let n=index">
-            <button [disabled]="this.stats.questionsDone.includes(question.id)? true : false"
+            <button [disabled]="this.stats.questionsDone.includes(question.id)"
                 [class]="this.stats.questionsDone.includes(question.id)? 'btn btn-success' : 'btn btn-primary'"
                 (click)="skipQ(n)" >Q{{n+1}}</button>
         </div>
