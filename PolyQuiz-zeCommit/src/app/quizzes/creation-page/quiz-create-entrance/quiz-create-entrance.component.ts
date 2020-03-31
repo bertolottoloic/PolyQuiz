@@ -16,7 +16,6 @@ import { Observable } from 'rxjs';
 export class QuizCreateEntranceComponent implements OnInit {
 
   
-  @Output() quizId = new EventEmitter<number>();
 
   public quizForm: FormGroup;
   public quizCreate$:Observable<Quiz>;
@@ -38,11 +37,11 @@ export class QuizCreateEntranceComponent implements OnInit {
   addQuiz() {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
     quizToCreate.trouble = this.quizListService.currentTrouble; 
-    console.log(quizToCreate);
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result)=>{
       this.quizListService.setQuizzesFromUrl();
-      this.quizId.emit(result.id);
+      this.quizListService.postQuiz = result;
+      this.changeRoute();
     })
     
   }

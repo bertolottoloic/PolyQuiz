@@ -1,4 +1,4 @@
-<form [formGroup]="questionForm">
+<form [formGroup]="questionForm" *ngIf="quizId">
     <label for="text">
       Texte <br>
       <input class="input-custom" type="text" id="name" [formControlName]="'text'">
