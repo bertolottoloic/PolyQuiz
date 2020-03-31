@@ -23,7 +23,7 @@ export class ProfileListPageComponent implements OnInit {
   setTrouble() {
     console.log(this.router.url);
     if (this.router.url.startsWith('/memoire')) {
-      this.trouble = 'Mémoire';
+      this.trouble = 'Memoire';
     }
     if (this.router.url.startsWith('/vue')) {
       this.trouble = 'Vue';
