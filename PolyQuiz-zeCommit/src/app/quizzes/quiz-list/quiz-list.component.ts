@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Quiz} from '../../models/quiz.models';
 import {QuizListService} from '../../services/quizList.service';
+import { Handicap } from 'src/app/models/handicap.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-list',
@@ -10,15 +12,26 @@ import {QuizListService} from '../../services/quizList.service';
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
+  public specList: Quiz[] = [];
 
-  constructor(public quizListService: QuizListService) {
+  constructor(public quizListService: QuizListService, private router: Router) {
     this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes);
+    this.quizList = this.getSpecifyQuiz();
   }
-
 
   ngOnInit() {
   }
 
-
+  getSpecifyQuiz() {
+    if (this.router.url.startsWith('/memoire')) {
+       return this.quizList.filter(quiz => quiz.trouble === Handicap.Memoire);
+    }
+    if (this.router.url.startsWith('/vue')) {
+      return this.quizList.filter(quiz => quiz.trouble === Handicap.Vue);
+    }
+    if (this.router.url.startsWith('/moteur')) {
+      return this.quizList.filter(quiz => quiz.trouble === Handicap.Moteur);
+    }
+  }
 
 }

@@ -1,5 +1,5 @@
 export enum Handicap {
-  Memoire = 'memoire',
-  Vue = 'vue',
-  Moteur = 'moteur'
+  Memoire = 'Memoire',
+  Vue = 'Vue',
+  Moteur = 'Moteur'
 }
