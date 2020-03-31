@@ -13,12 +13,13 @@ export class QuizCreateQuestionPageComponent implements OnInit {
 
   public questionForm: FormGroup;
   public answers: FormArray;
+  public quizId:number;
   
-  @Input() quizId:number;
   
   constructor(public formBuilder:FormBuilder, public quizListService:QuizListService) { 
     
     this.initializeQuestionForm();
+    this.quizId = this.quizListService.postQuiz.id;
     
   }
 

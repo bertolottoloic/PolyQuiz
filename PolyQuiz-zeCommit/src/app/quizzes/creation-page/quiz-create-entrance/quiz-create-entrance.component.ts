@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {Router} from '@angular/router';
 
 import { QuizListService } from '../../../services/quizList.service'
 import { QuizCreatePageComponent } from '../quiz-create-page/quiz-create-page.component'
@@ -15,11 +16,11 @@ import { Observable } from 'rxjs';
 export class QuizCreateEntranceComponent implements OnInit {
 
   
-  @Output() quizId = new EventEmitter<number>();
 
   public quizForm: FormGroup;
   public quizCreate$:Observable<Quiz>;
-  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService) { 
+
+  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService, private router:Router) { 
     this.quizForm = this.formBuilder.group({
       name:[''],
       theme:[''],
@@ -35,11 +36,12 @@ export class QuizCreateEntranceComponent implements OnInit {
 
   addQuiz() {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-
+    quizToCreate.trouble = this.quizListService.currentTrouble; 
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result)=>{
       this.quizListService.setQuizzesFromUrl();
-      this.quizId.emit(result.id);
+      this.quizListService.postQuiz = result;
+      this.changeRoute();
     })
     
   }

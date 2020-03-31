@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Profile} from '../models/profile.models';
 import {PROFILE_LIST} from '../mocks/profiles-list.mock';
 import {serverUrl} from '../../configs/server.config';
+import { Handicap } from '../models/handicap.models';
 
 @Injectable({
     providedIn: 'root'
@@ -15,6 +16,7 @@ export class ProfileService {
 
   private URL : string = serverUrl+"/profiles";
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
+  public currentTrouble:Handicap;
 
   constructor(private http:HttpClient) {
     this.setProfilesFromUrl()
@@ -36,7 +38,6 @@ export class ProfileService {
       this.profiles$.next(this.profiles);
     });
   }
-
 
 }
 

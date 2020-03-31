@@ -25,11 +25,6 @@ export class QuizComponent implements OnInit {
   quizDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
 
-  isMemory() {
-    return this.router.url.startsWith('/memoire')
-  }
-
-  isMotor() {
-    return this.router.url.startsWith('/moteur')
-  }
+  
+  
 }

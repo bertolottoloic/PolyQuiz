@@ -21,6 +21,7 @@ export class QuizListService {
   public quizSelected$: Subject<Quiz> = new Subject();
   private httpOptions = httpOptionsBase;
   private questionsPath = 'questions';
+  public currentTrouble:Handicap;
 
   constructor(private http:HttpClient) {
     this.setQuizzesFromUrl()
@@ -41,6 +42,7 @@ export class QuizListService {
   }
 
   addQuiz(quiz: Quiz): Observable<Quiz> {
+
     // this.http.post<Quiz>(this.URL, quiz, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
     return this.http.post<Quiz>(this.URL, quiz, this.httpOptions);
   }
