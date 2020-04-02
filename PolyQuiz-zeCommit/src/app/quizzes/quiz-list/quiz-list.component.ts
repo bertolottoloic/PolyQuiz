@@ -28,18 +28,6 @@ export class QuizListComponent implements OnInit {
   ngOnInit() {
   }
 
-  getSpecifyQuiz() {
-    if (this.router.url.startsWith('/memoire')) {
-       return this.quizList.filter(quiz => quiz.trouble === Handicap.Memoire);
-    }
-    if (this.router.url.startsWith('/vue')) {
-      return this.quizList.filter(quiz => quiz.trouble === Handicap.Vue);
-    }
-    if (this.router.url.startsWith('/moteur')) {
-      return this.quizList.filter(quiz => quiz.trouble === Handicap.Moteur);
-    }
-  }
-
   setTrouble() {
     console.log(this.router.url);
     if (this.router.url.startsWith('/memoire')) {
