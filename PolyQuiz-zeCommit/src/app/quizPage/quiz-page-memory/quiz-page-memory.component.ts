@@ -3,11 +3,17 @@ import {Quiz} from '../../models/quiz.models';
 import {QuizListService} from '../../services/quizList.service';
 import {ProfileService} from '../../services/profile.service';
 
-import {ActivatedRoute} from '@angular/router';
 import {Question} from 'src/app/models/question.models';
 import {StatMemory} from 'src/app/models/stat.models';
 import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
+
+import { Inject} from '@angular/core';
+import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { PopUpWarningComponent } from 'src/app/pop-up-warning/pop-up-warning.component';
+import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-quiz-page-memory',
@@ -27,12 +33,13 @@ export class QuizPageMemoryComponent implements OnInit {
   private timer: number;
 
 
-  constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute) {
+  constructor(private router: Router,public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute,public dialog: MatDialog) {
     this.loadQuiz();
     this.loadProfile();
     this.timer = Date.now(); //debut chrono
 
   }
+
 
   loadQuiz() {
     let id: number;
@@ -66,6 +73,16 @@ export class QuizPageMemoryComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  openDialog(path:string) {
+    this.dialog.open(PopUpWarningComponent, {
+      data: {
+        path: path,
+        url:this.route
+      }
+    });
+  }
+
 
   isCompleted():boolean {
     if (this.stats.questionsDone.length == this.questionList.length) {
@@ -112,3 +129,4 @@ export class QuizPageMemoryComponent implements OnInit {
     this.index = n;
   }
 }
+

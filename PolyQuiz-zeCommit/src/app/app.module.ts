@@ -26,6 +26,10 @@ import { QuizCreatePageComponent } from './quizzes/creation-page/quiz-create-pag
 import { QuizCreateEntranceComponent } from './quizzes/creation-page/quiz-create-entrance/quiz-create-entrance.component';
 import { QuizCreateQuestionComponent } from './quizzes/creation-page/quiz-create-question/quiz-create-question.component';
 import { QuizCreateQuestionPageComponent } from './quizzes/creation-page/quiz-create-question-page/quiz-create-question-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopUpWarningComponent } from './pop-up-warning/pop-up-warning.component';
+import { MatDialogModule,MatDialogRef,MatDialog,MAT_DIALOG_DATA } from'@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +55,8 @@ import { QuizCreateQuestionPageComponent } from './quizzes/creation-page/quiz-cr
     QuizCreateEntranceComponent,
     QuizCreateQuestionComponent,
     QuizCreateQuestionPageComponent,
+    PopUpWarningComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -58,9 +64,18 @@ import { QuizCreateQuestionPageComponent } from './quizzes/creation-page/quiz-cr
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+    
+  ],
+  entryComponents: [PopUpWarningComponent],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

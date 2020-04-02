@@ -1,4 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { MatDialog} from '@angular/material/dialog'
 
 import {QuizPageMemoryComponent} from './quiz-page-memory.component';
 
@@ -8,7 +9,8 @@ describe('QuizPageMemoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuizPageMemoryComponent ]
+      declarations: [ QuizPageMemoryComponent ],
+      providers:[MatDialog],
     })
     .compileComponents();
   }));
