@@ -27,7 +27,7 @@ export class ProfileCreatePageComponent implements OnInit {
       lastName:['',Validators.required],
       birthDate:['',Validators.required],
       gender:['',Validators.required],
-      trouble:['',Validators.required],
+      trouble:[this.trouble.toString(),Validators.required],
 
     });
   }
