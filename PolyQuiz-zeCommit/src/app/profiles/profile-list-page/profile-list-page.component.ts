@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { Handicap } from 'src/app/models/handicap.models';
 
 
 @Component({
@@ -10,26 +11,25 @@ import {Router} from '@angular/router';
 export class ProfileListPageComponent implements OnInit {
 
 
-  public trouble = '';
+  public trouble:Handicap;
 
   constructor(private router: Router) {
+    this.setTrouble();
 
   }
 
   ngOnInit() {
-    this.setTrouble();
   }
 
   setTrouble() {
-    console.log(this.router.url);
     if (this.router.url.startsWith('/memoire')) {
-      this.trouble = 'Memoire';
+      this.trouble = Handicap.Memoire;
     }
     if (this.router.url.startsWith('/vue')) {
-      this.trouble = 'Vue';
+      this.trouble = Handicap.Vue;
     }
     if (this.router.url.startsWith('/moteur')) {
-      this.trouble = 'Moteur';
+      this.trouble = Handicap.Moteur;
     }
   }
 

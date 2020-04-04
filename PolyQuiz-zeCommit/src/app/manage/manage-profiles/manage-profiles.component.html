@@ -1,0 +1,17 @@
+<app-navbar title="Gestion des profils" [trouble]="trouble"></app-navbar>
+<div class="row">   
+    <div class="menu col-md-2">
+        <div class="row">
+            <button class="btn btn-primary" routerLink="create">Ajouter un profil</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary">Modifier un profil</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" (click)="deleteClem(1584991895615)">Supprimer un profil</button>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <app-profile-list></app-profile-list>
+    </div>
+</div> 

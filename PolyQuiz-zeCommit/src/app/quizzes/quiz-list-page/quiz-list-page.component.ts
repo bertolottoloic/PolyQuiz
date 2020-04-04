@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { Handicap } from 'src/app/models/handicap.models';
 
 @Component({
   selector: 'app-quiz-list-page',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class QuizListPageComponent implements OnInit {
 
-  trouble = '';
+  trouble:Handicap;
 
   constructor(private router: Router) {
   }
@@ -18,15 +19,14 @@ export class QuizListPageComponent implements OnInit {
   }
 
   setTrouble() {
-    console.log(this.router.url);
     if (this.router.url.startsWith('/memoire')) {
-      this.trouble = 'Mémoire';
+      this.trouble = Handicap.Memoire;
     }
     if (this.router.url.startsWith('/vue')) {
-      this.trouble = 'Vue';
+      this.trouble = Handicap.Vue;
     }
     if (this.router.url.startsWith('/moteur')) {
-      this.trouble = 'Moteur';
+      this.trouble = Handicap.Moteur;
     }
   }
 

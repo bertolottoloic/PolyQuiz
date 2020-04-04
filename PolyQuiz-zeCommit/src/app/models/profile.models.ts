@@ -11,8 +11,8 @@ export interface Profile {
     firstName: string;
     id: number;
     trouble: Handicap;
-    gender?: gender;
-    age?:number;
+    gender: gender;
+    birthDate:Date;
     image: string;
 
 }

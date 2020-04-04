@@ -27,10 +27,7 @@ export class ProfileListComponent implements OnInit {
   ngOnInit() {
   }
 
-  profileDeleted(profile: Profile) {
-    console.log(profile);
-    this.profileService.deleteProfile(profile);
-  }
+
 
   setTrouble() {
     console.log(this.router.url);

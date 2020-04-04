@@ -1,40 +1,26 @@
-<div class="main">
-    <div class="menu">
-        <div class="bttn" id="menu-btn">
-            <button type="button" class="btn btn-primary" routerLink="">Accueil</button> 
-        </div>
-        <div class="bttn">
-            <button type="button" class="btn btn-primary" routerLink="../..">Retour</button> 
-        </div>
-    </div>
-    <div>
-        <p>Création d'un quiz</p>
-    </div>
-    <div>
-        <p>{{trouble}}</p><br>
-    </div>
-</div>
+<app-navbar title="Créer un profil" [trouble]="trouble"></app-navbar>
+
 <div class="page-content">
     <form [formGroup]="profileForm">
         <div class="col">
             <label for="firstName">
             Prénom <br>
-            <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" required>
+            <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" ngModel maxlength="50" required>
             </label>
             <br>
             <label for="lastName">
                 <br/>
                 Nom <br>
-                <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" required>
+                <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'"  ngModel maxlength="50" required>
             </label>
             <br>
-            <label for="lastName">
+            <label for="birthDate">
                 <br/>
                 date de naissance <br>
                 <input class="input-custom" type="date" id="birthDate" [formControlName]="'birthDate'" required>
             </label>
             <br>
-            <label for="lastName">
+            <label for="gender">
                 <br/>
                 Sexe <br>
                 <select name="gender" id="gender" [formControlName]="'gender'" required>
@@ -51,6 +37,8 @@
                 </select>
             </label>
         </div>
-        <button type="submit" class="button-card" [disabled]="!profileForm.valid" (click)="createProfile()">Suivant</button>
+        <button type="submit" [disabled]="!profileForm.valid" (click)="createProfile()"
+        [class]="!profileForm.valid? 'btn btn-danger':'btn btn-success' "
+        >Créer</button>
     </form>
 </div>

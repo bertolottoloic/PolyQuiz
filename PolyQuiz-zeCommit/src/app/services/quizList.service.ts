@@ -42,8 +42,6 @@ export class QuizListService {
   }
 
   addQuiz(quiz: Quiz): Observable<Quiz> {
-
-    // this.http.post<Quiz>(this.URL, quiz, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
     return this.http.post<Quiz>(this.URL, quiz, this.httpOptions);
   }
 

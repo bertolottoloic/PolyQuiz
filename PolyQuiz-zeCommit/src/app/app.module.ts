@@ -21,17 +21,18 @@ import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight
 import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
 import { QuestionVueComponent } from './quizPage/question/question-vue/question-vue.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuizCreateComponent } from './quizzes/creation-page/quiz-create/quiz-create.component';
-import { QuizCreatePageComponent } from './quizzes/creation-page/quiz-create-page/quiz-create-page.component';
-import { QuizCreateEntranceComponent } from './quizzes/creation-page/quiz-create-entrance/quiz-create-entrance.component';
-import { QuizCreateQuestionComponent } from './quizzes/creation-page/quiz-create-question/quiz-create-question.component';
-import { QuizCreateQuestionPageComponent } from './quizzes/creation-page/quiz-create-question-page/quiz-create-question-page.component';
+import { QuizCreateComponent } from './manage/creation-page/quiz-create/quiz-create.component';
+import { QuizCreatePageComponent } from './manage/creation-page/quiz-create-page/quiz-create-page.component';
+import { QuizCreateEntranceComponent } from './manage/creation-page/quiz-create-entrance/quiz-create-entrance.component';
+import { QuizCreateQuestionComponent } from './manage/creation-page/quiz-create-question/quiz-create-question.component';
+import { QuizCreateQuestionPageComponent } from './manage/creation-page/quiz-create-question-page/quiz-create-question-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopUpWarningComponent } from './pop-up-warning/pop-up-warning.component';
 import { MatDialogModule,MatDialogRef,MatDialog,MAT_DIALOG_DATA } from'@angular/material/dialog';
 import { MenuComponent } from './menu/menu.component';
-import { ManageProfilesComponent } from './manage-profiles/manage-profiles.component';
-import { ProfileCreatePageComponent } from './profile-create-page/profile-create-page.component';
+import { ManageProfilesComponent } from './manage/manage-profiles/manage-profiles.component';
+import { ProfileCreatePageComponent } from './manage/profile-create-page/profile-create-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { ProfileCreatePageComponent } from './profile-create-page/profile-create
     MenuComponent,
     ManageProfilesComponent,
     ProfileCreatePageComponent,
+    NavbarComponent,
     
   ],
   imports: [

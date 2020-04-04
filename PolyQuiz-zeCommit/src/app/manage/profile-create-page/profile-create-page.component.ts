@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Quiz } from '../models/quiz.models'
-import { QuizListService } from '../services/quizList.service'
+import { Quiz } from '../../models/quiz.models'
+import { ProfileService } from '../../services/profile.service'
 import { Handicap } from 'src/app/models/handicap.models';
 import {Router} from '@angular/router';
-import { Profile } from '../models/profile.models';
+import { Profile } from '../../models/profile.models';
 
 @Component({
   selector: 'app-profile-create-page',
@@ -20,7 +20,8 @@ export class ProfileCreatePageComponent implements OnInit {
   public profileForm: FormGroup;
   public profileCreate$:Observable<Profile>;
 
-  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService, private router:Router) { 
+
+  constructor(public formBuilder:FormBuilder, public profileService:ProfileService, private router:Router) { 
     this.setTrouble();
     this.profileForm = this.formBuilder.group({
       firstName:['',Validators.required],
@@ -36,7 +37,6 @@ export class ProfileCreatePageComponent implements OnInit {
   }
 
   setTrouble() {
-    console.log(this.router.url);
     if (this.router.url.startsWith('/memoire')) {
       this.trouble = Handicap.Memoire;
     }
@@ -50,7 +50,8 @@ export class ProfileCreatePageComponent implements OnInit {
 
   createProfile(){
     const profileToCreate: Profile = this.profileForm.getRawValue() as Profile;
-  
+    this.profileCreate$ = this.profileService.addProfile(profileToCreate);
+    
   }
 
 }

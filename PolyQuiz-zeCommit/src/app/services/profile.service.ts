@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject,Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Profile} from '../models/profile.models';
 import {PROFILE_LIST} from '../mocks/profiles-list.mock';
-import {serverUrl} from '../../configs/server.config';
+import { serverUrl, httpOptionsBase } from '../../configs/server.config';
+
 import { Handicap } from '../models/handicap.models';
 
 @Injectable({
@@ -16,19 +17,20 @@ export class ProfileService {
 
   private URL : string = serverUrl+"/profiles";
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
+  private httpOptions = httpOptionsBase;
 
   constructor(private http:HttpClient) {
     this.setProfilesFromUrl()
   }
 
-  addProfile(profile: Profile) {
-    this.profiles.push(profile);
-    this.profiles$.next(this.profiles);
+  addProfile(profile: Profile): Observable<Profile>{
+    return this.http.post<Profile>(this.URL, profile, this.httpOptions);
+
   }
 
-  deleteProfile(profile: Profile) {
-    this.profiles.splice(this.profiles.indexOf(profile,1));
-    this.profiles$.next(this.profiles);
+  deleteProfile(id: string) {
+    console.log(this.URL+"/"+id)
+    return this.http.delete(this.URL+"/"+id, this.httpOptions);
   }
 
   setProfilesFromUrl(){
