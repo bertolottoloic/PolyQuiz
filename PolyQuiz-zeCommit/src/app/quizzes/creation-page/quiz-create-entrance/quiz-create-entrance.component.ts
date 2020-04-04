@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 
 import { QuizListService } from '../../../services/quizList.service'
@@ -24,8 +24,8 @@ export class QuizCreateEntranceComponent implements OnInit {
   constructor(public formBuilder:FormBuilder, public quizListService:QuizListService, private router:Router) { 
     this.setTrouble();
     this.quizForm = this.formBuilder.group({
-      name:[''],
-      theme:[''],
+      name:['',Validators.required],
+      theme:['',Validators.required],
     });
   }
 

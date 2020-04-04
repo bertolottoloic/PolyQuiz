@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="page-content">
-    <form [formGroup]="quizForm">
+    <form [formGroup]="profileForm">
         <div class="col">
             <label for="firstName">
             Prénom <br>
@@ -51,6 +51,6 @@
                 </select>
             </label>
         </div>
-        <button type="submit" class="button-card" [disabled]="!quizForm.valid" (click)="createProfile()">Suivant</button>
+        <button type="submit" class="button-card" [disabled]="!profileForm.valid" (click)="createProfile()">Suivant</button>
     </form>
 </div>
