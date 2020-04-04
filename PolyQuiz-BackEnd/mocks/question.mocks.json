@@ -73,7 +73,7 @@
     "text": "Quel est cet instrument dont Mozart jouait ?",
     "quizId": 1584900604498,
     "id": 1584900802783,
-    "image": "../../../assets/img/logo/piano.jpg",
+    "image": "../../../assets/img/quiz/question/piano.jpg",
     "answers": [
       {
         "text": "un cor",

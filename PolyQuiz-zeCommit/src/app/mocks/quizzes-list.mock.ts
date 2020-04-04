@@ -62,6 +62,6 @@ export const QUIZ_LIST: Quiz[] = [
             },
         ],
         trouble: Handicap.Memoire,
-        image:"../../../assets/img/Papy-Brossard.jpg",
+        image:"../../../assets/img/profil/Papy-Brossard.jpg",
     },
 ]
