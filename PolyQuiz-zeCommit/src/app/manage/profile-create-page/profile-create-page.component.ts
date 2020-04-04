@@ -51,7 +51,9 @@ export class ProfileCreatePageComponent implements OnInit {
   createProfile(){
     const profileToCreate: Profile = this.profileForm.getRawValue() as Profile;
     this.profileCreate$ = this.profileService.addProfile(profileToCreate);
-    
+    this.profileCreate$.subscribe((result)=>{
+     console.log(result)
+    }) 
   }
 
 }
