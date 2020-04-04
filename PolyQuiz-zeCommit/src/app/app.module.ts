@@ -29,6 +29,9 @@ import { QuizCreateQuestionPageComponent } from './quizzes/creation-page/quiz-cr
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopUpWarningComponent } from './pop-up-warning/pop-up-warning.component';
 import { MatDialogModule,MatDialogRef,MatDialog,MAT_DIALOG_DATA } from'@angular/material/dialog';
+import { MenuComponent } from './menu/menu.component';
+import { ManageProfilesComponent } from './manage-profiles/manage-profiles.component';
+import { ProfileCreatePageComponent } from './profile-create-page/profile-create-page.component';
 
 
 @NgModule({
@@ -56,6 +59,9 @@ import { MatDialogModule,MatDialogRef,MatDialog,MAT_DIALOG_DATA } from'@angular/
     QuizCreateQuestionComponent,
     QuizCreateQuestionPageComponent,
     PopUpWarningComponent,
+    MenuComponent,
+    ManageProfilesComponent,
+    ProfileCreatePageComponent,
     
   ],
   imports: [

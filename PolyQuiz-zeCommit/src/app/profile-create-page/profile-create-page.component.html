@@ -1,0 +1,56 @@
+<div class="main">
+    <div class="menu">
+        <div class="bttn" id="menu-btn">
+            <button type="button" class="btn btn-primary" routerLink="">Accueil</button> 
+        </div>
+        <div class="bttn">
+            <button type="button" class="btn btn-primary" routerLink="../..">Retour</button> 
+        </div>
+    </div>
+    <div>
+        <p>Création d'un quiz</p>
+    </div>
+    <div>
+        <p>{{trouble}}</p><br>
+    </div>
+</div>
+<div class="page-content">
+    <form [formGroup]="quizForm">
+        <div class="col">
+            <label for="firstName">
+            Prénom <br>
+            <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" required>
+            </label>
+            <br>
+            <label for="lastName">
+                <br/>
+                Nom <br>
+                <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" required>
+            </label>
+            <br>
+            <label for="lastName">
+                <br/>
+                Age <br>
+                <input class="input-custom" type="number" id="lastName" [formControlName]="'age'" required>
+            </label>
+            <br>
+            <label for="lastName">
+                <br/>
+                Sexe <br>
+                <select name="gender" id="gender" [formControlName]="'gender'" required>
+                    <option [value]="female">Femme</option>
+                    <option [value]="male">Homme</option>
+                </select>
+            </label>
+            <br>
+            <label for="Handicap">
+                <br/>
+                Handicap <br>
+                <select name="trouble" id="troube" [formControlName]="'trouble'" required>
+                    <option *ngFor="let trouble of HANDICAP_LIST" [value]="trouble">{{trouble}}</option>
+                </select>
+            </label>
+        </div>
+        <button type="submit" class="button-card" [disabled]="!quizForm.valid" (click)="createProfile()">Suivant</button>
+    </form>
+</div>
