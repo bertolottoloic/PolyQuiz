@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { QuizListService } from 'src/app/services/quizList.service';
 import { Answer } from 'src/app/models/answer.models';
 import { Question } from 'src/app/models/question.models';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { QuestionComponent } from 'src/app/quizPage/question/question.component';
 
 @Component({
   selector: 'app-quiz-create-question-page',
@@ -14,22 +17,31 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   public questionForm: FormGroup;
   public answers: FormArray;
   public quizId:number;
+  @Input()
+  question:Question;
   
   
-  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService) { 
-    
-    this.initializeQuestionForm();
-    this.quizId = this.quizListService.postQuiz.id;
+  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService,public route:ActivatedRoute,public dialog: MatDialog) { 
+    this.route.paramMap.subscribe(params => {
+      if(params!=null){
+        this.quizId = Number(params.get('quizId'))}
+    })
     
   }
 
   ngOnInit() {
-    
+    this.route.paramMap
+    .subscribe(params => {
+      this.question=JSON.parse(params.get('quest')) as Question;
+    });
+    if(this.question){
+      this.fillQuestionForm();
+    }
+    else{
+      this.initializeQuestionForm();
+    }
   }
 
-  changeValue(index:number){
-    
-  }
 
   get formData() { return <FormArray>this.questionForm.get('answers'); }
 
@@ -39,6 +51,7 @@ export class QuizCreateQuestionPageComponent implements OnInit {
       isCorrect: [false],
     });
   }
+
 
   addAnswer(): void {
     this.answers = this.questionForm.get('answers') as FormArray;
@@ -57,6 +70,15 @@ export class QuizCreateQuestionPageComponent implements OnInit {
     }
   }
 
+  changeQuestion() {
+    if(this.questionForm.valid) {
+      const question = this.questionForm.getRawValue() as Question;
+      question.quizId = this.quizId;
+      this.quizListService.editQuestion(this.quizId, question);
+      this.initializeQuestionForm();
+    }
+  }
+
   initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       text:[''],
@@ -67,13 +89,38 @@ export class QuizCreateQuestionPageComponent implements OnInit {
     this.addAnswer();
   }
 
-  affiche(){
-    console.log(this.answers);
-    // console.log(this.quizId);
+  fillQuestionForm(){
+    this.questionForm = this.formBuilder.group({
+      text:[this.question.text],
+      theme:[''],
+      image:[this.question.image],
+      answers: this.formBuilder.array([this.fillAnswer(this.question.answers[0])]),
+    });
+    this.fillAnswers();
+
   }
-  
-  changeRoute(route:string){
-    this.quizListService.changeRouteCreateQuiz(route);
+
+  fillAnswers(){
+    this.answers = this.questionForm.get('answers') as FormArray;
+    console.log(this.answers)
+    for(let i = 1; i<4 ; i++)  {
+        this.answers.push(this.fillAnswer(this.question.answers[i]));
+      }
+  }
+
+  fillAnswer(answer:Answer): FormGroup {
+    return this.formBuilder.group({
+      text: [answer.text],
+      isCorrect: [answer.isCorrect],
+    });
+  }
+
+  openDialog(question:Question) {
+    this.dialog.open(QuestionComponent, {
+      data: {
+        questtion: question,
+      }
+    });
   }
 
 }

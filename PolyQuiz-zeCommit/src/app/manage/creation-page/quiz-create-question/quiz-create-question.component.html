@@ -1,4 +1,38 @@
-<div class="answers">
-    <button class="answer" (click)="changeRoute('answer')">Ajouter une question</button>
-    <button class="answer" (click)="changeRoute('quiz')">Valider le quiz</button>
+<app-navbar title="Création d'un quiz" [trouble]="trouble"></app-navbar>
+
+<div *ngIf="quiz" class="page-content">
+    <div class="col-md-4">
+        <form [formGroup]="quizForm">
+            <label for="title">
+            Title <br>
+            <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+            </label>
+            <br>
+            <label for="Theme">
+                <br/>
+                Theme <br>
+                <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
+            </label>
+        </form>
+    </div>
+    <div class="questions col-md-6">
+        <div *ngFor="let question of quiz.questions">
+            <div class="row">
+                <button type="button">
+                    <p>{{question.text}}</p>
+                </button>
+                <button (click)="edit(question)">
+                    edit
+                </button>
+                <button (click)="delete(question)">
+                    delete
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+         <button class="answer" routerLink="add-question">Ajouter une question</button>
+    </div>
+    <button class="answer">Valider le quiz</button>
+
 </div>

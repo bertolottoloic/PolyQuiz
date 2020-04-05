@@ -21,7 +21,6 @@ import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight
 import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
 import { QuestionVueComponent } from './quizPage/question/question-vue/question-vue.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuizCreateComponent } from './manage/creation-page/quiz-create/quiz-create.component';
 import { QuizCreatePageComponent } from './manage/creation-page/quiz-create-page/quiz-create-page.component';
 import { QuizCreateEntranceComponent } from './manage/creation-page/quiz-create-entrance/quiz-create-entrance.component';
 import { QuizCreateQuestionComponent } from './manage/creation-page/quiz-create-question/quiz-create-question.component';
@@ -47,7 +46,6 @@ import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.componen
     QuizListPageComponent,
     QuizListComponent,
     QuizComponent,
-    QuizCreateComponent,
     QuizCreatePageComponent,
     QuizPageMemoryComponent,
     QuestionComponent,

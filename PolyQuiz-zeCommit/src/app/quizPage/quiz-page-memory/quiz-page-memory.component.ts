@@ -33,7 +33,7 @@ export class QuizPageMemoryComponent implements OnInit {
   private timer: number;
 
 
-  constructor(private router: Router,public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute,public dialog: MatDialog) {
+  constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute,public dialog: MatDialog) {
     this.loadQuiz();
     this.loadProfile();
     this.timer = Date.now(); //debut chrono

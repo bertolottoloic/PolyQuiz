@@ -12,11 +12,9 @@ import { BehaviorSubject } from 'rxjs';
 export class QuizCreatePageComponent implements OnInit {
 
   trouble = ''
-  private route:string;
   public quizId:number;
   public questionId:number
   constructor(private router:Router,public quizListService:QuizListService) {
-    this.quizListService.createPageRoute$.subscribe((route) => this.route = route);
   }
 
   ngOnInit() {
@@ -36,11 +34,6 @@ export class QuizCreatePageComponent implements OnInit {
     }
   }
 
-  receiptQuizId(id:number){
-    this.quizId = id;
-    console.log(id);
-    this.quizListService.changeRouteCreateQuiz('question')
-  }
 
   
   

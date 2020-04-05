@@ -6,10 +6,9 @@
 }
 
 button {
-    min-width: 500px;
-    min-height: 200px;
+    min-width: 100px;
+    min-height: 50px;
     margin: 25px;
-    
 }
 
 .question{

@@ -53,9 +53,17 @@ export class QuizListService {
     });
   }
 
+  editQuestion(quizId: number, question: Question) {
+    const questionUrl = this.URL + '/' + quizId + '/' + this.questionsPath;
+    this.http.put<Question>(questionUrl, question, this.httpOptions).subscribe(() => {
+      this.setSelectedQuiz(quizId);
+      this.setQuizzesFromUrl();
+    });
+  }
+
   deleteQuestion(quiz: Quiz, question: Question) {
     const questionUrl = this.URL + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
-    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() =>{ this.setSelectedQuiz(quiz.id); this.setQuizzesFromUrl()});
   }
 
   setSelectedQuiz(quizId: number) {
@@ -65,8 +73,5 @@ export class QuizListService {
     });
   }
 
-  changeRouteCreateQuiz(route:string){
-    this.createPageRoute$.next(route);
-  }
 
 }

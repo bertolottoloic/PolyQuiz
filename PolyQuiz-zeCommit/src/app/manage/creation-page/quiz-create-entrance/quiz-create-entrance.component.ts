@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import { QuizListService } from '../../../services/quizList.service'
 import { QuizCreatePageComponent } from '../quiz-create-page/quiz-create-page.component'
@@ -20,8 +20,9 @@ export class QuizCreateEntranceComponent implements OnInit {
   private trouble:Handicap;
   public quizForm: FormGroup;
   public quizCreate$:Observable<Quiz>;
+  public quizId:number;
 
-  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService, private router:Router) { 
+  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService, private router:Router,private route: ActivatedRoute) { 
     this.setTrouble();
     this.quizForm = this.formBuilder.group({
       name:['',Validators.required],
@@ -32,9 +33,6 @@ export class QuizCreateEntranceComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeRoute(){
-    this.quizListService.changeRouteCreateQuiz("question");
-  }
 
   addQuiz() {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
@@ -43,7 +41,8 @@ export class QuizCreateEntranceComponent implements OnInit {
     this.quizCreate$.subscribe((result)=>{
       this.quizListService.setQuizzesFromUrl();
       this.quizListService.postQuiz = result;
-      this.changeRoute();
+      this.quizId=result.id;
+      this.router.navigate([this.quizId], { relativeTo: this.route })
     }) 
     
   }

@@ -1,21 +1,4 @@
-<div class="main">
-    <div class="menu">
-        <div class="bttn" id="menu-btn">
-            <button type="button" class="btn btn-primary" routerLink="">Accueil</button> 
-        </div>
-        <div class="bttn">
-            <button type="button" class="btn btn-primary" routerLink="../..">Retour</button> 
-        </div>
-    </div>
-    <div>
-        <p>Création d'un quiz</p>
-    </div>
-    <div>
-        <p>{{trouble}}</p><br>
-    </div>
-</div>
+<app-navbar title="Création d'un quiz" [trouble]="trouble"></app-navbar>
 <div class="page-content">
-    <app-quiz-create-entrance *ngIf="route==='quiz'" ></app-quiz-create-entrance>
-    <app-quiz-create-question *ngIf="route==='question'" ></app-quiz-create-question>
-    <app-quiz-create-question-page *ngIf="route==='answer'" ></app-quiz-create-question-page>
+    <app-quiz-create-entrance></app-quiz-create-entrance>
 </div>
