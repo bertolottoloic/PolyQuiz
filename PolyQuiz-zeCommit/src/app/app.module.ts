@@ -13,7 +13,7 @@ import {QuizListPageComponent} from './quizzes/quiz-list-page/quiz-list-page.com
 import {QuizListComponent} from './quizzes/quiz-list/quiz-list.component';
 import {QuizComponent} from './quizzes/quiz/quiz.component';
 import {QuizPageMemoryComponent} from './quizPage/quiz-page-memory/quiz-page-memory.component';
-import {QuestionComponent} from './quizPage/question/question.component';
+import {QuestionComponent} from './quizPage/question/question-memory/question-memory.component';
 import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
 import {EndQuizComponent} from './end-quiz/end-quiz.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
@@ -33,6 +33,7 @@ import { ManageProfilesComponent } from './manage/manage-profiles/manage-profile
 import { ProfileCreatePageComponent } from './manage/profile-create-page/profile-create-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.component';
+import { DisplayQuestionComponent } from './display-question/display-question.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.componen
     ProfileCreatePageComponent,
     NavbarComponent,
     ManageQuizzesComponent,
+    DisplayQuestionComponent,
     
   ],
   imports: [
@@ -82,7 +84,7 @@ import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.componen
     },
     
   ],
-  entryComponents: [PopUpWarningComponent],
+  entryComponents: [PopUpWarningComponent, DisplayQuestionComponent],
 
   bootstrap: [AppComponent]
 })

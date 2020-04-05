@@ -4,9 +4,9 @@ import {Answer} from 'src/app/models/answer.models';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-question',
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.css']
+  selector: 'app-question-memory',
+  templateUrl: './question-memory.component.html',
+  styleUrls: ['./question-memory.component.css']
 })
 export class QuestionComponent implements OnInit {
 

@@ -4,6 +4,9 @@ import { Quiz } from 'src/app/models/quiz.models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Question } from 'src/app/models/question.models';
+import { MatDialog } from '@angular/material/dialog';
+import { QuestionComponent } from 'src/app/quizPage/question/question-memory/question-memory.component';
+import { DisplayQuestionComponent } from 'src/app/display-question/display-question.component';
 
 @Component({
   selector: 'app-quiz-create-question',
@@ -16,7 +19,7 @@ export class QuizCreateQuestionComponent implements OnInit {
   public quizForm: FormGroup;
 
 
-  constructor(public quizService:QuizListService,  private route: ActivatedRoute,public formBuilder:FormBuilder,public router:Router) { 
+  constructor(public quizService:QuizListService,  private route: ActivatedRoute,public formBuilder:FormBuilder,public router:Router,public dialog: MatDialog) { 
     this.loadQuiz()
     
   }
@@ -48,5 +51,14 @@ export class QuizCreateQuestionComponent implements OnInit {
 
   delete(question:Question){
     this.quizService.deleteQuestion(this.quiz,question);
+  }
+  openDialog(question:Question) {
+    console.log(question)
+    this.dialog.open(DisplayQuestionComponent, {
+      data: {
+        trouble:this.quiz.trouble,
+        quest: question,
+      }
+    });
   }
 }

@@ -18,7 +18,7 @@
     <div class="questions col-md-6">
         <div *ngFor="let question of quiz.questions">
             <div class="row">
-                <button type="button">
+                <button type="button" (click)="openDialog(question)">
                     <p>{{question.text}}</p>
                 </button>
                 <button (click)="edit(question)">

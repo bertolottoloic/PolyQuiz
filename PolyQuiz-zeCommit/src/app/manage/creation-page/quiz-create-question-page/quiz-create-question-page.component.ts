@@ -5,7 +5,7 @@ import { Answer } from 'src/app/models/answer.models';
 import { Question } from 'src/app/models/question.models';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { QuestionComponent } from 'src/app/quizPage/question/question.component';
+import { QuestionComponent } from 'src/app/quizPage/question/question-memory/question-memory.component';
 
 @Component({
   selector: 'app-quiz-create-question-page',
@@ -17,11 +17,10 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   public questionForm: FormGroup;
   public answers: FormArray;
   public quizId:number;
-  @Input()
   question:Question;
   
   
-  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService,public route:ActivatedRoute,public dialog: MatDialog) { 
+  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService,public route:ActivatedRoute) { 
     this.route.paramMap.subscribe(params => {
       if(params!=null){
         this.quizId = Number(params.get('quizId'))}
@@ -82,7 +81,6 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       text:[''],
-      theme:[''],
       image:[''],
       answers: this.formBuilder.array([this.createAnswer()]),
     });
@@ -92,7 +90,6 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   fillQuestionForm(){
     this.questionForm = this.formBuilder.group({
       text:[this.question.text],
-      theme:[''],
       image:[this.question.image],
       answers: this.formBuilder.array([this.fillAnswer(this.question.answers[0])]),
     });
@@ -115,12 +112,6 @@ export class QuizCreateQuestionPageComponent implements OnInit {
     });
   }
 
-  openDialog(question:Question) {
-    this.dialog.open(QuestionComponent, {
-      data: {
-        questtion: question,
-      }
-    });
-  }
+ 
 
 }
