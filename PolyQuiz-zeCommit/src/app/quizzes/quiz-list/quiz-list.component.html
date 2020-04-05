@@ -1,7 +1,4 @@
 <div class="main">
-    <div class="quizBox">
-        <app-quiz-create></app-quiz-create>
-    </div>
     <div class="quiz" *ngFor="let quiz of quizList">
         <div class="quizBox">
             <app-quiz [quiz]="quiz"></app-quiz>

@@ -26,7 +26,6 @@ export class QuizCreateEntranceComponent implements OnInit {
     this.quizForm = this.formBuilder.group({
       name:['',Validators.required],
       theme:['',Validators.required],
-      image:[],
     });
   }
 

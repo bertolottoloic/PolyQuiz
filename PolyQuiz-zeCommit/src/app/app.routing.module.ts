@@ -10,6 +10,7 @@ import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.compo
 import {QuizPageMoteurComponent} from './quizPage/quiz-page-moteur/quiz-page-moteur.component'
 import { ManageProfilesComponent } from './manage/manage-profiles/manage-profiles.component';
 import { ProfileCreatePageComponent } from './manage/profile-create-page/profile-create-page.component';
+import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.component';
 
 const routes: Routes = [
   { path: '', component : AccueilComponent },
@@ -18,8 +19,10 @@ const routes: Routes = [
   { path: 'memoire/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMemoryComponent},
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection', component : QuizPageSizeSelectionComponent},
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection/:size', component : QuizPageVueComponent},
-  { path: ':trouble/profile-list-page/:idProfile/quiz-create-page', component : QuizCreatePageComponent },
+  { path: ':trouble/profile-list-page/manage-quizzes/create', component : QuizCreatePageComponent },
   { path:':trouble/profile-list-page/manage-profiles', component : ManageProfilesComponent},
+  { path:':trouble/profile-list-page/manage-quizzes', component : ManageQuizzesComponent},
+
   { path:':trouble/profile-list-page/manage-profiles/create', component : ProfileCreatePageComponent},
 
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageVueComponent},

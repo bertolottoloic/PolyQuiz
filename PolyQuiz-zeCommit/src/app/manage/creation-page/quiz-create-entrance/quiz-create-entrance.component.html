@@ -9,10 +9,5 @@
         Theme <br>
         <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
     </label>
-    <label for="Theme">
-      <br/>
-      Image <br>
-      <input class="input-custom" type="file" id="image" [formControlName]="'image'">
-    </label>
     <button type="submit" class="button-card" [disabled]="!quizForm.valid" (click)="addQuiz()">Suivant</button>
 </form>

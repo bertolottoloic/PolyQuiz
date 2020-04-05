@@ -33,6 +33,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ManageProfilesComponent } from './manage/manage-profiles/manage-profiles.component';
 import { ProfileCreatePageComponent } from './manage/profile-create-page/profile-create-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ManageProfilesComponent,
     ProfileCreatePageComponent,
     NavbarComponent,
+    ManageQuizzesComponent,
     
   ],
   imports: [

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Quiz } from '../../models/quiz.models'
 import { ProfileService } from '../../services/profile.service'
 import { Handicap } from 'src/app/models/handicap.models';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { Profile } from '../../models/profile.models';
 
 @Component({
@@ -21,7 +21,7 @@ export class ProfileCreatePageComponent implements OnInit {
   public profileCreate$:Observable<Profile>;
 
 
-  constructor(public formBuilder:FormBuilder, public profileService:ProfileService, private router:Router) { 
+  constructor(public formBuilder:FormBuilder, public profileService:ProfileService, private router:Router,private route: ActivatedRoute) { 
     this.setTrouble();
     this.profileForm = this.formBuilder.group({
       firstName:['',Validators.required],
@@ -61,8 +61,15 @@ export class ProfileCreatePageComponent implements OnInit {
     const profileToCreate: Profile = this.profileForm.getRawValue() as Profile;
     this.profileCreate$ = this.profileService.addProfile(profileToCreate);
     this.profileCreate$.subscribe((result)=>{
-     console.log(result)
+      if(result!=null){
+        this.profileService.setProfilesFromUrl();
+        this.goBack()
+      }
     }) 
+  }
+
+  goBack():void{
+    this.router.navigate(['../'], { relativeTo: this.route })
   }
 
 }
