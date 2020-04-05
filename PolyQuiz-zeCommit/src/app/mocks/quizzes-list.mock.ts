@@ -4,7 +4,11 @@ import {Handicap} from '../models/handicap.models';
 export const QUIZ_LIST: Quiz[] = [
     {
         name: 'football',
-        theme: 'sport',
+        theme: {
+            id:1,
+            name:'SPORT'
+
+        },
         id:1,
         questions: [
             {

@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router'
-import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 import { QuizListService } from 'src/app/services/quizList.service';
-import { BehaviorSubject } from 'rxjs';
+import { Handicap } from 'src/app/models/handicap.models';
 
 @Component({
   selector: 'app-quiz-create-page',
@@ -11,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class QuizCreatePageComponent implements OnInit {
 
-  trouble = ''
+  trouble:Handicap;
   public quizId:number;
   public questionId:number
   constructor(private router:Router,public quizListService:QuizListService) {
@@ -24,13 +23,13 @@ export class QuizCreatePageComponent implements OnInit {
   setTrouble() {
     console.log(this.router.url);
     if (this.router.url.startsWith('/memoire')) {
-      this.trouble = 'Mémoire';
+      this.trouble = Handicap.Memoire;
     }
     if (this.router.url.startsWith('/vue')) {
-      this.trouble = 'Vue';
+      this.trouble = Handicap.Vue;
     }
     if (this.router.url.startsWith('/moteur')) {
-      this.trouble = 'Moteur';
+      this.trouble = Handicap.Moteur;
     }
   }
 

@@ -1,13 +1,17 @@
-<form [formGroup]="quizForm">
+<form *ngIf="themes" [formGroup]="quizForm">
     <label for="title">
       Title <br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+      <input class="input-custom" type="text" id="name" [formControlName]="'name'"  ngModel maxlength="50">
     </label>
     <br>
     <label for="Theme">
-        <br/>
-        Theme <br>
-        <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
+      <br/>
+      Theme <br>
+      <select name="theme" id="theme" [formControlName]="'theme'" required>
+          <option *ngFor="let theme of themes" [value]="theme">{{theme.name}}</option>
+      </select>
     </label>
-    <button type="submit" class="button-card" [disabled]="!quizForm.valid" (click)="addQuiz()">Suivant</button>
+    <button (click)="openDialog()">add theme</button>
+    <button type="submit" [class]="!quizForm.valid? 'btn btn-danger':'btn btn-success' " [disabled]="!quizForm.valid" (click)="addQuiz()">Suivant</button>
 </form>
+ 

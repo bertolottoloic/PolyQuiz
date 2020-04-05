@@ -34,6 +34,7 @@ import { ProfileCreatePageComponent } from './manage/profile-create-page/profile
 import { NavbarComponent } from './navbar/navbar.component';
 import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.component';
 import { DisplayQuestionComponent } from './display-question/display-question.component';
+import { AddThemeComponent } from './add-theme/add-theme.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { DisplayQuestionComponent } from './display-question/display-question.co
     NavbarComponent,
     ManageQuizzesComponent,
     DisplayQuestionComponent,
+    AddThemeComponent,
     
   ],
   imports: [
@@ -84,7 +86,7 @@ import { DisplayQuestionComponent } from './display-question/display-question.co
     },
     
   ],
-  entryComponents: [PopUpWarningComponent, DisplayQuestionComponent],
+  entryComponents: [PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent],
 
   bootstrap: [AppComponent]
 })

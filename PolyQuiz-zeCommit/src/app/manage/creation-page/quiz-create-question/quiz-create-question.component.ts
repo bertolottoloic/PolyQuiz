@@ -7,6 +7,9 @@ import { Question } from 'src/app/models/question.models';
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionComponent } from 'src/app/quizPage/question/question-memory/question-memory.component';
 import { DisplayQuestionComponent } from 'src/app/display-question/display-question.component';
+import { Theme } from 'src/app/models/theme.models';
+import { ThemeService } from 'src/app/services/theme.service';
+import { AddThemeComponent } from 'src/app/add-theme/add-theme.component';
 
 @Component({
   selector: 'app-quiz-create-question',
@@ -15,13 +18,18 @@ import { DisplayQuestionComponent } from 'src/app/display-question/display-quest
 })
 export class QuizCreateQuestionComponent implements OnInit {
 
-  quiz:Quiz;
+  public quiz:Quiz;
+  public themes:Theme[];
   public quizForm: FormGroup;
 
 
-  constructor(public quizService:QuizListService,  private route: ActivatedRoute,public formBuilder:FormBuilder,public router:Router,public dialog: MatDialog) { 
+  constructor(public themeService: ThemeService, public quizService:QuizListService,  private route: ActivatedRoute,public formBuilder:FormBuilder,public router:Router,public dialog: MatDialog) { 
     this.loadQuiz()
-    
+    this.themeService.themes$.subscribe((themes) => {
+      if (themes) {
+        this.themes = themes;
+      }
+    })
   }
 
   ngOnInit() {
@@ -61,4 +69,13 @@ export class QuizCreateQuestionComponent implements OnInit {
       }
     });
   }
+
+  openTheme() {
+    this.dialog.open(AddThemeComponent, {
+      data: {
+        themes:this.themes,
+      }
+    });
+  }
+  
 }
