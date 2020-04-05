@@ -2,7 +2,7 @@ const { Router } = require('express')
 
 const { Quiz, Question, Answer } = require('../../models')
 const QuestionRouter = require('./questions')
-const { addQuestions, addAnswers } = require('./Manage')
+const { addQuestions, deleteQuestionsAndAnswers } = require('./Manage')
 
 
 const router = new Router()
@@ -45,6 +45,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:quizId', (req, res) => {
   try {
+    deleteQuestionsAndAnswers(req.params.quizId)
     res.status(200).json(Quiz.delete(req.params.quizId))
   } catch (err) {
     res.status(404).json(err)

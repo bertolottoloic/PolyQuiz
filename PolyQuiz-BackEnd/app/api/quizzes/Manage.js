@@ -25,7 +25,31 @@ const addAnswers = (questionId) => {
     return answers
 }
 
+const deleteQuestionsAndAnswers = (quizId) => {
+
+    try {
+        Question.get().filter((ques)=>ques.quizId == quizId).forEach((ques)=>{
+            deleteAnswers(ques.id)
+            Question.delete(ques.id)
+        });
+    } catch (error) {
+        res.status(404).json(err)
+    }
+}
+
+const deleteAnswers = (questionId) => {
+    try {
+        Answer.get().filter((ans)=>ans.questionId == questionId).forEach((ans)=>{
+            Answer.delete(ans.id)
+        });
+    } catch (error) {
+        res.status(404).json(err)
+    }
+}
+
 module.exports = {
     addAnswers,
-    addQuestions
+    addQuestions,
+    deleteQuestionsAndAnswers,
+    deleteAnswers
 }

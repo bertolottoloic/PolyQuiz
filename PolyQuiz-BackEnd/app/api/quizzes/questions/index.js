@@ -4,7 +4,7 @@ const { Question } = require('../../../models')
 const { Answer } = require('../../../models')
 
 const AnswerRouter = require('./answers')
-const { addAnswers } = require('../Manage')
+const { addAnswers,deleteAnswers } = require('../Manage')
 
 const router = new Router({mergeParams: true})
 router.use('/:questionId/answers', AnswerRouter)
@@ -37,15 +37,10 @@ router.get('/:questionId', (req, res) => {
   
   router.post('/', (req, res) => {
     try {
-      console.log("1")
       const quizId = parseInt(req.params.quizId, 10)
-      console.log("2")
       let question = Question.create({ text:req.body.text, quizId})
-      console.log(question)
       if (req.body.answers && req.body.answers.length > 0) {
-        console.log("in")
         const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
-        console.log(answers)
         question = {...question, answers}
       }
       res.status(201).json(question)
@@ -60,6 +55,7 @@ router.get('/:questionId', (req, res) => {
   
   router.delete('/:questionId', (req, res) => {
     try {
+      deleteAnswers(req.params.questionId)
       res.status(200).json(Question.delete(req.params.questionId))
     } catch (err) {
       res.status(404).json(err)
