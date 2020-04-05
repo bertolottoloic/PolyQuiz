@@ -32,6 +32,15 @@ export class ProfileCreatePageComponent implements OnInit {
 
     });
   }
+  invalidFirstName()
+  {
+  	return (this.profileForm.controls.firstName.errors != null);
+  }
+
+  invalidLastName()
+  {
+  	return (this.profileForm.controls.lastName.errors != null);
+  }
 
   ngOnInit() {
   }

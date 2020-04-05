@@ -3,16 +3,22 @@
 <div class="page-content">
     <form [formGroup]="profileForm">
         <div class="col">
-            <label for="firstName">
-            Prénom <br>
-            <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" ngModel maxlength="50" required>
-            </label>
+            <div class="form-group has-error">
+                <label for="firstName">
+                Prénom <br>
+                <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" ngModel maxlength="50" required>
+                </label>
+                <p *ngIf="invalidFirstName()" id="email_error" class="help-block">champ vide *.</p>
+            </div>
             <br>
-            <label for="lastName">
-                <br/>
-                Nom <br>
-                <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'"  ngModel maxlength="50" required>
-            </label>
+            <div class="form-group has-error">
+                <label for="lastName">
+                    <br/>
+                    Nom <br>
+                    <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'"  ngModel maxlength="50" required>
+                </label>
+                <p *ngIf="invalidLastName()" id="email_error" class="help-block">champ vide *.</p>
+            </div>
             <br>
             <label for="birthDate">
                 <br/>
