@@ -6,23 +6,23 @@ import { ProfileService } from '../../services/profile.service'
 import { Handicap } from 'src/app/models/handicap.models';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Profile } from '../../models/profile.models';
+import { Trouble } from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-profile-create-page',
   templateUrl: './profile-create-page.component.html',
   styleUrls: ['./profile-create-page.component.css']
 })
-export class ProfileCreatePageComponent implements OnInit {
+export class ProfileCreatePageComponent extends Trouble implements OnInit {
 
   public HANDICAP_LIST:Handicap[]=[Handicap.Memoire,Handicap.Vue,Handicap.Moteur];
 
-  private trouble:Handicap;
   public profileForm: FormGroup;
   public profileCreate$:Observable<Profile>;
 
 
-  constructor(public formBuilder:FormBuilder, public profileService:ProfileService, private router:Router,private route: ActivatedRoute) { 
-    this.setTrouble();
+  constructor(public formBuilder:FormBuilder, public profileService:ProfileService, public router:Router,private route: ActivatedRoute) { 
+    super(router)
     this.profileForm = this.formBuilder.group({
       firstName:['',Validators.required],
       lastName:['',Validators.required],
@@ -45,17 +45,6 @@ export class ProfileCreatePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  setTrouble() {
-    if (this.router.url.startsWith('/memoire')) {
-      this.trouble = Handicap.Memoire;
-    }
-    if (this.router.url.startsWith('/vue')) {
-      this.trouble = Handicap.Vue;
-    }
-    if (this.router.url.startsWith('/moteur')) {
-      this.trouble = Handicap.Moteur;
-    }
-  }
 
   createProfile(){
     const profileToCreate: Profile = this.profileForm.getRawValue() as Profile;
