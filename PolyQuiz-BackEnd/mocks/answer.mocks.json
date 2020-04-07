@@ -449,78 +449,6 @@
   },
   {
     "text": "a",
-    "isCorrect": false,
-    "questionId": 1586095875611,
-    "id": 1586095875621
-  },
-  {
-    "text": "a",
-    "isCorrect": false,
-    "questionId": 1586095875611,
-    "id": 1586095875622
-  },
-  {
-    "text": "a",
-    "isCorrect": false,
-    "questionId": 1586095875611,
-    "id": 1586095875623
-  },
-  {
-    "text": "a",
-    "isCorrect": false,
-    "questionId": 1586095875611,
-    "id": 1586095875623
-  },
-  {
-    "text": "a",
-    "isCorrect": true,
-    "questionId": 1586096844393,
-    "id": 1586096844405
-  },
-  {
-    "text": "a",
-    "isCorrect": false,
-    "questionId": 1586096844393,
-    "id": 1586096844406
-  },
-  {
-    "text": "a",
-    "isCorrect": false,
-    "questionId": 1586096844393,
-    "id": 1586096844407
-  },
-  {
-    "text": "a",
-    "isCorrect": true,
-    "questionId": 1586096844393,
-    "id": 1586096844407
-  },
-  {
-    "text": "a",
-    "isCorrect": false,
-    "questionId": 1586103364673,
-    "id": 1586103364684
-  },
-  {
-    "text": "b",
-    "isCorrect": false,
-    "questionId": 1586103364673,
-    "id": 1586103364685
-  },
-  {
-    "text": "c",
-    "isCorrect": false,
-    "questionId": 1586103364673,
-    "id": 1586103364686
-  },
-  {
-    "text": "d",
-    "isCorrect": true,
-    "questionId": 1586103364673,
-    "id": 1586103364686
-  },
-  {
-    "text": "a",
     "isCorrect": true,
     "questionId": 1586105911912,
     "id": 1586105911927
@@ -544,27 +472,27 @@
     "id": 1586105911929
   },
   {
-    "text": "a",
+    "text": "La faille de l'invocateur",
     "isCorrect": true,
-    "questionId": 1586106676893,
-    "id": 1586106676900
+    "questionId": 1586254350185,
+    "id": 1586254350186
   },
   {
-    "text": "a",
+    "text": "battlefield",
     "isCorrect": false,
-    "questionId": 1586106676893,
-    "id": 1586106676901
+    "questionId": 1586254350185,
+    "id": 1586254350187
   },
   {
-    "text": "a",
+    "text": "le royaume",
     "isCorrect": false,
-    "questionId": 1586106676893,
-    "id": 1586106676902
+    "questionId": 1586254350185,
+    "id": 1586254350187
   },
   {
-    "text": "-",
+    "text": "non",
     "isCorrect": false,
-    "questionId": 1586106676893,
-    "id": 1586106676903
+    "questionId": 1586254350185,
+    "id": 1586254350188
   }
 ]

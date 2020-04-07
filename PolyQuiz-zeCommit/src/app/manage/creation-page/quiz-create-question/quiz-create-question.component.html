@@ -1,4 +1,4 @@
-<app-navbar title="Création d'un quiz" [trouble]="trouble"></app-navbar>
+<app-navbar title="Création d'un quiz" path="../.." [trouble]="trouble"></app-navbar>
 
 <div *ngIf="quiz" class="page-content">
     <div class="col-md-4">
@@ -13,7 +13,7 @@
                 <br/>
                 Theme <br>
                 <select name="theme" id="theme" [formControlName]="'theme'" required>
-                    <option *ngFor="let theme of themes" [value]="theme">{{theme.name}}</option>
+                    <option *ngFor="let theme of themes" [value]="theme.id">{{theme.name}}</option>
                 </select>
             </label>
             <button (click)="openTheme()">add theme</button>
@@ -39,6 +39,6 @@
     <div class="col-md-2">
          <button class="answer" routerLink="add-question">Ajouter une question</button>
     </div>
-    <button class="answer">Valider le quiz</button>
+    <button class="answer" (click)="sendQuiz()">Valider le quiz</button>
 
 </div>

@@ -13,7 +13,7 @@ import { Theme } from '../models/theme.models';
 
 export class ThemeService {
 
-  private themes: Theme[] = THEME_LIST;
+  public themes: Theme[] = THEME_LIST;
 
   private URL : string = serverUrl+"/themes";
   public themes$: BehaviorSubject<Theme[]> = new BehaviorSubject(this.themes);

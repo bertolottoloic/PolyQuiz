@@ -1,6 +1,5 @@
 [
   {
-    "theme": "Geographie",
     "name": "Capitales",
     "image": "../../../assets/img/quiz/logo/geographie.jpg",
     "trouble": "Moteur",
@@ -30,7 +29,6 @@
     ]
   },
   {
-    "theme": "Musique",
     "name": "Mozart",
     "image": "../../../assets/img/quiz/logo/mozart.jpg",
     "trouble": "Vue",
@@ -145,7 +143,6 @@
     ]
   },
   {
-    "theme": "Sport",
     "name": "Football",
     "image": "../../../assets/img/quiz/logo/foot.jpg",
     "trouble": "Memoire",
@@ -225,7 +222,6 @@
   },
   {
     "name": "bla",
-    "theme": "blaaaa",
     "trouble": "Memoire",
     "id": 1585643705727,
     "questions": [
@@ -264,7 +260,6 @@
   },
   {
     "name": "Game of Thrones",
-    "theme": "Serie TV",
     "id": 1585634978107,
     "questions": [
       {
@@ -333,7 +328,6 @@
   },
   {
     "name": "skhv",
-    "theme": "sdfcdsv",
     "trouble": "Memoire",
     "id": 1585643986816,
     "questions": [
@@ -403,7 +397,6 @@
   },
   {
     "name": "tset",
-    "theme": "Serie TV",
     "id": 1585638998195,
     "questions": [
       {
@@ -496,7 +489,6 @@
   },
   {
     "name": "Gerard Depardieu",
-    "theme": "Acteur",
     "trouble": "Memoire",
     "id": 1585648658344,
     "questions": [
@@ -535,233 +527,8 @@
   },
   {
     "name": "test",
-    "theme": "test2",
+    "themeId": "1586202937407",
     "trouble": "Memoire",
-    "id": 1586091083068,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586092259043,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586093022986,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586093369451,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586093371679,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586093819544,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586093846208,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586094081176,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586095789070,
-    "questions": [
-      {
-        "text": "re",
-        "quizId": 1586095789070,
-        "id": 1586095875611,
-        "answers": [
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586095875611,
-            "id": 1586095875621
-          },
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586095875611,
-            "id": 1586095875622
-          },
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586095875611,
-            "id": 1586095875623
-          },
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586095875611,
-            "id": 1586095875623
-          }
-        ]
-      },
-      {
-        "text": "test",
-        "quizId": 1586095789070,
-        "id": 1586103364673,
-        "answers": [
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586103364673,
-            "id": 1586103364684
-          },
-          {
-            "text": "b",
-            "isCorrect": false,
-            "questionId": 1586103364673,
-            "id": 1586103364685
-          },
-          {
-            "text": "c",
-            "isCorrect": false,
-            "questionId": 1586103364673,
-            "id": 1586103364686
-          },
-          {
-            "text": "d",
-            "isCorrect": true,
-            "questionId": 1586103364673,
-            "id": 1586103364686
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586096833683,
-    "questions": [
-      {
-        "text": "test",
-        "quizId": 1586096833683,
-        "id": 1586096844393,
-        "answers": [
-          {
-            "text": "a",
-            "isCorrect": true,
-            "questionId": 1586096844393,
-            "id": 1586096844405
-          },
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586096844393,
-            "id": 1586096844406
-          },
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586096844393,
-            "id": 1586096844407
-          },
-          {
-            "text": "a",
-            "isCorrect": true,
-            "questionId": 1586096844393,
-            "id": 1586096844407
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586106663725,
-    "questions": [
-      {
-        "text": "test",
-        "quizId": 1586106663725,
-        "id": 1586106676893,
-        "answers": [
-          {
-            "text": "a",
-            "isCorrect": true,
-            "questionId": 1586106676893,
-            "id": 1586106676900
-          },
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586106676893,
-            "id": 1586106676901
-          },
-          {
-            "text": "a",
-            "isCorrect": false,
-            "questionId": 1586106676893,
-            "id": 1586106676902
-          },
-          {
-            "text": "-",
-            "isCorrect": false,
-            "questionId": 1586106676893,
-            "id": 1586106676903
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "test",
-    "theme": "test2",
-    "trouble": "Memoire",
-    "id": 1586114261122,
-    "questions": []
-  },
-  {
-    "name": "testtheme",
-    "theme": "[object Object]",
-    "trouble": "Memoire",
-    "id": 1586115916392,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "[object Object]",
-    "trouble": "Memoire",
-    "id": 1586116132216,
-    "questions": []
-  },
-  {
-    "name": "test",
-    "theme": "[object Object]",
-    "trouble": "Memoire",
-    "id": 1586118176117
+    "id": 1586254309924
   }
 ]

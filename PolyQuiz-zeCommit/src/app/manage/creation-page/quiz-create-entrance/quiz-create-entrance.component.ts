@@ -12,6 +12,7 @@ import { Theme } from 'src/app/models/theme.models';
 import { ThemeService } from 'src/app/services/theme.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddThemeComponent } from 'src/app/add-theme/add-theme.component';
+import { THEME_LIST } from 'src/app/mocks/theme.mock';
 
 @Component({
   selector: 'app-quiz-create-entrance',
@@ -36,8 +37,9 @@ export class QuizCreateEntranceComponent implements OnInit {
     this.setTrouble();
     this.quizForm = this.formBuilder.group({
       name:['',Validators.required],
-      theme:['',Validators.required],
+      themeId:['',Validators.required],
     });
+
   }
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class QuizCreateEntranceComponent implements OnInit {
 
 
   addQuiz() {
-    const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
+    const quizToCreate = this.quizForm.getRawValue();
     quizToCreate.trouble = this.trouble; 
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result)=>{
@@ -77,6 +79,7 @@ export class QuizCreateEntranceComponent implements OnInit {
       }
     });
   }
+  
   
 
 }

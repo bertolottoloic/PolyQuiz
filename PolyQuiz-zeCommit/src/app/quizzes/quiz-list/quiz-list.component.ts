@@ -18,8 +18,9 @@ export class QuizListComponent implements OnInit {
     //this.quizListService.quizzes$.subscribe((quizzes) => this.quizList = quizzes);
     this.setTrouble();
 
-    this.quizListService.quizzes$.subscribe((profiles) => {
-      this.quizList = profiles.filter(profile => profile.trouble === this.trouble);
+    this.quizListService.quizzes$.subscribe((quiz) => {
+      this.quizList = quiz.filter(quiz => quiz.trouble === this.trouble);
+      console.log(this.quizList.length)
     }); 
 
     //this.quizList = this.getSpecifyQuiz();

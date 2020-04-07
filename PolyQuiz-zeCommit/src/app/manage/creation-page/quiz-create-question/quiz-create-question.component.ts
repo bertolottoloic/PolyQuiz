@@ -42,10 +42,11 @@ export class QuizCreateQuestionComponent implements OnInit {
       this.quizService.quizzes$.subscribe((quizzes) => {
         let quiz = quizzes.filter((quiz) => quiz.id === id)[0]
         if (quiz) {
+          console.log(quiz.theme.id)
           this.quiz = quiz
           this.quizForm = this.formBuilder.group({
             name:[this.quiz.name,Validators.required],
-            theme:[this.quiz.theme,Validators.required],
+            theme:[this.quiz.theme.id,Validators.required],
           });
         }
       })
@@ -76,6 +77,13 @@ export class QuizCreateQuestionComponent implements OnInit {
         themes:this.themes,
       }
     });
+  }
+
+  sendQuiz(){
+    const quizToCreate = this.quizForm.getRawValue();
+    this.quizService.editQuiz(quizToCreate);
+    this.router.navigate(["../.."], { relativeTo: this.route })
+
   }
   
 }

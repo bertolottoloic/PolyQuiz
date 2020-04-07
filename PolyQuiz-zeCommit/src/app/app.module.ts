@@ -32,7 +32,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ManageProfilesComponent } from './manage/manage-profiles/manage-profiles.component';
 import { ProfileCreatePageComponent } from './manage/profile-create-page/profile-create-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ManageQuizzesComponent } from './manage-quizzes/manage-quizzes.component';
+import { ManageQuizzesComponent } from './manage/manage-quizzes/manage-quizzes.component';
 import { DisplayQuestionComponent } from './display-question/display-question.component';
 import { AddThemeComponent } from './add-theme/add-theme.component';
 

@@ -37,12 +37,19 @@ export class QuizListService {
   }
 
   deleteQuiz(quiz: Quiz) {
-    this.quizzes.splice(this.quizzes.indexOf(quiz,1));
-    this.quizzes$.next(this.quizzes);
+    this.http.delete<Quiz>(this.URL+"/"+quiz.id, this.httpOptions).subscribe(() => {
+      this.setQuizzesFromUrl();
+    });
   }
 
   addQuiz(quiz: Quiz): Observable<Quiz> {
     return this.http.post<Quiz>(this.URL, quiz, this.httpOptions);
+  }
+
+  editQuiz(quiz:Quiz){
+    this.http.put<Quiz>(this.URL+"/"+quiz.id, quiz, this.httpOptions).subscribe(() => {
+      this.setQuizzesFromUrl();
+    });
   }
 
   addQuestion(quizId: number, question: Question) {

@@ -1,6 +1,7 @@
 
 const { Question } = require('../../models')
 const { Answer } = require('../../models')
+const { Theme } = require('../../models')
 
 const addQuestions = (quizId) => {
     questions = []
@@ -23,6 +24,17 @@ const addAnswers = (questionId) => {
       res.status(500).json(err)
     }
     return answers
+}
+
+const addThemes = (themeId) => {
+    theme=null;
+    try {
+        theme = Theme.get().find((ques)=>ques.id == themeId)
+    
+    } catch (err) {
+        res.status(500).json(err)
+    }
+    return theme;
 }
 
 const deleteQuestionsAndAnswers = (quizId) => {
@@ -51,5 +63,6 @@ module.exports = {
     addAnswers,
     addQuestions,
     deleteQuestionsAndAnswers,
-    deleteAnswers
+    deleteAnswers,
+    addThemes,
 }

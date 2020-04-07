@@ -2,7 +2,7 @@ const { Router } = require('express')
 
 const { Quiz, Question, Answer } = require('../../models')
 const QuestionRouter = require('./questions')
-const { addQuestions, deleteQuestionsAndAnswers } = require('./Manage')
+const { addQuestions, deleteQuestionsAndAnswers,addThemes } = require('./Manage')
 
 
 const router = new Router()
@@ -13,6 +13,8 @@ router.get('/', (req, res) => {
     quizzes = Quiz.get()
     quizzes.forEach(element => {
       element.questions = addQuestions(element.id)
+      element.theme= addThemes(element.themeId)
+
     });
     res.status(200).json(quizzes)
   } catch (err) {
@@ -24,6 +26,7 @@ router.get('/:quizId', (req, res) => {
   try {
     quiz = Quiz.getById(req.params.quizId)
     quiz.questions = addQuestions(quiz.id)
+    quiz.theme=addThemes(quiz.themeId)
     res.status(200).json(quiz)
   } catch (err) {
     res.status(404).json(err)
