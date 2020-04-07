@@ -12,6 +12,9 @@
       </select>
     </label>
     <button (click)="openDialog()">add theme</button>
-    <button type="submit" [class]="!quizForm.valid? 'btn btn-danger':'btn btn-success' " [disabled]="!quizForm.valid" (click)="addQuiz()">Suivant</button>
+    <br/>
+    <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
+    <br/>
+    <button type="submit" [class]="!(quizForm.valid&&image) ? 'btn btn-danger':'btn btn-success' " [disabled]="!(quizForm.valid&&image)" (click)="addQuiz()">Suivant</button>
 </form>
  

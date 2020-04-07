@@ -35,7 +35,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ManageQuizzesComponent } from './manage/manage-quizzes/manage-quizzes.component';
 import { DisplayQuestionComponent } from './display-question/display-question.component';
 import { AddThemeComponent } from './add-theme/add-theme.component';
-
+import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +68,7 @@ import { AddThemeComponent } from './add-theme/add-theme.component';
     ManageQuizzesComponent,
     DisplayQuestionComponent,
     AddThemeComponent,
+    ImageUploaderComponent,
     
   ],
   imports: [
@@ -77,7 +78,8 @@ import { AddThemeComponent } from './add-theme/add-theme.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    
   ],
   providers: [
     {

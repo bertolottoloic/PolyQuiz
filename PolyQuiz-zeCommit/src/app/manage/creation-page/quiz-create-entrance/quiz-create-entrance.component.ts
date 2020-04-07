@@ -27,6 +27,7 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
   public quizCreate$:Observable<Quiz>;
   public quizId:number;
   public themes:Theme[];
+  public image:string;
 
   constructor(public themeService:ThemeService, public formBuilder:FormBuilder, public quizListService:QuizListService, public router:Router,private route: ActivatedRoute,public dialog: MatDialog) { 
     super(router)
@@ -49,6 +50,7 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
   addQuiz() {
     const quizToCreate = this.quizForm.getRawValue();
     quizToCreate.trouble = this.trouble; 
+    quizToCreate.image = this.image;
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result)=>{
       this.quizListService.setQuizzesFromUrl();
@@ -67,6 +69,8 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     });
   }
   
-  
+  receiveImg(img:string){
+    this.image=img;
+  }
 
 }
