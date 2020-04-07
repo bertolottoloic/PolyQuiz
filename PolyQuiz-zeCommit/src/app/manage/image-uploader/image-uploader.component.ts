@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {NgxImageCompressService} from 'ngx-image-compress';
 import * as _ from 'lodash';
 
 @Component({
@@ -8,17 +9,24 @@ import * as _ from 'lodash';
 })
 export class ImageUploaderComponent implements OnInit {
   imageError: string;
+  file: any;
+  localUrl: any;
+  localCompressedURl:any;
   isImageSaved: boolean;
-  cardImageBase64:string;
+  sizeOfOriginalImage:number;
+  sizeOFCompressedImage:number;
   @Output() cardImageBase64Event = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private imageCompress:NgxImageCompressService) { }
 
 
   ngOnInit() {
   }
 
   fileChangeEvent(fileInput: any) {
+    var  fileName : any;
+    this.file = fileInput.target.files[0];
+    fileName = this.file['name'];
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
         // Size Filter Bytes
@@ -41,38 +49,44 @@ export class ImageUploaderComponent implements OnInit {
         const reader = new FileReader();
         reader.onload = (e: any) => {
             const image = new Image();
-            image.src = e.target.result;
-            image.onload = rs => {
-                const img_height = rs.currentTarget['height'];
-                const img_width = rs.currentTarget['width'];
-
-                console.log(img_height, img_width);
-
-
-                if (img_height > max_height && img_width > max_width) {
-                    this.imageError =
-                        'Maximum dimentions allowed ' +
-                        max_height +
-                        '*' +
-                        max_width +
-                        'px';
-                    return false;
-                } else {
-                    const imgBase64Path = e.target.result;
-                    this.cardImageBase64 = imgBase64Path;
-                    this.cardImageBase64Event.emit(imgBase64Path);
-                    this.isImageSaved = true;
-                    // this.previewImagePath = imgBase64Path;
-                }
-            };
+            this.localUrl = e.target.result;
+            this.compressFile(this.localUrl,fileName);
+            this.isImageSaved = true;
         };
         reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
 
-  removeImage() {
-    this.cardImageBase64 = null;
-    this.isImageSaved = false;
-}
+  imgResultBeforeCompress:string;
+  imgResultAfterCompress:string;
+  compressFile(image,fileName) {
+    var orientation = -1;
+    this.sizeOfOriginalImage = this.imageCompress.byteCount(image)/(1024*1024);
+    console.warn('Size in bytes is now:',  this.sizeOfOriginalImage);
+
+    this.imageCompress.compressFile(image, orientation, 50, 50).then(
+    result => {
+      this.imgResultAfterCompress = result;
+      this.localCompressedURl = result;
+      this.cardImageBase64Event.emit(result);
+      this.sizeOFCompressedImage = this.imageCompress.byteCount(result)/(1024*1024)
+      console.warn('Size in bytes after compression:',  this.sizeOFCompressedImage);// create file from byte
+      const imageName = fileName;// call method that creates a blob from dataUri
+      const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);//imageFile created below is the new compressed file which can be send to API in form dataconst imageFile = new File([result], imageName, { type: 'image/jpeg' });
+      
+    });
+    
+  }
+
+  dataURItoBlob(dataURI) {
+  const byteString = window.atob(dataURI);
+  const arrayBuffer = new ArrayBuffer(byteString.length);
+  const int8Array = new Uint8Array(arrayBuffer);for (let i = 0; i < byteString.length; i++) {
+  int8Array[i] = byteString.charCodeAt(i);
+  }
+  
+  const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    return blob;
+  }
 
 }

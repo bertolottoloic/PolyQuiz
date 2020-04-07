@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 import {AppComponent} from './app.component';
 import {AccueilComponent} from './accueil/accueil.component';
@@ -82,6 +83,7 @@ import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.c
     
   ],
   providers: [
+    NgxImageCompressService,
     {
       provide: MatDialogRef,
       useValue: {}

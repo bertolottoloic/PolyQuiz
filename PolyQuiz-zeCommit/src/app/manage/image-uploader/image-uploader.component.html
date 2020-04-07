@@ -9,7 +9,7 @@
                 <div class="img-space">
 
                     <ng-container *ngIf="isImageSaved; else elseTemplate">
-                        <img [src]="cardImageBase64" />
+                        <img [src]="localCompressedURl" />
                     </ng-container>
                     <ng-template #elseTemplate>
 
