@@ -40,22 +40,25 @@ router.get('/:questionId', (req, res) => {
       const quizId = parseInt(req.params.quizId, 10)
       let question = Question.create({ text:req.body.text, quizId})
       if (req.body.answers && req.body.answers.length > 0) {
-        const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
+        var date = Date.now();
+        const answers = req.body.answers.map((answer) => {
+          while (date == Date.now());
+          Answer.create({ ...answer, questionId: question.id })
+          date = Date.now()
+        })
         question = {...question, answers}
       }
       res.status(201).json(question)
     } catch (err) {
-      if (err.name === 'ValidationError') {
-        res.status(400).json(err.extra)
-      } else {
-        res.status(500).json(err)
-      }
+      manageAllErrors(res, err)
+      
     }
   })
   
   router.delete('/:questionId', (req, res) => {
     try {
       deleteAnswers(req.params.questionId)
+      console.log("question")
       res.status(200).json(Question.delete(req.params.questionId))
     } catch (err) {
       res.status(404).json(err)

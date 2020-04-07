@@ -63,7 +63,6 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   addQuestion() {
     if(this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
-      question.quizId = this.quizId;
       this.quizListService.addQuestion(this.quizId, question);
       this.initializeQuestionForm();
     }
@@ -72,7 +71,6 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   changeQuestion() {
     if(this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
-      question.quizId = this.quizId;
       this.quizListService.editQuestion(this.quizId, question);
       this.initializeQuestionForm();
     }
