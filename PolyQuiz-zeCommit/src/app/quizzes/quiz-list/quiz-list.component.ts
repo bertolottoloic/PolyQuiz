@@ -18,7 +18,6 @@ export class QuizListComponent extends Trouble implements OnInit {
     super(router)
     this.quizListService.quizzes$.subscribe((quiz) => {
       this.quizList = quiz.filter(quiz => quiz.trouble === this.trouble);
-      console.log(this.quizList.length)
     }); 
 
   }

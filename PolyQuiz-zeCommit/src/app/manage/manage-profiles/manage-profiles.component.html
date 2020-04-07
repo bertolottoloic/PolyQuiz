@@ -5,13 +5,29 @@
             <button class="btn btn-primary" routerLink="create">Ajouter un profil</button>
         </div>
         <div class="row">
-            <button class="btn btn-primary">Modifier un profil</button>
+            <button class="btn btn-primary" (click)="changeState('modify')">Modifier un profil</button>
         </div>
         <div class="row">
-            <button class="btn btn-primary" (click)="deleteClem(1586089805103)">Supprimer un profil</button>
+            <button class="btn btn-primary" (click)="changeState('delete')">Supprimer un profil</button>
         </div>
     </div>
     <div class="col-md-10">
-        <app-profile-list></app-profile-list>
+    <app-profile-list *ngIf="state=='none'"></app-profile-list>
+        <div *ngIf="state!='none'" class="profileList">
+            <div class="profiles" *ngFor="let profile of profileList">
+                <div class="profileBox">
+                    <button type="button" (click)="action(profile)">
+                        <div class="card" >
+                          <div class="cardTop">
+                            <img class="card-img-top" src={{profile.image}} alt="Card image cap">
+                          </div>
+                          <div class="cardBot">
+                            <p>{{ profile.firstName }} {{ profile.lastName }}</p>
+                          </div>
+                        </div>
+                    </button>                      
+                </div>
+            </div>
+        </div>
     </div>
 </div> 

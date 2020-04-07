@@ -10,3 +10,39 @@ button{
     font-size: 2em;
     margin-top: 20px;
 }
+.profileList {
+    overflow:auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 50%;
+    height: 80%;
+    border : 2px solid black;
+}
+
+.card {
+    border: 1px solid black;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTop {
+    width: 150px;
+    height: 150px;
+}
+
+.cardBot {
+    width: 150px;
+    height: 20px;
+}
+
+
+img {
+    width: 99%;
+    height: 99%;
+}
+p {
+    text-align: center;
+    font-size: 50%;
+}

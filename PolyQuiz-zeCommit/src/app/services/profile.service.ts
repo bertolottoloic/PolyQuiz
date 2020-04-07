@@ -28,9 +28,10 @@ export class ProfileService {
 
   }
 
-  deleteProfile(id: string) {
-    console.log(this.URL+"/"+id)
-    return this.http.delete(this.URL+"/"+id, this.httpOptions);
+  deleteProfile(id: number) {
+    return this.http.delete(this.URL+"/"+id, this.httpOptions).subscribe(() => {
+      this.setProfilesFromUrl();
+    })
   }
 
   setProfilesFromUrl(){
