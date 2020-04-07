@@ -5,19 +5,19 @@ import { Router } from '@angular/router';
 import { Handicap } from 'src/app/models/handicap.models';
 import { Subscriber, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { Trouble } from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-profile-list',
   templateUrl: './profile-list.component.html',
   styleUrls: ['./profile-list.component.css']
 })
-export class ProfileListComponent implements OnInit {
+export class ProfileListComponent extends Trouble implements OnInit {
 
   public profileList: Profile[] = [];
 
-  private trouble:Handicap;
-  constructor(public profileService: ProfileService, private router: Router) {
-    this.setTrouble();
+  constructor(public profileService: ProfileService, public router: Router) {
+    super(router)
     this.profileService.profiles$.subscribe((profiles) => {
       this.profileList = profiles.filter(profile => profile.trouble === this.trouble);
     }); 
@@ -27,19 +27,5 @@ export class ProfileListComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
-  setTrouble() {
-    console.log(this.router.url);
-    if (this.router.url.startsWith('/memoire')) {
-      this.trouble = Handicap.Memoire;
-    }
-    if (this.router.url.startsWith('/vue')) {
-      this.trouble = Handicap.Vue;
-    }
-    if (this.router.url.startsWith('/moteur')) {
-      this.trouble = Handicap.Moteur;
-    }
-  }
 
 }

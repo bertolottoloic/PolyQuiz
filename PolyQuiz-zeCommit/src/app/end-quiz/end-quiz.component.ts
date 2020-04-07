@@ -1,35 +1,23 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StatMemory} from '../models/stat.models';
 import {Router} from '@angular/router';
+import { Trouble } from '../models/trouble.models';
 
 @Component({
   selector: 'app-end-quiz',
   templateUrl: './end-quiz.component.html',
   styleUrls: ['./end-quiz.component.css']
 })
-export class EndQuizComponent implements OnInit {
-
-  public trouble: string;
+export class EndQuizComponent extends Trouble implements OnInit {
 
   @Input() stats: StatMemory;
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { 
+    super(router)
+  }
 
   ngOnInit() {
-    this.setTrouble();
   }
 
-  setTrouble() {
-      console.log(this.router.url);
-      if (this.router.url.startsWith('/memoire')) {
-        this.trouble = 'Mémoire';
-      }
-      if (this.router.url.startsWith('/vue')) {
-        this.trouble = 'Vue';
-      }
-      if (this.router.url.startsWith('/moteur')) {
-        this.trouble = 'Moteur';
-      }
-  }
 
 }

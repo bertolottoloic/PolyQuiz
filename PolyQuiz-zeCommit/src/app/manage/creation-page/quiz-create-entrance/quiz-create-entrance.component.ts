@@ -13,28 +13,28 @@ import { ThemeService } from 'src/app/services/theme.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddThemeComponent } from 'src/app/add-theme/add-theme.component';
 import { THEME_LIST } from 'src/app/mocks/theme.mock';
+import { Trouble } from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-quiz-create-entrance',
   templateUrl: './quiz-create-entrance.component.html',
   styleUrls: ['./quiz-create-entrance.component.css']
 })
-export class QuizCreateEntranceComponent implements OnInit {
+export class QuizCreateEntranceComponent extends Trouble implements OnInit {
 
   
-  private trouble:Handicap;
   public quizForm: FormGroup;
   public quizCreate$:Observable<Quiz>;
   public quizId:number;
   public themes:Theme[];
 
-  constructor(public themeService:ThemeService, public formBuilder:FormBuilder, public quizListService:QuizListService, private router:Router,private route: ActivatedRoute,public dialog: MatDialog) { 
+  constructor(public themeService:ThemeService, public formBuilder:FormBuilder, public quizListService:QuizListService, public router:Router,private route: ActivatedRoute,public dialog: MatDialog) { 
+    super(router)
     this.themeService.themes$.subscribe((themes) => {
       if (themes) {
         this.themes = themes;
       }
     })
-    this.setTrouble();
     this.quizForm = this.formBuilder.group({
       name:['',Validators.required],
       themeId:['',Validators.required],
@@ -57,19 +57,6 @@ export class QuizCreateEntranceComponent implements OnInit {
       this.router.navigate([this.quizId], { relativeTo: this.route })
     }) 
     
-  }
-
-  setTrouble() {
-    console.log(this.router.url);
-    if (this.router.url.startsWith('/memoire')) {
-      this.trouble = Handicap.Memoire;
-    }
-    if (this.router.url.startsWith('/vue')) {
-      this.trouble = Handicap.Vue;
-    }
-    if (this.router.url.startsWith('/moteur')) {
-      this.trouble = Handicap.Moteur;
-    }
   }
 
   openDialog() {

@@ -11,8 +11,7 @@ import { ProfileService } from '../services/profile.service';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor(private router: Router, public quizListService:QuizListService, public profileService:ProfileService) {
-    this.router = router;
+  constructor(public quizListService:QuizListService, public profileService:ProfileService) {
   }
 
   ngOnInit() {

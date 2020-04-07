@@ -3,6 +3,7 @@ import { QuizListService } from 'src/app/services/quizList.service';
 import { Quiz } from 'src/app/models/quiz.models';
 import { Handicap } from 'src/app/models/handicap.models';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Trouble } from 'src/app/models/trouble.models';
 
 export enum State{
   Delete="delete",
@@ -16,14 +17,13 @@ export enum State{
   styleUrls: ['./manage-quizzes.component.css']
 })
 
-export class ManageQuizzesComponent implements OnInit {
+export class ManageQuizzesComponent extends Trouble implements OnInit {
 
   public state=State.None;
   quizList:Quiz[];
-  trouble:Handicap;
 
   constructor(public quizServ:QuizListService,public router:Router,public route:ActivatedRoute) { 
-    this.setTrouble();
+    super(router)
     this.quizServ.quizzes$.subscribe((quiz) => {
       this.quizList = quiz.filter(quiz => quiz.trouble === this.trouble);
       console.log("manage :"+this.quizList.length)
@@ -42,18 +42,6 @@ export class ManageQuizzesComponent implements OnInit {
     }
   }
 
-  setTrouble() {
-    console.log(this.router.url);
-    if (this.router.url.startsWith('/memoire')) {
-      this.trouble = Handicap.Memoire;
-    }
-    if (this.router.url.startsWith('/vue')) {
-      this.trouble = Handicap.Vue;
-    }
-    if (this.router.url.startsWith('/moteur')) {
-      this.trouble = Handicap.Moteur;
-    }
-  }
 
   action(quiz:Quiz){
     if(this.state==State.Delete){
