@@ -45,7 +45,7 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
       this.profileService.deleteProfile(profile.id);
     }
     if(this.state==State.Modify){
-      this.router.navigate(["create/"+profile.id],{ relativeTo: this.route })
+      this.router.navigate(["edit/"+profile.id],{ relativeTo: this.route })
     }
   }
 }

@@ -1,23 +1,21 @@
-<app-navbar title="Créer un profil" [trouble]="trouble"></app-navbar>
+<app-navbar title="Créer un profil" path="../.." [trouble]="trouble"></app-navbar>
 
-<div class="page-content">
+<div *ngIf="profile" class="page-content">
     <form [formGroup]="profileForm">
         <div class="col">
-            <div class="form-group has-error">
+            <div>
                 <label for="firstName">
                 Prénom <br>
-                <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" ngModel maxlength="50" required>
+                <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" required>
                 </label>
-                <p *ngIf="invalidFirstName()" id="email_error" class="help-block">champ vide *.</p>
             </div>
             <br>
-            <div class="form-group has-error">
+            <div>
                 <label for="lastName">
                     <br/>
                     Nom <br>
-                    <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'"  ngModel maxlength="50" required>
+                    <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" required>
                 </label>
-                <p *ngIf="invalidLastName()" id="email_error" class="help-block">champ vide *.</p>
             </div>
             <br>
             <label for="birthDate">
@@ -43,7 +41,7 @@
                 </select>
             </label>
         </div>
-        <button type="submit" [disabled]="!profileForm.valid" (click)="createProfile()"
+        <button type="submit" [disabled]="!profileForm.valid" 
         [class]="!profileForm.valid? 'btn btn-danger':'btn btn-success' "
         >Créer</button>
     </form>

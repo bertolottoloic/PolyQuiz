@@ -13,6 +13,7 @@ import { ProfileCreatePageComponent } from './manage/profile-create-page/profile
 import { ManageQuizzesComponent } from './manage/manage-quizzes/manage-quizzes.component';
 import { QuizCreateQuestionPageComponent } from './manage/creation-page/quiz-create-question-page/quiz-create-question-page.component';
 import { QuizCreateQuestionComponent } from './manage/creation-page/quiz-create-question/quiz-create-question.component';
+import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: '', component : AccueilComponent },
@@ -26,9 +27,8 @@ const routes: Routes = [
   { path: ':trouble/profile-list-page/manage-quizzes/create/:quizId/add-question', component : QuizCreateQuestionPageComponent },
   { path:':trouble/profile-list-page/manage-profiles', component : ManageProfilesComponent},
   { path:':trouble/profile-list-page/manage-quizzes', component : ManageQuizzesComponent},
-
+  { path:':trouble/profile-list-page/manage-profiles/edit/:profileId', component : EditProfileComponent},
   { path:':trouble/profile-list-page/manage-profiles/create', component : ProfileCreatePageComponent},
-
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageVueComponent},
   { path: 'moteur/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMoteurComponent}
 

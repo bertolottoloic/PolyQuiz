@@ -37,6 +37,8 @@ import { ManageQuizzesComponent } from './manage/manage-quizzes/manage-quizzes.c
 import { DisplayQuestionComponent } from './display-question/display-question.component';
 import { AddThemeComponent } from './add-theme/add-theme.component';
 import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.component';
+import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.c
     DisplayQuestionComponent,
     AddThemeComponent,
     ImageUploaderComponent,
+    EditProfileComponent,
     
   ],
   imports: [
