@@ -1,13 +1,17 @@
 <app-navbar title="Création d'un quiz" [trouble]="trouble"></app-navbar>
 
 <form [formGroup]="questionForm" *ngIf="quizId">
-    <label for="text">
-      Texte <br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'text'">
-    </label>
+    <div class="form-group has-error">
+        <label for="text">
+        Texte <br>
+        <input class="input-custom" type="text" id="name" [formControlName]="'text'">
+        </label>
+        <p *ngIf="invalidQuestion()" id="text" class="help-block">champ vide *.</p>
+
+    </div>
     <div formArrayName="answers" *ngFor="let elm of formData.controls; let i = index" >
-        <div [formGroupName]="i">
-            <label for="titre" >
+        <div class="form-group has-error" [formGroupName]="i">
+            <label for="titre"  >
                 Réponse {{ i+1 }} <br/>
                 <input type="text" id="text" [formControlName]="'text'">
             </label>
@@ -15,7 +19,10 @@
                 Réponse vraie
                 <input type="checkbox" id="isCorrect" [formControlName]="'isCorrect'">
             </label>
+            <p *ngIf="invalidAnswer(i)" id="text" class="help-block">champ vide *.</p>
+
         </div>
     </div>
 </form>
-<button class="answer" (click)="question? changeQuestion():addQuestion();">Valider</button>
+<button [class]="!(questionForm.valid&&controlRightAnswer())? 'btn btn-danger':'btn btn-success'" [disabled]="!(questionForm.valid&&controlRightAnswer())" (click)="question? changeQuestion():addQuestion();">Valider</button>
+<p *ngIf="!controlRightAnswer()" id="text" class="help-block">Cocher au moins une bonne réponse</p>
