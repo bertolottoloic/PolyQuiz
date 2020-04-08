@@ -12,8 +12,7 @@
         </div>
     </div>
     <div class="col-md-10">
-    <app-profile-list *ngIf="state=='none'"></app-profile-list>
-        <div *ngIf="state!='none'" class="profileList">
+        <div class="profileList">
             <div class="profiles" *ngFor="let profile of profileList">
                 <div class="profileBox">
                     <button type="button" (click)="action(profile)">

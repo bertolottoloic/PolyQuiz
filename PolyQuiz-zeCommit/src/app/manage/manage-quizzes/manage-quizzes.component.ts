@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizListService } from 'src/app/services/quizList.service';
 import { Quiz } from 'src/app/models/quiz.models';
-import { Handicap } from 'src/app/models/handicap.models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Trouble } from 'src/app/models/trouble.models';
 

@@ -38,6 +38,7 @@ import { DisplayQuestionComponent } from './display-question/display-question.co
 import { AddThemeComponent } from './add-theme/add-theme.component';
 import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.component';
 import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
+import { DisplayWindowComponent } from './display-window/display-window.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { EditProfileComponent } from './manage/edit-profile/edit-profile.compone
     AddThemeComponent,
     ImageUploaderComponent,
     EditProfileComponent,
+    DisplayWindowComponent,
     
   ],
   imports: [
@@ -93,7 +95,7 @@ import { EditProfileComponent } from './manage/edit-profile/edit-profile.compone
     },
     
   ],
-  entryComponents: [PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent],
+  entryComponents: [PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
 
   bootstrap: [AppComponent]
 })
