@@ -64,7 +64,7 @@ export class ImageUploaderComponent implements OnInit {
     this.sizeOfOriginalImage = this.imageCompress.byteCount(image)/(1024*1024);
     console.warn('Size in bytes is now:',  this.sizeOfOriginalImage);
 
-    this.imageCompress.compressFile(image, orientation, 50, 50).then(
+    this.imageCompress.compressFile(image, orientation, 40, 50).then(
     result => {
       this.imgResultAfterCompress = result;
       this.localCompressedURl = result;
