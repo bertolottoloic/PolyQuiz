@@ -41,8 +41,11 @@
                 </select>
             </label>
         </div>
+        <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
+
         <button type="submit" [disabled]="!profileForm.valid" 
         [class]="!profileForm.valid? 'btn btn-danger':'btn btn-success' "
-        >Créer</button>
+        (click)="validProfile()"
+        >Modifier</button>
     </form>
 </div>

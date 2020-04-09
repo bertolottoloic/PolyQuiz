@@ -20,7 +20,7 @@ export class EditProfileComponent extends Trouble implements OnInit {
   public profileForm: FormGroup;
   public profileCreate$:Observable<Profile>;
   public profile:Profile;
-
+  private image:string;
   constructor(public router:Router,public formBuilder:FormBuilder,public profileService:ProfileService,public route:ActivatedRoute) { 
     super(router)
     let id: number;
@@ -52,6 +52,24 @@ export class EditProfileComponent extends Trouble implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  validProfile(){
+    const profileToChange = this.profileForm.getRawValue();
+    profileToChange.id=this.profile.id;
+    if(this.image!=null){
+      profileToChange.image=this.image;
+    }
+    else{
+      profileToChange.image=this.profile.image;
+    }
+    this.profileService.editProfile(profileToChange);
+    this.router.navigate(["../.."], { relativeTo: this.route })
+
+  }
+
+  receiveImg(img:string){
+    this.image=img;
   }
 
 }

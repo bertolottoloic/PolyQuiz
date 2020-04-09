@@ -34,6 +34,12 @@ export class ProfileService {
     })
   }
 
+  editProfile(profile: Profile){
+    return this.http.put<Profile>(this.URL+"/"+profile.id, profile, this.httpOptions).subscribe(() => {
+      this.setProfilesFromUrl();
+    });
+  }
+
   setProfilesFromUrl(){
     this.http.get<Profile[]>(this.URL).subscribe((profiles) =>{
       this.profiles = profiles;

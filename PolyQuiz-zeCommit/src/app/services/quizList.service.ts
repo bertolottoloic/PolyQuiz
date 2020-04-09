@@ -47,7 +47,7 @@ export class QuizListService {
   }
 
   editQuiz(quiz:Quiz){
-    this.http.put<Quiz>(this.URL+"/"+quiz.id, quiz, this.httpOptions).subscribe(() => {
+   return this.http.put<Quiz>(this.URL+"/"+quiz.id, quiz, this.httpOptions).subscribe(() => {
       this.setQuizzesFromUrl();
     });
   }
