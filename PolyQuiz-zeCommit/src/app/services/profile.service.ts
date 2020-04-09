@@ -5,7 +5,6 @@ import {Profile} from '../models/profile.models';
 import {PROFILE_LIST} from '../mocks/profiles-list.mock';
 import { serverUrl, httpOptionsBase } from '../../configs/server.config';
 
-import { Handicap } from '../models/handicap.models';
 
 @Injectable({
     providedIn: 'root'

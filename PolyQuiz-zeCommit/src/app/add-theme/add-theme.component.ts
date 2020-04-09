@@ -17,6 +17,7 @@ export class AddThemeComponent {
   public themeForm: FormGroup;
   public themeCreated:Theme;
   public themeCreated$:Observable<Theme>;
+  private image:string;
 
   constructor(private router: Router, private route: ActivatedRoute, public formBuilder:FormBuilder,public themeService:ThemeService,
     public dialogRef: MatDialogRef<AddThemeComponent>,
@@ -30,6 +31,9 @@ export class AddThemeComponent {
 
   addTheme():void{
     const themeToCreate: Theme = this.themeForm.getRawValue() as Theme;
+    if(this.image!=null){
+      themeToCreate.image=this.image;
+    }
     this.themeCreated=themeToCreate
     this.themeCreated$ = this.themeService.addTheme(themeToCreate);
     this.themeCreated$.subscribe((result)=>{
@@ -43,7 +47,10 @@ export class AddThemeComponent {
   }
   close():void{
     this.dialogRef.close();
+  }
 
+  receiveImg(img:string){
+    this.image=img;
   }
 
 }
