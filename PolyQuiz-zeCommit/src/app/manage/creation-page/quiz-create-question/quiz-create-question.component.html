@@ -17,7 +17,8 @@
                 </select>
             </label>
             <button (click)="openTheme()">add theme</button>
-
+            <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
+            <img *ngIf="quiz.image"  src={{quiz.image}} alt=" image quiz">
 
         </form>
     </div>

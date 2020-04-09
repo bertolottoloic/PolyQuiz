@@ -39,7 +39,7 @@ export class QuizPageMoteurComponent implements OnInit {
         let quiz = quizzes.filter((quiz) => quiz.id == id)[0]
         if (quiz) {
           this.quiz = quiz
-          this.stats = new StatMemory(quiz); //creation objet stat
+          this.stats = new StatMemory(quiz,this.profile); //creation objet stat
           this.questionList = quiz.questions
           this.question = quiz.questions[this.index];
         }

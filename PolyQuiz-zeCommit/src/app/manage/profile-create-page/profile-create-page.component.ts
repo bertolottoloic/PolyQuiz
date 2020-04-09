@@ -19,7 +19,7 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
 
   public profileForm: FormGroup;
   public profileCreate$:Observable<Profile>;
-
+  private image;
 
   constructor(public formBuilder:FormBuilder, public profileService:ProfileService, public router:Router,private route: ActivatedRoute) { 
     super(router)
@@ -29,7 +29,6 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
       birthDate:['',Validators.required],
       gender:['',Validators.required],
       trouble:[this.trouble.toString(),Validators.required],
-
     });
   }
   invalidFirstName()
@@ -48,6 +47,7 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
 
   createProfile(){
     const profileToCreate: Profile = this.profileForm.getRawValue() as Profile;
+    profileToCreate.image=this.image;
     this.profileCreate$ = this.profileService.addProfile(profileToCreate);
     this.profileCreate$.subscribe((result)=>{
       if(result!=null){
@@ -60,5 +60,11 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
   goBack():void{
     this.router.navigate(['../'], { relativeTo: this.route })
   }
+
+  receiveImg(img:string){
+    console.log(img)
+    this.image=img;
+  }
+
 
 }

@@ -5,14 +5,14 @@
     </div>
 
     <div style="padding-top: 20px;">
-        <p style="font-size: 0.9em;">Vous avez {{stats.questionsDone.length}} bonne(s) réponse(s) sur {{stats.quiz.questions.length}}</p>
+        <p style="font-size: 0.9em;">Vous avez {{stats.questionsDone.length}} bonne(s) réponse(s)</p>
     </div>
 
     <div style="margin-top: 20px; margin-bottom: 20px;">
         <p style="font-size: 0.9em;">Résumé des questions: </p>
     </div>
 
-    <div id="resume" *ngFor="let question of stats.quiz.questions">
+    <div id="resume" *ngFor="let question of quiz.questions">
         <p> *{{question.text}} - tentatives : {{stats.trial.get(question.id)}}</p>
     </div>
 

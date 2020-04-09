@@ -21,7 +21,7 @@ export class QuizCreateQuestionComponent implements OnInit {
   public quiz:Quiz;
   public themes:Theme[];
   public quizForm: FormGroup;
-
+  private image:string;
 
   constructor(public themeService: ThemeService, public quizService:QuizListService,  private route: ActivatedRoute,public formBuilder:FormBuilder,public router:Router,public dialog: MatDialog) { 
     this.loadQuiz()
@@ -47,6 +47,7 @@ export class QuizCreateQuestionComponent implements OnInit {
           this.quizForm = this.formBuilder.group({
             name:[this.quiz.name,Validators.required],
             theme:[this.quiz.theme.id,Validators.required],
+            image:[this.quiz.image]
           });
         }
       })
@@ -81,9 +82,18 @@ export class QuizCreateQuestionComponent implements OnInit {
 
   sendQuiz(){
     const quizToCreate = this.quizForm.getRawValue();
+    if(this.image!=null){
+      quizToCreate.image=this.image;
+    }
+    else{
+      quizToCreate.image=this.quiz.image;
+    }
     this.quizService.editQuiz(quizToCreate);
     this.router.navigate(["../.."], { relativeTo: this.route })
 
   }
   
+  receiveImg(img:string){
+    this.image=img;
+  }
 }
