@@ -3,6 +3,7 @@
       Ajouter un theme <br>
       <input class="input-custom" type="text" id="name" [formControlName]="'name'"  ngModel maxlength="50">
     </label>
+    <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
     <button type="submit" [class]="!themeForm.valid? 'btn btn-danger':'btn btn-success' " [disabled]="!themeForm.valid" (click)="addTheme()">Suivant</button>
 
 </form>

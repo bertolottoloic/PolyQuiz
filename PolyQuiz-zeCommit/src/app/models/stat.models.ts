@@ -3,7 +3,7 @@ import { Profile } from './profile.models';
 
 export class StatMemory {
   profileId:number;
-  quizId: number;
+  quiz: Quiz;
   score: number;
   time: number;
   trial: Map<number, number>;
@@ -12,7 +12,7 @@ export class StatMemory {
   nbWrongAnswers: number;
 
   constructor(quizz: Quiz,profile:Profile) {
-    this.quizId=quizz.id;
+    this.quiz=quizz;
     this.profileId=profile.id;
     this.score = 0;
     this.time = 0;
