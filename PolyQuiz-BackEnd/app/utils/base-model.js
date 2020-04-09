@@ -56,13 +56,14 @@ module.exports = class BaseModel {
   update(id, obj) {
     if (typeof id === 'string') id = parseInt(id, 10)
     const prevObjIndex = this.items.findIndex((item) => item.id === id)
+    console.log(prevObjIndex)
     if (prevObjIndex === -1) throw new NotFoundError(`Cannot update ${this.name} id=${id} : not found`)
     if(prevObjIndex.questionId) prevObjIndex = {...prevObjIndex.text,...prevObjIndex.isCorrect,...prevObjIndex.display,...prevObjIndex.questionId,...prevObjIndex.image}
     const updatedItem = { ...this.items[prevObjIndex], ...obj }
     let validateUpdatedItem 
     if(updatedItem.name) validateUpdatedItem = {id:updatedItem.id,name:updatedItem.name,themeId:updatedItem.themeId,image:updatedItem.image,trouble:updatedItem.trouble}
     else if(updatedItem.quizId) validateUpdatedItem = {id:updatedItem.id,text:updatedItem.text,quizId:updatedItem.quizId,image:updatedItem.image}
-    else if(updatedItem.questionId) validateUpdatedItem = {id:updatedItem.id,text:updatedItem.text,isCorrect:updatedItem.isCorrect,display:updatedItem.display,questionId:updatedItem.questionId,image:updatedItem.image}
+    else if(updatedItem.questionId) validateUpdatedItem = {id:updatedItem.id,text:updatedItem.text,isCorrect:updatedItem.isCorrect,questionId:updatedItem.questionId,image:updatedItem.image}
     else validateUpdatedItem = updatedItem
     const { error } = Joi.validate(validateUpdatedItem, this.schema)
     if (error) throw new ValidationError(`Update Error : Object ${JSON.stringify(obj)} does not match schema of model ${this.name}`, error)

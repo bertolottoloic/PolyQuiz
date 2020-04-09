@@ -80,8 +80,12 @@ export class QuizCreateQuestionPageComponent implements OnInit {
 
   changeQuestion() {
     if(this.questionForm.valid) {
-      const question = this.questionForm.getRawValue() as Question;
-      this.quizListService.editQuestion(this.quizId, question);
+      const question=this.questionForm.getRawValue();
+      let validQuestion:any;
+       if( this.question.image ) validQuestion = question;
+       else validQuestion = {text:question.text,quizId:question.quizId,answers:question.answers}
+      validQuestion.id = this.question.id;
+      this.quizListService.editQuestion(this.quizId, validQuestion);
       this.initializeQuestionForm();
       this.router.navigate(["../"],{ relativeTo: this.route })
 
@@ -91,7 +95,7 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       text:['',Validators.required],
-      image:[''],
+      image:[],
       answers: this.formBuilder.array([this.createAnswer()]),
     });
     this.addAnswer();
@@ -118,6 +122,8 @@ export class QuizCreateQuestionPageComponent implements OnInit {
     return this.formBuilder.group({
       text: [answer.text],
       isCorrect: [answer.isCorrect],
+      id: [answer.id],
+      // image: [(answer.image)?answer.image:""]
     });
   }
 

@@ -67,6 +67,11 @@ router.get('/:questionId', (req, res) => {
   
   router.put('/:questionId', (req, res) => {
     try {
+      let answers = req.body.answers
+      answers.forEach((answer)=>{
+        answer.questionId = parseInt(req.params.questionId,10);
+        Answer.update(answer.id,answer);
+      })
       res.status(200).json(Question.update(req.params.questionId,req.body))
     } catch (err) {
       res.status(404).json(err)

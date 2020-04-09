@@ -62,7 +62,7 @@ export class QuizListService {
   }
 
   editQuestion(quizId: number, question: Question) {
-    const questionUrl = this.URL + '/' + quizId + '/' + this.questionsPath;
+    const questionUrl = this.URL + '/' + quizId + '/' + this.questionsPath + '/' + question.id;
     this.http.put<Question>(questionUrl, question, this.httpOptions).subscribe(() => {
       this.setSelectedQuiz(quizId);
       this.setQuizzesFromUrl();
