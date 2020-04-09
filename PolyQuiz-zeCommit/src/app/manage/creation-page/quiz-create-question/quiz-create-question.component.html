@@ -12,7 +12,7 @@
             <label for="Theme">
                 <br/>
                 Theme <br>
-                <select name="theme" id="theme" [formControlName]="'theme'" required>
+                <select name="theme" id="theme" [formControlName]="'themeId'" required>
                     <option *ngFor="let theme of themes" [value]="theme.id">{{theme.name}}</option>
                 </select>
             </label>

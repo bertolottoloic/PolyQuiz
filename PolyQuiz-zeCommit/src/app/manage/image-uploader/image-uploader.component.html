@@ -9,8 +9,7 @@
                 <div class="img-space">
 
                     <ng-container *ngIf="isImageSaved; else elseTemplate">
-                        <img *ngIf="localCompressedURl"
-                        [src]="localCompressedURl" />
+                        <img *ngIf="localCompressedURl" [src]="localCompressedURl" />
                     </ng-container>
                     <ng-template #elseTemplate>
 

@@ -10,7 +10,7 @@ router.use('/:quizId/questions', QuestionRouter)
 
 router.get('/', (req, res) => {
   try {
-    quizzes = Quiz.get()
+    const quizzes = Quiz.get()
     quizzes.forEach(element => {
       element.questions = addQuestions(element.id)
       element.theme= addThemes(element.themeId)
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 router.get('/:quizId', (req, res) => {
   try {
-    quiz = Quiz.getById(req.params.quizId)
+    const quiz = Quiz.getById(req.params.quizId)
     quiz.questions = addQuestions(quiz.id)
     quiz.theme=addThemes(quiz.themeId)
     res.status(200).json(quiz)

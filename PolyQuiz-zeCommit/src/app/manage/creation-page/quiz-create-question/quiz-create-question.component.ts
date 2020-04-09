@@ -10,13 +10,14 @@ import { DisplayQuestionComponent } from 'src/app/display-question/display-quest
 import { Theme } from 'src/app/models/theme.models';
 import { ThemeService } from 'src/app/services/theme.service';
 import { AddThemeComponent } from 'src/app/add-theme/add-theme.component';
+import { Trouble } from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-quiz-create-question',
   templateUrl: './quiz-create-question.component.html',
   styleUrls: ['./quiz-create-question.component.css']
 })
-export class QuizCreateQuestionComponent implements OnInit {
+export class QuizCreateQuestionComponent extends Trouble implements OnInit {
 
   public quiz:Quiz;
   public themes:Theme[];
@@ -24,6 +25,7 @@ export class QuizCreateQuestionComponent implements OnInit {
   private image:string;
 
   constructor(public themeService: ThemeService, public quizService:QuizListService,  private route: ActivatedRoute,public formBuilder:FormBuilder,public router:Router,public dialog: MatDialog) { 
+    super(router);
     this.loadQuiz()
     this.themeService.themes$.subscribe((themes) => {
       if (themes) {
@@ -46,7 +48,7 @@ export class QuizCreateQuestionComponent implements OnInit {
           this.quiz = quiz
           this.quizForm = this.formBuilder.group({
             name:[this.quiz.name,Validators.required],
-            theme:[this.quiz.theme.id,Validators.required],
+            themeId:[this.quiz.theme.id,Validators.required],
             image:[this.quiz.image]
           });
         }
@@ -88,6 +90,8 @@ export class QuizCreateQuestionComponent implements OnInit {
     else{
       quizToCreate.image=this.quiz.image;
     }
+    quizToCreate.id = this.quiz.id;
+    quizToCreate.trouble = this.trouble;
     this.quizService.editQuiz(quizToCreate);
     this.router.navigate(["../.."], { relativeTo: this.route })
 
