@@ -51,7 +51,12 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     const quizToCreate = this.quizForm.getRawValue();
     quizToCreate.themeId = parseInt(quizToCreate.themeId,10);
     quizToCreate.trouble = this.trouble; 
+    if(this.image==null){
+      quizToCreate.image=this.themes.find(value=>value.id==quizToCreate.themeId).image
+    }
+    else{
     quizToCreate.image = this.image;
+  }
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result)=>{
       this.quizListService.setQuizzesFromUrl();

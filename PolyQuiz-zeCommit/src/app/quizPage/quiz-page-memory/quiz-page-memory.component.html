@@ -15,7 +15,7 @@
     
 </div>
 <div class="row">
-    <div class="col-md-2 btnTree" *ngIf="!quizDone">
+    <div class="col-md-2 btnTree" *ngIf="!quizDone&&stats">
         <div class="questions" *ngFor="let question of questionList; let n=index">
             <button [disabled]="this.stats.questionsDone.includes(question.id)"
                 [class]="this.stats.questionsDone.includes(question.id)? 'btn btn-success' : 'btn btn-primary'"

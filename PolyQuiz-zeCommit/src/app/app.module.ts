@@ -39,6 +39,7 @@ import { AddThemeComponent } from './add-theme/add-theme.component';
 import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.component';
 import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
 import { DisplayWindowComponent } from './display-window/display-window.component';
+import { PopUpDeleteComponent } from './pop-up-delete/pop-up-delete.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { DisplayWindowComponent } from './display-window/display-window.componen
     ImageUploaderComponent,
     EditProfileComponent,
     DisplayWindowComponent,
+    PopUpDeleteComponent,
     
   ],
   imports: [
@@ -95,7 +97,7 @@ import { DisplayWindowComponent } from './display-window/display-window.componen
     },
     
   ],
-  entryComponents: [PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
+  entryComponents: [PopUpDeleteComponent,PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
 
   bootstrap: [AppComponent]
 })

@@ -5,10 +5,12 @@
             <button class="btn btn-primary" routerLink="create">Ajouter un profil</button>
         </div>
         <div class="row">
-            <button class="btn btn-primary" (click)="changeState('modify')">Modifier un profil</button>
+            <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
+            class="btn btn-primary" (click)="changeState('modify')">Modifier un profil</button>
         </div>
         <div class="row">
-            <button class="btn btn-primary" (click)="changeState('delete')">Supprimer un profil</button>
+            <button  [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
+             class="btn btn-primary" (click)="changeState('delete')">Supprimer un profil</button>
         </div>
     </div>
     <div class="col-md-10">

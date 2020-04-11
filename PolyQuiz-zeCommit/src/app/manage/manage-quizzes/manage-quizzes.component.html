@@ -5,15 +5,16 @@
             <button class="btn btn-primary" routerLink="create">Ajouter un quiz</button>
         </div>
         <div class="row">
-            <button class="btn btn-primary" (click)="changeState('modify')">Modifier un quiz</button>
+            <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
+            class="btn btn-primary" (click)="changeState('modify')">Modifier un quiz</button>
         </div>
         <div class="row">
-            <button class="btn btn-primary" (click)="changeState('delete')">Supprimer un quiz</button>
+            <button [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
+            (click)="changeState('delete')">Supprimer un quiz</button>
         </div>
     </div>
     <div class="col-md-10">
-        <app-quiz-list *ngIf="state=='none'"></app-quiz-list>
-        <div class="quizToChange" *ngIf="state!='none'&&quizList">
+        <div class="quizToChange" *ngIf="quizList">
             <div  *ngFor="let quiz of quizList">
                 <div class="quizBox">
                     <div>

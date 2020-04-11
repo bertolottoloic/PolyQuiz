@@ -13,6 +13,7 @@ import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { PopUpWarningComponent } from 'src/app/pop-up-warning/pop-up-warning.component';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import { combineLatest, Observable } from 'rxjs';
 
 
 @Component({
@@ -34,39 +35,33 @@ export class QuizPageMemoryComponent implements OnInit {
 
 
   constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute,public dialog: MatDialog) {
-    this.loadQuiz();
-    this.loadProfile();
-    this.timer = Date.now(); //debut chrono
-    this.stats = new StatMemory(this.quiz,this.profile); //creation objet stat
+    const combinedObject=combineLatest(this.profileService.profiles$,this.quizService.quizzes$);
+    combinedObject.subscribe(value => {
+      if(value[0]&&value[1]){
+        this.load(value[1],value[0])
+        this.timer = Date.now(); //debut chrono
+      }
+    });
 
   }
 
-
-  loadQuiz() {
-    let id: number;
+  load(quizzes:Quiz[],profiles:Profile[]){
     this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idQuiz'))
-      this.quizService.quizzes$.subscribe((quizzes) => {
-        let quiz = quizzes.filter((quiz) => quiz.id === id)[0]
-        if (quiz) {
-          this.quiz = quiz
-          this.questionList = quiz.questions
-          this.question = quiz.questions[this.index];
-        }
-      })
-    })
-  }
-
-  loadProfile() {
-    let id: number;
-    this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idProfile'))
-      this.profileService.profiles$.subscribe((profiles) => {
-        let profil = profiles.filter((prf) => prf.id === id)[0]
-        if (profil) {
-          this.profile = profil;
-        }
-      })
+      let idQuiz = Number(params.get('idQuiz'))
+      let idProfile = Number(params.get('idProfile'))
+      let quiz=quizzes.find((quiz) => quiz.id === idQuiz)
+      if (quiz) {
+        this.quiz = quiz
+        this.questionList = quiz.questions
+        this.question = quiz.questions[this.index];
+      }
+      let profile = profiles.find((prof) => prof.id === idProfile)
+      if(profile){
+        this.profile=profile
+      }
+      if(profile&&quiz){
+        this.stats = new StatMemory(this.quiz,this.profile); //creation objet stat
+      }
     })
   }
 

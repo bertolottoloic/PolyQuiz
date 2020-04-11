@@ -5,6 +5,7 @@ import { Trouble } from 'src/app/models/trouble.models';
 import { Profile } from 'src/app/models/profile.models';
 import { MatDialog } from '@angular/material/dialog';
 import { DisplayWindowComponent } from 'src/app/display-window/display-window.component';
+import { PopUpDeleteComponent } from 'src/app/pop-up-delete/pop-up-delete.component';
 
 export enum State{
   Delete="delete",
@@ -47,7 +48,7 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
       this.openDialog(profile)
     }
     if(this.state==State.Delete){
-      this.profileService.deleteProfile(profile.id);
+      this.openDialogDelete(profile)
     }
     if(this.state==State.Modify){
       this.router.navigate(["edit/"+profile.id],{ relativeTo: this.route })
@@ -56,6 +57,14 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
 
   openDialog(profile:Profile) {
     this.dialog.open(DisplayWindowComponent, {
+      data: {
+        profile:profile,
+      }
+    });
+  }
+
+  openDialogDelete(profile:Profile) {
+    this.dialog.open(PopUpDeleteComponent, {
       data: {
         profile:profile,
       }
