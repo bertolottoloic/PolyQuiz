@@ -21,15 +21,16 @@ export enum State {
 
 export class ManageQuizzesComponent extends Trouble implements OnInit {
 
+  public filter:string;
   public state = State.None;
-  quizList: Quiz[];
+  public quizList: Quiz[];
+  public noFilterQuizList:Quiz[];
 
   constructor(public quizServ: QuizListService, public router: Router, public route: ActivatedRoute, public dialog: MatDialog) {
     super(router);
     this.quizServ.quizzes$.subscribe((quiz) => {
       this.quizList = quiz.filter(quiz$ => quiz$.trouble === this.trouble);
-      console.log('manage :' + this.quizList.length);
-
+      this.noFilterQuizList=this.quizList;
     });
   }
 
@@ -52,7 +53,6 @@ export class ManageQuizzesComponent extends Trouble implements OnInit {
   }
   openDialogDisplay(quiz: Quiz) {
     this.dialog.open(DisplayQuizComponent, {
-      width:'100%',
       data: {
         quiz,
       }
@@ -68,6 +68,17 @@ export class ManageQuizzesComponent extends Trouble implements OnInit {
     }
     if (this.state === State.Modify) {
       this.router.navigate(['create/' + quiz.id], { relativeTo: this.route });
+    }
+  }
+
+  onKey(value: string) {
+    this.filter=value.toLowerCase();
+    if(this.filter){
+      this.quizList=this.noFilterQuizList.filter(
+        quiz => quiz.name.toLowerCase().match(this.filter)||quiz.theme.name.toLowerCase().match(this.filter))
+    }
+    else{
+        this.quizList=this.noFilterQuizList
     }
   }
 }

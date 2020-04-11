@@ -1,5 +1,5 @@
 <app-navbar title="Gestion des profils" [trouble]="trouble"></app-navbar>
-<div class="row">   
+<div class="row">
     <div class="menu col-md-2">
         <div class="row">
             <button class="btn btn-primary" routerLink="create">Ajouter un profil</button>
@@ -14,6 +14,7 @@
         </div>
     </div>
     <div class="col-md-10">
+      <input #box (keyup)="onKey(box.value)">
         <div class="profileList">
             <div class="profiles" *ngFor="let profile of profileList">
                 <div class="profileBox">
@@ -26,9 +27,9 @@
                             <p>{{ profile.firstName }} {{ profile.lastName }}</p>
                           </div>
                         </div>
-                    </button>                      
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Trouble } from 'src/app/models/trouble.models';
@@ -20,13 +20,15 @@ export enum State{
 })
 export class ManageProfilesComponent extends Trouble implements OnInit {
   public state=State.None;
-
+  public filter:string;
   public profileList:Profile[];
+  public noFilterProfileList:Profile[];
 
-  constructor(public router:Router,public profileService:ProfileService,public route:ActivatedRoute,public dialog: MatDialog) { 
+  constructor(public router:Router,public profileService:ProfileService,public route:ActivatedRoute,public dialog: MatDialog) {
     super(router)
     this.profileService.profiles$.subscribe((prof) => {
       this.profileList = prof.filter(profile => profile.trouble === this.trouble);
+      this.noFilterProfileList=this.profileList
     });
   }
 
@@ -70,4 +72,18 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
       }
     });
   }
+
+  onKey(value: string) {
+    this.filter=value.toLowerCase();
+    if(this.filter){
+      this.profileList=this.noFilterProfileList.filter(
+        profile => profile.firstName.toLowerCase().match(this.filter)||profile.lastName.toLowerCase().match(this.filter))
+    }
+    else{
+        this.profileList=this.noFilterProfileList
+    }
+  }
+
+
+
 }
