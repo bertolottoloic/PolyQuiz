@@ -45,7 +45,7 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
     this.route.paramMap.subscribe(params => {
       id = Number(params.get('quizId'));
       this.quizService.quizzes$.subscribe((quizzes) => {
-        const quiz = quizzes.find((quiz$) => quiz.id === id);
+        const quiz = quizzes.find((quiz$) => quiz$.id === id);
         if (quiz) {
           console.log(quiz.theme.id);
           this.quiz = quiz;
