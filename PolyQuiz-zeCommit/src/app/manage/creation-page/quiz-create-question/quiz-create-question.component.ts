@@ -19,19 +19,22 @@ import { Trouble } from 'src/app/models/trouble.models';
 })
 export class QuizCreateQuestionComponent extends Trouble implements OnInit {
 
-  public quiz:Quiz;
-  public themes:Theme[];
+  public quiz: Quiz;
+  public themes: Theme[];
   public quizForm: FormGroup;
-  private image:string;
+  private image: string;
 
-  constructor(public themeService: ThemeService, public quizService:QuizListService,  private route: ActivatedRoute,public formBuilder:FormBuilder,public router:Router,public dialog: MatDialog) { 
-    super(router);
-    this.loadQuiz()
-    this.themeService.themes$.subscribe((themes) => {
-      if (themes) {
-        this.themes = themes;
-      }
-    })
+  constructor(
+    public themeService: ThemeService,
+    public quizService: QuizListService,  private route: ActivatedRoute,
+    public formBuilder: FormBuilder, public router: Router, public dialog: MatDialog) {
+      super(router);
+      this.loadQuiz();
+      this.themeService.themes$.subscribe((themes) => {
+        if (themes) {
+          this.themes = themes;
+        }
+      });
   }
 
   ngOnInit() {
@@ -40,35 +43,35 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
   loadQuiz() {
     let id: number;
     this.route.paramMap.subscribe(params => {
-      id = Number(params.get('quizId'))
+      id = Number(params.get('quizId'));
       this.quizService.quizzes$.subscribe((quizzes) => {
-        let quiz = quizzes.filter((quiz) => quiz.id === id)[0]
+        const quiz = quizzes.find((quiz$) => quiz.id === id);
         if (quiz) {
-          console.log(quiz.theme.id)
-          this.quiz = quiz
+          console.log(quiz.theme.id);
+          this.quiz = quiz;
           this.quizForm = this.formBuilder.group({
-            name:[this.quiz.name,Validators.required],
-            themeId:[this.quiz.theme.id,Validators.required],
-            image:[this.quiz.image]
+            name: [this.quiz.name, Validators.required],
+            themeId: [this.quiz.theme.id, Validators.required],
+            image: [this.quiz.image]
           });
         }
-      })
-    })
+      });
+    });
   }
 
-  edit(question:Question){
-    this.router.navigate(['add-question',{quest: JSON.stringify(question)}], { relativeTo: this.route });
+  edit(question: Question){
+    this.router.navigate(['add-question', {quest: JSON.stringify(question)}], { relativeTo: this.route });
 
   }
 
-  delete(question:Question){
-    this.quizService.deleteQuestion(this.quiz,question);
+  delete(question: Question){
+    this.quizService.deleteQuestion(this.quiz, question);
   }
-  openDialog(question:Question) {
+  openDialog(question: Question) {
     console.log(question)
     this.dialog.open(DisplayQuestionComponent, {
       data: {
-        trouble:this.quiz.trouble,
+        trouble: this.quiz.trouble,
         quest: question,
       }
     });
@@ -77,27 +80,26 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
   openTheme() {
     this.dialog.open(AddThemeComponent, {
       data: {
-        themes:this.themes,
+        themes: this.themes,
       }
     });
   }
 
-  sendQuiz(){
+  sendQuiz() {
     const quizToCreate = this.quizForm.getRawValue();
-    if(this.image!=null){
-      quizToCreate.image=this.image;
-    }
-    else{
-      quizToCreate.image=this.quiz.image;
+    if (this.image != null){
+      quizToCreate.image = this.image;
+    } else {
+      quizToCreate.image = this.quiz.image;
     }
     quizToCreate.id = this.quiz.id;
     quizToCreate.trouble = this.trouble;
     this.quizService.editQuiz(quizToCreate);
-    this.router.navigate(["../.."], { relativeTo: this.route })
+    this.router.navigate(['../..'], { relativeTo: this.route });
 
   }
-  
-  receiveImg(img:string){
-    this.image=img;
+
+  receiveImg(img: string) {
+    this.image = img;
   }
 }
