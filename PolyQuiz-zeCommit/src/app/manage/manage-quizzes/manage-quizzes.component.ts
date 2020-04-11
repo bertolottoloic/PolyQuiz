@@ -3,9 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/models/quiz.models';
 import { Trouble } from 'src/app/models/trouble.models';
-import { PopUpDeleteComponent } from 'src/app/pop-up-delete/pop-up-delete.component';
+import { PopUpDeleteComponent } from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
 import { QuizListService } from 'src/app/services/quizList.service';
-import { DisplayQuizComponent } from 'src/app/display-quiz/display-quiz.component';
+import { DisplayQuizComponent } from 'src/app/visualisation/display-quiz/display-quiz.component';
 
 export enum State {
   Delete= 'delete',

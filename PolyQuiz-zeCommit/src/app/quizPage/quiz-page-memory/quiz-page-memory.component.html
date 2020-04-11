@@ -1,6 +1,6 @@
-<div class="menu">
+<div *ngIf="!quizDone" class="menu">
 
-    <div class="menu-btn"> 
+    <div class="menu-btn">
         <div>
             <button type="button" class="btn btn-primary" (click)="openDialog('accueil')">Accueil</button>
         </div>
@@ -10,9 +10,9 @@
     </div>
 
     <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
-    
+
     <app-profile *ngIf="profile" [profile]="profile"></app-profile>
-    
+
 </div>
 <div class="row">
     <div class="col-md-2 btnTree" *ngIf="!quizDone&&stats">

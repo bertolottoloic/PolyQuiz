@@ -2,10 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PopUpWarningComponent, DialogData } from '../pop-up-warning/pop-up-warning.component';
-import { Quiz } from '../models/quiz.models';
-import { QuizListService } from '../services/quizList.service';
-import { Profile } from '../models/profile.models';
-import { ProfileService } from '../services/profile.service';
+import { Quiz } from '../../models/quiz.models';
+import { QuizListService } from '../../services/quizList.service';
+import { Profile } from '../../models/profile.models';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-pop-up-delete',

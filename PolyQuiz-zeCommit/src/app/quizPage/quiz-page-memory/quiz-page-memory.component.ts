@@ -10,7 +10,7 @@ import {Profile} from 'src/app/models/profile.models';
 
 import { Inject} from '@angular/core';
 import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { PopUpWarningComponent } from 'src/app/pop-up-warning/pop-up-warning.component';
+import { PopUpWarningComponent } from 'src/app/pop-up/pop-up-warning/pop-up-warning.component';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
@@ -118,7 +118,7 @@ export class QuizPageMemoryComponent implements OnInit {
       }
     }
   }
-  
+
 
   skipQ(n) { // saute n question(s)
     this.index = n;

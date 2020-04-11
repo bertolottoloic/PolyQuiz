@@ -11,7 +11,7 @@ import { Handicap } from 'src/app/models/handicap.models';
 import { Theme } from 'src/app/models/theme.models';
 import { ThemeService } from 'src/app/services/theme.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AddThemeComponent } from 'src/app/add-theme/add-theme.component';
+import { AddThemeComponent } from 'src/app/manage/add-theme/add-theme.component';
 import { THEME_LIST } from 'src/app/mocks/theme.mock';
 import { Trouble } from 'src/app/models/trouble.models';
 

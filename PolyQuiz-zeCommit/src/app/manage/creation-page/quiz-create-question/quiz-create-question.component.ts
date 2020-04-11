@@ -6,10 +6,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/models/question.models';
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionComponent } from 'src/app/quizPage/question/question-memory/question-memory.component';
-import { DisplayQuestionComponent } from 'src/app/display-question/display-question.component';
+import { DisplayQuestionComponent } from 'src/app/visualisation/display-question/display-question.component';
 import { Theme } from 'src/app/models/theme.models';
 import { ThemeService } from 'src/app/services/theme.service';
-import { AddThemeComponent } from 'src/app/add-theme/add-theme.component';
+import { AddThemeComponent } from 'src/app/manage/add-theme/add-theme.component';
 import { Trouble } from 'src/app/models/trouble.models';
 
 @Component({
