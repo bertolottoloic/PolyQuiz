@@ -6,9 +6,9 @@ const { Theme } = require('../../models')
 const addQuestions = (quizId) => {
     questions = []
     try {
-        questions = Question.get().filter((ques)=>ques.quizId == quizId)
-        questions.forEach(ques => {
-            ques.answers = addAnswers(ques.id)
+        Question.get().filter((ques)=>ques.quizId == quizId).forEach(ques => {
+            nQues = {...ques,answers:addAnswers(ques.id)}
+            questions.push(nQues)
         });
     } catch (err) {
         res.status(500).json(err)

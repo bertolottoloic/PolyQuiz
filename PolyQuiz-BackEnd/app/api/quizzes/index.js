@@ -11,12 +11,12 @@ router.use('/:quizId/questions', QuestionRouter)
 router.get('/', (req, res) => {
   try {
     const quizzes = Quiz.get()
+    let quizzesToSend = []
     quizzes.forEach(element => {
-      element.questions = addQuestions(element.id)
-      element.theme= addThemes(element.themeId)
-
+      let quiz = {...element,questions:addQuestions(element.id),theme:addThemes(element.themeId)}
+      quizzesToSend.push(quiz)
     });
-    res.status(200).json(quizzes)
+    res.status(200).json(quizzesToSend)
   } catch (err) {
     res.status(500).json(err)
   }
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 router.get('/:quizId', (req, res) => {
   try {
-    const quiz = Quiz.getById(req.params.quizId)
+    const quiz = {...Quiz.getById(req.params.quizId)}
     quiz.questions = addQuestions(quiz.id)
     quiz.theme=addThemes(quiz.themeId)
     res.status(200).json(quiz)
