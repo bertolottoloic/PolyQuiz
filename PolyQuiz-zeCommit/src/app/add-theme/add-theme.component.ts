@@ -12,8 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./add-theme.component.css']
 })
 export class AddThemeComponent {
-
-  public themes:Theme[];
+  public themeToChange:Theme;
   public themeForm: FormGroup;
   public themeCreated:Theme;
   public themeCreated$:Observable<Theme>;
@@ -22,11 +21,17 @@ export class AddThemeComponent {
   constructor(private router: Router, private route: ActivatedRoute, public formBuilder:FormBuilder,public themeService:ThemeService,
     public dialogRef: MatDialogRef<AddThemeComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
-      this.themes=data.themes;
-
-      this.themeForm = this.formBuilder.group({
-        name:['',Validators.required],
-      });
+      if(data.theme){
+        this.themeToChange=data.theme;
+        this.themeForm = this.formBuilder.group({
+          name:[data.theme.name,Validators.required],
+        });
+      }
+      else{
+        this.themeForm = this.formBuilder.group({
+          name:['',Validators.required],
+        });
+      }
     }
 
   addTheme():void{
@@ -35,7 +40,12 @@ export class AddThemeComponent {
       themeToCreate.image=this.image;
     }
     this.themeCreated=themeToCreate
-    this.themeCreated$ = this.themeService.addTheme(themeToCreate);
+    if(this.themeToChange){
+      this.themeCreated$ = this.themeService.editTheme(themeToCreate);
+    }
+    else{
+      this.themeCreated$ = this.themeService.addTheme(themeToCreate);
+    }
     this.themeCreated$.subscribe((result)=>{
       this.themeService.setThemesFromUrl();
       this.close();

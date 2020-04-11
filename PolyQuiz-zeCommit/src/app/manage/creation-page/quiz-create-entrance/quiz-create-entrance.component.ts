@@ -70,13 +70,20 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
   openDialog() {
     this.dialog.open(AddThemeComponent, {
       data: {
-        themes:this.themes,
       }
     });
   }
   
   receiveImg(img:string){
     this.image=img;
+  }
+
+  editTheme(theme:Theme){
+    this.dialog.open(AddThemeComponent, {
+      data: {
+        theme:theme,
+      }
+    });
   }
 
 }

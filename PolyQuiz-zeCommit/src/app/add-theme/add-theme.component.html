@@ -1,4 +1,4 @@
-<form *ngIf="themes" [formGroup]="themeForm">
+<form [formGroup]="themeForm">
     <label for="title">
       Ajouter un theme <br>
       <input class="input-custom" type="text" id="name" [formControlName]="'name'"  ngModel maxlength="50">
