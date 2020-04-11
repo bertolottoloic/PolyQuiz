@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import * as _ from 'lodash';
 
@@ -8,41 +8,48 @@ import * as _ from 'lodash';
   styleUrls: ['./image-uploader.component.css']
 })
 export class ImageUploaderComponent implements OnInit {
+
+
+  constructor(private imageCompress: NgxImageCompressService) {
+  }
+  emptyLoaderUrl = './../../../assets/placeholder.png';
   imageError: string;
   file: any;
   localUrl: any;
-  localCompressedURl:any;
+  localCompressedURl: any;
   isImageSaved: boolean;
-  sizeOfOriginalImage:number;
-  sizeOFCompressedImage:number;
+  sizeOfOriginalImage: number;
+  sizeOFCompressedImage: number;
   @Output() cardImageBase64Event = new EventEmitter<string>();
-
-  constructor(private imageCompress:NgxImageCompressService) { }
+  @Input() imageLoad: string;
+  // tslint:disable-next-line: member-ordering
+  imgResultBeforeCompress: string;
+  imgResultAfterCompress: string;
 
 
   ngOnInit() {
   }
 
   fileChangeEvent(fileInput: any) {
-    var  fileName : any;
+    let fileName: any;
     this.file = fileInput.target.files[0];
     fileName = this.file['name'];
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
         // Size Filter Bytes
-        const max_size = 20971520;
-        const allowed_types = ['image/png', 'image/jpeg'];
-        const max_height = 15200;
-        const max_width = 25600;
+        const maxSize = 20971520;
+        const allowedTypes = ['image/png', 'image/jpeg'];
+        const maxHeight = 15200;
+        const maxWidth = 25600;
 
-        if (fileInput.target.files[0].size > max_size) {
+        if (fileInput.target.files[0].size > maxSize) {
             this.imageError =
-                'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+                'Maximum size allowed is ' + maxSize / 1000 + 'Mb';
 
             return false;
         }
 
-        if (!_.includes(allowed_types, fileInput.target.files[0].type)) {
+        if (!_.includes(allowedTypes, fileInput.target.files[0].type)) {
             this.imageError = 'Only Images are allowed ( JPG | PNG )';
             return false;
         }
@@ -56,11 +63,8 @@ export class ImageUploaderComponent implements OnInit {
         reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
-
-  imgResultBeforeCompress:string;
-  imgResultAfterCompress:string;
-  compressFile(image,fileName) {
-    var orientation = -1;
+  compressFile(image, fileName) {
+    const orientation = -1;
     this.sizeOfOriginalImage = this.imageCompress.byteCount(image)/(1024*1024);
     console.warn('Size in bytes is now:',  this.sizeOfOriginalImage);
 
@@ -72,10 +76,10 @@ export class ImageUploaderComponent implements OnInit {
       this.sizeOFCompressedImage = this.imageCompress.byteCount(result)/(1024*1024)
       console.warn('Size in bytes after compression:',  this.sizeOFCompressedImage);// create file from byte
       const imageName = fileName;// call method that creates a blob from dataUri
-      const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);//imageFile created below is the new compressed file which can be send to API in form dataconst imageFile = new File([result], imageName, { type: 'image/jpeg' });
-      
+      const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);
+      //imageFile created below is the new compressed file which can be send to API in form dataconst imageFile = new File([result], imageName, { type: 'image/jpeg' });
     });
-    
+
   }
 
   dataURItoBlob(dataURI) {
@@ -84,7 +88,7 @@ export class ImageUploaderComponent implements OnInit {
   const int8Array = new Uint8Array(arrayBuffer);for (let i = 0; i < byteString.length; i++) {
   int8Array[i] = byteString.charCodeAt(i);
   }
-  
+
   const blob = new Blob([int8Array], { type: 'image/jpeg' });
     return blob;
   }

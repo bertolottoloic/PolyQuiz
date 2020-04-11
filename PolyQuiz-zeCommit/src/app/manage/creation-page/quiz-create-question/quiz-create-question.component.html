@@ -8,7 +8,7 @@
             <input class="input-custom" type="text" id="name" [formControlName]="'name'">
             </label>
             <br>
-           
+
             <label for="Theme">
                 <br/>
                 Theme <br>
@@ -17,10 +17,8 @@
                 </select>
             </label>
             <button (click)="openTheme()">add theme</button>
-            <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
-            <img *ngIf="quiz.image"  src={{quiz.image}} alt=" image quiz">
-
         </form>
+        <app-image-uploader (cardImageBase64Event)="receiveImg($event)" [imageLoad]="image"></app-image-uploader>
     </div>
     <div class="questions col-md-6">
         <div *ngFor="let question of quiz.questions">

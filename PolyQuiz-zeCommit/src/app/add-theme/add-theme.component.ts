@@ -12,54 +12,54 @@ import { Observable } from 'rxjs';
   styleUrls: ['./add-theme.component.css']
 })
 export class AddThemeComponent {
-  public themeToChange:Theme;
+  public themeToChange: Theme;
   public themeForm: FormGroup;
-  public themeCreated$:Observable<Theme>;
-  private image:string;
+  public themeCreated$: Observable<Theme>;
+  public loadImage: string;
+  private image: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, public formBuilder:FormBuilder,public themeService:ThemeService,
-    public dialogRef: MatDialogRef<AddThemeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) {
-      if(data.theme){
-        this.themeToChange=data.theme;
+  constructor(private router: Router, private route: ActivatedRoute, public formBuilder: FormBuilder, public themeService: ThemeService,
+              public dialogRef: MatDialogRef<AddThemeComponent>,
+              @Inject(MAT_DIALOG_DATA) public data) {
+      if (data.theme) {
+        this.themeToChange = data.theme;
+        this.loadImage = this.themeToChange.image;
         this.themeForm = this.formBuilder.group({
-          name:[this.themeToChange.name,Validators.required],
+          name: [this.themeToChange.name, Validators.required],
         });
-      }
-      else{
+      } else {
         this.themeForm = this.formBuilder.group({
-          name:['',Validators.required],
+          name: ['', Validators.required],
         });
       }
     }
 
-  addTheme():void{
+  addTheme(): void {
     const themeToCreate: Theme = this.themeForm.getRawValue() as Theme;
-    if(this.image!=null){
-      themeToCreate.image=this.image;
+    if (this.image != null) {
+      themeToCreate.image = this.image;
     }
-    if(this.themeToChange){
-      themeToCreate.id=this.themeToChange.id
+    if (this.themeToChange) {
+      themeToCreate.id = this.themeToChange.id;
       this.themeCreated$ = this.themeService.editTheme(themeToCreate);
-    }
-    else{
+    } else {
       this.themeCreated$ = this.themeService.addTheme(themeToCreate);
     }
-    this.themeCreated$.subscribe((result)=>{
+    this.themeCreated$.subscribe((result) => {
       this.themeService.setThemesFromUrl();
       this.close();
-    }) 
+    });
   }
 
   onNoClick(): void {
     this.close();
   }
-  close():void{
+  close(): void {
     this.dialogRef.close();
   }
 
-  receiveImg(img:string){
-    this.image=img;
+  receiveImg(img: string) {
+    this.image = img;
   }
 
 }

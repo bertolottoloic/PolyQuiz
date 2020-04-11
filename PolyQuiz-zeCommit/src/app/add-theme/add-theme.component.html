@@ -6,4 +6,4 @@
     <button type="submit" [class]="!themeForm.valid? 'btn btn-danger':'btn btn-success' " [disabled]="!themeForm.valid" (click)="addTheme()">Valider</button>
 
 </form>
-<app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
+<app-image-uploader (cardImageBase64Event)="receiveImg($event)" [imageLoad]="loadImage"></app-image-uploader>
