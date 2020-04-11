@@ -11,7 +11,6 @@
     height: auto;
     width: 30%;
     padding: 10px;
-    min-height:175px;
 }
 
 .img-space img {
@@ -23,14 +22,14 @@
 }
 
 .fileInputProfileWrap {
-    width: 100%;
-    height: auto;
+    max-width: 45%;
+    max-height: 25%;
 }
 
 .fileInputProfile {
     position: absolute;
     height: 20%;
-    width: auto;
+    width: 14%;
     z-index: 99;
     opacity: 0;
 }
@@ -38,3 +37,4 @@
     pointer-events: none;
     cursor: not-allowed!important;
 }
+
