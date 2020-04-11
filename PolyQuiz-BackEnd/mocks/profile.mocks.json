@@ -7,27 +7,6 @@
     "id": 1584902873502
   },
   {
-    "lastName": "Deschamps",
-    "firstName": "Didier",
-    "trouble": "Memoire",
-    "image": "../../../assets/img/profil/didier-deschamps.jpeg",
-    "id": 1584902873501
-  },
-  {
-    "lastName": "Favreau",
-    "firstName": "Jean-Paul",
-    "trouble": "Memoire",
-    "image": "../../../assets/img/profil/profil4.jpg",
-    "id": 1584902882676
-  },
-  {
-    "lastName": "Lepers",
-    "firstName": "Julien",
-    "trouble": "Memoire",
-    "image": "../../../assets/img/profil/julien-lepers.jpg",
-    "id": 1584902882675
-  },
-  {
     "lastName": "Loiselle",
     "firstName": "Yohan",
     "trouble": "Vue",

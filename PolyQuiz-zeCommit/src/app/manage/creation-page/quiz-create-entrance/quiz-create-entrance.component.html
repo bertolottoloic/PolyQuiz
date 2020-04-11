@@ -13,7 +13,6 @@
           <option *ngFor="let theme of themes" [value]="theme.id">{{theme.name}}</option>
       </select>
     </label>
-    <button (click)="openDialog()">add theme</button>
     <br/>
     <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
     <br/>
@@ -22,6 +21,8 @@
   </div>
   <div *ngIf="themes" class="col-md-6">
     <p>Gestion des thèmes :</p>
+    <button (click)="openDialog()">add theme</button>
+
     <div *ngFor="let theme of themes">
       <div *ngIf="theme.id!=0">
         <p>{{theme.name}}</p>
@@ -29,5 +30,6 @@
         <button class="btn btn-danger" (click)="deleteTheme(theme)"> supprimer </button>
       </div>
     </div>
+    
   </div>
 </div>

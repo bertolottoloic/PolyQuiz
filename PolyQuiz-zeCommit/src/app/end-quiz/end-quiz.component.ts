@@ -11,15 +11,15 @@ import { Quiz } from '../models/quiz.models';
 })
 export class EndQuizComponent extends Trouble implements OnInit {
 
-  @Input() quiz:Quiz;
+  @Input() quiz: Quiz;
   @Input() stats: StatMemory;
 
-  constructor(public router: Router) { 
-    super(router)
+  constructor(public router: Router) {
+    super(router);
   }
 
   ngOnInit() {
-    console.log(this.stats)
+    console.log(this.stats);
 
   }
 
