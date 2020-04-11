@@ -40,6 +40,7 @@ import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.c
 import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
 import { DisplayWindowComponent } from './display-window/display-window.component';
 import { PopUpDeleteComponent } from './pop-up-delete/pop-up-delete.component';
+import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { PopUpDeleteComponent } from './pop-up-delete/pop-up-delete.component';
     EditProfileComponent,
     DisplayWindowComponent,
     PopUpDeleteComponent,
-    
+    DisplayQuizComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,7 @@ import { PopUpDeleteComponent } from './pop-up-delete/pop-up-delete.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    
+
   ],
   providers: [
     NgxImageCompressService,
@@ -95,9 +97,9 @@ import { PopUpDeleteComponent } from './pop-up-delete/pop-up-delete.component';
       provide: MatDialogRef,
       useValue: {}
     },
-    
+
   ],
-  entryComponents: [PopUpDeleteComponent,PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
+  entryComponents: [DisplayQuizComponent,PopUpDeleteComponent,PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
 
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,15 @@
+<div class='window'>
+  <p>{{quiz.name}} - {{quiz.theme.name}}</p>
+  <img *ngIf="quiz.image" src={{quiz.image}}>
+  <div class="row">
+    <div class="question" *ngFor="let quest of quiz.questions">
+      <p> Question : {{quest.text}}</p>
+      <div class='answer' *ngFor="let answer of quest.answers">
+        <p [style.color]="answer.isCorrect? 'green':'red'">
+          - {{answer.text}}
+          <img *ngIf="answer.image" src={{answer.image}}>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <app-navbar title="Gestion des quiz" [trouble]="trouble"></app-navbar>
-<div class="row">   
+<div class="row">
     <div class="menu col-md-2">
         <div class="row">
             <button class="btn btn-primary" routerLink="create">Ajouter un quiz</button>
@@ -24,13 +24,13 @@
                               <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
                             </div>
                             <div class="cardBot">
-                              <p>{{ quiz.name }}-{{ quiz.theme }}</p>
+                              <p>{{ quiz.name }}-{{ quiz.theme.name }}</p>
                             </div>
                           </div>
                         </button>
                     </div>
                 </div>
-            </div>          
+            </div>
         </div>
     </div>
-</div> 
+</div>
