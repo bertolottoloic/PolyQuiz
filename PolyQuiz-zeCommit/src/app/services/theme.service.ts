@@ -28,7 +28,7 @@ export class ThemeService {
   }
 
   editTheme(theme:Theme){
-    return this.http.post<Theme>(this.URL+"/"+(theme.id), theme, this.httpOptions)
+    return this.http.put<Theme>(this.URL+"/"+(theme.id).toString(), theme, this.httpOptions)
   }
 
   deleteTheme(id: string) {

@@ -64,7 +64,10 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
       this.quizId=result.id;
       this.router.navigate([this.quizId], { relativeTo: this.route })
     }) 
-    
+  }
+
+  deleteTheme(theme:Theme){
+    this.themeService.deleteTheme((theme.id).toString()).subscribe(()=>this.themeService.setThemesFromUrl())
   }
 
   openDialog() {

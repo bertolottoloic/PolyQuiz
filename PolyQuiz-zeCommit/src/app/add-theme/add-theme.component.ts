@@ -14,7 +14,6 @@ import { Observable } from 'rxjs';
 export class AddThemeComponent {
   public themeToChange:Theme;
   public themeForm: FormGroup;
-  public themeCreated:Theme;
   public themeCreated$:Observable<Theme>;
   private image:string;
 
@@ -24,7 +23,7 @@ export class AddThemeComponent {
       if(data.theme){
         this.themeToChange=data.theme;
         this.themeForm = this.formBuilder.group({
-          name:[data.theme.name,Validators.required],
+          name:[this.themeToChange.name,Validators.required],
         });
       }
       else{
@@ -39,8 +38,8 @@ export class AddThemeComponent {
     if(this.image!=null){
       themeToCreate.image=this.image;
     }
-    this.themeCreated=themeToCreate
     if(this.themeToChange){
+      themeToCreate.id=this.themeToChange.id
       this.themeCreated$ = this.themeService.editTheme(themeToCreate);
     }
     else{
