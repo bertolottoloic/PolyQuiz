@@ -57,6 +57,7 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     else{
     quizToCreate.image = this.image;
   }
+    console.log(quizToCreate)
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result)=>{
       this.quizListService.setQuizzesFromUrl();
@@ -67,7 +68,10 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
   }
 
   deleteTheme(theme:Theme){
-    this.themeService.deleteTheme((theme.id).toString()).subscribe(()=>this.themeService.setThemesFromUrl())
+    this.themeService.deleteTheme((theme.id).toString()).subscribe(()=>{
+      this.themeService.setThemesFromUrl();
+      this.quizListService.setQuizzesFromUrl();
+    })
   }
 
   openDialog() {
