@@ -1,16 +1,15 @@
 <app-navbar title="Selectionnez un profil pour lancer un quiz" [trouble]="trouble" [Back]="false"></app-navbar>
 
 <div class="row">
-    <div class="col-md-3">
-
-        <app-menu></app-menu>
-
-    </div>
-
-    <div class="profileList col-md-9">
-      <input #box (keyup)="onKey(box.value)">
+  <div class="col-md-2">
+    <app-menu></app-menu>
+  </div>
+  <div class="profileList col-md-10">
+    <input class="filter" #box (keyup)="onKey(box.value)">
+    <div class="profiles">
       <app-profile-list [filter]="value"></app-profile-list>
     </div>
+  </div>
 </div>
 
 

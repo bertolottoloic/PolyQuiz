@@ -1,15 +1,10 @@
 .quizeBox {
     margin : 10px 0px 0px 10px;
-  
+
 }
 
 .main {
-    overflow:auto;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    width: 50%;
-    height: 80%;
-    border : 2px solid black;
+  background-color: antiquewhite;
+  display: flex;
 }
 

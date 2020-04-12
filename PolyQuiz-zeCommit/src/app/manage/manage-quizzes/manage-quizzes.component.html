@@ -1,25 +1,22 @@
 <app-navbar title="Gestion des quiz" [trouble]="trouble"></app-navbar>
 <div class="row">
     <div class="menu col-md-2">
-        <div class="row">
-            <button class="btn btn-primary" routerLink="create">Ajouter un quiz</button>
-        </div>
-        <div class="row">
-            <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
-            class="btn btn-primary" (click)="changeState('modify')">Modifier un quiz</button>
-        </div>
-        <div class="row">
-            <button [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
-            (click)="changeState('delete')">Supprimer un quiz</button>
-        </div>
+      <button class="btn btn-primary" routerLink="create">Ajouter un quiz</button>
+
+      <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
+      class="btn btn-primary" (click)="changeState('modify')">Modifier un quiz</button>
+
+      <button [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
+      (click)="changeState('delete')">Supprimer un quiz</button>
+
     </div>
-    <div class="col-md-10">
+    <div class="quizzes col-md-10">
       <input #box (keyup)="onKey(box.value)">
-        <div class="quizToChange" *ngIf="quizList">
+        <div class="quizlist" *ngIf="quizList">
             <div  *ngFor="let quiz of quizList">
                 <div class="quizBox">
-                    <div>
-                        <button type="button"(click)="action(quiz)">
+
+                        <button class="btn" type="button"(click)="action(quiz)">
                           <div class="card" >
                             <div class="cardTop">
                               <img class="card-img-top" src={{quiz.image}} alt="Card image cap">
@@ -29,7 +26,7 @@
                             </div>
                           </div>
                         </button>
-                    </div>
+
                 </div>
             </div>
         </div>

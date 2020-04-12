@@ -1,8 +1,13 @@
 <app-navbar title="Selectionnez un quiz" [trouble]="trouble" path="../.."></app-navbar>
 
-<div>
-    <div class="quizList">
-      <input #box (keyup)="onKey(box.value)">
+<div class="row">
+  <div class="col-md-2">
+    <app-menu></app-menu>
+  </div>
+  <div class=" quizlist col-md-10">
+    <input #box (keyup)="onKey(box.value)">
+    <div class="quizzes">
       <app-quiz-list [filter]="value"></app-quiz-list>
     </div>
+  </div>
 </div>
