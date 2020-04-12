@@ -24,51 +24,27 @@
     "id": 1586617758043
   },
   {
+    "id": 1586621399338,
     "text": "a",
     "isCorrect": false,
-    "questionId": 1586621399335,
-    "id": 1586621399338
+    "questionId": 1586621399335
   },
   {
+    "id": 1586621399340,
     "text": "azddzdzdzdzdzfef'",
     "isCorrect": false,
-    "questionId": 1586621399335,
-    "id": 1586621399340
+    "questionId": 1586621399335
   },
   {
+    "id": 1586621399341,
     "text": "azddzdzdzdzdzfef'",
     "isCorrect": true,
-    "questionId": 1586621399335,
-    "id": 1586621399341
+    "questionId": 1586621399335
   },
   {
+    "id": 1586621399342,
     "text": "azddzdzdzdzdzfef'",
     "isCorrect": false,
-    "questionId": 1586621399335,
-    "id": 1586621399342
-  },
-  {
-    "text": "azddzdzdzdzdzfef'dzedzdzd",
-    "isCorrect": true,
-    "questionId": 1586621411076,
-    "id": 1586621411078
-  },
-  {
-    "text": "azddzdzdzdzdzfef'dzedzdzd",
-    "isCorrect": false,
-    "questionId": 1586621411076,
-    "id": 1586621411079
-  },
-  {
-    "text": "azddzdzdzdzdzfef'dzedzdzd",
-    "isCorrect": false,
-    "questionId": 1586621411076,
-    "id": 1586621411080
-  },
-  {
-    "text": "azddzdzdzdzdzfef'dzedzdzd",
-    "isCorrect": false,
-    "questionId": 1586621411076,
-    "id": 1586621411082
+    "questionId": 1586621399335
   }
 ]

@@ -17,14 +17,14 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   public answers: FormArray;
   public quizId:number;
   question:Question;
-  
-  
-  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService,public route:ActivatedRoute,public router:Router) { 
+  public imageQuestion:string;
+
+  constructor(public formBuilder:FormBuilder, public quizListService:QuizListService,public route:ActivatedRoute,public router:Router) {
     this.route.paramMap.subscribe(params => {
       if(params!=null){
         this.quizId = Number(params.get('quizId'))}
     })
-    
+
   }
 
   ngOnInit() {
@@ -39,12 +39,12 @@ export class QuizCreateQuestionPageComponent implements OnInit {
       this.initializeQuestionForm();
     }
   }
-  
+
   controlRightAnswer():boolean{
     let nbTrue=0;
     this.answers.value.forEach(element => {
       if(element.isCorrect==true){
-        nbTrue++;      
+        nbTrue++;
       }
     });
     return nbTrue>0?true:false;
@@ -81,8 +81,10 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   changeQuestion() {
     if(this.questionForm.valid) {
       const question=this.questionForm.getRawValue();
+      question.image=this.questionForm.value.image
+
       let validQuestion:any;
-       if( this.question.image ) validQuestion = question;
+       if( this.question.image||this.imageQuestion ) validQuestion = question;
        else validQuestion = {text:question.text,quizId:question.quizId,answers:question.answers}
       validQuestion.id = this.question.id;
       this.quizListService.editQuestion(this.quizId, validQuestion);
@@ -107,6 +109,9 @@ export class QuizCreateQuestionPageComponent implements OnInit {
       image:[this.question.image],
       answers: this.formBuilder.array([this.fillAnswer(this.question.answers[0])]),
     });
+    if(this.question.image){
+      this.imageQuestion=this.question.image
+    }
     this.fillAnswers();
 
   }
@@ -135,6 +140,11 @@ export class QuizCreateQuestionPageComponent implements OnInit {
   {
   	return (this.questionForm.controls.text.errors!=null);
   }
- 
+  receiveImg(img: string) {
+    this.imageQuestion = img;
+    this.questionForm.value.image=img;
+
+  }
+
 
 }
