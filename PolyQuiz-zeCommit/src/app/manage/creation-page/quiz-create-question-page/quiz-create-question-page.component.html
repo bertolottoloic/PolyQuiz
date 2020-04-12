@@ -1,4 +1,4 @@
-<app-navbar title="Création d'un quiz" [trouble]="trouble"></app-navbar>
+<app-navbar title="Création d'un quiz" [trouble]="trouble" [path]="questId?'../..':'..'"></app-navbar>
 
 <form [formGroup]="questionForm" *ngIf="quizId">
     <div class="form-group has-error">
@@ -13,11 +13,25 @@
         <p *ngIf="invalidQuestion()" id="text" class="help-block">champ vide *.</p>
 
     </div>
+    <form [formGroup]="questionType">
+      <div class="control">
+        <label for="texte">Texte
+
+        <input type="radio" id="text" [formControlName]="'type'" [formTarget] value="text">
+      </label>
+      <label for="image">Image
+
+        <input type="radio" id="image" [formControlName]="'type'" value="image">
+      </label>
+      </div>
+    </form>
     <div formArrayName="answers" *ngFor="let elm of formData.controls; let i = index" >
         <div class="form-group has-error" [formGroupName]="i">
-            <label for="titre"  >
+            <label for="titre">
                 Réponse {{ i+1 }} <br/>
-                <input type="text" id="text" [formControlName]="'text'">
+                <input *ngIf="questionType.value.type=='text'" type="text" id="text" [formControlName]="'text'">
+                <app-image-uploader *ngIf="questionType.value.type=='image'" (cardImageBase64Event)="receiveImgAnsw($event,elm)" [imageLoad]="elm.value.image"></app-image-uploader>
+
             </label>
             <label for="isCorrect">
                 Réponse vraie

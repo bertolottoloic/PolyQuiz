@@ -59,7 +59,7 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
   }
 
   edit(question: Question) {
-    this.router.navigate(['add-question', {quest: JSON.stringify(question)}], { relativeTo: this.route });
+    this.router.navigate(['add-question/'+question.id], { relativeTo: this.route });
 
   }
 

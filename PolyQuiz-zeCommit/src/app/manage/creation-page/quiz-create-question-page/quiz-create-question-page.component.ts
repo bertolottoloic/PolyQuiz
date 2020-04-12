@@ -4,6 +4,8 @@ import { QuizListService } from 'src/app/services/quizList.service';
 import { Answer } from 'src/app/models/answer.models';
 import { Question } from 'src/app/models/question.models';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatRadioModule} from '@angular/material/radio';
+import { Trouble } from 'src/app/models/trouble.models';
 
 
 @Component({
@@ -11,27 +13,43 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './quiz-create-question-page.component.html',
   styleUrls: ['./quiz-create-question-page.component.css']
 })
-export class QuizCreateQuestionPageComponent implements OnInit {
+export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
 
   public questionForm: FormGroup;
+  public questionType: FormGroup;
   public answers: FormArray;
   public quizId:number;
+  public questId:number;
   question:Question;
   public imageQuestion:string;
+  public type:string;
 
   constructor(public formBuilder:FormBuilder, public quizListService:QuizListService,public route:ActivatedRoute,public router:Router) {
+    super(router)
+    this.questionType=this.formBuilder.group({
+      type: ['text'],
+    });
     this.route.paramMap.subscribe(params => {
       if(params!=null){
-        this.quizId = Number(params.get('quizId'))}
+        this.quizId = Number(params.get('quizId'))
+        this.questId= Number(params.get('questionId'))
+        if(this.questId){
+        this.quizListService.quizzes$.subscribe((value)=>{
+          if(value){
+            const quiz = value.find((val)=>val.id==this.quizId)
+            if(quiz){
+              this.question=quiz.questions.find((ques)=>ques.id==this.questId)
+              this.fillQuestionForm();
+            }
+          }
+        })
+      }
+    }
     })
 
   }
 
   ngOnInit() {
-    this.route.paramMap
-    .subscribe(params => {
-      this.question=JSON.parse(params.get('quest')) as Question;
-    });
     if(this.question){
       this.fillQuestionForm();
     }
@@ -55,7 +73,8 @@ export class QuizCreateQuestionPageComponent implements OnInit {
 
   createAnswer(): FormGroup {
     return this.formBuilder.group({
-      text: ['',Validators.required],
+      text: [''],
+      image:[''],
       isCorrect: [false],
     });
   }
@@ -89,7 +108,7 @@ export class QuizCreateQuestionPageComponent implements OnInit {
       validQuestion.id = this.question.id;
       this.quizListService.editQuestion(this.quizId, validQuestion);
       this.initializeQuestionForm();
-      this.router.navigate(["../"],{ relativeTo: this.route })
+      this.router.navigate(["../.."],{ relativeTo: this.route })
 
     }
   }
@@ -128,7 +147,7 @@ export class QuizCreateQuestionPageComponent implements OnInit {
       text: [answer.text],
       isCorrect: [answer.isCorrect],
       id: [answer.id],
-      // image: [(answer.image)?answer.image:""]
+      image: [answer.image]
     });
   }
 
@@ -144,6 +163,10 @@ export class QuizCreateQuestionPageComponent implements OnInit {
     this.imageQuestion = img;
     this.questionForm.value.image=img;
 
+  }
+  receiveImgAnsw($img:string,elm){
+    elm.value.image=$img;
+    console.log(this.questionForm)
   }
 
 
