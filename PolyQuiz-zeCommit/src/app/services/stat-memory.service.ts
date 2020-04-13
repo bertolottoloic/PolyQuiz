@@ -13,11 +13,11 @@ export class ThemeService {
 
   public stats: StatMemory[];
 
-  private URL : string = serverUrl+"/stat-memory";
+  private URL: string = serverUrl + '/stat-memory';
   public stats$: BehaviorSubject<StatMemory[]> = new BehaviorSubject(this.stats);
   private httpOptions = httpOptionsBase;
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.setStatsFromUrl();
   }
 
