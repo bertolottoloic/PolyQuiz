@@ -30,12 +30,13 @@
             <label for="titre">
                 Réponse {{ i+1 }} <br/>
                 <input *ngIf="questionType.value.type=='text'" type="text" id="text" [formControlName]="'text'">
+
                 <app-image-uploader *ngIf="questionType.value.type=='image'" (cardImageBase64Event)="receiveImgAnsw($event,elm)" [imageLoad]="elm.value.image"></app-image-uploader>
 
             </label>
             <label for="isCorrect">
-                Réponse vraie
                 <input type="checkbox" id="isCorrect" [formControlName]="'isCorrect'">
+                Réponse vraie
             </label>
             <p *ngIf="invalidAnswer(i)" id="text" class="help-block">champ vide *.</p>
 

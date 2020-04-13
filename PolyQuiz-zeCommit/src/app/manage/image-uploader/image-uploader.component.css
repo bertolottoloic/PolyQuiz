@@ -44,6 +44,11 @@
     cursor: not-allowed!important;
 }
 
+.image-uploader{
+  width:90px;
+  height:90px;
+  margin:10px;
+}
 
 
 
