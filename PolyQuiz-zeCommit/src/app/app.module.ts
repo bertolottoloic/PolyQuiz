@@ -40,6 +40,7 @@ import { EditProfileComponent } from './manage/edit-profile/edit-profile.compone
 import { DisplayWindowComponent } from './visualisation/display-window/display-window.component';
 import { PopUpDeleteComponent } from './pop-up/pop-up-delete/pop-up-delete.component';
 import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.component';
+import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.
     DisplayWindowComponent,
     PopUpDeleteComponent,
     DisplayQuizComponent,
+    FiltreQuizComponent,
 
   ],
   imports: [

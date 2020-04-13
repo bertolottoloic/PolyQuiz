@@ -13,7 +13,7 @@ import { Trouble } from 'src/app/models/trouble.models';
 export class QuizListComponent extends Trouble implements OnChanges {
 
   @Input() filter;
-
+  @Input() filterTheme;
   public quizList: Quiz[] = [];
   public noFilterQuizList:Quiz[]=[];
 
@@ -34,6 +34,11 @@ export class QuizListComponent extends Trouble implements OnChanges {
       this.filter=this.filter.toLowerCase();
       this.quizList=this.noFilterQuizList.filter(
         quiz => quiz.name.toLowerCase().match(this.filter)||quiz.theme.name.toLowerCase().match(this.filter))
+    }
+    else if(this.filterTheme!=0&&this.filterTheme){
+      this.filterTheme=this.filterTheme;
+      this.quizList=this.noFilterQuizList.filter(
+        quiz => quiz.theme.id==this.filterTheme)
     }
     else{
         this.quizList=this.noFilterQuizList;

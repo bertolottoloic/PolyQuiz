@@ -2,12 +2,11 @@
 
 <div class="row">
   <div class="col-md-2">
-    <app-menu></app-menu>
+    <app-filtre-quiz (filterTheme)="applyFilterTheme($event)" (filterName)="applyFilterName($event)"></app-filtre-quiz>
   </div>
   <div class=" quizlist col-md-10">
-    <input #box (keyup)="onKey(box.value)">
     <div class="quizzes">
-      <app-quiz-list [filter]="value"></app-quiz-list>
+      <app-quiz-list [filterTheme]="valueTheme" [filter]="value"></app-quiz-list>
     </div>
   </div>
 </div>

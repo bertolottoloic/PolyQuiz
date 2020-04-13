@@ -10,6 +10,7 @@ import { Trouble } from 'src/app/models/trouble.models';
 })
 export class QuizListPageComponent extends Trouble implements OnInit {
   public value:string;
+  public valueTheme:string;
 
   constructor(public router: Router) {
     super(router)
@@ -20,6 +21,16 @@ export class QuizListPageComponent extends Trouble implements OnInit {
 
   onKey(value: string) {
     this.value=value
+  }
+
+  applyFilterName($event){
+    this.value=$event;
+
+  }
+
+  applyFilterTheme($event){
+    this.valueTheme=$event;
+    console.log($event)
   }
 
 }

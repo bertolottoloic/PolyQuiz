@@ -24,14 +24,21 @@ p {
   width: 100%;
 }
 
-input{
-  margin:10px;
-}
+
 
 .profiles{
   width:100%;
 }
 
+.col-md-2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:0px;
+  background-color: rgba(110, 155, 194, 0.986);
+
+}
 
 
 

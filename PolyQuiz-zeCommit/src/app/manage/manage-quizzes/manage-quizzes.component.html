@@ -1,6 +1,8 @@
 <app-navbar title="Gestion des quiz" [trouble]="trouble"></app-navbar>
 <div class="row">
     <div class="menu col-md-2">
+      <app-filtre-quiz (filterName)="applyFilterName($event)" (filterTheme)="applyFilterTheme($event)"></app-filtre-quiz>
+      <br>
       <button class="btn btn-primary" routerLink="create">Ajouter un quiz</button>
 
       <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
@@ -11,7 +13,6 @@
 
     </div>
     <div class="quizzes col-md-10">
-      <input #box (keyup)="onKey(box.value)">
         <div class="quizlist" *ngIf="quizList">
             <div *ngFor="let quiz of quizList">
                 <div class="quizBox">

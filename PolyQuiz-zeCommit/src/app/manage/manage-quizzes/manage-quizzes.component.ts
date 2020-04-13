@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/models/quiz.models';
@@ -21,6 +21,7 @@ export enum State {
 
 export class ManageQuizzesComponent extends Trouble implements OnInit {
 
+  public filterTheme:number;
   public filter:string;
   public state = State.None;
   public quizList: Quiz[];
@@ -71,14 +72,28 @@ export class ManageQuizzesComponent extends Trouble implements OnInit {
     }
   }
 
-  onKey(value: string) {
-    this.filter=value.toLowerCase();
+  applyfilter(): void {
     if(this.filter){
       this.quizList=this.noFilterQuizList.filter(
         quiz => quiz.name.toLowerCase().match(this.filter)||quiz.theme.name.toLowerCase().match(this.filter))
     }
+    else if(this.filterTheme!=0&&this.filterTheme){
+      this.quizList=this.noFilterQuizList.filter(
+        quiz => quiz.theme.id==this.filterTheme)
+    }
     else{
         this.quizList=this.noFilterQuizList
     }
+  }
+
+  applyFilterTheme($event){
+    this.filterTheme=$event
+    this.applyfilter()
+  }
+
+  applyFilterName($event){
+    this.filter=$event
+    this.applyfilter()
+
   }
 }

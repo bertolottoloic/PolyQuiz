@@ -1,6 +1,9 @@
 <app-navbar title="Gestion des profils" [trouble]="trouble"></app-navbar>
 <div class="row">
     <div class="menu col-md-2">
+      <p>Filtre</p>
+            <input #box (keyup)="onKey(box.value)">
+
             <button class="btn btn-primary" routerLink="create">Ajouter un profil</button>
 
             <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
@@ -9,9 +12,8 @@
             <button  [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
             (click)="changeState('delete')">Supprimer un profil</button>
     </div>
-    <div class="profiles col-md-10">
-      <input #box (keyup)="onKey(box.value)">
-        <div class="profileList" *ngIf="profileList">
+    <div class="profiles  col-md-10">
+        <div class="profileList " *ngIf="profileList">
             <div *ngFor="let profile of profileList">
                 <div class="profileBox">
                     <div (click)="action(profile)">
