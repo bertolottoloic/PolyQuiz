@@ -22,7 +22,6 @@ export class ImageUploaderComponent implements OnInit {
   sizeOFCompressedImage: number;
   @Output() cardImageBase64Event = new EventEmitter<string>();
   @Input() imageLoad: string;
-  // tslint:disable-next-line: member-ordering
   imgResultBeforeCompress: string;
   imgResultAfterCompress: string;
 
@@ -33,7 +32,7 @@ export class ImageUploaderComponent implements OnInit {
   fileChangeEvent(fileInput: any) {
     let fileName: any;
     this.file = fileInput.target.files[0];
-    fileName = this.file['name'];
+    fileName = this.file.name;
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
         // Size Filter Bytes
@@ -57,7 +56,7 @@ export class ImageUploaderComponent implements OnInit {
         reader.onload = (e: any) => {
             const image = new Image();
             this.localUrl = e.target.result;
-            this.compressFile(this.localUrl,fileName);
+            this.compressFile(this.localUrl, fileName);
             this.isImageSaved = true;
         };
         reader.readAsDataURL(fileInput.target.files[0]);
@@ -65,7 +64,7 @@ export class ImageUploaderComponent implements OnInit {
   }
   compressFile(image, fileName) {
     const orientation = -1;
-    this.sizeOfOriginalImage = this.imageCompress.byteCount(image)/(1024*1024);
+    this.sizeOfOriginalImage = this.imageCompress.byteCount(image) / (1024 * 1024);
     console.warn('Size in bytes is now:',  this.sizeOfOriginalImage);
 
     this.imageCompress.compressFile(image, orientation, 40, 50).then(
@@ -73,11 +72,11 @@ export class ImageUploaderComponent implements OnInit {
       this.imgResultAfterCompress = result;
       this.localCompressedURl = result;
       this.cardImageBase64Event.emit(result);
-      this.sizeOFCompressedImage = this.imageCompress.byteCount(result)/(1024*1024)
-      console.warn('Size in bytes after compression:',  this.sizeOFCompressedImage);// create file from byte
-      const imageName = fileName;// call method that creates a blob from dataUri
+      this.sizeOFCompressedImage = this.imageCompress.byteCount(result) / (1024 * 1024);
+      console.warn('Size in bytes after compression:',  this.sizeOFCompressedImage); // create file from byte
+      const imageName = fileName; // call method that creates a blob from dataUri
       const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);
-      //imageFile created below is the new compressed file which can be send to API in form dataconst imageFile = new File([result], imageName, { type: 'image/jpeg' });
+      // imageFile created below is the new compressed file which can be send to API in form dataconst imageFile = new File([result], imageName, { type: 'image/jpeg' });
     });
 
   }
@@ -85,12 +84,12 @@ export class ImageUploaderComponent implements OnInit {
   dataURItoBlob(dataURI) {
   const byteString = window.atob(dataURI);
   const arrayBuffer = new ArrayBuffer(byteString.length);
-  const int8Array = new Uint8Array(arrayBuffer);for (let i = 0; i < byteString.length; i++) {
+  const int8Array = new Uint8Array(arrayBuffer); for (let i = 0; i < byteString.length; i++) {
   int8Array[i] = byteString.charCodeAt(i);
   }
 
   const blob = new Blob([int8Array], { type: 'image/jpeg' });
-    return blob;
+  return blob;
   }
 
 }

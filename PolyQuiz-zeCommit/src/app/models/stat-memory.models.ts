@@ -6,13 +6,13 @@ export class StatMemory extends Stat {
 
   trial: Map<number, number>;
 
-  constructor(quizz: Quiz,profile:Profile) {
-    super(quizz,profile);
+  constructor(quizz: Quiz, profile: Profile) {
+    super(quizz, profile);
     this.trial = new Map();
     this.initStats(quizz);
   }
 
-  initStats(quiz:Quiz) {
+  initStats(quiz: Quiz) {
     quiz.questions.forEach(element => {
       this.trial.set(element.id, 0);
     });

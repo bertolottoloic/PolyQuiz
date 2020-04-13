@@ -24,9 +24,7 @@
 
 .fileInputProfileWrap {
     max-width: 65%;
-    max-height: 25%;
-    /* min-width: 14%;
-    min-height: 20%; */
+    /* max-height: 25%; */
 }
 
 .fileInputProfile {
@@ -41,6 +39,8 @@
     pointer-events: none;
     cursor: not-allowed!important;
 }
+
+
 
 
 
