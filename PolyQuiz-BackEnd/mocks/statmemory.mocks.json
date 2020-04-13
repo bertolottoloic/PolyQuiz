@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "quizId": 1586617751670,
+    "profileId": 1586373824310,
+    "score": 0,
+    "time": 3645,
+    "questionsDone": [
+      1586617758038,
+      1586621399335
+    ],
+    "nbRightAnswers": 0,
+    "nbWrongAnswers": 0,
+    "trial": {
+      "1586617758038": 4,
+      "1586621399335": 2
+    },
+    "id": 1586791541970
+  },
+  {
+    "quizId": 1586617751670,
+    "profileId": 1586417629373,
+    "score": 0,
+    "time": 3180,
+    "questionsDone": [
+      1586617758038,
+      1586621399335
+    ],
+    "nbRightAnswers": 0,
+    "nbWrongAnswers": 0,
+    "trial": {
+      "1586617758038": 4,
+      "1586621399335": 3
+    },
+    "id": 1586793163571
+  },
+  {
+    "quizId": 1586793701032,
+    "profileId": 1586373824310,
+    "score": 0,
+    "time": 1617,
+    "questionsDone": [
+      1586794987483
+    ],
+    "nbRightAnswers": 0,
+    "nbWrongAnswers": 0,
+    "trial": {
+      "1586794987483": 2
+    },
+    "id": 1586794997231
+  }
+]

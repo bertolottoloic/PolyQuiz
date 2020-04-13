@@ -38,20 +38,20 @@ router.get('/:questionId', (req, res) => {
   router.post('/', (req, res) => {
     try {
       const quizId = parseInt(req.params.quizId, 10)
-      let question = Question.create({ text:req.body.text, quizId})
+      let question = Question.create({ text:req.body.text, image: req.body.image, quizId})
       if (req.body.answers && req.body.answers.length > 0) {
         var date = Date.now();
         const answers = req.body.answers.map((answer) => {
           while (date == Date.now());
-          Answer.create({ ...answer, questionId: question.id })
+          answerToCreate = {...answer}
+          Answer.create(answerToCreate)
           date = Date.now()
         })
         question = {...question, answers}
       }
       res.status(201).json(question)
     } catch (err) {
-      manageAllErrors(res, err)
-      
+      res.status(500).json(err) 
     }
   })
   

@@ -45,8 +45,6 @@ module.exports = class BaseModel {
   }
 
   create(obj = {}) {
-    console.log("here")
-    console.log(obj)
     const item = { ...obj, id: Date.now() }
     console.log(item)
     const { error } = Joi.validate(item, this.schema)
@@ -61,16 +59,17 @@ module.exports = class BaseModel {
     const prevObjIndex = this.items.findIndex((item) => item.id === id)
     if (prevObjIndex === -1) throw new NotFoundError(`Cannot update ${this.name} id=${id} : not found`)
     const updatedItem = { ...this.items[prevObjIndex], ...obj }
-    let validateUpdatedItem 
-    if(updatedItem.trouble) validateUpdatedItem = {id:updatedItem.id,name:updatedItem.name,themeId:updatedItem.themeId,image:updatedItem.image,trouble:updatedItem.trouble}
-    else if(updatedItem.quizId) validateUpdatedItem = {id:updatedItem.id,text:updatedItem.text,quizId:updatedItem.quizId,image:updatedItem.image}
-    else if(updatedItem.questionId) validateUpdatedItem = {id:updatedItem.id,text:updatedItem.text,isCorrect:updatedItem.isCorrect,questionId:updatedItem.questionId,image:updatedItem.image}
-    else validateUpdatedItem = updatedItem
-    const { error } = Joi.validate(validateUpdatedItem, this.schema)
+    console.log(updatedItem)
+    // let validateUpdatedItem 
+    // if(updatedItem.trouble) validateUpdatedItem = {id:updatedItem.id,name:updatedItem.name,themeId:updatedItem.themeId,image:updatedItem.image,trouble:updatedItem.trouble}
+    // else if(updatedItem.quizId) validateUpdatedItem = {id:updatedItem.id,text:updatedItem.text,quizId:updatedItem.quizId,image:updatedItem.image}
+    // else if(updatedItem.questionId) validateUpdatedItem = {id:updatedItem.id,text:updatedItem.text,isCorrect:updatedItem.isCorrect,questionId:updatedItem.questionId,image:updatedItem.image}
+    // else validateUpdatedItem = updatedItem
+    const { error } = Joi.validate(updatedItem, this.schema)
     if (error) throw new ValidationError(`Update Error : Object ${JSON.stringify(obj)} does not match schema of model ${this.name}`, error)
-    this.items[prevObjIndex] = validateUpdatedItem
+    this.items[prevObjIndex] = updatedItem
     this.save()
-    return validateUpdatedItem
+    return updatedItem
   }
 
   delete(id) {

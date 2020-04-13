@@ -55,6 +55,7 @@ export class QuizListService {
 
   addQuestion(quizId: number, question: Question) {
     const questionUrl = this.URL + '/' + quizId + '/' + this.questionsPath;
+    console.log(question);
     this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => {
       this.setSelectedQuiz(quizId);
       this.setQuizzesFromUrl();
