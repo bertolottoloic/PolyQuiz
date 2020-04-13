@@ -11,25 +11,25 @@ import { Question } from '../models/question.models';
     providedIn: 'root'
 })
 export class QuizListService {
-  private URL : string = serverUrl + "/quizzes";
-  public createPageRoute:string='quiz';
+  private URL: string = serverUrl + '/quizzes';
+  public createPageRoute = 'quiz';
   public createPageRoute$: BehaviorSubject<string> = new BehaviorSubject(this.createPageRoute);
-  public postQuiz:Quiz;
+  public postQuiz: Quiz;
   public postQuiz$: BehaviorSubject<Quiz> = new BehaviorSubject(this.postQuiz);
-  public quizzes: Quiz[]=QUIZ_LIST;
+  public quizzes: Quiz[] = QUIZ_LIST;
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
   public quizSelected$: Subject<Quiz> = new Subject();
   private httpOptions = httpOptionsBase;
   private questionsPath = 'questions';
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.setQuizzesFromUrl();
 
   }
 
 
-  setQuizzesFromUrl(){
-    this.http.get<Quiz[]>(this.URL).subscribe((result) =>{
+  setQuizzesFromUrl() {
+    this.http.get<Quiz[]>(this.URL).subscribe((result) => {
       this.quizzes = result;
       this.quizzes$.next(this.quizzes);
 
@@ -37,7 +37,7 @@ export class QuizListService {
   }
 
   deleteQuiz(quiz: Quiz) {
-    this.http.delete<Quiz>(this.URL+"/"+quiz.id, this.httpOptions).subscribe(() => {
+    this.http.delete<Quiz>(this.URL + '/' + quiz.id, this.httpOptions).subscribe(() => {
       this.setQuizzesFromUrl();
     });
   }
@@ -46,9 +46,9 @@ export class QuizListService {
     return this.http.post<Quiz>(this.URL, quiz, this.httpOptions);
   }
 
-  editQuiz(quiz:Quiz){
+  editQuiz(quiz: Quiz) {
     console.log(quiz);
-   return this.http.put<Quiz>(this.URL+"/"+quiz.id, quiz, this.httpOptions).subscribe(() => {
+    return this.http.put<Quiz>(this.URL + '/' + quiz.id, quiz, this.httpOptions).subscribe(() => {
       this.setQuizzesFromUrl();
     });
   }
@@ -71,7 +71,10 @@ export class QuizListService {
 
   deleteQuestion(quiz: Quiz, question: Question) {
     const questionUrl = this.URL + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
-    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() =>{ this.setSelectedQuiz(quiz.id); this.setQuizzesFromUrl()});
+    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => {
+      this.setSelectedQuiz(quiz.id);
+      this.setQuizzesFromUrl();
+    });
   }
 
   setSelectedQuiz(quizId: number) {

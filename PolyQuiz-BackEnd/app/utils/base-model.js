@@ -45,7 +45,10 @@ module.exports = class BaseModel {
   }
 
   create(obj = {}) {
+    console.log("here")
+    console.log(obj)
     const item = { ...obj, id: Date.now() }
+    console.log(item)
     const { error } = Joi.validate(item, this.schema)
     if (error) throw new ValidationError(`Create Error : Object ${JSON.stringify(obj)} does not match schema of model ${this.name}`, error)
     this.items.push(item)

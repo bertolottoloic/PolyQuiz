@@ -12,7 +12,7 @@ export interface Profile {
     id: number;
     trouble: Handicap;
     gender: gender;
-    birthDate:Date;
+    birthDate: Date;
     image: string;
 
 }
