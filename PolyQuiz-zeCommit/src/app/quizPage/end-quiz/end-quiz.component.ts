@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StatMemory} from '../../models/stat.models';
+import {StatMemory} from '../../models/stat-memory.models';
 import {Router} from '@angular/router';
 import { Trouble } from '../../models/trouble.models';
 import { Quiz } from '../../models/quiz.models';

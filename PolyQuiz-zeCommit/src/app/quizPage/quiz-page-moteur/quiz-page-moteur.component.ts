@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Profile } from 'src/app/models/profile.models';
 import { Quiz } from 'src/app/models/quiz.models';
 import { Question } from 'src/app/models/question.models';
-import { StatMemory } from 'src/app/models/stat.models';
+import { StatMemory } from 'src/app/models/stat-memory.models';
 import { ProfileService } from 'src/app/services/profile.service';
 import { QuizListService } from 'src/app/services/quizList.service';
 import { ActivatedRoute } from '@angular/router';

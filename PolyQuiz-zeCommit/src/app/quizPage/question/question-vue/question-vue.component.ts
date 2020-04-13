@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from 'src/app/models/question.models';
 import {Answer} from 'src/app/models/answer.models';
 import {ActivatedRoute, Router} from '@angular/router';
-import {StatMemory} from '../../../models/stat.models';
+import {StatMemory} from '../../../models/stat-memory.models';
 
 @Component({
   selector: 'app-question-vue',

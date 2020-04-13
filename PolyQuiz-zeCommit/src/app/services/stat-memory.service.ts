@@ -3,7 +3,7 @@ import {BehaviorSubject,Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../../configs/server.config';
 
-import { StatMemory } from '../models/stat.models';
+import { StatMemory } from '../models/stat-memory.models';
 
 @Injectable({
     providedIn: 'root'

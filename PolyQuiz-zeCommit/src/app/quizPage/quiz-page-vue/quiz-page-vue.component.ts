@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Profile} from '../../models/profile.models';
 import {Quiz} from '../../models/quiz.models';
 import {Question} from '../../models/question.models';
-import {StatMemory} from '../../models/stat.models';
+import {StatMemory} from '../../models/stat-memory.models';
 import {ProfileService} from '../../services/profile.service';
 import {QuizListService} from '../../services/quizList.service';
 import {ActivatedRoute} from '@angular/router';
@@ -110,5 +110,5 @@ export class QuizPageVueComponent implements OnInit {
   skipQ(n) { // saute n question(s)
     this.index = n;
   }
-  
+
 }

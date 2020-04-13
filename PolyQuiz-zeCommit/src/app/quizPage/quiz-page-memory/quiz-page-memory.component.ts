@@ -4,7 +4,7 @@ import {QuizListService} from '../../services/quizList.service';
 import {ProfileService} from '../../services/profile.service';
 
 import {Question} from 'src/app/models/question.models';
-import {StatMemory} from 'src/app/models/stat.models';
+import {StatMemory} from 'src/app/models/stat-memory.models';
 import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
 
