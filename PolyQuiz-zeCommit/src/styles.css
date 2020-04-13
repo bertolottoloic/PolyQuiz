@@ -3,4 +3,13 @@
 html, body {
    height: 100%;
   }
-body {padding:0px; margin: 0px; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  padding:0px;
+  margin: 0px;
+  font-family: Roboto,
+  "Helvetica Neue", sans-serif;
+}
+
+img{
+  object-fit: cover;
+}

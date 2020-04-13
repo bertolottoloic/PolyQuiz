@@ -13,19 +13,19 @@
     <div class="quizzes col-md-10">
       <input #box (keyup)="onKey(box.value)">
         <div class="quizlist" *ngIf="quizList">
-            <div  *ngFor="let quiz of quizList">
+            <div *ngFor="let quiz of quizList">
                 <div class="quizBox">
 
-                        <button class="btn" type="button"(click)="action(quiz)">
-                          <div class="card" >
-                            <div class="cardTop">
-                              <img class="card-img-top" src={{quiz.image}} alt="Card image cap">
-                            </div>
-                            <div class="cardBot">
-                              <p>{{ quiz.name }}-{{ quiz.theme.name }}</p>
-                            </div>
-                          </div>
-                        </button>
+                    <div class="btn" type="button"(click)="action(quiz)">
+                      <div class="card" >
+                        <div class="cardTop">
+                          <img class="card-img-top" src={{quiz.image}} alt="Card image cap">
+                        </div>
+                        <div class="cardBot">
+                          <p>{{ quiz.name }}-{{ quiz.theme.name }}</p>
+                        </div>
+                      </div>
+                    </div>
 
                 </div>
             </div>
