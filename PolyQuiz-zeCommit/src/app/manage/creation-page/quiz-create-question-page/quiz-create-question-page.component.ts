@@ -22,6 +22,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   public questId: number;
   question: Question;
   public imageQuestion = '';
+  public imageAnswers:string[]=[];
   public type: string;
 
   constructor(public formBuilder: FormBuilder, public quizListService: QuizListService, public route: ActivatedRoute, public router: Router) {
@@ -39,7 +40,9 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
             const quiz = value.find((val) => val.id == this.quizId);
             if (quiz) {
               this.question = quiz.questions.find((ques) => ques.id == this.questId);
-              this.fillQuestionForm();
+              if(this.question.answers.length>0){
+                this.fillQuestionForm();
+              }
             }
           }
         });
@@ -57,15 +60,6 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
     }
   }
 
-  controlRightAnswer(): boolean {
-    let nbTrue = 0;
-    this.answers.value.forEach(element => {
-      if (element.isCorrect === true) {
-        nbTrue++;
-      }
-    });
-    return nbTrue > 0 ? true : false;
-  }
 
 
   get formData() { return  this.questionForm.get('answers') as FormArray; }
@@ -73,7 +67,6 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   createAnswer(): FormGroup {
     return this.formBuilder.group({
       text: [''],
-      image: [''],
       isCorrect: [false],
     });
   }
@@ -90,7 +83,12 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   addQuestion() {
     if ( this.questionForm.valid && this.controlRightAnswer()) {
       const question = this.questionForm.getRawValue();
-      question.image = this.questionForm.value.image;
+      question.image = this.imageQuestion
+      for(let i=0;i<question.answers.length;i++){
+        question.answers[i].image=this.imageAnswers[i];
+      }
+
+      console.log(question)
       this.quizListService.addQuestion(this.quizId, question);
       this.initializeQuestionForm();
       this.router.navigate(['../'], { relativeTo: this.route });
@@ -100,7 +98,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   changeQuestion() {
     if (this.questionForm.valid) {
       const question = this.questionForm.getRawValue();
-      question.image = this.questionForm.value.image;
+      question.image = this.imageQuestion
 
       let validQuestion: any;
       if ( this.question.image || this.imageQuestion ) { validQuestion = question;
@@ -118,7 +116,6 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       text: ['', Validators.required],
-      image: [this.imageQuestion],
       answers: this.formBuilder.array([this.createAnswer()]),
     });
     this.addAnswer();
@@ -126,8 +123,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
 
   fillQuestionForm() {
     this.questionForm = this.formBuilder.group({
-      text: [this.question.text],
-      image: [this.question.image],
+      text: [this.question.text, Validators.required],
       answers: this.formBuilder.array([this.fillAnswer(this.question.answers[0])]),
     });
     if (this.question.image) {
@@ -149,24 +145,33 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
       text: [answer.text],
       isCorrect: [answer.isCorrect],
       id: [answer.id],
-      image: [answer.image]
     });
   }
 
+  invalidImage(index){
+    return (this.answers.at(index).value.image === '');
+  }
   invalidAnswer(index) {
   	return (this.answers.at(index).value.text === '');
   }
   invalidQuestion() {
   	return (this.questionForm.controls.text.errors != null);
   }
+
+  controlRightAnswer(): boolean {
+    let nbTrue = 0;
+    this.answers.value.forEach(element => {
+      if (element.isCorrect === true) {
+        nbTrue++;
+      }
+    });
+    return nbTrue > 0 ? true : false;
+  }
   receiveImg(img: string) {
     this.imageQuestion = img;
-    this.questionForm.value.image = img;
-
   }
-  receiveImgAnsw($img: string, elm) {
-    elm.value.image = $img;
-    // console.log(this.questionForm);
+  receiveImgAnsw($img: string, index) {
+    this.imageAnswers[index]=$img
   }
 
 

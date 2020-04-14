@@ -10,6 +10,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Memoire,
         image: '../../../assets/img/profil/pere-fouras.jpg',
+
     },
     {
         lastName: 'Meulle',
@@ -19,6 +20,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Moteur,
         image: '../../../assets/img/profil/Papy-Brossard.jpg',
+
     },
     {
         lastName: 'Delm',
@@ -29,6 +31,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Vue,
         image: '../../../assets/img/profil/pere-fouras.jpg',
+
     },
     {
         lastName: 'Dacosta',
@@ -38,6 +41,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Memoire,
         image: '../../../assets/img/profil/pere-fouras.jpg',
+
     },
     {
         lastName: 'Meulle',
@@ -47,6 +51,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Moteur,
         image: '../../../assets/img/profil/pere-fouras.jpg',
+
     },
     {
         lastName: 'Delm',
@@ -56,6 +61,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Vue,
         image: '../../../assets/img/profil/Papy-Brossard.jpg',
+
     },
     {
         lastName: 'Dacosta',
@@ -65,6 +71,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Memoire,
         image: '../../../assets/img/profil/pere-fouras.jpg',
+
     },
     {
         lastName: 'Meulle',
@@ -74,6 +81,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Moteur,
         image: '../../../assets/img/profil/Papy-Brossard.jpg',
+
     },
     {
         lastName: 'Delm',
@@ -83,15 +91,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Vue,
         image: '../../../assets/img/profil/Papy-Brossard.jpg',
-    },
-    {
-        lastName: 'Dacosta',
-        firstName: 'Pedro',
-        id: 1,
-        birthDate: null,
-        gender: gender.male,
-        trouble: Handicap.Memoire,
-        image: '../../../assets/img/profil/Papy-Brossard.jpg',
+
     },
     {
         lastName: 'Meulle',
@@ -101,6 +101,7 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Moteur,
         image: '../../../assets/img/profil/pere-fouras.jpg',
+
     },
     {
         lastName: 'Delm',
@@ -111,5 +112,6 @@ export const PROFILE_LIST: Profile[] = [
         gender: gender.male,
         trouble: Handicap.Vue,
         image: '../../../assets/img/profil/Papy-Brossard.jpg',
+
     }
 ];
