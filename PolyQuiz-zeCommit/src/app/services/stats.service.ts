@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { httpOptionsBase, serverUrl } from '../../configs/server.config';
 import { Stat } from '../models/stat.models';
 import { StatMemory } from '../models/stat-memory.models';
+import { Handicap } from '../models/handicap.models';
 
 
 @Injectable({
@@ -56,11 +57,29 @@ export class StatService {
     });
   }
 
-  getProfileStats(profileId: number, trouble: string) {
-    this.http.get<StatMemory[]>(this.URL + trouble + '/p/' + profileId).subscribe((stats) => {
+  getProfileStats(profileId: number, trouble: Handicap) {
+    let troubleUrl:string=this.convertTroubleToString(trouble);
+
+    this.http.get<Stat[]>(this.URL + troubleUrl + '/p/' + profileId).subscribe((stats) => {
       this.selectedStats = stats;
       this.selectedStat$.next(this.selectedStats);
     });
+  }
+
+  convertTroubleToString(trouble:Handicap):string{
+    let troubleUrl:string;
+    switch(trouble){
+      case Handicap.Memoire:
+        troubleUrl=this.MEMORY;
+        break;
+      case Handicap.Moteur:
+        troubleUrl=this.MOTEUR;
+        break;
+      case Handicap.Vue:
+        troubleUrl=this.VUE;
+        break;
+    }
+    return troubleUrl;
   }
 
 }
