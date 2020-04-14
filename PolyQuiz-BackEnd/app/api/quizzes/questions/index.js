@@ -38,7 +38,7 @@ router.get('/:questionId', (req, res) => {
   router.post('/', (req, res) => {
     try {
       const quizId = parseInt(req.params.quizId, 10)
-      let question = Question.create({ text:req.body.text, image: req.body.image, quizId})
+      let question = Question.create({ text:req.body.text, image: req.body.image, quizId, answersAreText: req.body.answersAreText})
       if (req.body.answers && req.body.answers.length > 0) {
         var date = Date.now();
         const answers = req.body.answers.map((answer) => {
@@ -73,7 +73,7 @@ router.get('/:questionId', (req, res) => {
         answer.questionId = parseInt(req.params.questionId,10);
         Answer.update(answer.id,answer);
       })
-      res.status(200).json(Question.update(req.params.questionId,req.body))
+      res.status(200).json(Question.update(req.params.questionId, {text: req.body.text, answersAreText: req.body.answersAreText, image: req.body.image, quizId: req.params.quizId}))
     } catch (err) {
       res.status(404).json(err)
     }

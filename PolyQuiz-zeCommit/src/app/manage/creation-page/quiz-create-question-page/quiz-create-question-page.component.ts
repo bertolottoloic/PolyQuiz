@@ -22,13 +22,14 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   public questId: number;
   question: Question;
   public imageQuestion = '';
-  public imageAnswers:string[]=[];
+  public imageAnswers: string[] = [];
   public type: string;
+  public answersAreText = true;
 
   constructor(public formBuilder: FormBuilder, public quizListService: QuizListService, public route: ActivatedRoute, public router: Router) {
     super(router);
     this.questionType = this.formBuilder.group({
-      type: ['text'],
+      type: [true],
     });
     this.route.paramMap.subscribe(params => {
       if (params != null) {
@@ -40,6 +41,10 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
             const quiz = value.find((val) => val.id == this.quizId);
             if (quiz) {
               this.question = quiz.questions.find((ques) => ques.id == this.questId);
+              this.questionType = this.formBuilder.group({
+                type: [this.question.answersAreText],
+              });
+              console.log(this.questionType.value.type);
               if(this.question.answers.length>0){
                 this.fillQuestionForm();
               }
@@ -68,6 +73,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
     return this.formBuilder.group({
       text: [''],
       isCorrect: [false],
+      image: ['']
     });
   }
 
@@ -83,9 +89,11 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   addQuestion() {
     if ( this.questionForm.valid && this.controlRightAnswer()) {
       const question = this.questionForm.getRawValue();
-      question.image = this.imageQuestion
-      for(let i=0;i<question.answers.length;i++){
-        question.answers[i].image=this.imageAnswers[i];
+      question.image = this.imageQuestion;
+      question.answersAreText = this.questionType.value.type;
+      for (let i = 0; i < question.answers.length; i++) {
+        question.answers[i].image = (!question.answersAreText) ? this.imageAnswers[i] : '';
+        question.answers[i].text = (question.answersAreText) ? question.answers[i].text : '';
       }
       this.quizListService.addQuestion(this.quizId, question);
       this.initializeQuestionForm();
@@ -96,12 +104,16 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   changeQuestion() {
     if (this.questionForm.valid) {
       const question = this.questionForm.getRawValue();
-      question.image = this.imageQuestion
-
+      question.image = this.imageQuestion;
+      question.answersAreText = this.questionType.value.type;
+      for (let i = 0; i < question.answers.length; i++) {
+        question.answers[i].image = (!question.answersAreText) ? this.imageAnswers[i] : '';
+        question.answers[i].text = (question.answersAreText) ? question.answers[i].text : '';
+      }
       let validQuestion: any;
       if ( this.question.image || this.imageQuestion ) { validQuestion = question;
       } else {
-        validQuestion = { text: question.text, quizId: question.quizId, answers: question.answers };
+        validQuestion = { text: question.text, quizId: question.quizId, answers: question.answers, answersAreText: question.answersAreText };
       }
       validQuestion.id = this.question.id;
       this.quizListService.editQuestion(this.quizId, validQuestion);
@@ -127,14 +139,17 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
     if (this.question.image) {
       this.imageQuestion = this.question.image;
     }
+
     this.fillAnswers();
 
   }
 
   fillAnswers() {
     this.answers = this.questionForm.get('answers') as FormArray;
+    this.imageAnswers[0] = this.question.answers[0].image;
     for (let i = 1; i < 4 ; i++)  {
         this.answers.push(this.fillAnswer(this.question.answers[i]));
+        this.imageAnswers[i] = this.question.answers[i].image;
       }
   }
 
@@ -142,7 +157,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
     return this.formBuilder.group({
       text: [answer.text],
       isCorrect: [answer.isCorrect],
-      id: [answer.id],
+      id: [answer.id]
     });
   }
 
@@ -150,10 +165,10 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
     return (this.imageAnswers[index]==null);
   }
   invalidAnswer(index) {
-  	return (this.answers.at(index).value.text === '');
+    return (this.answers.at(index).value.text === '');
   }
   invalidQuestion() {
-  	return (this.questionForm.controls.text.errors != null);
+    return (this.questionForm.controls.text.errors != null);
   }
 
   controlRightAnswer(): boolean {
@@ -163,7 +178,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
         nbTrue++;
       }
     });
-    return nbTrue > 0 ? true : false;
+    return nbTrue === 1 ? true : false;
   }
 
   controlText(){
@@ -187,7 +202,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
     this.imageQuestion = img;
   }
   receiveImgAnsw($img: string, index) {
-    this.imageAnswers[index]=$img
+    this.imageAnswers[index] = $img;
   }
 
 

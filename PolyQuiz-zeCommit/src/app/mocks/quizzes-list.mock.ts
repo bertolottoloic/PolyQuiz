@@ -15,6 +15,7 @@ export const QUIZ_LIST: Quiz[] = [
                 text: 'Question test 1?',
                 id: 1,
                 quizId: 1,
+                answersAreText: true,
                 answers: [{
                     questionId: 1,
                     id: 1,
@@ -48,6 +49,7 @@ export const QUIZ_LIST: Quiz[] = [
                 text: 'Ceci est une réelle question ?',
                 id: 2,
                 quizId: 1,
+                answersAreText: true,
                 image: '../../../assets/img/question.jpg',
                 answers: [{
                     id: 1,
