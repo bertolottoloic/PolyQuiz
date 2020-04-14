@@ -3,21 +3,14 @@
     <div *ngIf="question.image">
       <img id="im-qu" src={{question.image}} alt="">
     </div>
-    <div class="question">{{question.text}} </div>
+    <div class="size{{size}}">{{question.text}} </div>
   </div>
 
   <div class="answers" *ngFor="let answer of question.answers">
-    <button appHighlight  class="size1" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
+    <button appHighlight class="size{{size}}" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'"  (click)="nextQuestion(answer)">
       {{answer.text}}
       <img *ngIf="answer.image" src={{answer.image}} alt="">
     </button>
-    <button appHighlight *ngIf="size==2" class="size2" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
-      {{answer.text}}
-      <img *ngIf="answer.image" src={{answer.image}} alt="">
-    </button>
-    <button appHighlight *ngIf="size==3" class="size3" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
-      {{answer.text}}
-      <img *ngIf="answer.image" src={{answer.image}} alt="">
-    </button>
+
   </div>
 </div>
