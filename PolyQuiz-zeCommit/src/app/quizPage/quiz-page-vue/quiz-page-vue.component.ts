@@ -7,6 +7,10 @@ import {ProfileService} from '../../services/profile.service';
 import {QuizListService} from '../../services/quizList.service';
 import {ActivatedRoute} from '@angular/router';
 import {Answer} from '../../models/answer.models';
+import {PopUpWarningComponent} from '../../pop-up/pop-up-warning/pop-up-warning.component';
+import {MatDialog} from '@angular/material/dialog';
+import {StatService} from '../../services/stats.service';
+import {combineLatest} from 'rxjs';
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -26,27 +30,44 @@ export class QuizPageVueComponent implements OnInit {
   @Output()
   public size: EventEmitter<number> = new EventEmitter();
 
-  constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute) {
+  constructor(public profileService: ProfileService, public quizService: QuizListService,
+              private route: ActivatedRoute, public dialog: MatDialog, public statService: StatService) {
     this.startQuiz = false;
-    this.quizDone = false;
-    this.loadQuiz();
-    this.loadProfile();
+    const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
+    combinedObject.subscribe(value => {
+      if (value[0] && value[1]) {
+        this.load(value[1], value[0]);
+      }
+    });
 
   }
 
-  loadQuiz() {
-    let id: number;
+  load(quizzes: Quiz[], profiles: Profile[]) {
     this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idQuiz'));
-      this.quizService.quizzes$.subscribe((quizzes) => {
-        const quiz = quizzes.filter((quiz) => quiz.id === id)[0];
-        if (quiz) {
-          this.quiz = quiz;
-          this.stats = new StatMemory(quiz,this.profile); // creation objet stat
-          this.questionList = quiz.questions;
-          this.question = quiz.questions[this.index];
-        }
-      });
+      const idQuiz = Number(params.get('idQuiz'));
+      const idProfile = Number(params.get('idProfile'));
+      const quiz = quizzes.find((quiz$) => quiz$.id === idQuiz);
+      if (quiz) {
+        this.quiz = quiz;
+        this.questionList = quiz.questions;
+        this.question = quiz.questions[this.index];
+      }
+      const profile = profiles.find((prof) => prof.id === idProfile);
+      if (profile) {
+        this.profile = profile;
+      }
+      if (profile && quiz) {
+        this.stats = new StatMemory(this.quiz, this.profile); // creation objet stat
+      }
+    });
+  }
+
+  openDialog(path: string) {
+    this.dialog.open(PopUpWarningComponent, {
+      data: {
+        path,
+        url: this.route
+      }
     });
   }
 
@@ -55,36 +76,25 @@ export class QuizPageVueComponent implements OnInit {
     this.startQuiz = true;
   }
 
+  ngOnInit() {
+  }
+
   setSize(n: number) {
     this.size.emit(n);
   }
 
-
-  loadProfile() {
-    let id: number;
-    this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idProfile'));
-      this.profileService.profiles$.subscribe((profiles) => {
-        const profil = profiles.filter((prf) => prf.id == id)[0];
-        if (profil) {
-          this.profile = profil;
-        }
-      });
-    });
-  }
-
-
-  ngOnInit() {
-  }
-
-  isCompleted() {
-    if (this.stats.questionsDone.length == this.questionList.length) {
-      this.quizDone = true;
+  isCompleted(): boolean {
+    if (this.stats.questionsDone.length === this.questionList.length) {
+      this.terminateQuiz();
     }
+    return false;
   }
 
   terminateQuiz() {
     this.quizDone = true;
+    this.statService.addStat(this.stats, this.statService.MEMORY).subscribe(() => {
+      this.statService.setStatsFromUrl(this.statService.MEMORY);
+    });
   }
 
   UpdateMapStats(asw: Answer): void {
@@ -97,18 +107,26 @@ export class QuizPageVueComponent implements OnInit {
   receiveQ($event) {
     this.UpdateMapStats($event);
     if ($event.isCorrect) {
-      this.stats.questionsDone.push($event.questionId); // incrémente de 1 le nombre de question fini
-      if (this.index + 1 < this.questionList.length) {
-        this.index += 1; // passe à la question suivante si possible
-      } else {
-        // revient a une question non terminée
+      if (!this.stats.questionsDone.includes($event.questionId)) {
+        this.stats.questionsDone.push($event.questionId);
+      } // incrémente de 1 le nombre de question fini
+      if (!this.isCompleted()) {
+        this.searchNextQuestion();
       }
     }
-    this.isCompleted();
   }
+
+  searchNextQuestion() {
+    for (let i = 0; i < this.questionList.length; i++) {
+      if (!this.stats.questionsDone.includes(this.questionList[i].id)) {
+        this.index = i;
+        break;
+      }
+    }
+  }
+
 
   skipQ(n) { // saute n question(s)
     this.index = n;
   }
-
 }
