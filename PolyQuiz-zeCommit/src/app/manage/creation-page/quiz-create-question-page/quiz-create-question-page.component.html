@@ -31,7 +31,7 @@
                 Réponse {{ i+1 }} <br/>
                 <input *ngIf="questionType.value.type=='text'" type="text" id="text" [formControlName]="'text'">
 
-                <app-image-uploader *ngIf="questionType.value.type=='image'" (cardImageBase64Event)="receiveImgAnsw($event,elm)" [imageLoad]="elm.value.image"></app-image-uploader>
+                <app-image-uploader *ngIf="questionType.value.type=='image'" (cardImageBase64Event)="receiveImgAnsw($event,i)" [imageLoad]="elm.value.image"></app-image-uploader>
 
             </label>
             <label for="isCorrect">
@@ -42,6 +42,7 @@
 
         </div>
     </div>
+    <button *ngIf="questionType.value.type=='image'" [class]="!(controlRightAnswer())? 'btn btn-danger':'btn btn-success'" [disabled]="!(controlRightAnswer())" (click)="question? changeQuestion():addQuestion();">Valider</button>
+    <button *ngIf="questionType.value.type=='text'" [class]="!(questionForm.valid&&controlRightAnswer())? 'btn btn-danger':'btn btn-success'" [disabled]="!(questionForm.valid&&controlRightAnswer())" (click)="question? changeQuestion():addQuestion();">Valider</button>
 </form>
-<button [class]="!(questionForm.valid&&controlRightAnswer())? 'btn btn-danger':'btn btn-success'" [disabled]="!(questionForm.valid&&controlRightAnswer())" (click)="question? changeQuestion():addQuestion();">Valider</button>
 <p *ngIf="!controlRightAnswer()" id="text" class="help-block">Cocher au moins une bonne réponse</p>

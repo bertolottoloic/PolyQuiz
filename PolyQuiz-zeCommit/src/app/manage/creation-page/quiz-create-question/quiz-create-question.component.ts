@@ -24,7 +24,6 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
   public quizForm: FormGroup;
   public image: string;
 
-  // tslint:disable-next-line: max-line-length
   constructor(public themeService: ThemeService, public quizService: QuizListService,  private route: ActivatedRoute, public formBuilder: FormBuilder, public router: Router, public dialog: MatDialog) {
     super(router);
     this.loadQuiz();
@@ -45,7 +44,6 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
       this.quizService.quizzes$.subscribe((quizzes) => {
         const quiz = quizzes.find((quiz$) => quiz$.id === id);
         if (quiz) {
-          console.log(quiz.theme.id);
           this.quiz = quiz;
           this.image = quiz.image;
           this.quizForm = this.formBuilder.group({
@@ -67,7 +65,6 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
     this.quizService.deleteQuestion(this.quiz, question);
   }
   openDialog(question: Question) {
-    console.log(question);
     this.dialog.open(DisplayQuestionComponent, {
       data: {
         trouble: this.quiz.trouble,
