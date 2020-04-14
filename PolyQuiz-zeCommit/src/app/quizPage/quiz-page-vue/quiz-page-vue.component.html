@@ -20,7 +20,7 @@
     <div class="col-md-2 btnTree" *ngIf="!quizDone&&stats">
       <div class="questions" *ngFor="let question of questionList; let n=index">
     </div>
-    <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question-vue>
+    <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" [size]="size" (nextQ)="receiveQ($event)"></app-question-vue>
   </div>
 
   <app-end-quiz *ngIf="quizDone" [stats]="stats" [quiz]="quiz"></app-end-quiz>
