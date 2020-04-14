@@ -87,8 +87,6 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
       for(let i=0;i<question.answers.length;i++){
         question.answers[i].image=this.imageAnswers[i];
       }
-
-      console.log(question)
       this.quizListService.addQuestion(this.quizId, question);
       this.initializeQuestionForm();
       this.router.navigate(['../'], { relativeTo: this.route });
@@ -149,7 +147,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   }
 
   invalidImage(index){
-    return (this.answers.at(index).value.image === '');
+    return (this.imageAnswers[index]==null);
   }
   invalidAnswer(index) {
   	return (this.answers.at(index).value.text === '');
@@ -166,6 +164,24 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
       }
     });
     return nbTrue > 0 ? true : false;
+  }
+
+  controlText(){
+    let i=0;
+    for(let j=0; j<4;j++){
+      if(this.answers.value[j].text==''){
+        i++;
+      }
+    }
+    return i==0?true:false;
+  }
+  controlImage(){
+    for(let i=0;i<4;i++){
+      if(this.imageAnswers[i]==null){
+        return false;
+      }
+    }
+    return true;
   }
   receiveImg(img: string) {
     this.imageQuestion = img;

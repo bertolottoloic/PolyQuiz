@@ -38,11 +38,12 @@
                 <input type="checkbox" id="isCorrect" [formControlName]="'isCorrect'">
                 Réponse vraie
             </label>
-            <p *ngIf="invalidAnswer(i)" id="text" class="help-block">champ vide *.</p>
+            <p *ngIf="questionType.value.type=='text'&&invalidAnswer(i)" id="text" class="help-block">champ vide *.</p>
+            <p *ngIf="questionType.value.type=='image'&&invalidImage(i)" id="image" class="help-block">image vide *.</p>
 
         </div>
     </div>
-    <button *ngIf="questionType.value.type=='image'" [class]="!(controlRightAnswer())? 'btn btn-danger':'btn btn-success'" [disabled]="!(controlRightAnswer())" (click)="question? changeQuestion():addQuestion();">Valider</button>
-    <button *ngIf="questionType.value.type=='text'" [class]="!(questionForm.valid&&controlRightAnswer())? 'btn btn-danger':'btn btn-success'" [disabled]="!(questionForm.valid&&controlRightAnswer())" (click)="question? changeQuestion():addQuestion();">Valider</button>
+    <button *ngIf="questionType.value.type=='image'" [class]="!(questionForm.valid&&controlRightAnswer()&&controlImage())? 'btn btn-danger':'btn btn-success'" [disabled]="!(questionForm.valid&&controlRightAnswer()&&controlImage())" (click)="question? changeQuestion():addQuestion();">Valider</button>
+    <button *ngIf="questionType.value.type=='text'" [class]="!(questionForm.valid&&controlRightAnswer()&&controlText())? 'btn btn-danger':'btn btn-success'" [disabled]="!(questionForm.valid&&controlRightAnswer()&&controlText())" (click)="question? changeQuestion():addQuestion();">Valider</button>
 </form>
 <p *ngIf="!controlRightAnswer()" id="text" class="help-block">Cocher au moins une bonne réponse</p>
