@@ -7,5 +7,5 @@ module.exports = new BaseModel('Profile', {
   trouble: Joi.string().required(),
   gender: Joi.string().required(),
   birthDate: Joi.string().required(),
-  image: Joi.string(),
+  image: Joi.string().allow(''),
 })

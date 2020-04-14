@@ -15,6 +15,5 @@ export interface Profile {
     gender: gender;
     birthDate: Date;
     image: string;
-    stat: any;
 
 }

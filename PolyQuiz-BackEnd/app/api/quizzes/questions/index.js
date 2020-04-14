@@ -44,6 +44,7 @@ router.get('/:questionId', (req, res) => {
         const answers = req.body.answers.map((answer) => {
           while (date == Date.now());
           answerToCreate = {...answer}
+          answerToCreate.questionId = question.id
           Answer.create(answerToCreate)
           date = Date.now()
         })
