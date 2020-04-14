@@ -1,24 +1,28 @@
-<div class="main">
-  <div class="menu">
+<div *ngIf="!quizDone" class="menu">
+
+  <div class="menu-btn">
     <div>
-      <button type="button" class="btn btn-primary" routerLink="">Accueil</button>
+      <button type="button" class="btn btn-primary" (click)="openDialog('accueil')">Accueil</button>
     </div>
     <div>
-      <button type="button" class="btn btn-primary" routerLink="..">Retour</button>
+      <button type="button" class="btn btn-primary" (click)="openDialog('retour1')">Retour</button>
     </div>
   </div>
-  <app-quiz-page-size-selection id="select" *ngIf="!startQuiz" (size)="getSize($event)"></app-quiz-page-size-selection>
-  <div *ngIf="startQuiz" >
-    <div class="titre col-md-10">
-      <h1 *ngIf="quiz">Quiz : {{ quiz.name }}</h1>
-    </div>
-    <app-profile [profile]="profile"></app-profile>
-    <div class="row">
 
-      <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [size]="size" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question-vue>
-      <div class="col-md-2 btnTree" *ngIf="!quizDone">
-      </div>
-      <app-end-quiz *ngIf="quizDone" [stats]="stats"></app-end-quiz>
+  <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
+
+  <app-profile *ngIf="profile" [profile]="profile"></app-profile>
+  <app-quiz-page-size-selection id="select" *ngIf="!startQuiz" (size)="getSize($event)"></app-quiz-page-size-selection>
+
+</div>
+<div *ngIf="startQuiz">
+  <div class="row">
+    <div class="col-md-2 btnTree" *ngIf="!quizDone&&stats">
+      <div class="questions" *ngFor="let question of questionList; let n=index">
     </div>
+    <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question-vue>
+  </div>
+
+  <app-end-quiz *ngIf="quizDone" [stats]="stats" [quiz]="quiz"></app-end-quiz>
   </div>
 </div>
