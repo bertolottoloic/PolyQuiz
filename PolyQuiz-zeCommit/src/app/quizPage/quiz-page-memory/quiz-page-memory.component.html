@@ -1,17 +1,22 @@
 <div *ngIf="!quizDone" class="menu">
 
-    <div class="menu-btn">
-        <div>
+   <!-- <app-navbar-question title="oui" Back="true" Home="true" profile="profile"></app-navbar-question> -->
+
+    <div class="row">
+        <div class="col-md-3 ">
             <button type="button" class="btn btn-primary" (click)="openDialog('accueil')">Accueil</button>
-        </div>
-        <div>
             <button type="button" class="btn btn-primary" (click)="openDialog('retour1')">Retour</button>
         </div>
+        <div class="col-md-6 align-items-center">
+            <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
+        </div>
+        <div class="col-md-3">
+            <div class="profile">
+                <app-profile *ngIf="profile" [profile]="profile"></app-profile>
+            </div>
+        </div>
     </div>
-
-    <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
-
-    <app-profile *ngIf="profile" [profile]="profile"></app-profile>
+    
 
 </div>
 <div class="row">
