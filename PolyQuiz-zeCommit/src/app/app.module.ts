@@ -41,6 +41,7 @@ import { DisplayWindowComponent } from './visualisation/display-window/display-w
 import { PopUpDeleteComponent } from './pop-up/pop-up-delete/pop-up-delete.component';
 import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.component';
 import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
+import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
     PopUpDeleteComponent,
     DisplayQuizComponent,
     FiltreQuizComponent,
+    NavbarQuestionComponent
 
   ],
   imports: [

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Handicap } from '../models/handicap.models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Profile } from '../models/profile.models';
+import { PopUpWarningComponent } from '../pop-up/pop-up-warning/pop-up-warning.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar-question',
@@ -11,16 +13,26 @@ import { Profile } from '../models/profile.models';
 export class NavbarQuestionComponent implements OnInit {
 
   @Input()
-  
+  profile:Profile;
   @Input()
   title:string;
- 
 
-  constructor() { 
-   
+
+  constructor(private router: Router, private route: ActivatedRoute, public dialog: MatDialog) {
+
   }
 
   ngOnInit() {
-  
+
   }
+
+  openDialog(path: string) {
+    this.dialog.open(PopUpWarningComponent, {
+      data: {
+        path,
+        url: this.route
+      }
+    });
+  }
+
 }

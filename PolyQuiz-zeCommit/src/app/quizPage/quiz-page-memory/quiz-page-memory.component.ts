@@ -7,13 +7,10 @@ import {Question} from 'src/app/models/question.models';
 import {StatMemory} from 'src/app/models/stat-memory.models';
 import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
-
-import { Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { PopUpWarningComponent } from 'src/app/pop-up/pop-up-warning/pop-up-warning.component';
-import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { StatService } from 'src/app/services/stats.service';
 
 
 @Component({
@@ -36,7 +33,7 @@ export class QuizPageMemoryComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
   constructor(public profileService: ProfileService, public quizService: QuizListService,
-              private route: ActivatedRoute, public dialog: MatDialog) {
+              private route: ActivatedRoute, public dialog: MatDialog,public statService: StatService) {
     const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
     combinedObject.subscribe(value => {
       if (value[0] && value[1]) {
@@ -71,14 +68,7 @@ export class QuizPageMemoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(path: string) {
-    this.dialog.open(PopUpWarningComponent, {
-      data: {
-        path,
-        url: this.route
-      }
-    });
-  }
+
 
 
   isCompleted(): boolean {
