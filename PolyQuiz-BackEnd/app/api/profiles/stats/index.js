@@ -1,13 +1,20 @@
 const { Router } = require('express')
 
-const { StatMemory } = require('../../../../models')
+const { Stat } = require('../../../models')
+const { addQuiz } = require('../../Manage')
 
 
-const router = new Router()
+const router = new Router({mergeParams: true})
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(StatMemory.get())
+    stats = Stat.get().filter((stat) => stat.profileId == req.params.profileId)
+    statsToSend = []
+    stats.forEach((stat) => {
+      quiz = addQuiz(stat.quizId)
+      statsToSend.push({...stat, quiz})
+    })
+    res.status(200).json(statsToSend)
   } catch (err) {
     res.status(500).json(err)
   }
@@ -15,15 +22,7 @@ router.get('/', (req, res) => {
 
 router.get('/:statId', (req, res) => {
   try {
-    res.status(200).json(StatMemory.getById(req.params.statId))
-  } catch (err) {
-    res.status(404).json(err)
-  }
-})
-
-router.get('/p/:profileId', (req, res) => {
-  try {
-    res.status(200).json(StatMemory.get().filter((stat) => stat.profileId == req.params.profileId))
+    res.status(200).json(Stat.getById(req.params.statId))
   } catch (err) {
     res.status(404).json(err)
   }
@@ -31,9 +30,7 @@ router.get('/p/:profileId', (req, res) => {
 
 router.post('/', (req, res) => {
   try {
-    console.log(req.body)
-    const stats = StatMemory.create({ ...req.body })
-    console.log(stats)
+    const stats = Stat.create({ ...req.body })
     res.status(201).json(stats)
   } catch (err) {
     if (err.name === 'ValidationError') {
@@ -46,7 +43,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:statId', (req, res) => {
   try {
-    res.status(200).json(StatMemory.delete(req.params.statId))
+    res.status(200).json(Stat.delete(req.params.statId))
   } catch (err) {
     res.status(404).json(err)
   }
@@ -54,7 +51,7 @@ router.delete('/:statId', (req, res) => {
 
 router.put('/:statId', (req, res) => {
   try {
-    res.status(200).json(StatMemory.update(req.params.statId,req.body))
+    res.status(200).json(Stat.update(req.params.statId,req.body))
   } catch (err) {
     res.status(404).json(err)
   }

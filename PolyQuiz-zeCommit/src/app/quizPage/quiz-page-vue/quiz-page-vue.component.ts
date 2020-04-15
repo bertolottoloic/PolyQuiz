@@ -9,8 +9,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Answer} from '../../models/answer.models';
 import {PopUpWarningComponent} from '../../pop-up/pop-up-warning/pop-up-warning.component';
 import {MatDialog} from '@angular/material/dialog';
-import {StatService} from '../../services/stats.service';
 import {combineLatest} from 'rxjs';
+import { StatVue } from 'src/app/models/stat-vue.models';
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -26,12 +26,12 @@ export class QuizPageVueComponent implements OnInit {
   public index = 0;
   public startQuiz: boolean;
   public quizDone: boolean;
-  public stats: StatMemory;
+  public stats: StatVue;
   @Output()
   public size: EventEmitter<number> = new EventEmitter();
 
   constructor(public profileService: ProfileService, public quizService: QuizListService,
-              private route: ActivatedRoute, public dialog: MatDialog, public statService: StatService) {
+              private route: ActivatedRoute, public dialog: MatDialog) {
     this.startQuiz = false;
     const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
     combinedObject.subscribe(value => {
@@ -57,7 +57,7 @@ export class QuizPageVueComponent implements OnInit {
         this.profile = profile;
       }
       if (profile && quiz) {
-        this.stats = new StatMemory(this.quiz, this.profile); // creation objet stat
+        this.stats = new StatVue(this.quiz, this.profile); // creation objet stat
       }
     });
   }
@@ -92,20 +92,12 @@ export class QuizPageVueComponent implements OnInit {
 
   terminateQuiz() {
     this.quizDone = true;
-    this.statService.addStat(this.stats, this.statService.MEMORY).subscribe(() => {
-      this.statService.setStatsFromUrl(this.statService.MEMORY);
-    });
+    this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
-  UpdateMapStats(asw: Answer): void {
-    if (this.stats.trial.get(asw.questionId) == null) {
-      this.stats.trial.set(asw.questionId, 0);
-    }
-    this.stats.trial.set(asw.questionId, this.stats.trial.get(asw.questionId) + 1);
-  }
+
 
   receiveQ($event) {
-    this.UpdateMapStats($event);
     if ($event.isCorrect) {
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);

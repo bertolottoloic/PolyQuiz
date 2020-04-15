@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { httpOptionsBase, serverUrl } from '../../configs/server.config';
 import { PROFILE_LIST } from '../mocks/profiles-list.mock';
 import { Profile } from '../models/profile.models';
+import { Stat } from '../models/stat.models';
+import { Handicap } from '../models/handicap.models';
 
 
 @Injectable({
@@ -17,6 +19,10 @@ export class ProfileService {
   private URL: string = serverUrl + '/profiles';
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
   private httpOptions = httpOptionsBase;
+  public selectedStats: Stat[];
+  public selectedStats$: BehaviorSubject<Stat[]> = new BehaviorSubject(this.selectedStats);
+  public createdStat: Stat;
+  public createdStat$: BehaviorSubject<Stat> = new BehaviorSubject(this.createdStat);
 
   constructor(private http: HttpClient) {
     this.setProfilesFromUrl();
@@ -46,6 +52,28 @@ export class ProfileService {
       this.profiles$.next(this.profiles);
     });
   }
+
+  addStat(stat: any, trouble: Handicap) {
+    const statToCreate = {...stat};
+    if (trouble === Handicap.Memoire) {
+      let trial = statToCreate.trial;
+      trial = [...statToCreate.trial].reduce((o, [key, value]) => (o[key] = value, o), {});
+      statToCreate.trial = trial;
+    }
+    this.http.post<Stat>(this.URL + '/' + stat.profileId + '/stats', statToCreate, this.httpOptions).subscribe((stat$) => {
+      this.createdStat = stat$;
+      this.createdStat$.next(this.createdStat);
+    });
+  }
+
+
+  getProfileStats(profile: Profile) {
+    this.http.get<Stat[]>(this.URL + '/' + profile.id + '/stats', this.httpOptions).subscribe((stats) => {
+      this.selectedStats = stats;
+      this.selectedStats$.next(this.selectedStats);
+    });
+  }
+
 
 }
 

@@ -2,7 +2,7 @@ const { Router } = require('express')
 
 const { Quiz, Question, Answer } = require('../../models')
 const QuestionRouter = require('./questions')
-const { addQuestions, deleteQuestionsAndAnswers,addThemes } = require('./Manage')
+const { addQuestions, deleteQuestionsAndAnswers,addThemes } = require('../Manage')
 
 
 const router = new Router()

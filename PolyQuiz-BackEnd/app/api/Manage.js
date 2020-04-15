@@ -1,7 +1,19 @@
+const { Quiz } = require('../models')
+const { Question } = require('../models')
+const { Answer } = require('../models')
+const { Theme } = require('../models')
 
-const { Question } = require('../../models')
-const { Answer } = require('../../models')
-const { Theme } = require('../../models')
+const addQuiz = (id) => {
+    let quiz
+    try{
+        quiz = {...Quiz.getById(id)}
+        quiz.questions = addQuestions(id);
+        quiz.theme = addThemes(quiz.themeId);
+    } catch(err) {
+        res.status(500).json(err);
+    }
+    return quiz;
+}
 
 const addQuestions = (quizId) => {
     questions = []
@@ -60,6 +72,7 @@ const deleteAnswers = (questionId) => {
 }
 
 module.exports = {
+    addQuiz,
     addAnswers,
     addQuestions,
     deleteQuestionsAndAnswers,

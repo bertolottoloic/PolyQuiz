@@ -58,7 +58,7 @@ export class StatService {
   }
 
   getProfileStats(profileId: number, trouble: Handicap) {
-    let troubleUrl:string=this.convertTroubleToString(trouble);
+    const troubleUrl: string = this.convertTroubleToString(trouble);
 
     this.http.get<Stat[]>(this.URL + troubleUrl + '/p/' + profileId).subscribe((stats) => {
       this.selectedStats = stats;
@@ -66,17 +66,17 @@ export class StatService {
     });
   }
 
-  convertTroubleToString(trouble:Handicap):string{
-    let troubleUrl:string;
-    switch(trouble){
+  convertTroubleToString(trouble: Handicap): string {
+    let troubleUrl: string;
+    switch (trouble) {
       case Handicap.Memoire:
-        troubleUrl=this.MEMORY;
+        troubleUrl = this.MEMORY;
         break;
       case Handicap.Moteur:
-        troubleUrl=this.MOTEUR;
+        troubleUrl = this.MOTEUR;
         break;
       case Handicap.Vue:
-        troubleUrl=this.VUE;
+        troubleUrl = this.VUE;
         break;
     }
     return troubleUrl;

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Quiz} from '../../models/quiz.models';
 import {QuizListService} from '../../services/quizList.service';
 import {ProfileService} from '../../services/profile.service';
-import {StatService} from '../../services/stats.service';
 
 import {Question} from 'src/app/models/question.models';
 import {StatMemory} from 'src/app/models/stat-memory.models';
@@ -37,7 +36,7 @@ export class QuizPageMemoryComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
   constructor(public profileService: ProfileService, public quizService: QuizListService,
-              private route: ActivatedRoute, public dialog: MatDialog, public statService: StatService) {
+              private route: ActivatedRoute, public dialog: MatDialog) {
     const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
     combinedObject.subscribe(value => {
       if (value[0] && value[1]) {
@@ -92,9 +91,7 @@ export class QuizPageMemoryComponent implements OnInit {
   terminateQuiz() {
     this.stats.time = Date.now() - this.timer; // temps mis pour completer le quiz
     this.quizDone = true;
-    this.statService.addStat(this.stats, this.statService.MEMORY).subscribe(() => {
-      this.statService.setStatsFromUrl(this.statService.MEMORY);
-    });
+    this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
   UpdateMapStats(asw: Answer): void {

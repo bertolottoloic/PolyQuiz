@@ -4,7 +4,7 @@ const { Question } = require('../../../models')
 const { Answer } = require('../../../models')
 
 const AnswerRouter = require('./answers')
-const { addAnswers,deleteAnswers } = require('../Manage')
+const { addAnswers,deleteAnswers } = require('../../Manage')
 
 const router = new Router({mergeParams: true})
 router.use('/:questionId/answers', AnswerRouter)
