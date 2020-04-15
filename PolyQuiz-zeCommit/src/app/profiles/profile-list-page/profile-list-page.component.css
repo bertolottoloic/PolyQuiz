@@ -30,7 +30,8 @@ p {
   width:100%;
 }
 
-.col-md-2{
+.col-md-3{
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;

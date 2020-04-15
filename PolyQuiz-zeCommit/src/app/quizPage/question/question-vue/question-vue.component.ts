@@ -3,18 +3,19 @@ import {Question} from 'src/app/models/question.models';
 import {Answer} from 'src/app/models/answer.models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StatMemory} from '../../../models/stat-memory.models';
+import { Trouble } from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-question-vue',
   templateUrl: './question-vue.component.html',
   styleUrls: ['./question-vue.component.css']
 })
-export class QuestionVueComponent implements OnInit {
+export class QuestionVueComponent extends Trouble implements OnInit {
 
   public wrongAnswers: Answer[] = [];
-  public trouble: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(public router: Router, private route: ActivatedRoute) {
+    super(router);
   }
 
   @Output()
@@ -30,7 +31,6 @@ export class QuestionVueComponent implements OnInit {
   size: number;
 
   ngOnInit() {
-    this.setTrouble();
   }
 
   getSize($event) {
@@ -45,16 +45,4 @@ export class QuestionVueComponent implements OnInit {
     }
   }
 
-  setTrouble() {
-    console.log(this.router.url);
-    if (this.router.url.startsWith('/memoire')) {
-      this.trouble = 'Mémoire';
-    }
-    if (this.router.url.startsWith('/vue')) {
-      this.trouble = 'Vue';
-    }
-    if (this.router.url.startsWith('/moteur')) {
-      this.trouble = 'Moteur';
-    }
-  }
 }

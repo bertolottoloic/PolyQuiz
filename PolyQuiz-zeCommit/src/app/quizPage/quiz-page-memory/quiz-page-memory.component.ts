@@ -7,14 +7,10 @@ import {Question} from 'src/app/models/question.models';
 import {StatMemory} from 'src/app/models/stat-memory.models';
 import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
-
-import { Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { PopUpWarningComponent } from 'src/app/pop-up/pop-up-warning/pop-up-warning.component';
-import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -72,14 +68,7 @@ export class QuizPageMemoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(path: string) {
-    this.dialog.open(PopUpWarningComponent, {
-      data: {
-        path,
-        url: this.route
-      }
-    });
-  }
+
 
 
   isCompleted(): boolean {
