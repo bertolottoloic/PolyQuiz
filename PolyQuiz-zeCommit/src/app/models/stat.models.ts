@@ -10,6 +10,7 @@ export abstract class Stat {
   questionsDone: number[];
   nbRightAnswers: number;
   nbWrongAnswers: number;
+  date: string;
 
   constructor(quiz: Quiz, profile: Profile) {
     this.quizId = quiz.id;

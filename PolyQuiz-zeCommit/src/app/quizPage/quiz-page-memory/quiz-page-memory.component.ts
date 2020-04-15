@@ -14,6 +14,7 @@ import { PopUpWarningComponent } from 'src/app/pop-up/pop-up-warning/pop-up-warn
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -91,6 +92,9 @@ export class QuizPageMemoryComponent implements OnInit {
   terminateQuiz() {
     this.stats.time = Date.now() - this.timer; // temps mis pour completer le quiz
     this.quizDone = true;
+    const pipe = new DatePipe('en-US');
+    const currentDate = Date.now();
+    this.stats.date = pipe.transform(currentDate, 'short');
     this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
