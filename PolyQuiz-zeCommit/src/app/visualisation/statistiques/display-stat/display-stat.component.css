@@ -21,3 +21,9 @@ nav{
   border-radius: 10px;
 }
 
+.detail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

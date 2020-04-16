@@ -2,9 +2,9 @@
   <button class="btn btn-danger" (click)="close()"> close </button>
 </div>
 <div class="profile" appSizeDirective>
-  <div class="row">
-    <img class="col-md-5" src={{profile.image}} alt="Card image cap">
-    <div class="col-md-7">
+  <div class="detail">
+    <img src={{profile.image}} alt="Card image cap">
+    <div >
     <h1>
         {{profile.firstName}}   {{profile.lastName}}
     </h1>
@@ -17,6 +17,7 @@
     <p>
         trouble : {{trouble}}
     </p>
+    </div>
     <div class="liste">
       <div *ngFor="let history of stat">
         <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history"></app-display-stat>
