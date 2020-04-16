@@ -11,6 +11,7 @@ import {PopUpWarningComponent} from '../../pop-up/pop-up-warning/pop-up-warning.
 import {MatDialog} from '@angular/material/dialog';
 import {combineLatest} from 'rxjs';
 import { StatVue } from 'src/app/models/stat-vue.models';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -62,15 +63,6 @@ export class QuizPageVueComponent implements OnInit {
     });
   }
 
-  openDialog(path: string) {
-    this.dialog.open(PopUpWarningComponent, {
-      data: {
-        path,
-        url: this.route
-      }
-    });
-  }
-
   getSize($event) {
     this.size = $event;
     this.startQuiz = true;
@@ -92,6 +84,9 @@ export class QuizPageVueComponent implements OnInit {
 
   terminateQuiz() {
     this.quizDone = true;
+    const pipe = new DatePipe('en-US');
+    const currentDate = Date.now();
+    this.stats.date = pipe.transform(currentDate, 'short');
     this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
@@ -107,6 +102,7 @@ export class QuizPageVueComponent implements OnInit {
       }
     }
   }
+
 
   searchNextQuestion() {
     for (let i = 0; i < this.questionList.length; i++) {

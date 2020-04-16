@@ -1,5 +1,5 @@
 <div *ngIf="!quizDone" class="menu">
-    <app-navbar-question *ngIf="profile" title="oui" [profile]="profile"></app-navbar-question>
+    <app-navbar-question *ngIf="profile" title="{{quiz.theme}}" [profile]="profile"></app-navbar-question>
 </div>
 <div class="row">
     <div class="col-md-2 btnTree" *ngIf="!quizDone&&stats">
@@ -9,8 +9,10 @@
                 (click)="skipQ(n)" >Q{{n+1}}</button>
         </div>
     </div>
+
     <app-question-memory class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question-memory>
-    <div class="col-md-2 btnTree" *ngIf="!quizDone">
+
+    <div class="col-md-2" *ngIf="!quizDone">
         <button id="finish" class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
     </div>
 </div>

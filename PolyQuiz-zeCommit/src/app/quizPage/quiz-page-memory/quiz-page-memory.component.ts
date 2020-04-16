@@ -9,8 +9,8 @@ import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
 import {ActivatedRoute} from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { StatService } from 'src/app/services/stats.service';
 
 
 @Component({
@@ -33,7 +33,7 @@ export class QuizPageMemoryComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
   constructor(public profileService: ProfileService, public quizService: QuizListService,
-              private route: ActivatedRoute, public dialog: MatDialog,public statService: StatService) {
+              private route: ActivatedRoute, public dialog: MatDialog) {
     const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
     combinedObject.subscribe(value => {
       if (value[0] && value[1]) {
@@ -81,6 +81,9 @@ export class QuizPageMemoryComponent implements OnInit {
   terminateQuiz() {
     this.stats.time = Date.now() - this.timer; // temps mis pour completer le quiz
     this.quizDone = true;
+    const pipe = new DatePipe('en-US');
+    const currentDate = Date.now();
+    this.stats.date = pipe.transform(currentDate, 'short');
     this.profileService.addStat(this.stats, this.profile.trouble);
   }
 

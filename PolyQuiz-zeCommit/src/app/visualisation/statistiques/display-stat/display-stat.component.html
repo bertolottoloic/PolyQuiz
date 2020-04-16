@@ -1,0 +1,18 @@
+<nav>
+  <li [class]="(display) ? 'deroulant-show' : 'deroulant-hide'" (click)="display = !display">
+    <h1>Quiz : {{stat.quiz.name}} - {{stat.quiz.theme.name}} réalisé le {{stat.date}}</h1>
+    <ul>
+      <li>Score: {{stat.score}}</li>
+      <li>Temps pour finir le quiz: {{stat.time/1000}} secondes</li>
+      <li *ngIf="stat.trial">Questions:
+        <ul>
+          <li *ngFor="let question of stat.trial | keyvalue; let i = index"> Question {{i+1}}: {{question.value}} essais</li>
+        </ul>
+      </li>
+      <li>Nombre de bonnes réponses: {{stat.nbRightAnswers}}</li>
+      <li>Nombre de mauvaises réponses: {{stat.nbWrongAnswers}}</li>
+    </ul>
+  </li>
+
+</nav>
+

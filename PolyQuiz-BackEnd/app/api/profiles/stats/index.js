@@ -9,11 +9,13 @@ const router = new Router({mergeParams: true})
 router.get('/', (req, res) => {
   try {
     stats = Stat.get().filter((stat) => stat.profileId == req.params.profileId)
+    console.log(stats)
     statsToSend = []
     stats.forEach((stat) => {
       quiz = addQuiz(stat.quizId)
       statsToSend.push({...stat, quiz})
     })
+    console.log(statsToSend)
     res.status(200).json(statsToSend)
   } catch (err) {
     res.status(500).json(err)

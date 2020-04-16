@@ -1,17 +1,8 @@
 <div *ngIf="!quizDone" class="menu">
+    <app-navbar-question *ngIf="profile" title="{{quiz.theme}}" [profile]="profile"></app-navbar-question>
 
-  <div class="menu-btn">
-    <div>
-      <button type="button" class="btn btn-primary" (click)="openDialog('accueil')">Accueil</button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-primary" (click)="openDialog('retour1')">Retour</button>
-    </div>
-  </div>
 
   <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
-
-  <app-profile *ngIf="profile" [profile]="profile"></app-profile>
   <app-quiz-page-size-selection id="select" *ngIf="!startQuiz" (size)="getSize($event)"></app-quiz-page-size-selection>
 
 </div>
@@ -22,7 +13,6 @@
     </div>
     <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" [size]="size" (nextQ)="receiveQ($event)"></app-question-vue>
   </div>
-
-  <app-end-quiz *ngIf="quizDone" [stats]="stats" [quiz]="quiz"></app-end-quiz>
   </div>
 </div>
+<app-end-quiz *ngIf="quizDone" [stats]="stats" [quiz]="quiz"></app-end-quiz>
