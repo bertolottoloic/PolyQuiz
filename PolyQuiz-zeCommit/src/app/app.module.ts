@@ -37,13 +37,13 @@ import { DisplayQuestionComponent } from './visualisation/display-question/displ
 import { AddThemeComponent } from './manage/add-theme/add-theme.component';
 import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.component';
 import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
-import { DisplayWindowComponent } from './visualisation/statistiques/display-window/display-window.component';
+import { DisplayWindowComponent } from './visualisation/display-profiles/display-window/display-window.component';
 import { PopUpDeleteComponent } from './pop-up/pop-up-delete/pop-up-delete.component';
 import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.component';
 import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
-import { DisplayStatComponent } from './visualisation/statistiques/display-stat/display-stat.component';
+import { DisplayStatComponent } from './visualisation/display-profiles/display-stat/display-stat.component';
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
-import { SizeDirectiveDirective } from './visualisation/statistiques/display-window/size-directive.directive';
+import { SizeDirectiveDirective } from './visualisation/display-profiles/display-window/size-directive.directive';
 
 
 @NgModule({

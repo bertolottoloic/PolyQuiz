@@ -1,0 +1,53 @@
+img{
+  width: auto;
+  height: auto;
+  max-width: 30%;
+  max-height: 30%;
+
+}
+p{
+  font-size: 20px;
+}
+h1{
+  text-align: center;
+}
+h2{
+  text-align: center;
+
+}
+.closebtn{
+  display:flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.liste{
+  width:100%;
+  max-height: 45%;
+}
+
+
+
+
+.deroulant-hide > ul {
+  display: none;
+}
+
+.deroulant-show > ul {
+  display: block;
+}
+
+h2 {
+  font-size: x-large;
+  cursor: pointer;
+}
+
+
+
+nav{
+  margin: 5px;
+  padding:5px;
+  font-size: 20px;
+  background-color: bisque;
+  border-radius: 10px;
+}

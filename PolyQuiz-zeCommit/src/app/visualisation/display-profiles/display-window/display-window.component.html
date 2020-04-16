@@ -1,7 +1,7 @@
 <div class="closebtn row">
   <button class="btn btn-danger" (click)="close()"> close </button>
 </div>
-<div class="profile" appSizeDirective>
+<div *ngIf="profile&&stat" class="profile" appSizeDirective>
   <div class="detail">
     <img src={{profile.image}} alt="Card image cap">
     <div >

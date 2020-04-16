@@ -4,7 +4,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { Trouble } from 'src/app/models/trouble.models';
 import { Profile } from 'src/app/models/profile.models';
 import { MatDialog } from '@angular/material/dialog';
-import { DisplayWindowComponent } from 'src/app/visualisation/statistiques/display-window/display-window.component';
+import { DisplayWindowComponent } from 'src/app/visualisation/display-profiles/display-window/display-window.component';
 import { PopUpDeleteComponent } from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
 
 export enum State{
@@ -59,6 +59,8 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
 
   openDialog(profile:Profile) {
     this.dialog.open(DisplayWindowComponent, {
+      height: '80%',
+      width: '80%',
       data: {
         profile:profile,
       }
@@ -67,8 +69,6 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
 
   openDialogDelete(profile:Profile) {
     this.dialog.open(PopUpDeleteComponent, {
-      height: '80%',
-      width: '80%',
       data: {
         profile:profile,
       }

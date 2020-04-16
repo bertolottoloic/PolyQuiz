@@ -10,6 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DisplayQuizComponent implements OnInit {
 
+  public display:number=null;
   public quiz: Quiz;
   constructor(private router: Router, private route: ActivatedRoute,
     public dialogRef: MatDialogRef<DisplayQuizComponent>,
@@ -27,6 +28,16 @@ export class DisplayQuizComponent implements OnInit {
   }
   onNoClick(): void {
     this.close();
+  }
+
+  actionDisplay(id:number){
+    if(this.display==id){
+      this.display=null;
+    }
+    else{
+      this.display=id;
+    }
+
   }
 
 }

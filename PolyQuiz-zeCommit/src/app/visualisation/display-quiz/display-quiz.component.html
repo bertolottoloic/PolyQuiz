@@ -1,15 +1,25 @@
-<div class='window'>
-  <p>{{quiz.name}} - {{quiz.theme.name}}</p>
+<div class="closebtn row">
+  <button class="btn btn-danger" (click)="close()"> close </button>
+</div>
+<div class='window' appSizeDirective>
+  <h1>{{quiz.name}} - {{quiz.theme.name}}</h1>
   <img *ngIf="quiz.image" src={{quiz.image}}>
-  <div class="row">
+  <div class="row liste">
     <div class="question" *ngFor="let quest of quiz.questions">
-      <p> Question : {{quest.text}}</p>
-      <div class='answer' *ngFor="let answer of quest.answers">
-        <p [style.color]="answer.isCorrect? 'green':'red'">
-          - {{answer.text}}
-          <img *ngIf="answer.image" src={{answer.image}}>
-        </p>
-      </div>
+      <nav>
+        <div [class]="(display==quest.id) ? 'deroulant-show' : 'deroulant-hide'" (click)="actionDisplay(quest.id)">
+          <h2> Question : {{quest.text}} </h2>
+          <ul>
+            <div class='answer' *ngFor="let answer of quest.answers">
+              <p [style.color]="answer.isCorrect? 'green':'red'">
+                - {{answer.text}}
+                <img *ngIf="answer.image" src={{answer.image}}>
+              </p>
+            </div>
+          </ul>
+        </div>
+
+      </nav>
     </div>
   </div>
 </div>

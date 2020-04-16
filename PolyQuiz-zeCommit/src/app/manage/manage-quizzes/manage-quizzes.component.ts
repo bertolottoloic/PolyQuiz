@@ -54,6 +54,8 @@ export class ManageQuizzesComponent extends Trouble implements OnInit {
   }
   openDialogDisplay(quiz: Quiz) {
     this.dialog.open(DisplayQuizComponent, {
+      height: '80%',
+      width: '80%',
       data: {
         quiz,
       }
