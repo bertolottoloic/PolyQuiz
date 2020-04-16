@@ -1,23 +1,23 @@
 <div class="main">
   <div class="question">
-    
+
     <div class="row">
       <div *ngIf="question.image">
-        <img style="margin-top: 50px;" src={{question.image}} alt="image">
+        <img src={{question.image}} alt="image">
       </div>
       <div class="questionText">{{question.text}}</div>
     </div>
   </div>
 
-    
+
     <div class="row">
       <div class="answers col-md-6" *ngFor="let answer of question.answers">
-        <button [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
+        <button appHighlight [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
           {{answer.text}}
           <img *ngIf="answer.image" src={{answer.image}} alt="">
         </button>
       </div>
     </div>
     </div>
-  
-  
+
+

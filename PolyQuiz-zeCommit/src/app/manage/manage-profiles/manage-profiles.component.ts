@@ -67,6 +67,8 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
 
   openDialogDelete(profile:Profile) {
     this.dialog.open(PopUpDeleteComponent, {
+      height: '80%',
+      width: '80%',
       data: {
         profile:profile,
       }

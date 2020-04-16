@@ -1,8 +1,17 @@
 img{
-    width:300px;
-    height:300px;
+  width: auto;
+  height: auto;
+  max-width: 30%;
+  max-height: 50%;
 }
-
+p{
+  font-size: 20px;
+}
+.closebtn{
+  display:flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
 
 .liste{
   overflow-y: scroll;

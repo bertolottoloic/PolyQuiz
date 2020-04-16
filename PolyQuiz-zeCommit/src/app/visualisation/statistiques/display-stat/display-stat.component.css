@@ -6,10 +6,18 @@
   display: block;
 }
 
-h1 {
+h2 {
   font-size: x-large;
   cursor: pointer;
 }
 
 
+
+nav{
+  margin: 5px;
+  padding:5px;
+  font-size: 20px;
+  background-color: bisque;
+  border-radius: 10px;
+}
 

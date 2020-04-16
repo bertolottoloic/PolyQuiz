@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Profile } from '../models/profile.models';
 import { PopUpWarningComponent } from '../pop-up/pop-up-warning/pop-up-warning.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Quiz } from '../models/quiz.models';
 
 @Component({
   selector: 'app-navbar-question',
@@ -13,9 +14,10 @@ import { MatDialog } from '@angular/material/dialog';
 export class NavbarQuestionComponent implements OnInit {
 
   @Input()
-  profile:Profile;
+  quiz:Quiz;
   @Input()
-  title:string;
+  profile:Profile;
+
 
 
   constructor(private router: Router, private route: ActivatedRoute, public dialog: MatDialog) {

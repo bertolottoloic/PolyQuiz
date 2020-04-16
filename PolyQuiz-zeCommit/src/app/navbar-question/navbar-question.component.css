@@ -15,7 +15,7 @@ img{
 
 .title{
   display:flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 10px;
 }
 

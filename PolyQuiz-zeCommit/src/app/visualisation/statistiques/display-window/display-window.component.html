@@ -1,8 +1,13 @@
+<div class="closebtn row">
+  <button class="btn btn-danger" (click)="close()"> close </button>
+</div>
 <div class="profile" appSizeDirective>
-    <img src={{profile.image}} alt="Card image cap">
-    <p>
+  <div class="row">
+    <img class="col-md-5" src={{profile.image}} alt="Card image cap">
+    <div class="col-md-7">
+    <h1>
         {{profile.firstName}}   {{profile.lastName}}
-    </p>
+    </h1>
     <p>
         Date de naissance : {{profile.birthDate | date : "dd/MM/yyyy"}}
     </p>
