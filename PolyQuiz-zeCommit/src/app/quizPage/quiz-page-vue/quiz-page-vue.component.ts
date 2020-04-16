@@ -63,15 +63,6 @@ export class QuizPageVueComponent implements OnInit {
     });
   }
 
-  openDialog(path: string) {
-    this.dialog.open(PopUpWarningComponent, {
-      data: {
-        path,
-        url: this.route
-      }
-    });
-  }
-
   getSize($event) {
     this.size = $event;
     this.startQuiz = true;
@@ -111,6 +102,7 @@ export class QuizPageVueComponent implements OnInit {
       }
     }
   }
+
 
   searchNextQuestion() {
     for (let i = 0; i < this.questionList.length; i++) {
