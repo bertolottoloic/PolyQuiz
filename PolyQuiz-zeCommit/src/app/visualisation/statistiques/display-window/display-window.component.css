@@ -19,7 +19,7 @@ h2,h1{
 }
 
 .liste{
-
+  width:100%;
   max-height: 45%;
 }
 .detail{
