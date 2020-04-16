@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile" appSizeDirective>
     <img src={{profile.image}} alt="Card image cap">
     <p>
         {{profile.firstName}}   {{profile.lastName}}
@@ -12,8 +12,9 @@
     <p>
         trouble : {{trouble}}
     </p>
-
-    <div *ngFor="let history of stat">
-      <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history"></app-display-stat>
+    <div class="liste">
+      <div *ngFor="let history of stat">
+        <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history"></app-display-stat>
+      </div>
     </div>
 </div>

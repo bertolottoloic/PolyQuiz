@@ -43,6 +43,7 @@ import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.
 import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
 import { DisplayStatComponent } from './visualisation/statistiques/display-stat/display-stat.component';
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
+import { SizeDirectiveDirective } from './visualisation/statistiques/display-window/size-directive.directive';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { NavbarQuestionComponent } from './navbar-question/navbar-question.compo
     DisplayQuizComponent,
     FiltreQuizComponent,
     DisplayStatComponent,
-    NavbarQuestionComponent
+    NavbarQuestionComponent,
+    SizeDirectiveDirective
 
   ],
   imports: [
@@ -106,6 +108,8 @@ import { NavbarQuestionComponent } from './navbar-question/navbar-question.compo
   ],
   entryComponents: [DisplayQuizComponent,PopUpDeleteComponent,PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  exports: [SizeDirectiveDirective]
 })
 export class AppModule { }
