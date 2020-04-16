@@ -24,7 +24,7 @@ button {
   align-items: center;
   justify-content: center;
   width:auto;
-  height:150px;
+  height:200px;
 }
 .questionText{
   text-align: center;
@@ -36,8 +36,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  widows: 100%;
-  height:100%;
+
   object-fit: cover;
 
 }
