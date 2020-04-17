@@ -3,9 +3,8 @@
         <fieldset class="form-group">
 
             <label>Upload Logo</label>
-            {{imageError}}
             <div class="custom-file fileInputProfileWrap">
-                <input type="file" accept="image/*" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                <button (click)="compressFile()" class="fileInputProfile"></button>
                 <div class="img-space">
 
                     <ng-container *ngIf="isImageSaved; else elseTemplate">

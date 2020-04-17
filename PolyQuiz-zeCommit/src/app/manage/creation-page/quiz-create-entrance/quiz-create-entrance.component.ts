@@ -83,6 +83,9 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
 
   receiveImg(img: string) {
     this.image = img;
+    const imge = new Image();
+    imge.src = img;
+    console.log(imge.width, imge.height);
   }
 
   editTheme(theme: Theme) {
