@@ -1,8 +1,7 @@
-img{
-  width: auto;
-  height: auto;
-  max-width: 30%;
-  max-height: 30%;
+.liste img{
+width: 150px;
+height: 150px;;
+margin: 10px;
 
 }
 p{
@@ -26,8 +25,25 @@ h2{
   max-height: 45%;
 }
 
+img>ul{
+  border-radius: 100px;
+}
+
+.head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin:10px
+}
 
 
+
+.answersImg{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 .deroulant-hide > ul {
   display: none;
