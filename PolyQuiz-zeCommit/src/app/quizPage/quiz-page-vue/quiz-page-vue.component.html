@@ -1,5 +1,5 @@
 <div *ngIf="!quizDone" class="menu">
-    <app-navbar-question *ngIf="profile" title="{{quiz.theme}}" [profile]="profile"></app-navbar-question>
+    <app-navbar-question *ngIf="profile" title="{{quiz.theme}}" [profile]="profile" [quiz]="quiz"></app-navbar-question>
 
 
   <p class="title" *ngIf="quiz">Quiz : {{ quiz.name }}</p>
