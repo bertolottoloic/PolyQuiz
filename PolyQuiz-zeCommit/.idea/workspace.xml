@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c27c7319-9623-4ef9-a8e3-7f74fbbfe5a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +89,7 @@
       <workItem from="1586024300822" duration="2000" />
       <workItem from="1586262281896" duration="4882000" />
       <workItem from="1587030783539" duration="4570000" />
-      <workItem from="1587139022806" duration="552000" />
+      <workItem from="1587139022806" duration="559000" />
     </task>
     <servers />
   </component>
