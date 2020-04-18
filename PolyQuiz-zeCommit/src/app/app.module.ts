@@ -44,6 +44,7 @@ import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
 import { DisplayStatComponent } from './visualisation/display-profiles/display-stat/display-stat.component';
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
 import { SizeDirectiveDirective } from './visualisation/display-profiles/display-window/size-directive.directive';
+import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { SizeDirectiveDirective } from './visualisation/display-profiles/display
     FiltreQuizComponent,
     DisplayStatComponent,
     NavbarQuestionComponent,
-    SizeDirectiveDirective
+    SizeDirectiveDirective,
+    SizeBoxDirectiveDirective
 
   ],
   imports: [

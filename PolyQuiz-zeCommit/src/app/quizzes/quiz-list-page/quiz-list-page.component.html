@@ -1,10 +1,10 @@
 <app-navbar title="Selectionnez un quiz" [trouble]="trouble" path="../.."></app-navbar>
 
 <div class="row">
-  <div class="col-md-3">
+  <div appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'35%'" class="col-md-3 filter">
     <app-filtre-quiz (filterTheme)="applyFilterTheme($event)" (filterName)="applyFilterName($event)"></app-filtre-quiz>
   </div>
-  <div class=" quizlist col-md-9">
+  <div appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'65%'" class="quizlist col-md-9">
     <div class="quizzes">
       <app-quiz-list [filterTheme]="valueTheme" [filter]="value"></app-quiz-list>
     </div>

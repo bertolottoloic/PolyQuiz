@@ -11,6 +11,7 @@ import { Trouble } from 'src/app/models/trouble.models';
 export class QuizListPageComponent extends Trouble implements OnInit {
   public value:string;
   public valueTheme:string;
+  public window = window;
 
   constructor(public router: Router) {
     super(router)
