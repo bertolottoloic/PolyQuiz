@@ -9,11 +9,8 @@ img{
   height:50px;
   width:50px;
   border-radius: 100px;
-}
-
-.col-2{
-  margin:0px;
-  padding: 0px;
+  margin-right: 10px;
+  margin-top: 6px;
 }
 
 .title{
@@ -33,5 +30,4 @@ img{
   background-color: lightskyblue;
   font-size: 25px;
 }
-
 
