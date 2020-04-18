@@ -1,8 +1,8 @@
 <div *ngIf="!quizDone" class="menu">
     <app-navbar-question *ngIf="profile&&quiz" [quiz]="quiz" [profile]="profile"></app-navbar-question>
 </div>
-<div class="row">
-    <div class="col-md-2 btnTree" *ngIf="!quizDone&&stats">
+<div *ngIf="!quizDone&&stats" class="row">
+    <div class="col-md-2 btnTree" >
         <div class="questions" *ngFor="let question of questionList; let n=index">
             <button appHighlight [disabled]="this.stats.questionsDone.includes(question.id)"
                 [class]="this.index==n?'btn btn-info':this.stats.questionsDone.includes(question.id)?'btn btn-success' : 'btn btn-primary'"
