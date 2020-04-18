@@ -18,7 +18,7 @@
         trouble : {{trouble}}
     </p>
     </div>
-    <div class="liste">
+    <div *ngIf="stat.length>0" class="liste">
       <div *ngFor="let history of stat.reverse()">
         <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history"></app-display-stat>
       </div>
