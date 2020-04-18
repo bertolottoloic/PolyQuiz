@@ -12,7 +12,7 @@
 
     <app-question-memory class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" (nextQ)="receiveQ($event)"></app-question-memory>
 
-    <div class="col-md-2" *ngIf="!quizDone">
+    <div class="col-md-2 terminatebtn" *ngIf="!quizDone">
         <button id="finish" class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
     </div>
 </div>
