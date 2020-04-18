@@ -20,8 +20,10 @@
   }
 
   #finish {
-    width: 200px;
+    width: 100px;
     height: 100px;
+    font-size: 1em;
+    flex-wrap: wrap;
   }
 
   .btnTree {

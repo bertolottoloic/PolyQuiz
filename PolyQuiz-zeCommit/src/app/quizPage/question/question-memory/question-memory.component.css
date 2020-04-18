@@ -1,6 +1,8 @@
 .main {
     min-height: 85vh;
     background-color: brown;
+    width: 90%;
+    height:90%;
 }
 
 .answers{
@@ -8,14 +10,14 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 30px;
+  width: 100%;
+  height:60%;
+
 }
 
+
 button {
-    width:350px;
-    height:170px;
-    margin: 10px;
-    border-width: 10px;
+
 }
 
 .question{
@@ -23,15 +25,14 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width:auto;
-  height:200px;
+  width:100%;
+  height:40%;
 }
 
 .questionText{
   text-align: center;
-  font-size: 30px;
+  font-size: auto;
   margin:15px;
-
 }
 
 .question>img{
@@ -42,10 +43,14 @@ button {
   object-fit: cover;
 }
 
-.answers img {
+.answersImg img {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  max-width: 10%;
+}
+
+.answersTxt{
+  font-size: auto;
+  text-overflow: unset;
 }
 
 
