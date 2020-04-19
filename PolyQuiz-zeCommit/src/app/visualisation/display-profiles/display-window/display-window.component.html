@@ -1,5 +1,5 @@
 <div class="closebtn row">
-  <button class="btn btn-danger" (click)="close()"> close </button>
+  <button class="btn btn-danger" (click)="close()"> fermer </button>
 </div>
 <div *ngIf="profile&&stat" class="profile" appSizeDirective>
   <div class="detail">
@@ -23,4 +23,5 @@
         <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history"></app-display-stat>
       </div>
     </div>
+</div>
 </div>

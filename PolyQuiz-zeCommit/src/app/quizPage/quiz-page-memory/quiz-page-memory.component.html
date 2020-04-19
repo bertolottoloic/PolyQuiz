@@ -4,7 +4,7 @@
 <div *ngIf="!quizDone&&stats" class="row">
     <div class="col-md-2 btnTree" >
         <div class="questions" *ngFor="let question of questionList; let n=index">
-            <button appHighlight [disabled]="this.stats.questionsDone.includes(question.id)"
+            <button [disabled]="this.stats.questionsDone.includes(question.id)"
                 [class]="this.index==n?'btn btn-info':this.stats.questionsDone.includes(question.id)?'btn btn-success' : 'btn btn-primary'"
                 (click)="skipQ(n)" >Q{{n+1}}</button>
         </div>

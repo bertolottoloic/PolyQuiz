@@ -1,16 +1,44 @@
 <div class="main">
-  <div>
-    <div *ngIf="question.image">
-      <img id="im-qu" src={{question.image}} alt="">
-    </div>
-    <div class="size{{size}}">{{question.text}} </div>
+  <div *ngIf="question.image" class="question">
+
+    <img *ngIf="question.image" src={{question.image}} alt="image">
+
+    <div class="questionText{{size}}">{{question.text}}</div>
+  </div>
+  <div *ngIf="!question.image" class="questionOnly">
+    <div class="questionText{{size}}">{{question.text}}</div>
   </div>
 
-  <div class="answers" *ngFor="let answer of question.answers">
-    <button appHighlight class="size{{size}}" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'"  (click)="nextQuestion(answer)">
-      {{answer.text}}
-      <img *ngIf="answer.image" src={{answer.image}} alt="">
-    </button>
+
+<div *ngIf="question.image" class="answers">
+    <div *ngIf="!question.answersAreText" class="answersImg">
+      <div class="col-md-6" *ngFor="let answer of question.answers">
+        <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
+      </div>
+    </div>
+    <div *ngIf="question.answersAreText" class="answersTxt{{size}}">
+      <div class="col-md-6" *ngFor="let answer of question.answers">
+        <button appHighlight [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
+          {{answer.text}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="!question.image" class="answersBig">
+    <div *ngIf="!question.answersAreText" class="answersBigImg">
+      <div class="col-md-6" *ngFor="let answer of question.answers">
+        <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
+      </div>
+    </div>
+    <div *ngIf="question.answersAreText" class="answersTxt{{size}}">
+      <div class="col-md-6" *ngFor="let answer of question.answers">
+        <button appHighlight [style.visibility]="this.wrongAnswers.includes(answer)? 'hidden' : 'visible'" class="answer" (click)="nextQuestion(answer)">
+          {{answer.text}}
+        </button>
+      </div>
+    </div>
 
   </div>
 </div>
