@@ -31,7 +31,6 @@ export class QuizPageMemoryComponent implements OnInit {
   private timer: number;
 
 
-  // tslint:disable-next-line: max-line-length
   constructor(public profileService: ProfileService, public quizService: QuizListService,
               private route: ActivatedRoute, public dialog: MatDialog) {
     const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
@@ -85,6 +84,7 @@ export class QuizPageMemoryComponent implements OnInit {
     const currentDate = Date.now();
     this.stats.date = pipe.transform(currentDate, 'short');
     this.profileService.addStat(this.stats, this.profile.trouble);
+    this.calculScore();
   }
 
   UpdateMapStats(asw: Answer): void {
@@ -92,6 +92,16 @@ export class QuizPageMemoryComponent implements OnInit {
       this.stats.trial.set(asw.questionId, 0);
     }
     this.stats.trial.set(asw.questionId, this.stats.trial.get(asw.questionId) + 1);
+    if(asw.isCorrect){
+
+      if(this.stats.trial.get(asw.questionId)<=2){
+        this.stats.nbRightAnswers+=1
+      }
+      else{
+        this.stats.nbWrongAnswers+=1;
+      }
+    }
+
   }
 
   receiveQ($event) {
@@ -118,6 +128,11 @@ export class QuizPageMemoryComponent implements OnInit {
 
   skipQ(n) { // saute n question(s)
     this.index = n;
+  }
+
+  calculScore(){
+    this.stats.score=Math.round((this.questionList.length/(this.stats.time/10000))*this.stats.nbRightAnswers*100)
+    console.log(this.stats.score)
   }
 }
 

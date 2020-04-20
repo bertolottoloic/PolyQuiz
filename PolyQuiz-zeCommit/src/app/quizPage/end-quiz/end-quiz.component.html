@@ -4,9 +4,18 @@
     <div style="font-size: 0.9em;">
         Vous avez mis {{ stats.time }} ms pour finir le quiz
     </div>
+    <div style="padding-top: 20px;">
+      <p style="font-size: 0.9em;">Votre score est de {{stats.score}}</p>
+  </div>
+    <div style="padding-top: 20px;">
+        <p style="font-size: 0.9em;">Vous avez répondu à {{stats.questionsDone.length}} réponse(s)</p>
+    </div>
 
     <div style="padding-top: 20px;">
-        <p style="font-size: 0.9em;">Vous avez {{stats.questionsDone.length}} bonne(s) réponse(s)</p>
+      <p style="font-size: 0.9em;">Vous avez {{stats.nbRightAnswers}} bonne(s) réponse(s)</p>
+    </div>
+    <div style="padding-top: 20px;">
+      <p style="font-size: 0.9em;">Vous avez {{stats.nbWrongAnswers}} mauvaise(s) réponse(s)</p>
     </div>
 
     <div style="margin-top: 20px; margin-bottom: 20px;">
