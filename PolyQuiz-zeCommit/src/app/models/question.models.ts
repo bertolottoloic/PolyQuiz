@@ -7,4 +7,5 @@ export interface Question {
   answers: Answer[];
   quizId?: number;
   image?: string;
+  answersAreText: boolean;
 }

@@ -4,15 +4,13 @@ import {QuizListService} from '../../services/quizList.service';
 import {ProfileService} from '../../services/profile.service';
 
 import {Question} from 'src/app/models/question.models';
-import {StatMemory} from 'src/app/models/stat.models';
+import {StatMemory} from 'src/app/models/stat-memory.models';
 import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
-
-import { Inject} from '@angular/core';
-import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { PopUpWarningComponent } from 'src/app/pop-up-warning/pop-up-warning.component';
-import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import { combineLatest, Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -26,74 +24,67 @@ export class QuizPageMemoryComponent implements OnInit {
   public quiz: Quiz;
   public questionList: Question[];
   public question: Question;
-  public index: number = 0;
+  public index = 0;
 
   public quizDone: boolean;
   public stats: StatMemory;
   private timer: number;
 
 
-  constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute,public dialog: MatDialog) {
-    this.loadQuiz();
-    this.loadProfile();
-    this.timer = Date.now(); //debut chrono
-    this.stats = new StatMemory(this.quiz,this.profile); //creation objet stat
+  // tslint:disable-next-line: max-line-length
+  constructor(public profileService: ProfileService, public quizService: QuizListService,
+              private route: ActivatedRoute, public dialog: MatDialog) {
+    const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
+    combinedObject.subscribe(value => {
+      if (value[0] && value[1]) {
+        this.load(value[1], value[0]);
+        this.timer = Date.now(); // debut chrono
+      }
+    });
 
   }
 
-
-  loadQuiz() {
-    let id: number;
+  load(quizzes: Quiz[], profiles: Profile[]) {
     this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idQuiz'))
-      this.quizService.quizzes$.subscribe((quizzes) => {
-        let quiz = quizzes.filter((quiz) => quiz.id === id)[0]
-        if (quiz) {
-          this.quiz = quiz
-          this.questionList = quiz.questions
-          this.question = quiz.questions[this.index];
-        }
-      })
-    })
-  }
-
-  loadProfile() {
-    let id: number;
-    this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idProfile'))
-      this.profileService.profiles$.subscribe((profiles) => {
-        let profil = profiles.filter((prf) => prf.id === id)[0]
-        if (profil) {
-          this.profile = profil;
-        }
-      })
-    })
+      const idQuiz = Number(params.get('idQuiz'));
+      const idProfile = Number(params.get('idProfile'));
+      const quiz = quizzes.find((quiz$) => quiz$.id === idQuiz);
+      if (quiz) {
+        this.quiz = quiz;
+        this.questionList = quiz.questions;
+        this.question = quiz.questions[this.index];
+      }
+      const profile = profiles.find((prof) => prof.id === idProfile);
+      if (profile) {
+        this.profile = profile;
+      }
+      if (profile && quiz) {
+        this.stats = new StatMemory(this.quiz, this.profile); // creation objet stat
+      }
+    });
   }
 
 
   ngOnInit() {
   }
 
-  openDialog(path:string) {
-    this.dialog.open(PopUpWarningComponent, {
-      data: {
-        path: path,
-        url:this.route
-      }
-    });
-  }
 
 
-  isCompleted():boolean {
-    if (this.stats.questionsDone.length == this.questionList.length) {
+
+  isCompleted(): boolean {
+    if (this.stats.questionsDone.length === this.questionList.length) {
       this.terminateQuiz();
     }
     return false;
   }
 
   terminateQuiz() {
-    this.stats.time = Date.now() - this.timer //temps mis pour completer le quiz
+    this.stats.time = Date.now() - this.timer; // temps mis pour completer le quiz
     this.quizDone = true;
+    const pipe = new DatePipe('en-US');
+    const currentDate = Date.now();
+    this.stats.date = pipe.transform(currentDate, 'short');
+    this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
   UpdateMapStats(asw: Answer): void {
@@ -106,24 +97,24 @@ export class QuizPageMemoryComponent implements OnInit {
   receiveQ($event) {
     this.UpdateMapStats($event);
     if ($event.isCorrect) {
-      if(!this.stats.questionsDone.includes($event.questionId)){
-        this.stats.questionsDone.push($event.questionId)} //incrémente de 1 le nombre de question fini
-      if(!this.isCompleted()){
-        this.searchNextQuestion()
+      if (!this.stats.questionsDone.includes($event.questionId)) {
+        this.stats.questionsDone.push($event.questionId);
+      } // incrémente de 1 le nombre de question fini
+      if (!this.isCompleted()) {
+        this.searchNextQuestion();
       }
     }
-    this.isCompleted();
   }
 
-  searchNextQuestion(){
-    for(let i=0; i<this.questionList.length;i++){
-      if(!this.stats.questionsDone.includes(this.questionList[i].id)){
-        this.index=i;
+  searchNextQuestion() {
+    for (let i = 0; i < this.questionList.length; i++) {
+      if (!this.stats.questionsDone.includes(this.questionList[i].id)) {
+        this.index = i;
         break;
       }
     }
   }
-  
+
 
   skipQ(n) { // saute n question(s)
     this.index = n;

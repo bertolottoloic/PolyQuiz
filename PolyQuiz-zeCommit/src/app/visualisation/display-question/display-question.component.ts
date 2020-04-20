@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../pop-up-warning/pop-up-warning.component';
-import { Question } from '../models/question.models';
-import { Handicap } from '../models/handicap.models';
+import { DialogData } from '../../pop-up/pop-up-warning/pop-up-warning.component';
+import { Question } from '../../models/question.models';
+import { Handicap } from '../../models/handicap.models';
 
 @Component({
   selector: 'app-display-question',
@@ -21,8 +21,8 @@ export class DisplayQuestionComponent{
       this.trouble=data.trouble;
       console.log(this.question)
     }
-  
-    
+
+
 
 
 

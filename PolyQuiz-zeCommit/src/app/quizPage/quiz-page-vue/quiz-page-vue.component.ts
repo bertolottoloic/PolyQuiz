@@ -2,11 +2,16 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Profile} from '../../models/profile.models';
 import {Quiz} from '../../models/quiz.models';
 import {Question} from '../../models/question.models';
-import {StatMemory} from '../../models/stat.models';
+import {StatMemory} from '../../models/stat-memory.models';
 import {ProfileService} from '../../services/profile.service';
 import {QuizListService} from '../../services/quizList.service';
 import {ActivatedRoute} from '@angular/router';
 import {Answer} from '../../models/answer.models';
+import {PopUpWarningComponent} from '../../pop-up/pop-up-warning/pop-up-warning.component';
+import {MatDialog} from '@angular/material/dialog';
+import {combineLatest} from 'rxjs';
+import { StatVue } from 'src/app/models/stat-vue.models';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -22,31 +27,39 @@ export class QuizPageVueComponent implements OnInit {
   public index = 0;
   public startQuiz: boolean;
   public quizDone: boolean;
-  public stats: StatMemory;
+  public stats: StatVue;
   @Output()
   public size: EventEmitter<number> = new EventEmitter();
 
-  constructor(public profileService: ProfileService, public quizService: QuizListService, private route: ActivatedRoute) {
+  constructor(public profileService: ProfileService, public quizService: QuizListService,
+              private route: ActivatedRoute, public dialog: MatDialog) {
     this.startQuiz = false;
-    this.quizDone = false;
-    this.loadQuiz();
-    this.loadProfile();
+    const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
+    combinedObject.subscribe(value => {
+      if (value[0] && value[1]) {
+        this.load(value[1], value[0]);
+      }
+    });
 
   }
 
-  loadQuiz() {
-    let id: number;
+  load(quizzes: Quiz[], profiles: Profile[]) {
     this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idQuiz'));
-      this.quizService.quizzes$.subscribe((quizzes) => {
-        const quiz = quizzes.filter((quiz) => quiz.id === id)[0];
-        if (quiz) {
-          this.quiz = quiz;
-          this.stats = new StatMemory(quiz,this.profile); // creation objet stat
-          this.questionList = quiz.questions;
-          this.question = quiz.questions[this.index];
-        }
-      });
+      const idQuiz = Number(params.get('idQuiz'));
+      const idProfile = Number(params.get('idProfile'));
+      const quiz = quizzes.find((quiz$) => quiz$.id === idQuiz);
+      if (quiz) {
+        this.quiz = quiz;
+        this.questionList = quiz.questions;
+        this.question = quiz.questions[this.index];
+      }
+      const profile = profiles.find((prof) => prof.id === idProfile);
+      if (profile) {
+        this.profile = profile;
+      }
+      if (profile && quiz) {
+        this.stats = new StatVue(this.quiz, this.profile); // creation objet stat
+      }
     });
   }
 
@@ -55,60 +68,53 @@ export class QuizPageVueComponent implements OnInit {
     this.startQuiz = true;
   }
 
+  ngOnInit() {
+  }
+
   setSize(n: number) {
     this.size.emit(n);
   }
 
-
-  loadProfile() {
-    let id: number;
-    this.route.paramMap.subscribe(params => {
-      id = Number(params.get('idProfile'));
-      this.profileService.profiles$.subscribe((profiles) => {
-        const profil = profiles.filter((prf) => prf.id == id)[0];
-        if (profil) {
-          this.profile = profil;
-        }
-      });
-    });
-  }
-
-
-  ngOnInit() {
-  }
-
-  isCompleted() {
-    if (this.stats.questionsDone.length == this.questionList.length) {
-      this.quizDone = true;
+  isCompleted(): boolean {
+    if (this.stats.questionsDone.length === this.questionList.length) {
+      this.terminateQuiz();
     }
+    return false;
   }
 
   terminateQuiz() {
     this.quizDone = true;
+    const pipe = new DatePipe('en-US');
+    const currentDate = Date.now();
+    this.stats.date = pipe.transform(currentDate, 'short');
+    this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
-  UpdateMapStats(asw: Answer): void {
-    if (this.stats.trial.get(asw.questionId) == null) {
-      this.stats.trial.set(asw.questionId, 0);
-    }
-    this.stats.trial.set(asw.questionId, this.stats.trial.get(asw.questionId) + 1);
-  }
+
 
   receiveQ($event) {
-    this.UpdateMapStats($event);
     if ($event.isCorrect) {
-      this.stats.questionsDone.push($event.questionId); // incrémente de 1 le nombre de question fini
-      if (this.index + 1 < this.questionList.length) {
-        this.index += 1; // passe à la question suivante si possible
-      } else {
-        // revient a une question non terminée
+      if (!this.stats.questionsDone.includes($event.questionId)) {
+        this.stats.questionsDone.push($event.questionId);
+      } // incrémente de 1 le nombre de question fini
+      if (!this.isCompleted()) {
+        this.searchNextQuestion();
       }
     }
-    this.isCompleted();
   }
+
+
+  searchNextQuestion() {
+    for (let i = 0; i < this.questionList.length; i++) {
+      if (!this.stats.questionsDone.includes(this.questionList[i].id)) {
+        this.index = i;
+        break;
+      }
+    }
+  }
+
 
   skipQ(n) { // saute n question(s)
     this.index = n;
   }
-  
 }

@@ -11,17 +11,13 @@ import { Trouble } from 'src/app/models/trouble.models';
 })
 export class QuizCreatePageComponent extends Trouble implements OnInit {
 
-  public quizId:number;
-  public questionId:number
-  constructor(public router:Router,public quizListService:QuizListService) {
-    super(router)
+  public quizId: number;
+  public questionId: number;
+  constructor(public router: Router, public quizListService: QuizListService) {
+    super(router);
   }
 
   ngOnInit() {
   }
 
-
-
-  
-  
 }

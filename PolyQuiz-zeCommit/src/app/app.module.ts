@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgxImageCompressService} from 'ngx-image-compress';
-
 import {AppComponent} from './app.component';
 import {AccueilComponent} from './accueil/accueil.component';
 import {HeaderComponent} from './header/header.component';
@@ -16,7 +15,7 @@ import {QuizComponent} from './quizzes/quiz/quiz.component';
 import {QuizPageMemoryComponent} from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import {QuestionComponent} from './quizPage/question/question-memory/question-memory.component';
 import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
-import {EndQuizComponent} from './end-quiz/end-quiz.component';
+import {EndQuizComponent} from './quizPage/end-quiz/end-quiz.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
 import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight.directive';
 import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
@@ -27,18 +26,25 @@ import { QuizCreateEntranceComponent } from './manage/creation-page/quiz-create-
 import { QuizCreateQuestionComponent } from './manage/creation-page/quiz-create-question/quiz-create-question.component';
 import { QuizCreateQuestionPageComponent } from './manage/creation-page/quiz-create-question-page/quiz-create-question-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PopUpWarningComponent } from './pop-up-warning/pop-up-warning.component';
-import { MatDialogModule,MatDialogRef,MatDialog,MAT_DIALOG_DATA } from'@angular/material/dialog';
+import { PopUpWarningComponent } from './pop-up/pop-up-warning/pop-up-warning.component';
+import { MatDialogModule,MatDialogRef} from'@angular/material/dialog';
 import { MenuComponent } from './menu/menu.component';
 import { ManageProfilesComponent } from './manage/manage-profiles/manage-profiles.component';
 import { ProfileCreatePageComponent } from './manage/profile-create-page/profile-create-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ManageQuizzesComponent } from './manage/manage-quizzes/manage-quizzes.component';
-import { DisplayQuestionComponent } from './display-question/display-question.component';
-import { AddThemeComponent } from './add-theme/add-theme.component';
+import { DisplayQuestionComponent } from './visualisation/display-question/display-question.component';
+import { AddThemeComponent } from './manage/add-theme/add-theme.component';
 import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.component';
 import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
-import { DisplayWindowComponent } from './display-window/display-window.component';
+import { DisplayWindowComponent } from './visualisation/display-profiles/display-window/display-window.component';
+import { PopUpDeleteComponent } from './pop-up/pop-up-delete/pop-up-delete.component';
+import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.component';
+import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
+import { DisplayStatComponent } from './visualisation/display-profiles/display-stat/display-stat.component';
+import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
+import { SizeDirectiveDirective } from './visualisation/display-profiles/display-window/size-directive.directive';
+import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
 
 
 @NgModule({
@@ -75,7 +81,14 @@ import { DisplayWindowComponent } from './display-window/display-window.componen
     ImageUploaderComponent,
     EditProfileComponent,
     DisplayWindowComponent,
-    
+    PopUpDeleteComponent,
+    DisplayQuizComponent,
+    FiltreQuizComponent,
+    DisplayStatComponent,
+    NavbarQuestionComponent,
+    SizeDirectiveDirective,
+    SizeBoxDirectiveDirective
+
   ],
   imports: [
     BrowserModule,
@@ -85,7 +98,7 @@ import { DisplayWindowComponent } from './display-window/display-window.componen
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    
+
   ],
   providers: [
     NgxImageCompressService,
@@ -93,10 +106,12 @@ import { DisplayWindowComponent } from './display-window/display-window.componen
       provide: MatDialogRef,
       useValue: {}
     },
-    
-  ],
-  entryComponents: [PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
 
-  bootstrap: [AppComponent]
+  ],
+  entryComponents: [DisplayQuizComponent,PopUpDeleteComponent,PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
+
+  bootstrap: [AppComponent],
+
+  exports: [SizeDirectiveDirective]
 })
 export class AppModule { }

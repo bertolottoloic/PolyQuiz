@@ -1,6 +1,7 @@
-<div class="end">
+<app-navbar title="Fin du quiz" [trouble]="trouble"></app-navbar>
+<div *ngIf="trouble=='Memoire'" class="end">
 
-    <div style="font-size: 0.9em;" *ngIf="trouble!='Vue'">
+    <div style="font-size: 0.9em;">
         Vous avez mis {{ stats.time }} ms pour finir le quiz
     </div>
 
@@ -15,5 +16,13 @@
     <div id="resume" *ngFor="let question of quiz.questions">
         <p> *{{question.text}} - tentatives : {{stats.trial.get(question.id)}}</p>
     </div>
+
+</div>
+<div *ngIf="trouble=='Vue'" class="end">
+
+  <div style="padding-top: 20px;">
+    <p style="font-size: 0.9em;">Vous avez terminé le quizz, bravo !</p>
+  </div>
+
 
 </div>

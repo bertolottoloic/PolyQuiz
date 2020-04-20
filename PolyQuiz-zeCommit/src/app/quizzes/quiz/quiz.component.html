@@ -1,15 +1,15 @@
-<div>
-    <button type="button" routerLink="{{quiz.id}}">
-      <div class="card" >
-        <div class="cardTop">
-          <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
-        </div>
-        <div class="cardBot">
-          <p>{{ quiz.name }}-{{ quiz.theme }}</p>
-        </div>
-      </div>
-    </button>
+
+<div routerLink="{{quiz.id}}">
+  <div class="card" >
+    <div class="cardTop">
+      <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
+    </div>
+    <div class="cardBot">
+      <p>{{ quiz.name }}-{{ quiz.theme.name }}</p>
+    </div>
+  </div>
 </div>
+
 
 
 

@@ -1,6 +1,6 @@
 const { Router } = require('express')
 
-const { Theme } = require('../../../models')
+const { Theme, Quiz } = require('../../../models')
 
 const router = new Router()
 
@@ -36,6 +36,10 @@ router.post('/', (req, res) => {
 
 router.delete('/:themeId', (req, res) => {
   try {
+    Quiz.get().filter((quiz)=>quiz.themeId==req.params.themeId).forEach(element => {
+      element.themeId = 0
+      Quiz.update(element.id,element)
+    });
     res.status(200).json(Theme.delete(req.params.themeId))
   } catch (err) {
     res.status(404).json(err)
@@ -44,7 +48,7 @@ router.delete('/:themeId', (req, res) => {
 
 router.put('/:themeId', (req, res) => {
   try {
-    res.status(200).json(Quiz.update(req.params.themeId,req.body))
+    res.status(200).json(Theme.update(req.params.themeId,req.body))
   } catch (err) {
     res.status(404).json(err)
   }

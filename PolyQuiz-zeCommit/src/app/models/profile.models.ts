@@ -1,4 +1,5 @@
 import {Handicap} from './handicap.models';
+import {Stat} from './stat.models';
 
 export enum gender {
     male = 'homme',
@@ -12,7 +13,7 @@ export interface Profile {
     id: number;
     trouble: Handicap;
     gender: gender;
-    birthDate:Date;
+    birthDate: Date;
     image: string;
 
 }

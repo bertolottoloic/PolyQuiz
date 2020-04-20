@@ -41,9 +41,9 @@
                 </select>
             </label>
         </div>
-        <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
-
-        <button type="submit" [disabled]="!profileForm.valid" 
+        <app-image-uploader (cardImageBase64Event)="receiveImg($event)" [imageLoad]="image"></app-image-uploader>
+        <br/>
+        <button type="submit" [disabled]="!profileForm.valid"
         [class]="!profileForm.valid? 'btn btn-danger':'btn btn-success' "
         (click)="validProfile()"
         >Modifier</button>

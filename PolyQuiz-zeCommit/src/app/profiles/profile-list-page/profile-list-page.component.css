@@ -10,18 +10,35 @@ p {
     text-align: center;
 }
 
-.main {
-    padding: 20px;
-    display : flex;
-    justify-content: space-between;
-}
 
 .profileList{
-    background-color: aquamarine;
-    
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.row{
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
 }
 
 
+
+.profiles{
+  width:100%;
+}
+
+.col-md-3{
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:0px;
+  background-color: rgba(110, 155, 194, 0.986);
+}
 
 
 

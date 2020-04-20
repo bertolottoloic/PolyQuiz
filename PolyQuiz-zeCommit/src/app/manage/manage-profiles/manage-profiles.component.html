@@ -1,21 +1,22 @@
 <app-navbar title="Gestion des profils" [trouble]="trouble"></app-navbar>
-<div class="row">   
-    <div class="menu col-md-2">
-        <div class="row">
+<div class="row">
+    <div class="menu col-md-3">
+      <p>Filtre</p>
+            <input #box (keyup)="onKey(box.value)">
+
             <button class="btn btn-primary" routerLink="create">Ajouter un profil</button>
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" (click)="changeState('modify')">Modifier un profil</button>
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" (click)="changeState('delete')">Supprimer un profil</button>
-        </div>
+
+            <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
+            (click)="changeState('modify')">Modifier un profil</button>
+
+            <button  [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
+            (click)="changeState('delete')">Supprimer un profil</button>
     </div>
-    <div class="col-md-10">
-        <div class="profileList">
-            <div class="profiles" *ngFor="let profile of profileList">
+    <div class="profiles  col-md-9">
+        <div class="profileList " *ngIf="profileList">
+            <div *ngFor="let profile of profileList">
                 <div class="profileBox">
-                    <button type="button" (click)="action(profile)">
+                    <div (click)="action(profile)">
                         <div class="card" >
                           <div class="cardTop">
                             <img class="card-img-top" src={{profile.image}} alt="Card image cap">
@@ -24,9 +25,9 @@
                             <p>{{ profile.firstName }} {{ profile.lastName }}</p>
                           </div>
                         </div>
-                    </button>                      
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>

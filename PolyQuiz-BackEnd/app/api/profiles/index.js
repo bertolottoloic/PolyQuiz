@@ -1,8 +1,11 @@
 const { Router } = require('express')
 
 const { Profile } = require('../../models')
+const StatRouter = require('./stats')
 
 const router = new Router()
+
+router.use('/:profileId/stats', StatRouter)
 
 router.get('/', (req, res) => {
   try {

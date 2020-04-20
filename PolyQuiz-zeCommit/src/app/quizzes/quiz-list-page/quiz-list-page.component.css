@@ -9,17 +9,30 @@ p {
     font-size: 3em;
     text-align: center;
 }
-
-.main {
-    padding: 20px;
-    display : flex;
-    justify-content: space-between;
+input{
+  margin:10px;
+}
+.quizzes{
+  width:100%;
+  height: 100%;
+}
+.row{
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 89%;
+  width: 100%;
 }
 
-.menu {
-    display: flex;
+.quizlist {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-#menu-btn {
-    margin-right: 15px;
+
+.filter{
+  height: 35%;
 }
+
+

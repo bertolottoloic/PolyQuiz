@@ -1,11 +1,10 @@
 
-    <div class="form-group">
+    <div class="image-uploader">
         <fieldset class="form-group">
 
             <label>Upload Logo</label>
-            {{imageError}}
             <div class="custom-file fileInputProfileWrap">
-                <input type="file" accept="image/*" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                <button (click)="compressFile()" class="fileInputProfile"></button>
                 <div class="img-space">
 
                     <ng-container *ngIf="isImageSaved; else elseTemplate">
@@ -13,7 +12,7 @@
                     </ng-container>
                     <ng-template #elseTemplate>
 
-                        <img src="./../../../assets/placeholder.png" class="img-responsive">
+                        <img [src]="(imageLoad)?imageLoad:emptyLoaderUrl" class="img-responsive">
                     </ng-template>
 
                 </div>
@@ -21,5 +20,4 @@
             </div>
         </fieldset>
     </div>
-    <!-- <a class="btn btn-success" (click)="removeImage()" *ngIf="isImageSaved">Remove</a> -->
 

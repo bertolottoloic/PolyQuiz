@@ -1,35 +1,35 @@
 <app-navbar title="Gestion des quiz" [trouble]="trouble"></app-navbar>
-<div class="row">   
-    <div class="menu col-md-2">
-        <div class="row">
-            <button class="btn btn-primary" routerLink="create">Ajouter un quiz</button>
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" (click)="changeState('modify')">Modifier un quiz</button>
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" (click)="changeState('delete')">Supprimer un quiz</button>
-        </div>
+<div class="row">
+    <div class="menu col-md-3">
+      <app-filtre-quiz (filterName)="applyFilterName($event)" (filterTheme)="applyFilterTheme($event)"></app-filtre-quiz>
+      <br>
+      <button class="btn btn-primary" routerLink="create">Ajouter un quiz</button>
+
+      <button  [class]="state=='modify'? 'btn btn-danger' : 'btn btn-primary'"
+      class="btn btn-primary" (click)="changeState('modify')">Modifier un quiz</button>
+
+      <button [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
+      (click)="changeState('delete')">Supprimer un quiz</button>
+
     </div>
-    <div class="col-md-10">
-        <app-quiz-list *ngIf="state=='none'"></app-quiz-list>
-        <div class="quizToChange" *ngIf="state!='none'&&quizList">
-            <div  *ngFor="let quiz of quizList">
+    <div class="quizzes col-md-9">
+        <div class="quizlist" *ngIf="quizList">
+            <div *ngFor="let quiz of quizList">
                 <div class="quizBox">
-                    <div>
-                        <button type="button"(click)="action(quiz)">
-                          <div class="card" >
-                            <div class="cardTop">
-                              <img class="card-img-top" src="{{quiz.image}}" alt="Card image cap">
-                            </div>
-                            <div class="cardBot">
-                              <p>{{ quiz.name }}-{{ quiz.theme }}</p>
-                            </div>
-                          </div>
-                        </button>
+
+                    <div (click)="action(quiz)">
+                      <div class="card" >
+                        <div class="cardTop">
+                          <img class="card-img-top" src={{quiz.image}} alt="Card image cap">
+                        </div>
+                        <div class="cardBot">
+                          <p>{{ quiz.name }}-{{ quiz.theme.name }}</p>
+                        </div>
+                      </div>
                     </div>
+
                 </div>
-            </div>          
+            </div>
         </div>
     </div>
-</div> 
+</div>
