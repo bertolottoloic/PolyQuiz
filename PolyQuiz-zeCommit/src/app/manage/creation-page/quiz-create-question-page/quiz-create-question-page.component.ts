@@ -4,7 +4,6 @@ import { QuizListService } from 'src/app/services/quizList.service';
 import { Answer } from 'src/app/models/answer.models';
 import { Question } from 'src/app/models/question.models';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatRadioModule} from '@angular/material/radio';
 import { Trouble } from 'src/app/models/trouble.models';
 
 
