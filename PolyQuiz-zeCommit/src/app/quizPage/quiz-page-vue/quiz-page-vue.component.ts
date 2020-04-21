@@ -13,6 +13,13 @@ import { DatePipe } from '@angular/common';
 import {Answer} from '../../models/answer.models';
 import {PopUpAnswerComponent} from './pop-up-answer-component/pop-up-answer.component';
 
+
+import { Injectable } from '@angular/core';
+@Injectable()
+export class VariablesGlobales {
+  indexGlobal = 0;
+}
+
 @Component({
   selector: 'app-quiz-page-vue',
   templateUrl: './quiz-page-vue.component.html',
@@ -24,7 +31,6 @@ export class QuizPageVueComponent implements OnInit {
   public quiz: Quiz;
   public questionList: Question[];
   public question: Question;
-  public index = 0;
   public startQuiz: boolean;
   public quizDone: boolean;
   public stats: StatVue;
@@ -34,8 +40,9 @@ export class QuizPageVueComponent implements OnInit {
 
 
   constructor(public profileService: ProfileService, public quizService: QuizListService,
-              private route: ActivatedRoute, public dialog: MatDialog) {
+              private route: ActivatedRoute, public dialog: MatDialog, private param: VariablesGlobales) {
     this.startQuiz = false;
+    this.param.indexGlobal = 0;
     const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
     combinedObject.subscribe(value => {
       if (value[0] && value[1]) {
@@ -54,7 +61,7 @@ export class QuizPageVueComponent implements OnInit {
       if (quiz) {
         this.quiz = quiz;
         this.questionList = quiz.questions;
-        this.question = quiz.questions[this.index];
+        this.question = quiz.questions[this.param.indexGlobal];
       }
       const profile = profiles.find((prof) => prof.id === idProfile);
       if (profile) {
@@ -119,7 +126,6 @@ export class QuizPageVueComponent implements OnInit {
       } // incrémente de 1 le nombre de question fini
       if (!this.isCompleted()) {
         this.openDialog(true, this.stats.questionsDone.length == this.questionList.length);
-        this.index++;
       }
     }
     if (!$event.isCorrect) {
@@ -128,15 +134,10 @@ export class QuizPageVueComponent implements OnInit {
       } // incrémente de 1 le nombre de question fini
       if (!this.isCompleted()) {
         this.openDialog(false, this.stats.questionsDone.length == this.questionList.length);
-        this.index++;
       }
     }
   }
 
-
-  skipQ(n) { // saute n question(s)
-    this.index = n;
-  }
 
   calculScore() {
     this.stats.score = Math.round((this.questionList.length / (this.stats.time / 10000)) * this.stats.nbRightAnswers * 100);

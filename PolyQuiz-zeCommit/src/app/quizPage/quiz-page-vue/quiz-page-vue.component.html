@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]" [size]="size"  (nextQ)="receiveQ($event)"></app-question-vue>
+  <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[param.indexGlobal]" [size]="size"  (nextQ)="receiveQ($event)"></app-question-vue>
 
   <div class="col-md-2 terminatebtn" *ngIf="!quizDone">
     <button id="finish" class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz {{stats.questionsDone.length}}</button>

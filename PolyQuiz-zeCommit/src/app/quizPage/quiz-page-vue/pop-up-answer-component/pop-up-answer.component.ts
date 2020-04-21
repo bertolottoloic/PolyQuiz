@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Answer} from '../../../models/answer.models';
+import {VariablesGlobales} from '../quiz-page-vue.component';
 
 export interface DialogData {
   answer;
@@ -20,7 +20,7 @@ export class PopUpAnswerComponent {
 
   constructor(private router: Router, private route: ActivatedRoute,
               public dialogRef: MatDialogRef<PopUpAnswerComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+              @Inject(MAT_DIALOG_DATA) public data: DialogData, private param: VariablesGlobales) {
     this.currentAnswer = data.answer;
     this.completed = data.completed;
     dialogRef.disableClose = true;
@@ -32,6 +32,7 @@ export class PopUpAnswerComponent {
   }
 
   next(): void {
+    this.param.indexGlobal++;
     this.close();
   }
 

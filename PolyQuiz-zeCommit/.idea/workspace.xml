@@ -4,6 +4,7 @@
     <list default="true" id="c27c7319-9623-4ef9-a8e3-7f74fbbfe5a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.html" afterDir="false" />
@@ -98,7 +99,7 @@
       <workItem from="1587314203558" duration="257000" />
       <workItem from="1587314812961" duration="9643000" />
       <workItem from="1587400910474" duration="445000" />
-      <workItem from="1587448912669" duration="11590000" />
+      <workItem from="1587448912669" duration="16082000" />
     </task>
     <servers />
   </component>
@@ -106,6 +107,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587470797391">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1587470797391" />
     <state width="1659" height="221" key="GridCell.Tab.0.bottom" timestamp="1587330387031">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
