@@ -1,13 +1,14 @@
-<app-navbar title="Création d'un quiz" path="../.." [trouble]="trouble"></app-navbar>
+<app-navbar title="Modification du quiz" path="../.." [trouble]="trouble"></app-navbar>
 
-<div *ngIf="quiz" class="page-content">
-  <div class="col-md-4">
+<div *ngIf="quiz" class="container">
+  <div class="col-md-6 info">
     <form [formGroup]="quizForm">
       <label for="title">
-        Title <br>
+        Titre du quiz <br>
         <input class="input-custom" type="text" id="name" [formControlName]="'name'">
       </label>
       <br>
+      <button class="btn btn-info" (click)="openTheme()">Ajouter un thème</button>
 
       <label for="Theme">
         <br />
@@ -16,28 +17,34 @@
           <option *ngFor="let theme of themes" [value]="theme.id">{{theme.name}}</option>
         </select>
       </label>
-      <button (click)="openTheme()">add theme</button>
     </form>
     <app-image-uploader (cardImageBase64Event)="receiveImg($event)" [imageLoad]="image"></app-image-uploader>
+    <button class="answer" (click)="sendQuiz()">Valider le quiz</button>
+
   </div>
+
   <div class="questions col-md-6">
-    <div *ngFor="let question of quiz.questions">
-      <div class="row">
-        <button type="button" (click)="openDialog(question)">
-          <p>{{question.text}}</p>
-        </button>
-        <button (click)="edit(question)">
-          edit
-        </button>
-        <button (click)="delete(question)">
-          delete
-        </button>
-      </div>
+    <h2>Gestion des questions</h2>
+    <button id="addquest" class="btn btn-info" routerLink="add-question">Ajouter une question</button>
+    <div class="list">
+      <div class="question" *ngFor="let question of quiz.questions">
+        <div class="col-md-6">
+          <button class="btn quest" (click)="openDialog(question)">
+            <p>{{question.text}}</p>
+          </button>
+        </div>
+          <div class="col-md-3">
+          <button class="btn btn-primary" (click)="edit(question)">
+            modifier
+          </button>
+        </div>
+      <div class="col-md-3">
+          <button class="btn btn-danger" (click)="delete(question)">
+            supprimer
+          </button>
+        </div>
+        </div>
     </div>
   </div>
-  <div class="col-md-2">
-    <button class="answer" routerLink="add-question">Ajouter une question</button>
-  </div>
-  <button class="answer" (click)="sendQuiz()">Valider le quiz</button>
 
 </div>
