@@ -16,7 +16,7 @@ button{
 .row{
 align-items: flex-start;
 justify-content: flex-start;
-height: 89%;
+height: 88%;
 width: 100%;
 }
 input{
@@ -70,6 +70,9 @@ img {
 
 p{
 text-align: center;
-font-size: 15px;
+}
+
+.menu > p {
+  font-size: 3em;
 }
 
