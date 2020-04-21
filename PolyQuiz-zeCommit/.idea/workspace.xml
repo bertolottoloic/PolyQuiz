@@ -4,9 +4,8 @@
     <list default="true" id="c27c7319-9623-4ef9-a8e3-7f74fbbfe5a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/models/stat-vue.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/stat-vue.models.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quizPage/end-quiz/end-quiz.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/end-quiz/end-quiz.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-warning/pop-up-warning.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-warning/pop-up-warning.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.ts" afterDir="false" />
     </list>
@@ -39,9 +38,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue" />
       <recent name="$PROJECT_DIR$/src/app/quizPage/question" />
       <recent name="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/highlight" />
-      <recent name="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue" />
       <recent name="$PROJECT_DIR$/src/app/quizPage" />
     </key>
   </component>
@@ -99,7 +98,7 @@
       <workItem from="1587314203558" duration="257000" />
       <workItem from="1587314812961" duration="9643000" />
       <workItem from="1587400910474" duration="445000" />
-      <workItem from="1587448912669" duration="3783000" />
+      <workItem from="1587448912669" duration="9804000" />
     </task>
     <servers />
   </component>

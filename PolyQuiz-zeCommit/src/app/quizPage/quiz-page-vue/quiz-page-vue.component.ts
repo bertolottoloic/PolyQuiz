@@ -11,6 +11,7 @@ import {combineLatest} from 'rxjs';
 import { StatVue } from 'src/app/models/stat-vue.models';
 import { DatePipe } from '@angular/common';
 import {Answer} from '../../models/answer.models';
+import {PopUpAnswerComponent} from './pop-up-answer-component/pop-up-answer.component';
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -100,7 +101,7 @@ export class QuizPageVueComponent implements OnInit {
     }
     if (asw.isCorrect) {
       this.stats.trial.set(asw.questionId, true);
-      this.stats.nbRightAnswers += 1
+      this.stats.nbRightAnswers += 1;
       } else {
         this.stats.nbWrongAnswers += 1;
       }
@@ -116,6 +117,7 @@ export class QuizPageVueComponent implements OnInit {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
       if (!this.isCompleted()) {
+        this.openDialog(true);
         this.searchNextQuestion();
       }
     }
@@ -124,6 +126,7 @@ export class QuizPageVueComponent implements OnInit {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
       if (!this.isCompleted()) {
+        this.openDialog(false);
         this.searchNextQuestion();
       }
     }
@@ -144,8 +147,13 @@ export class QuizPageVueComponent implements OnInit {
     this.index = n;
   }
 
-  calculScore(){
-    this.stats.score=Math.round((this.questionList.length/(this.stats.time/10000))*this.stats.nbRightAnswers*100);
-    console.log(this.stats.score)
+  calculScore() {
+    this.stats.score = Math.round((this.questionList.length / (this.stats.time / 10000)) * this.stats.nbRightAnswers * 100);
+    console.log(this.stats.score);
+  }
+
+  openDialog(answer: boolean) {
+    this.dialog.open(PopUpAnswerComponent, {
+      data : {answer}});
   }
 }

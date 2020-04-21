@@ -1,0 +1,6 @@
+<p *ngIf="currentAnswer">Bonne réponse ! </p>
+<p *ngIf="!currentAnswer">Mauvaise réponse... </p>
+
+<div class="row quit">
+  <button type="button" class="btn btn-success" (click)="action()">Question Suivante</button>
+</div>

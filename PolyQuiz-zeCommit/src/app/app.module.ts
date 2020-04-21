@@ -45,6 +45,7 @@ import { DisplayStatComponent } from './visualisation/display-profiles/display-s
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
 import { SizeDirectiveDirective } from './visualisation/display-profiles/display-window/size-directive.directive';
 import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
+import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { SizeBoxDirectiveDirective } from './directives/size-box-directive.direc
     DisplayStatComponent,
     NavbarQuestionComponent,
     SizeDirectiveDirective,
-    SizeBoxDirectiveDirective
+    SizeBoxDirectiveDirective,
+    PopUpAnswerComponent
 
   ],
   imports: [
@@ -108,7 +110,8 @@ import { SizeBoxDirectiveDirective } from './directives/size-box-directive.direc
     },
 
   ],
-  entryComponents: [DisplayQuizComponent,PopUpDeleteComponent,PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
+  entryComponents: [DisplayQuizComponent, PopUpDeleteComponent, PopUpWarningComponent, PopUpAnswerComponent, DisplayQuestionComponent,
+    AddThemeComponent, DisplayWindowComponent],
 
   bootstrap: [AppComponent],
 
