@@ -26,11 +26,12 @@ button{
 
 .quizzes{
   background-color: antiquewhite;
+  height: 100%;
 }
 
 .quizlist {
+  max-height: 100%;
   overflow: auto;
-  height: 100%;
   display: flex;
   width: 100%;
   flex-wrap: wrap;
