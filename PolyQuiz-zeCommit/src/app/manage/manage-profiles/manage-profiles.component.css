@@ -16,7 +16,7 @@ button{
 .row{
 align-items: flex-start;
 justify-content: flex-start;
-height: 100%;
+height: 89%;
 width: 100%;
 }
 input{
@@ -29,17 +29,15 @@ margin : 10px 0px 0px 10px;
 }
 
 .profiles{
-display:flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+  background-color: antiquewhite;
 }
 
 .profileList {
-background-color: antiquewhite;
-display: flex;
-width: 100%;
-flex-wrap: wrap;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 
 }
 
@@ -73,3 +71,4 @@ p{
 text-align: center;
 font-size: 15px;
 }
+

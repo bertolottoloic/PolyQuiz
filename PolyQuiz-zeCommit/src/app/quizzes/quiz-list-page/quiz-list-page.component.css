@@ -32,8 +32,12 @@ input{
 }
 
 
-.filter{
-  height: 35%;
+.filter{  
+  background-color: cadetblue;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 

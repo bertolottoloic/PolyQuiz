@@ -1,6 +1,6 @@
 <app-navbar title="Gestion des profils" [trouble]="trouble"></app-navbar>
 <div class="row">
-    <div class="menu col-md-3">
+    <div class="menu col-md-3" appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'42%'">
       <p>Filtre</p>
             <input #box (keyup)="onKey(box.value)">
 
@@ -12,8 +12,8 @@
             <button  [class]="state=='delete'? 'btn btn-danger' : 'btn btn-primary'"
             (click)="changeState('delete')">Supprimer un profil</button>
     </div>
-    <div class="profiles  col-md-9">
-        <div class="profileList " *ngIf="profileList">
+    <div appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'58%'" class="profiles  col-md-9">
+        <div  class="profileList " *ngIf="profileList">
             <div *ngFor="let profile of profileList">
                 <div class="profileBox">
                     <div (click)="action(profile)">
