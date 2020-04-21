@@ -43,7 +43,6 @@ import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.
 import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
 import { DisplayStatComponent } from './visualisation/display-profiles/display-stat/display-stat.component';
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
-import { SizeDirectiveDirective } from './visualisation/display-profiles/display-window/size-directive.directive';
 import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
 import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
 
@@ -87,9 +86,9 @@ import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-com
     FiltreQuizComponent,
     DisplayStatComponent,
     NavbarQuestionComponent,
-    SizeDirectiveDirective,
     SizeBoxDirectiveDirective,
-    PopUpAnswerComponent
+    PopUpAnswerComponent,
+    SizeBoxDirectiveDirective
 
   ],
   imports: [
@@ -115,6 +114,6 @@ import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-com
 
   bootstrap: [AppComponent],
 
-  exports: [SizeDirectiveDirective]
+  exports: []
 })
 export class AppModule { }

@@ -45,6 +45,11 @@ img>ul{
   justify-content: center;
 }
 
+.answer > img {
+  border-width: 3px;
+  border-style: solid;
+}
+
 .deroulant-hide > ul {
   display: none;
 }
