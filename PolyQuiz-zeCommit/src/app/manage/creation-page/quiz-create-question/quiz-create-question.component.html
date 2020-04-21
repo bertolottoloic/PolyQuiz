@@ -1,43 +1,43 @@
 <app-navbar title="Création d'un quiz" path="../.." [trouble]="trouble"></app-navbar>
 
 <div *ngIf="quiz" class="page-content">
-    <div class="col-md-4">
-        <form [formGroup]="quizForm">
-            <label for="title">
-            Title <br>
-            <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-            </label>
-            <br>
+  <div class="col-md-4">
+    <form [formGroup]="quizForm">
+      <label for="title">
+        Title <br>
+        <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+      </label>
+      <br>
 
-            <label for="Theme">
-                <br/>
-                Theme <br>
-                <select name="theme" id="theme" [formControlName]="'themeId'" required>
-                    <option *ngFor="let theme of themes" [value]="theme.id">{{theme.name}}</option>
-                </select>
-            </label>
-            <button (click)="openTheme()">add theme</button>
-        </form>
-        <app-image-uploader (cardImageBase64Event)="receiveImg($event)" [imageLoad]="image"></app-image-uploader>
+      <label for="Theme">
+        <br />
+        Theme <br>
+        <select name="theme" id="theme" [formControlName]="'themeId'" required>
+          <option *ngFor="let theme of themes" [value]="theme.id">{{theme.name}}</option>
+        </select>
+      </label>
+      <button (click)="openTheme()">add theme</button>
+    </form>
+    <app-image-uploader (cardImageBase64Event)="receiveImg($event)" [imageLoad]="image"></app-image-uploader>
+  </div>
+  <div class="questions col-md-6">
+    <div *ngFor="let question of quiz.questions">
+      <div class="row">
+        <button type="button" (click)="openDialog(question)">
+          <p>{{question.text}}</p>
+        </button>
+        <button (click)="edit(question)">
+          edit
+        </button>
+        <button (click)="delete(question)">
+          delete
+        </button>
+      </div>
     </div>
-    <div class="questions col-md-6">
-        <div *ngFor="let question of quiz.questions">
-            <div class="row">
-                <button type="button" (click)="openDialog(question)">
-                    <p>{{question.text}}</p>
-                </button>
-                <button (click)="edit(question)">
-                    edit
-                </button>
-                <button (click)="delete(question)">
-                    delete
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2">
-         <button class="answer" routerLink="add-question">Ajouter une question</button>
-    </div>
-    <button class="answer" (click)="sendQuiz()">Valider le quiz</button>
+  </div>
+  <div class="col-md-2">
+    <button class="answer" routerLink="add-question">Ajouter une question</button>
+  </div>
+  <button class="answer" (click)="sendQuiz()">Valider le quiz</button>
 
 </div>
