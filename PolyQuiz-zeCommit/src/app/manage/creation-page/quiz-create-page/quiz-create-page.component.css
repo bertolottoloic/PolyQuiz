@@ -23,3 +23,9 @@ p {
 #menu-btn {
     margin-right: 15px;
 }
+
+.page-content{
+  width:100%;
+  height: 85%;
+
+}
