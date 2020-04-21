@@ -2,8 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from 'src/app/models/question.models';
 import {Answer} from 'src/app/models/answer.models';
 import {ActivatedRoute, Router} from '@angular/router';
-import {StatMemory} from '../../../models/stat-memory.models';
 import { Trouble } from 'src/app/models/trouble.models';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-question-vue',
@@ -14,7 +14,7 @@ export class QuestionVueComponent extends Trouble implements OnInit {
 
   public wrongAnswers: Answer[] = [];
 
-  constructor(public router: Router, private route: ActivatedRoute) {
+  constructor(public router: Router, private route: ActivatedRoute, public dialog: MatDialog) {
     super(router);
   }
 
@@ -40,5 +40,6 @@ export class QuestionVueComponent extends Trouble implements OnInit {
   nextQuestion(answer: Answer) {
     this.nextQ.emit(answer);
   }
+
 
 }

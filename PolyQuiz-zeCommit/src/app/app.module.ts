@@ -44,6 +44,7 @@ import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
 import { DisplayStatComponent } from './visualisation/display-profiles/display-stat/display-stat.component';
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
 import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
+import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
 
 
 @NgModule({
@@ -85,6 +86,8 @@ import { SizeBoxDirectiveDirective } from './directives/size-box-directive.direc
     FiltreQuizComponent,
     DisplayStatComponent,
     NavbarQuestionComponent,
+    SizeBoxDirectiveDirective,
+    PopUpAnswerComponent,
     SizeBoxDirectiveDirective
 
   ],
@@ -106,7 +109,8 @@ import { SizeBoxDirectiveDirective } from './directives/size-box-directive.direc
     },
 
   ],
-  entryComponents: [DisplayQuizComponent,PopUpDeleteComponent,PopUpWarningComponent, DisplayQuestionComponent,AddThemeComponent,DisplayWindowComponent],
+  entryComponents: [DisplayQuizComponent, PopUpDeleteComponent, PopUpWarningComponent, PopUpAnswerComponent, DisplayQuestionComponent,
+    AddThemeComponent, DisplayWindowComponent],
 
   bootstrap: [AppComponent],
 
