@@ -2,16 +2,15 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Profile} from '../../models/profile.models';
 import {Quiz} from '../../models/quiz.models';
 import {Question} from '../../models/question.models';
-import {StatMemory} from '../../models/stat-memory.models';
 import {ProfileService} from '../../services/profile.service';
 import {QuizListService} from '../../services/quizList.service';
 import {ActivatedRoute} from '@angular/router';
-import {Answer} from '../../models/answer.models';
-import {PopUpWarningComponent} from '../../pop-up/pop-up-warning/pop-up-warning.component';
+
 import {MatDialog} from '@angular/material/dialog';
 import {combineLatest} from 'rxjs';
 import { StatVue } from 'src/app/models/stat-vue.models';
 import { DatePipe } from '@angular/common';
+import {Answer} from '../../models/answer.models';
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -30,6 +29,8 @@ export class QuizPageVueComponent implements OnInit {
   public stats: StatVue;
   @Output()
   public size: EventEmitter<number> = new EventEmitter();
+  private timer: number;
+
 
   constructor(public profileService: ProfileService, public quizService: QuizListService,
               private route: ActivatedRoute, public dialog: MatDialog) {
@@ -38,6 +39,7 @@ export class QuizPageVueComponent implements OnInit {
     combinedObject.subscribe(value => {
       if (value[0] && value[1]) {
         this.load(value[1], value[0]);
+        this.timer = Date.now();
       }
     });
 
@@ -83,17 +85,41 @@ export class QuizPageVueComponent implements OnInit {
   }
 
   terminateQuiz() {
+    this.stats.time = Date.now() - this.timer;
     this.quizDone = true;
     const pipe = new DatePipe('en-US');
     const currentDate = Date.now();
     this.stats.date = pipe.transform(currentDate, 'short');
     this.profileService.addStat(this.stats, this.profile.trouble);
+    this.calculScore();
+  }
+
+  UpdateMapStats(asw: Answer): void {
+    if (this.stats.trial.get(asw.questionId) == null) {
+      this.stats.trial.set(asw.questionId, false);
+    }
+    if (asw.isCorrect) {
+      this.stats.trial.set(asw.questionId, true);
+      this.stats.nbRightAnswers += 1
+      } else {
+        this.stats.nbWrongAnswers += 1;
+      }
+
   }
 
 
 
   receiveQ($event) {
+    this.UpdateMapStats($event);
     if ($event.isCorrect) {
+      if (!this.stats.questionsDone.includes($event.questionId)) {
+        this.stats.questionsDone.push($event.questionId);
+      } // incrémente de 1 le nombre de question fini
+      if (!this.isCompleted()) {
+        this.searchNextQuestion();
+      }
+    }
+    if (!$event.isCorrect) {
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
@@ -116,5 +142,10 @@ export class QuizPageVueComponent implements OnInit {
 
   skipQ(n) { // saute n question(s)
     this.index = n;
+  }
+
+  calculScore(){
+    this.stats.score=Math.round((this.questionList.length/(this.stats.time/10000))*this.stats.nbRightAnswers*100);
+    console.log(this.stats.score)
   }
 }
