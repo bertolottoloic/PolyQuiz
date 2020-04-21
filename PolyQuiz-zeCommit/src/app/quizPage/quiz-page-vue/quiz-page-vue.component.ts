@@ -112,13 +112,14 @@ export class QuizPageVueComponent implements OnInit {
 
   receiveQ($event) {
     this.UpdateMapStats($event);
+    this.stats.questionsDone.push($event.questionId) // incrémente de 1 le nombre de questions finies
     if ($event.isCorrect) {
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
       if (!this.isCompleted()) {
-        this.openDialog(true);
-        this.searchNextQuestion();
+        this.openDialog(true, this.stats.questionsDone.length == this.questionList.length);
+        this.index++;
       }
     }
     if (!$event.isCorrect) {
@@ -126,18 +127,8 @@ export class QuizPageVueComponent implements OnInit {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
       if (!this.isCompleted()) {
-        this.openDialog(false);
-        this.searchNextQuestion();
-      }
-    }
-  }
-
-
-  searchNextQuestion() {
-    for (let i = 0; i < this.questionList.length; i++) {
-      if (!this.stats.questionsDone.includes(this.questionList[i].id)) {
-        this.index = i;
-        break;
+        this.openDialog(false, this.stats.questionsDone.length == this.questionList.length);
+        this.index++;
       }
     }
   }
@@ -152,8 +143,8 @@ export class QuizPageVueComponent implements OnInit {
     console.log(this.stats.score);
   }
 
-  openDialog(answer: boolean) {
+  openDialog(answer: boolean, completed: boolean) {
     this.dialog.open(PopUpAnswerComponent, {
-      data : {answer}});
+      data : {answer, completed}});
   }
 }

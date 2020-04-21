@@ -5,6 +5,7 @@ import {Answer} from '../../../models/answer.models';
 
 export interface DialogData {
   answer;
+  completed;
 }
 
 @Component({
@@ -15,11 +16,13 @@ export interface DialogData {
 export class PopUpAnswerComponent {
 
   currentAnswer: boolean;
+  completed: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
               public dialogRef: MatDialogRef<PopUpAnswerComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.currentAnswer = data.answer;
+    this.completed = data.completed;
     dialogRef.disableClose = true;
   }
 

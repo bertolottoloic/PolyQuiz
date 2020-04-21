@@ -2,5 +2,7 @@
 <p *ngIf="!currentAnswer">Mauvaise réponse... </p>
 
 <div class="row quit">
-  <button type="button" class="btn btn-success" (click)="action()">Question Suivante</button>
+  <button *ngIf="!completed" type="button" class="btn btn-success" (click)="action()">Question Suivante</button>
+  <button *ngIf="completed" type="button" class="btn btn-success" (click)="action()">Voir le score</button>
+
 </div>
