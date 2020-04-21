@@ -4,16 +4,18 @@ import { Stat } from './stat.models';
 
 export class StatVue extends Stat {
 
-  trial: Map<number, number>;
+  trial: Map<number, boolean>;
 
 
   constructor(quizz: Quiz, profile: Profile) {
     super(quizz, profile);
+    this.trial = new Map();
+    this.initStats(quizz);
   }
 
   initStats(quiz: Quiz) {
     quiz.questions.forEach(element => {
-      this.trial.set(element.id, 0);
+      this.trial.set(element.id, false);
     });
   }
 

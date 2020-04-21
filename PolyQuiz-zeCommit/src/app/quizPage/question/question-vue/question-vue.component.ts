@@ -39,10 +39,6 @@ export class QuestionVueComponent extends Trouble implements OnInit {
 
   nextQuestion(answer: Answer) {
     this.nextQ.emit(answer);
-
-    if (!answer.isCorrect) {
-      this.wrongAnswers.push(answer);
-    }
   }
 
 }
