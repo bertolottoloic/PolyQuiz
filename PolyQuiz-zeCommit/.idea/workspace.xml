@@ -4,11 +4,8 @@
     <list default="true" id="c27c7319-9623-4ef9-a8e3-7f74fbbfe5a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +96,8 @@
       <workItem from="1587314203558" duration="257000" />
       <workItem from="1587314812961" duration="9643000" />
       <workItem from="1587400910474" duration="445000" />
-      <workItem from="1587448912669" duration="16082000" />
+      <workItem from="1587448912669" duration="16308000" />
+      <workItem from="1587656975948" duration="755000" />
     </task>
     <servers />
   </component>
@@ -111,25 +109,25 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1587470797391" />
-    <state width="1659" height="221" key="GridCell.Tab.0.bottom" timestamp="1587330387031">
+    <state width="1659" height="220" key="GridCell.Tab.0.bottom" timestamp="1587487480510">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="221" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1587330387031" />
+    <state width="1659" height="220" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1587487480510" />
     <state width="1659" height="264" key="GridCell.Tab.0.bottom/0.23.1680.978@0.23.1680.978" timestamp="1586262343582" />
-    <state width="1659" height="221" key="GridCell.Tab.0.center" timestamp="1587330387029">
+    <state width="1659" height="220" key="GridCell.Tab.0.center" timestamp="1587487480509">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="221" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1587330387029" />
+    <state width="1659" height="220" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1587487480509" />
     <state width="1659" height="264" key="GridCell.Tab.0.center/0.23.1680.978@0.23.1680.978" timestamp="1586262343579" />
-    <state width="1659" height="221" key="GridCell.Tab.0.left" timestamp="1587330387028">
+    <state width="1659" height="220" key="GridCell.Tab.0.left" timestamp="1587487480508">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="221" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1587330387028" />
+    <state width="1659" height="220" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1587487480508" />
     <state width="1659" height="264" key="GridCell.Tab.0.left/0.23.1680.978@0.23.1680.978" timestamp="1586262343579" />
-    <state width="1659" height="221" key="GridCell.Tab.0.right" timestamp="1587330387029">
+    <state width="1659" height="220" key="GridCell.Tab.0.right" timestamp="1587487480509">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="221" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1587330387029" />
+    <state width="1659" height="220" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1587487480509" />
     <state width="1659" height="264" key="GridCell.Tab.0.right/0.23.1680.978@0.23.1680.978" timestamp="1586262343580" />
     <state x="498" y="160" width="683" height="729" key="find.popup" timestamp="1587325594331">
       <screen x="0" y="0" width="1680" height="1050" />

@@ -40,9 +40,9 @@
     justify-content: center;
 
   }
-  .btnTree {
+  .numQuest {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    font-size: 300%;
     align-items: center;
+    justify-content: center;
   }
