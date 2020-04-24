@@ -1,22 +1,24 @@
 <app-navbar title="Fin du quiz" [trouble]="trouble"></app-navbar>
 <div class="page-content">
-  <div *ngIf="trouble=='Memoire'" class="end">
-
+  <div class="end">
     <div>
-      <p >Vous avez répondu à {{stats.questionsDone.length}} question{{stats.questionsDone.length>1?"s":""}}</p>
+      <p>Vous avez répondu à {{stats.questionsDone.length}} question{{stats.questionsDone.length>1?"s":""}}</p>
     </div>
 
     <div>
-      <p >Vous avez {{stats.nbRightAnswers}} bonne{{stats.nbRightAnswers>1?"s":""}} réponse{{stats.nbRightAnswers>1?"s":""}}</p>
+      <p>Vous avez {{stats.nbRightAnswers}} bonne{{stats.nbRightAnswers>1?"s":""}}
+        réponse{{stats.nbRightAnswers>1?"s":""}}</p>
     </div>
     <br>
     <div>
       <p>Résumé des questions: </p>
     </div>
+  </div>
 
+  <div class="results" *ngIf="trouble=='Memoire'">
     <div id="resume" *ngFor="let question of quiz.questions">
 
-        <p> {{question.text}}</p>
+      <p> {{question.text}}</p>
 
       <div *ngFor="let answ of question.answers">
         <div *ngIf="answ.isCorrect">
@@ -25,39 +27,27 @@
           <p *ngIf="question.answersAreText"> {{answ.text}}</p>
         </div>
       </div>
-      <p [style.color]="stats.trial.get(question.id)<=2&&stats.trial.get(question.id)!=0?'green':'black'" class="result">Votre réponse : {{stats.trial.get(question.id)<=2&&stats.trial.get(question.id)!=0?"Correcte":"Fausse"}}</p>
-
+      <p [style.color]="stats.trial.get(question.id)<=2&&stats.trial.get(question.id)!=0?'green':'black'"
+        class="result">Votre réponse :
+        {{stats.trial.get(question.id)<=2&&stats.trial.get(question.id)!=0?"Correcte":"Fausse"}}</p>
     </div>
   </div>
-
   <div *ngIf=" trouble=='Vue'" class=" end">
-
-    <div style="padding-top: 20px;">
-      <p style="font-size: 0.9em;">Vous avez terminé le quizz, bravo !</p>
-    </div>
-
-    <div style="padding-top: 20px;">
-      <p style="font-size: 0.9em;">Votre score est de {{stats.score}}</p>
-    </div>
-    <div style="padding-top: 20px;">
-      <p style="font-size: 0.9em;">Vous avez répondu à {{stats.questionsDone.length}} questions(s)</p>
-    </div>
-
-    <div style="padding-top: 20px;">
-      <p style="font-size: 0.9em;">Vous avez {{stats.nbRightAnswers}} bonne(s) réponse(s)</p>
-    </div>
-    <div style="padding-top: 20px;">
-      <p style="font-size: 0.9em;">Vous avez {{stats.nbWrongAnswers}} mauvaise(s) réponse(s)</p>
-    </div>
-
-    <div style="margin-top: 20px; margin-bottom: 20px;">
-      <p style="font-size: 0.9em;">Résumé des questions: </p>
-    </div>
-
     <div id="resume" *ngFor="let question of quiz.questions">
-      <p *ngIf="stats.trial.get(question.id)"> *{{question.text}} - réponse : Vrai</p>
-      <p *ngIf="!stats.trial.get(question.id)"> *{{question.text}} - réponse : Faux</p>
+      <p> {{question.text}}</p>
+      <div *ngFor="let answ of question.answers">
+        <div *ngIf="answ.isCorrect">
+          <p>La réponse correcte est : </p>
+          <img *ngIf="!question.answersAreText" src={{answ.image}} alt="réponse">
+          <p *ngIf="question.answersAreText"> {{answ.text}}</p>
+        </div>
+
+      </div>
+      <p [style.color]="stats.trial.get(question.id)?'green':'black'" class="result">Votre réponse :
+        {{stats.trial.get(question.id)?'Correcte':'Fausse'}}</p>
     </div>
 
   </div>
+
+
 </div>

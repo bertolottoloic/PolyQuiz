@@ -9,3 +9,10 @@
   font-size: 2em;
 }
 
+input{
+  width: 100%
+}
+
+label{
+  width:100%;
+}
