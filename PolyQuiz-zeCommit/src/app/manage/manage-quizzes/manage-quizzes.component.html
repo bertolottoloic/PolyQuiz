@@ -1,5 +1,5 @@
 <app-navbar title="Gestion des quiz" [trouble]="trouble"></app-navbar>
-<div class="row">
+<div class="container">
     <div class="menu col-md-3" appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'60%'">
       <app-filtre-quiz (filterName)="applyFilterName($event)" (filterTheme)="applyFilterTheme($event)"></app-filtre-quiz>
       <br>
