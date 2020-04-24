@@ -1,5 +1,5 @@
 <app-navbar title="Gestion des profils" [trouble]="trouble"></app-navbar>
-<div class="row">
+<div class="container">
     <div class="menu col-md-3" appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'50%'">
       <p>Rechercher par nom</p>
             <input #box (keyup)="onKey(box.value)">

@@ -13,10 +13,10 @@ button{
   margin-top: 20px;
 }
 
-.row{
+.container{
 align-items: flex-start;
 justify-content: flex-start;
-height: 88%;
+height: 89%;
 width: 100%;
 }
 input{
