@@ -17,7 +17,7 @@ input{
   height: 100%;
   background-color: antiquewhite;
 }
-.row{
+.container{
   align-items: flex-start;
   justify-content: flex-start;
   height: 89%;
@@ -29,6 +29,7 @@ input{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0px
 }
 
 
