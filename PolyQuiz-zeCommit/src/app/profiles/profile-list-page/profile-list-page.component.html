@@ -1,6 +1,6 @@
 <app-navbar title="Selectionnez un profil pour lancer un quiz" [trouble]="trouble" [Back]="false"></app-navbar>
 
-<div class="row">
+<div class="container">
   <div appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'40%'" class="col-md-3">
     <p>Filtre</p>
     <input class="filter" #box (keyup)="onKey(box.value)">
