@@ -14,6 +14,8 @@ import { PopUpZoomComponent } from './pop-up-zoom/pop-up-zoom.component';
 export class QuestionVueComponent extends Trouble implements OnInit {
 
   public wrongAnswers: Answer[] = [];
+  @Input()
+  public zoom: boolean;
 
   constructor(public router: Router, private route: ActivatedRoute, public dialog: MatDialog) {
     super(router);

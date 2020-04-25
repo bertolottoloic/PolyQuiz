@@ -31,6 +31,7 @@ export class QuizPageVueComponent implements OnInit {
   public size: number;
   private timer: number;
   public indexGlobal: number;
+  public zoom: boolean = true;
 
 
   constructor(public profileService: ProfileService, public quizService: QuizListService,
@@ -145,5 +146,8 @@ export class QuizPageVueComponent implements OnInit {
     );
   }
 
+  changeZoom(){
+    this.zoom = !this.zoom;
+  }
 
 }

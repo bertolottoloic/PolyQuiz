@@ -15,12 +15,12 @@
     <div *ngIf="!question.answersAreText" class="answersImg">
       <div class="col-md-6" *ngFor="let answer of question.answers">
         <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer"
-          (click)="openDialogZoom(answer, false)">
+          (click)="(zoom)?openDialogZoom(answer, false):nextQuestion(answer)">
       </div>
     </div>
     <div *ngIf="question.answersAreText" class="answersTxt1">
       <div class="col-md-6" *ngFor="let answer of question.answers">
-        <button appHighlight class="btn answer" (click)="openDialogZoom(answer, true)">
+        <button appHighlight class="btn answer" (click)="(zoom)?openDialogZoom(answer, true):nextQuestion(answer)">
           {{answer.text}}
         </button>
       </div>
@@ -32,12 +32,12 @@
     <div *ngIf="!question.answersAreText" class="answersBigImg">
       <div class="col-md-6" *ngFor="let answer of question.answers">
         <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer"
-          (click)="openDialogZoom(answer, true)">
+          (click)="(zoom)?openDialogZoom(answer, false):nextQuestion(answer)">
       </div>
     </div>
     <div *ngIf="question.answersAreText" class="answersTxt1">
       <div class="col-md-6" *ngFor="let answer of question.answers">
-        <button appHighlight class="answer" (click)="openDialogZoom(answer, false)">
+        <button appHighlight class="answer" (click)="(zoom)?openDialogZoom(answer, true):nextQuestion(answer)">
           {{answer.text}}
         </button>
       </div>

@@ -66,6 +66,11 @@ button {
   cursor: pointer;
 
 }
+
+.answer:hover{
+  border: solid 5px transparent;
+}
+
 .answersImg{
   height: 100%;
   width: 100%;

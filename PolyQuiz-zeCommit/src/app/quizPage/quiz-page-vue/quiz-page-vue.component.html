@@ -9,10 +9,10 @@
   <div class="col-md-2 terminatebtn" *ngIf="!quizDone">
     <button id="finish" class="btn btn-danger" (click)="terminateQuiz();quizDone=true;" >Terminer le quiz</button>
   </div>
-  <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[indexGlobal]" [size]="size"  (nextQ)="receiveQ($event)"></app-question-vue>
+  <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[indexGlobal]" [size]="size"  (nextQ)="receiveQ($event)" [zoom]="zoom"></app-question-vue>
 
   <div class="col-md-2 numQuest" >
-    <button class="btn btn-info">Zoom</button>
+    <button [class]="(zoom)?'btn btn-info':'btn btn-success'" [style.border]="(zoom)?'solid 5px dodgerblue':'none'" (click)="changeZoom()">Zoom</button>
     <br>
     <p>Question</p>
     <p> {{indexGlobal+1}}/{{quiz.questions.length}}</p>
