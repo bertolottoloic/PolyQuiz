@@ -1,24 +1,20 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Profile} from '../../models/profile.models';
-import {Quiz} from '../../models/quiz.models';
-import {Question} from '../../models/question.models';
-import {ProfileService} from '../../services/profile.service';
-import {QuizListService} from '../../services/quizList.service';
-import {ActivatedRoute} from '@angular/router';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Profile } from '../../models/profile.models';
+import { Quiz } from '../../models/quiz.models';
+import { Question } from '../../models/question.models';
+import { ProfileService } from '../../services/profile.service';
+import { QuizListService } from '../../services/quizList.service';
+import { ActivatedRoute } from '@angular/router';
 
-import {MatDialog} from '@angular/material/dialog';
-import {combineLatest} from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { combineLatest } from 'rxjs';
 import { StatVue } from 'src/app/models/stat-vue.models';
 import { DatePipe } from '@angular/common';
-import {Answer} from '../../models/answer.models';
-import {PopUpAnswerComponent} from './pop-up-answer-component/pop-up-answer.component';
+import { Answer } from '../../models/answer.models';
+import { PopUpAnswerComponent } from './pop-up-answer-component/pop-up-answer.component';
 
 
 import { Injectable } from '@angular/core';
-@Injectable()
-export class VariablesGlobales {
-  indexGlobal = 0;
-}
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -37,12 +33,13 @@ export class QuizPageVueComponent implements OnInit {
   @Output()
   public size: EventEmitter<number> = new EventEmitter();
   private timer: number;
+  public indexGlobal: number;
 
 
   constructor(public profileService: ProfileService, public quizService: QuizListService,
-              private route: ActivatedRoute, public dialog: MatDialog, private param: VariablesGlobales) {
+    private route: ActivatedRoute, public dialog: MatDialog) {
     this.startQuiz = false;
-    this.param.indexGlobal = 0;
+    this.indexGlobal = 0;
     const combinedObject = combineLatest(this.profileService.profiles$, this.quizService.quizzes$);
     combinedObject.subscribe(value => {
       if (value[0] && value[1]) {
@@ -61,7 +58,7 @@ export class QuizPageVueComponent implements OnInit {
       if (quiz) {
         this.quiz = quiz;
         this.questionList = quiz.questions;
-        this.question = quiz.questions[this.param.indexGlobal];
+        this.question = quiz.questions[this.indexGlobal];
       }
       const profile = profiles.find((prof) => prof.id === idProfile);
       if (profile) {
@@ -86,15 +83,14 @@ export class QuizPageVueComponent implements OnInit {
   }
 
   isCompleted(): boolean {
-    if (this.stats.questionsDone.length === this.questionList.length) {
-      this.terminateQuiz();
-    }
-    return false;
+    // if (this.stats.questionsDone.length === this.questionList.length) {
+    //   this.terminateQuiz();
+    // }
+    return this.stats.questionsDone.length === this.questionList.length;
   }
 
   terminateQuiz() {
     this.stats.time = Date.now() - this.timer;
-    this.quizDone = true;
     const pipe = new DatePipe('en-US');
     const currentDate = Date.now();
     this.stats.date = pipe.transform(currentDate, 'short');
@@ -109,9 +105,9 @@ export class QuizPageVueComponent implements OnInit {
     if (asw.isCorrect) {
       this.stats.trial.set(asw.questionId, true);
       this.stats.nbRightAnswers += 1;
-      } else {
-        this.stats.nbWrongAnswers += 1;
-      }
+    } else {
+      this.stats.nbWrongAnswers += 1;
+    }
 
   }
 
@@ -124,17 +120,14 @@ export class QuizPageVueComponent implements OnInit {
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
-      if (!this.isCompleted()) {
-        this.openDialog(true, this.stats.questionsDone.length == this.questionList.length);
-      }
+      this.openDialog(true, this.isCompleted());
     }
     if (!$event.isCorrect) {
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
-      if (!this.isCompleted()) {
-        this.openDialog(false, this.stats.questionsDone.length == this.questionList.length);
-      }
+      this.openDialog(false, this.isCompleted());
+
     }
   }
 
@@ -145,7 +138,20 @@ export class QuizPageVueComponent implements OnInit {
   }
 
   openDialog(answer: boolean, completed: boolean) {
-    this.dialog.open(PopUpAnswerComponent, {
-      data : {answer, completed}});
+    const dialogRef = this.dialog.open(PopUpAnswerComponent, {
+      data: { answer, completed }
+    });
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (completed) {
+          this.terminateQuiz();
+          this.quizDone = true;
+        }
+        else {
+          this.indexGlobal++;
+        }
+      }
+    );
   }
 }

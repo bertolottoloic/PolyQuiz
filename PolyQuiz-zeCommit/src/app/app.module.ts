@@ -16,7 +16,7 @@ import {QuizPageMemoryComponent} from './quizPage/quiz-page-memory/quiz-page-mem
 import {QuestionComponent} from './quizPage/question/question-memory/question-memory.component';
 import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
 import {EndQuizComponent} from './quizPage/end-quiz/end-quiz.component';
-import {QuizPageVueComponent, VariablesGlobales} from './quizPage/quiz-page-vue/quiz-page-vue.component';
+import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
 import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight.directive';
 import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
 import { QuestionVueComponent } from './quizPage/question/question-vue/question-vue.component';
@@ -102,7 +102,6 @@ import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-com
 
   ],
   providers: [
-    VariablesGlobales,
     NgxImageCompressService,
     {
       provide: MatDialogRef,

@@ -6,13 +6,13 @@
 <app-quiz-page-size-selection id="select" *ngIf="!startQuiz" (size)="getSize($event)"></app-quiz-page-size-selection>
 <div *ngIf="startQuiz && !quizDone&&stats" class="row">
   <div class="col-md-2 numQuest" >
-    <p>Question {{param.indexGlobal+1}}/{{quiz.questions.length}}</p>
+    <p>Question {{indexGlobal+1}}/{{quiz.questions.length}}</p>
   </div>
 
-  <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[param.indexGlobal]" [size]="size"  (nextQ)="receiveQ($event)"></app-question-vue>
+  <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[indexGlobal]" [size]="size"  (nextQ)="receiveQ($event)"></app-question-vue>
 
   <div class="col-md-2 terminatebtn" *ngIf="!quizDone">
-    <button id="finish" class="btn btn-danger" (click)="terminateQuiz()" >Terminer le quiz</button>
+    <button id="finish" class="btn btn-danger" (click)="terminateQuiz();quizDone=true;" >Terminer le quiz</button>
   </div>
 </div>
 

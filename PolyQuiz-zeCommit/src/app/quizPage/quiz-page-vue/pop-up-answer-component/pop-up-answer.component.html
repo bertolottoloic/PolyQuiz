@@ -4,7 +4,7 @@
 <p *ngIf="completed">Bravo ! Vous avez terminé le quizz ! </p>
 
 <div class="row quit">
-  <button *ngIf="!completed" type="button" class="btn btn-success" (click)="action()">Question Suivante</button>
-  <button *ngIf="completed" type="button" class="btn btn-success" (click)="action()">Voir le score</button>
+  <button *ngIf="!completed" type="button" class="btn btn-success" (click)="close()">Question Suivante</button>
+  <button *ngIf="completed" type="button" class="btn btn-success" (click)="close()">Voir le score</button>
 
 </div>
