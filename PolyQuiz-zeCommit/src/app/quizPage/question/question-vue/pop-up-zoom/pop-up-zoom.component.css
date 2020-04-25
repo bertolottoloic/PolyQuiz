@@ -28,3 +28,8 @@ img{
     object-fit: contain;
 }
 
+.text{
+    font-size: 5vw;
+    text-align: center;
+    width: 100%;
+}
