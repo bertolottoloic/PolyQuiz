@@ -16,6 +16,7 @@
 }
 
 .answers img{
+  background-color: white;
 
   object-fit: contain;
 
