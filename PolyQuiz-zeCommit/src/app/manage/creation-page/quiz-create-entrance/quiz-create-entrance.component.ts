@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddThemeComponent } from 'src/app/manage/add-theme/add-theme.component';
 import { THEME_LIST } from 'src/app/mocks/theme.mock';
 import { Trouble } from 'src/app/models/trouble.models';
+import { PopUpDeleteComponent } from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
 
 @Component({
   selector: 'app-quiz-create-entrance',
@@ -68,9 +69,9 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
   }
 
   deleteTheme(theme: Theme){
-    this.themeService.deleteTheme((theme.id).toString()).subscribe(() => {
-      this.themeService.setThemesFromUrl();
-      this.quizListService.setQuizzesFromUrl();
+    this.dialog.open(PopUpDeleteComponent, {
+      data: { theme:theme,
+      }
     });
   }
 

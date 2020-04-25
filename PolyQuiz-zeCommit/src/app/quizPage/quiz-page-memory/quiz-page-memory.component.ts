@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { PopUpAnswerComponent } from '../quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
 
 
 @Component({
@@ -72,7 +73,7 @@ export class QuizPageMemoryComponent implements OnInit {
 
   isCompleted(): boolean {
     if (this.stats.questionsDone.length === this.questionList.length) {
-      this.terminateQuiz();
+      return true;
     }
     return false;
   }
@@ -106,14 +107,13 @@ export class QuizPageMemoryComponent implements OnInit {
 
   receiveQ($event) {
     this.UpdateMapStats($event);
-    if ($event.isCorrect) {
+    if($event.isCorrect||this.stats.trial.get($event.questionId)>2){
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
-      if (!this.isCompleted()) {
-        this.searchNextQuestion();
-      }
+      this.openDialog($event.isCorrect,this.isCompleted());
     }
+
   }
 
   searchNextQuestion() {
@@ -133,6 +133,23 @@ export class QuizPageMemoryComponent implements OnInit {
   calculScore(){
     this.stats.score=Math.round((this.questionList.length/(this.stats.time/10000))*this.stats.nbRightAnswers*100)
     console.log(this.stats.score)
+  }
+
+  openDialog(answer: boolean, completed: boolean) {
+    const dialogRef = this.dialog.open(PopUpAnswerComponent, {
+      data: { answer, completed }
+    });
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (completed) {
+          this.terminateQuiz();
+        }
+        else {
+          this.searchNextQuestion();
+        }
+      }
+    );
   }
 }
 

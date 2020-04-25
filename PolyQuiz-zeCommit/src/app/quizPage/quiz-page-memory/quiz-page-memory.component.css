@@ -45,3 +45,11 @@
     align-items: center;
     overflow: auto;
   }
+
+.btnTree{
+  overflow: auto;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

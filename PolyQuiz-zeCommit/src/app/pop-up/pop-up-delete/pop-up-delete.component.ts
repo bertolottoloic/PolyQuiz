@@ -6,6 +6,8 @@ import { Quiz } from '../../models/quiz.models';
 import { QuizListService } from '../../services/quizList.service';
 import { Profile } from '../../models/profile.models';
 import { ProfileService } from '../../services/profile.service';
+import { Theme } from 'src/app/models/theme.models';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-pop-up-delete',
@@ -16,8 +18,9 @@ export class PopUpDeleteComponent implements OnInit {
 
   public quizToDelete:Quiz;
   public profileToDelete:Profile;
+  public themeToDelete:Theme;
 
-  constructor(public profileService:ProfileService, public quizService:QuizListService, private router: Router, private route: ActivatedRoute,
+  constructor(public profileService:ProfileService, public quizService:QuizListService,public themeService : ThemeService,
     public dialogRef: MatDialogRef<PopUpWarningComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
       if(data.quiz){
@@ -25,6 +28,9 @@ export class PopUpDeleteComponent implements OnInit {
       }
       if(data.profile){
         this.profileToDelete=data.profile
+      }
+      if(data.theme){
+        this.themeToDelete=data.theme
       }
     }
 
@@ -45,6 +51,12 @@ export class PopUpDeleteComponent implements OnInit {
     }
     if(this.profileToDelete){
       this.profileService.deleteProfile(this.profileToDelete.id);
+    }
+    if(this.themeToDelete){
+      this.themeService.deleteTheme((this.themeToDelete.id).toString()).subscribe(() => {
+        this.themeService.setThemesFromUrl();
+        this.quizService.setQuizzesFromUrl();
+      });
     }
     this.close()
   }
