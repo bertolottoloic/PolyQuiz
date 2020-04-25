@@ -14,9 +14,6 @@ import { Answer } from '../../models/answer.models';
 import { PopUpAnswerComponent } from './pop-up-answer-component/pop-up-answer.component';
 
 
-import { Injectable } from '@angular/core';
-import { PopUpImgComponent } from '../question/question-vue/pop-up-img/pop-up-img.component';
-
 @Component({
   selector: 'app-quiz-page-vue',
   templateUrl: './quiz-page-vue.component.html',

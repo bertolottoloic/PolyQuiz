@@ -45,7 +45,7 @@ import { DisplayStatComponent } from './visualisation/display-profiles/display-s
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
 import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
 import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
-import { PopUpImgComponent } from './quizPage/question/question-vue/pop-up-img/pop-up-img.component';
+import { PopUpZoomComponent } from './quizPage/question/question-vue/pop-up-zoom/pop-up-zoom.component';
 
 
 @NgModule({
@@ -90,7 +90,7 @@ import { PopUpImgComponent } from './quizPage/question/question-vue/pop-up-img/p
     SizeBoxDirectiveDirective,
     PopUpAnswerComponent,
     SizeBoxDirectiveDirective,
-    PopUpImgComponent
+    PopUpZoomComponent
 
   ],
   imports: [
@@ -112,7 +112,7 @@ import { PopUpImgComponent } from './quizPage/question/question-vue/pop-up-img/p
 
   ],
   entryComponents: [DisplayQuizComponent, PopUpDeleteComponent, PopUpWarningComponent, PopUpAnswerComponent, DisplayQuestionComponent,
-    AddThemeComponent, DisplayWindowComponent, PopUpImgComponent],
+    AddThemeComponent, DisplayWindowComponent, PopUpZoomComponent],
 
   bootstrap: [AppComponent],
 

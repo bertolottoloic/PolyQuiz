@@ -1,6 +1,9 @@
 <div class="container">
-    <div class="col-md-10 image">
+    <div *ngIf="!isText" class="col-md-10 image">
         <img [src]="answer.image" />
+    </div>
+    <div *ngIf="!isText" class="col-md-10 text">
+        <p>{{answer.text}}</p>
     </div>
     <div class="col-md-2 buttons">
         <button class="btn btn-success" type="button" (click)="validate=true;close();">Valider</button>
