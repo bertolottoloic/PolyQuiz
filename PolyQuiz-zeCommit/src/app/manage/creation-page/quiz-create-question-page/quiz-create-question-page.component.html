@@ -4,7 +4,7 @@
     <div class="form-group has-error">
       <label for="text">
         Texte <br>
-        <input class="input-custom" type="text" id="name" [formControlName]="'text'">
+        <input class="input-custom" type="text" id="name" [formControlName]="'text'" maxlength="45">
       </label>
       <label for="image">
         Image <br>
@@ -31,7 +31,7 @@
         <div class="form-group has-error" [formGroupName]="i">
           <label for="titre">
             Réponse {{ i+1 }} <br />
-            <input *ngIf="questionType.value.type" type="text" id="text" [formControlName]="'text'">
+            <input *ngIf="questionType.value.type" type="text" id="text" [formControlName]="'text'" maxlength="30">
 
             <app-image-uploader *ngIf="!questionType.value.type" (cardImageBase64Event)="receiveImgAnsw($event,i)"
               [imageLoad]="imageAnswers[i]"></app-image-uploader>

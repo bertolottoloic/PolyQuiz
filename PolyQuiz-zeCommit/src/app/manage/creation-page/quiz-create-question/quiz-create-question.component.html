@@ -5,7 +5,7 @@
     <form [formGroup]="quizForm">
       <label for="title">
         Titre du quiz <br>
-        <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+        <input class="input-custom" type="text" id="name" [formControlName]="'name'" maxlength="25">
       </label>
       <br>
       <button class="btn btn-info" (click)="openTheme()">Ajouter un thème</button>

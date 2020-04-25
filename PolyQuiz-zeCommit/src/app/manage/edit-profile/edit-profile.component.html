@@ -6,14 +6,14 @@
 
             <label for="firstName">
                 Prénom
-                <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" required>
+                <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" maxlength="20" required>
             </label>
 
             <label for="lastName">
                 Nom
-                <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" required>
+                <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" maxlength="20" required>
             </label>
-        
+
         </div>
 
         <div class=row>
@@ -23,7 +23,7 @@
             </label>
         </div>
         <div class="row">
-        
+
             <br>
             <label for="gender">
                 <br />Sexe<br>
