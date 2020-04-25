@@ -35,7 +35,7 @@
 
   .terminatebtn{
     display: flex;
-    font-size: 200%;
+    font-size: 100%;
     align-items: center;
     justify-content: center;
 
@@ -44,5 +44,6 @@
     display: flex;
     font-size: 300%;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
   }

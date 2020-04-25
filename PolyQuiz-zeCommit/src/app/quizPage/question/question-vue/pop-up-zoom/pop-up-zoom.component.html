@@ -2,7 +2,7 @@
     <div *ngIf="!isText" class="col-md-10 image">
         <img [src]="answer.image" />
     </div>
-    <div *ngIf="!isText" class="col-md-10 text">
+    <div *ngIf="isText" class="col-md-10 text">
         <p>{{answer.text}}</p>
     </div>
     <div class="col-md-2 buttons">
