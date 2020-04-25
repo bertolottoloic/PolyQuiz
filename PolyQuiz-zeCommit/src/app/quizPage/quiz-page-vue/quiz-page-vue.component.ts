@@ -15,6 +15,7 @@ import { PopUpAnswerComponent } from './pop-up-answer-component/pop-up-answer.co
 
 
 import { Injectable } from '@angular/core';
+import { PopUpImgComponent } from '../question/question-vue/pop-up-img/pop-up-img.component';
 
 @Component({
   selector: 'app-quiz-page-vue',
@@ -30,8 +31,7 @@ export class QuizPageVueComponent implements OnInit {
   public startQuiz: boolean;
   public quizDone: boolean;
   public stats: StatVue;
-  @Output()
-  public size: EventEmitter<number> = new EventEmitter();
+  public size: number;
   private timer: number;
   public indexGlobal: number;
 
@@ -78,14 +78,7 @@ export class QuizPageVueComponent implements OnInit {
   ngOnInit() {
   }
 
-  setSize(n: number) {
-    this.size.emit(n);
-  }
-
   isCompleted(): boolean {
-    // if (this.stats.questionsDone.length === this.questionList.length) {
-    //   this.terminateQuiz();
-    // }
     return this.stats.questionsDone.length === this.questionList.length;
   }
 
@@ -120,13 +113,13 @@ export class QuizPageVueComponent implements OnInit {
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
-      this.openDialog(true, this.isCompleted());
+      this.openDialogAns(true, this.isCompleted());
     }
     if (!$event.isCorrect) {
       if (!this.stats.questionsDone.includes($event.questionId)) {
         this.stats.questionsDone.push($event.questionId);
       } // incrémente de 1 le nombre de question fini
-      this.openDialog(false, this.isCompleted());
+      this.openDialogAns(false, this.isCompleted());
 
     }
   }
@@ -137,7 +130,7 @@ export class QuizPageVueComponent implements OnInit {
     console.log(this.stats.score);
   }
 
-  openDialog(answer: boolean, completed: boolean) {
+  openDialogAns(answer: boolean, completed: boolean) {
     const dialogRef = this.dialog.open(PopUpAnswerComponent, {
       data: { answer, completed }
     });
@@ -154,4 +147,6 @@ export class QuizPageVueComponent implements OnInit {
       }
     );
   }
+
+
 }

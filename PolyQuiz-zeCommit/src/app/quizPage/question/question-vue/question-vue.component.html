@@ -13,7 +13,7 @@
 <div *ngIf="question.image" class="answers">
     <div *ngIf="!question.answersAreText" class="answersImg">
       <div class="col-md-6" *ngFor="let answer of question.answers">
-        <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer" (click)="nextQuestion(answer)">
+        <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer" (click)="openDialogImg(answer)">
       </div>
     </div>
     <div *ngIf="question.answersAreText" class="answersTxt{{size}}">
@@ -29,7 +29,7 @@
   <div *ngIf="!question.image" class="answersBig">
     <div *ngIf="!question.answersAreText" class="answersBigImg">
       <div class="col-md-6" *ngFor="let answer of question.answers">
-        <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer" (click)="nextQuestion(answer)">
+        <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer" (click)="openDialogImg(answer)">
       </div>
     </div>
     <div *ngIf="question.answersAreText" class="answersTxt{{size}}">

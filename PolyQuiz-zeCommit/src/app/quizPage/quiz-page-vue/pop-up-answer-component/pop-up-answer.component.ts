@@ -3,8 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 export interface DialogData {
-  answer;
-  completed;
+  answer: boolean;
+  completed: boolean;
 }
 
 @Component({

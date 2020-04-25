@@ -4,6 +4,7 @@ import {Answer} from 'src/app/models/answer.models';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Trouble } from 'src/app/models/trouble.models';
 import {MatDialog} from '@angular/material/dialog';
+import { PopUpImgComponent } from './pop-up-img/pop-up-img.component';
 
 @Component({
   selector: 'app-question-vue',
@@ -41,5 +42,22 @@ export class QuestionVueComponent extends Trouble implements OnInit {
     this.nextQ.emit(answer);
   }
 
+  
+  openDialogImg(answer: Answer){
+    const dialogRef = this.dialog.open(PopUpImgComponent, {
+      height: '80%',
+      width: '80%',
+      data: { answer }
+    });
+
+    dialogRef.afterClosed().subscribe(
+      (res) => {
+        if(res.validate){
+          this.nextQuestion(res.answer)
+        }
+    });
+
+    
+  }
 
 }
