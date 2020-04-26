@@ -49,7 +49,14 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
 
   createProfile() {
     const profileToCreate: Profile = this.profileForm.getRawValue() as Profile;
-    profileToCreate.image = this.image;
+    if(this.image){
+      profileToCreate.image = this.image;
+    }
+    else{
+      profileToCreate.image="assets/img/profil/";
+      profileToCreate.image+=profileToCreate.gender.toString()==="Homme"?"homme.png":"femme.png";
+    }
+
     this.profileCreate$ = this.profileService.addProfile(profileToCreate);
     this.profileCreate$.subscribe((result) => {
       if (result != null) {

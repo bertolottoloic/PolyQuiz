@@ -39,9 +39,9 @@ router.post('/', (req, res) => {
 
 router.delete('/:profileId', (req, res) => {
   try {
-    StatRouter.get().filter((stat)=> stat.profileId == req.params.profileId).forEach(stat => {
-      StatRouter.delete(stat.id)
-    });
+    // Stat.get().filter((stat)=> stat.profileId == req.params.profileId).forEach(stat => {
+    //   Stat.delete(stat.id)
+    // });
     res.status(200).json(Profile.delete(req.params.profileId))
   } catch (err) {
     res.status(404).json(err)
