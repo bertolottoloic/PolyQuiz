@@ -34,7 +34,7 @@ export class EditProfileComponent extends Trouble implements OnInit {
           this.profileForm = this.formBuilder.group({
             firstName: [profile.firstName, Validators.required],
             lastName: [profile.lastName, Validators.required],
-            birthDate: [formatDate(profile.birthDate.toString(), 'yyyy-MM-dd', 'en'), Validators.required],
+            birthDate: [profile.birthDate.toString()!=''?formatDate(profile.birthDate.toString(), 'yyyy-MM-dd', 'en'):''],
             gender: [profile.gender.toString(), Validators.required],
             trouble: [this.trouble.toString(), Validators.required],
           });
