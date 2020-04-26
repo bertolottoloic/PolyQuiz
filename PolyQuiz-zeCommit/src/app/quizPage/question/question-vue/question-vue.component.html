@@ -4,10 +4,10 @@
 
     <img *ngIf="question.image" src={{question.image}} alt="image">
 
-    <div class="questionText1">{{question.text}}</div>
+    <div class="questionText{{size}}">{{question.text}}</div>
   </div>
   <div *ngIf="!question.image" class="questionOnly">
-    <div class="questionText1">{{question.text}}</div>
+    <div class="questionText{{size}}">{{question.text}}</div>
   </div>
 
 

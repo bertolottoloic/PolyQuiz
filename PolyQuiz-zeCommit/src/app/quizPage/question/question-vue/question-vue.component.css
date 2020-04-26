@@ -57,7 +57,25 @@ button {
 
 .questionText1{
   text-align: center;
-  font-size: 300%;
+  font-size: 150%;
+  padding:10px;
+  height: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.questionText2{
+  text-align: center;
+  font-size: 250%;
+  padding:10px;
+  height: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.questionText3{
+  text-align: center;
+  font-size: 350%;
   padding:10px;
   height: 40%;
   display: flex;
