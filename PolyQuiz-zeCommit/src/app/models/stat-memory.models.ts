@@ -10,10 +10,10 @@ export class StatMemory extends Stat {
   constructor(quizz: Quiz, profile: Profile) {
     super(quizz, profile);
     this.trial = new Map();
-    this.initStats(quizz);
+    this.initStatsMemory(quizz);
   }
 
-  initStats(quiz: Quiz) {
+  initStatsMemory(quiz: Quiz) {
     quiz.questions.forEach(element => {
       this.trial.set(element.id, 0);
     });

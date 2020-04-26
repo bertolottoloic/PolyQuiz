@@ -15,25 +15,7 @@
     </div>
   </div>
 
-  <div class="results" *ngIf="trouble=='Memoire'">
-    <div id="resume" *ngFor="let question of quiz.questions">
-
-      <p> {{question.text}}</p>
-      <img *ngIf="question.image" src={{question.image}} alt="image" >
-
-      <div *ngFor="let answ of question.answers">
-        <div *ngIf="answ.isCorrect">
-          <p>La réponse correcte est : </p>
-          <img *ngIf="!question.answersAreText" src={{answ.image}} alt="réponse">
-          <p *ngIf="question.answersAreText"> {{answ.text}}</p>
-        </div>
-      </div>
-      <p [style.color]="stats.trial.get(question.id)<=2&&stats.trial.get(question.id)!=0?'green':'black'"
-        class="result">Votre réponse :
-        {{stats.trial.get(question.id)<=2&&stats.trial.get(question.id)!=0?"Correcte":"Fausse"}}</p>
-    </div>
-  </div>
-  <div *ngIf=" trouble=='Vue'" class=" end">
+  <div class=" end">
     <div id="resume" *ngFor="let question of quiz.questions">
       <p> {{question.text}}</p>
       <img *ngIf="question.image" src={{question.image}} alt="image" >
@@ -46,8 +28,8 @@
         </div>
 
       </div>
-      <p [style.color]="stats.trial.get(question.id)?'green':'black'" class="result">Votre réponse :
-        {{stats.trial.get(question.id)?'Correcte':'Fausse'}}</p>
+      <p [style.color]="stats.resume.get(question.id)?'green':'black'" class="result">Votre réponse :
+        {{stats.resume.get(question.id)?'Correcte':'Fausse'}}</p>
     </div>
 
   </div>

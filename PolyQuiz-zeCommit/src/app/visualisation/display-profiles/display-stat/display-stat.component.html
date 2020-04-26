@@ -4,7 +4,12 @@
     <ul>
       <li>Score: {{stat.score}}</li>
       <li>Temps pour finir le quiz: {{stat.time/1000}} secondes</li>
-      <li *ngIf="stat.trial">Questions:
+      <li>Résumé des réponses:
+        <ul>
+          <li *ngFor="let answer of stat.resume | keyvalue; let i = index"> Question {{i+1}}: Réponse {{(answer.value)?"correcte":"fausse"}}. </li>
+        </ul>
+      </li>
+      <li *ngIf="stat.trial">Essais:
         <ul>
           <li *ngFor="let question of stat.trial | keyvalue; let i = index"> Question {{i+1}}: {{question.value}} essais</li>
         </ul>

@@ -28,6 +28,7 @@ margin : 10px 0px 0px 10px;
 .quizzes{
 background-color: antiquewhite;
 height: 100%;
+padding-left: 0px;
 }
 
 .quizlist {

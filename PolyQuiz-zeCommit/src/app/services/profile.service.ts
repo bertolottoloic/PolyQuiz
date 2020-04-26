@@ -60,6 +60,7 @@ export class ProfileService {
       trial = [...statToCreate.trial].reduce((o, [key, value]) => (o[key] = value, o), {});
       statToCreate.trial = trial;
     }
+    statToCreate.resume = [...statToCreate.resume].reduce((o, [key, value]) => (o[key] = value, o), {});
     this.http.post<Stat>(this.URL + '/' + stat.profileId + '/stats', statToCreate, this.httpOptions).subscribe((stat$) => {
       this.createdStat = stat$;
       this.createdStat$.next(this.createdStat);

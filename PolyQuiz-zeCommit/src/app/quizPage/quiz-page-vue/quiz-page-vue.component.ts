@@ -90,11 +90,11 @@ export class QuizPageVueComponent implements OnInit {
   }
 
   UpdateMapStats(asw: Answer): void {
-    if (this.stats.trial.get(asw.questionId) == null) {
-      this.stats.trial.set(asw.questionId, false);
+    if (this.stats.resume.get(asw.questionId) == null) {
+      this.stats.resume.set(asw.questionId, false);
     }
     if (asw.isCorrect) {
-      this.stats.trial.set(asw.questionId, true);
+      this.stats.resume.set(asw.questionId, true);
       this.stats.nbRightAnswers += 1;
     } else {
       this.stats.nbWrongAnswers += 1;

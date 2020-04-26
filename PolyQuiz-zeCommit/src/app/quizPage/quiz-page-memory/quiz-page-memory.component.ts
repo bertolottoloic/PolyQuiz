@@ -93,9 +93,9 @@ export class QuizPageMemoryComponent implements OnInit {
       this.stats.trial.set(asw.questionId, 0);
     }
     this.stats.trial.set(asw.questionId, this.stats.trial.get(asw.questionId) + 1);
-    if(asw.isCorrect){
-
-      if(this.stats.trial.get(asw.questionId)<=2){
+    if(asw.isCorrect||this.stats.trial.get(asw.questionId)>2){
+      this.stats.resume.set(asw.questionId, asw.isCorrect);
+      if(asw.isCorrect){
         this.stats.nbRightAnswers+=1
       }
       else{
