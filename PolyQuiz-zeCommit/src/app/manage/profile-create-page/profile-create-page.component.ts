@@ -30,7 +30,7 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
     this.profileForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      birthDate: ['', Validators.required],
+      birthDate: [''],
       gender: ['', Validators.required],
       trouble: [this.trouble.toString(), Validators.required],
     });

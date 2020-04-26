@@ -1,6 +1,6 @@
 <nav>
   <div [class]="(display) ? 'deroulant-show' : 'deroulant-hide'" (click)="display = !display">
-    <h2>Quiz : {{stat.quiz.name}} - {{stat.quiz.theme.name}} réalisé le {{stat.date | date : "dd/MM/yyyy"}}</h2>
+    <h2>Quiz : {{stat.quiz.name}} - Theme : {{stat.quiz.theme.name}} | réalisé le {{stat.date | date : "dd/MM/yyyy"}}</h2>
     <ul>
       <li>Score: {{stat.score}}</li>
       <li>Temps pour finir le quiz: {{stat.time/1000}} secondes</li>
