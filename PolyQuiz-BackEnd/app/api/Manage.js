@@ -5,14 +5,16 @@ const { Theme } = require('../models')
 
 const addQuiz = (id) => {
     let quiz
+    let quizToSend
     try{
         quiz = {...Quiz.getById(id)}
-        quiz.questions = addQuestions(id);
-        quiz.theme = addThemes(quiz.themeId);
+        quizToSend = {id:quiz.id, name: quiz.name, trouble:quiz.trouble}
+        let theme = addThemes(quiz.themeId)
+        quizToSend.theme = {name: theme.name}
     } catch(err) {
         res.status(500).json(err);
     }
-    return quiz;
+    return quizToSend;
 }
 
 const addQuestions = (quizId) => {

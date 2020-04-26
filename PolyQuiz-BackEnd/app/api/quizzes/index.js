@@ -1,6 +1,6 @@
 const { Router } = require('express')
 
-const { Quiz, Question, Answer } = require('../../models')
+const { Quiz, Stat } = require('../../models')
 const QuestionRouter = require('./questions')
 const { addQuestions, deleteQuestionsAndAnswers,addThemes } = require('../Manage')
 
@@ -49,6 +49,9 @@ router.post('/', (req, res) => {
 router.delete('/:quizId', (req, res) => {
   try {
     deleteQuestionsAndAnswers(req.params.quizId)
+    Stat.get().filter((stat)=> stat.quizId == req.params.quizId).forEach((stat)=>{
+      Stat.delete(stat.id)
+    })
     res.status(200).json(Quiz.delete(req.params.quizId))
   } catch (err) {
     res.status(404).json(err)
