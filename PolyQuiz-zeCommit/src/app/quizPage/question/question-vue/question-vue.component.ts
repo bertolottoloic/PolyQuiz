@@ -4,7 +4,7 @@ import {Answer} from 'src/app/models/answer.models';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Trouble } from 'src/app/models/trouble.models';
 import {MatDialog} from '@angular/material/dialog';
-import { PopUpZoomComponent } from './pop-up-zoom/pop-up-zoom.component';
+import { PopUpZoomComponent } from '../../../pop-up/pop-up-zoom/pop-up-zoom.component';
 
 @Component({
   selector: 'app-question-vue',
@@ -44,7 +44,7 @@ export class QuestionVueComponent extends Trouble implements OnInit {
     this.nextQ.emit(answer);
   }
 
-  
+
   openDialogZoom(answer: Answer, isText: boolean){
     const dialogRef = this.dialog.open(PopUpZoomComponent, {
       height: '80%',
@@ -58,8 +58,14 @@ export class QuestionVueComponent extends Trouble implements OnInit {
           this.nextQuestion(res.answer)
         }
     });
+  }
 
-    
+  openDialogImg(img: string) {
+    this.dialog.open(PopUpZoomComponent, {
+      height: '80%',
+      width: '80%',
+      data: { img }
+    });
   }
 
 }

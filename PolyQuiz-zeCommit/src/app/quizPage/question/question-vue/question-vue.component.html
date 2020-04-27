@@ -2,7 +2,7 @@
 
   <div *ngIf="question.image" class="question">
 
-    <img *ngIf="question.image" src={{question.image}} alt="image">
+    <img *ngIf="question.image" src={{question.image}} alt="image" (click)="openDialogImg(question.image)">
 
     <div class="questionText{{size}}">{{question.text}}</div>
   </div>

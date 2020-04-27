@@ -15,7 +15,8 @@
 .buttons{
     display: flex;
     flex-direction: column;
-  height: 80%;
+    justify-content: center;
+    height: 80%;
 
 }
 
@@ -26,6 +27,7 @@ button{
     text-align: center;
     margin: 20px 0px 20px 0px;
     font-size: 2vw;
+
 }
 
 img{

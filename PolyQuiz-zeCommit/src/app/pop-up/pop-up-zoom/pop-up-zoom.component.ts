@@ -3,8 +3,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Answer } from 'src/app/models/answer.models';
 
 export interface DialogData {
-  answer: Answer;
-  isText: boolean;
+  answer?: Answer;
+  isText?: boolean;
+  img?: string;
 }
 
 @Component({
@@ -14,20 +15,35 @@ export interface DialogData {
 })
 export class PopUpZoomComponent implements OnInit {
   public answer: Answer;
+  public img: string;
   public isText: boolean;
   public validate: boolean;
   constructor(public dialogRef: MatDialogRef<PopUpZoomComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    this.answer = this.data.answer;
-    this.isText = this.data.isText;
+    if (this.data.answer) {
+      this.answer = this.data.answer;
+      if (!data.isText) {
+        this.img = this.answer.image;
+      }
+      this.isText = this.data.isText;
+    }
+    if (this.data.img) {
+      this.img = this.data.img;
+      this.isText = false;
+    }
+
     dialogRef.disableClose = true;
   }
 
   ngOnInit() {
   }
 
-  close(){
+  closeForAnswer() {
     this.dialogRef.close({validate: this.validate,answer: this.answer});
+  }
+
+  closeForQuestion() {
+    this.dialogRef.close();
   }
 
 }
