@@ -42,3 +42,8 @@
     flex-direction: column;
     justify-content: center;
   }
+
+  .numQuest button{
+    width:80%;
+    height:10%;
+  }
