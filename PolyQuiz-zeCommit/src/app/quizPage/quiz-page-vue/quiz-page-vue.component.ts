@@ -11,7 +11,7 @@ import { combineLatest } from 'rxjs';
 import { StatVue } from 'src/app/models/stat-vue.models';
 import { DatePipe } from '@angular/common';
 import { Answer } from '../../models/answer.models';
-import { PopUpAnswerComponent } from './pop-up-answer-component/pop-up-answer.component';
+import { PopUpAnswerComponent } from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
 import { PopUpZoomComponent } from 'src/app/pop-up/pop-up-zoom/pop-up-zoom.component';
 
 

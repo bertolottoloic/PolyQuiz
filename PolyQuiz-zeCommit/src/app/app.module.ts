@@ -44,8 +44,9 @@ import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
 import { DisplayStatComponent } from './visualisation/display-profiles/display-stat/display-stat.component';
 import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
 import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
-import { PopUpAnswerComponent } from './quizPage/quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
+import { PopUpAnswerComponent } from './pop-up/pop-up-answer-component/pop-up-answer.component';
 import { PopUpZoomComponent } from './pop-up/pop-up-zoom/pop-up-zoom.component';
+import { QuestionMoteurComponent } from './quizPage/question/question-moteur/question-moteur.component';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { PopUpZoomComponent } from './pop-up/pop-up-zoom/pop-up-zoom.component';
     SizeBoxDirectiveDirective,
     PopUpAnswerComponent,
     SizeBoxDirectiveDirective,
-    PopUpZoomComponent
+    PopUpZoomComponent,
+    QuestionMoteurComponent
 
   ],
   imports: [

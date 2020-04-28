@@ -11,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { PopUpAnswerComponent } from '../quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
+import { PopUpAnswerComponent } from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
 
 
 @Component({

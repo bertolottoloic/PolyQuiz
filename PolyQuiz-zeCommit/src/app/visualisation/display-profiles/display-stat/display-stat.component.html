@@ -4,6 +4,7 @@
     <ul>
       <li>Score: {{stat.score}}</li>
       <li>Temps pour finir le quiz: {{stat.time/1000}} secondes</li>
+      <li *ngIf="stat.missclics!=null">Clics ratés : {{stat.missclics}}</li>
       <li>Résumé des réponses:
         <ul>
           <li *ngFor="let answer of stat.resume | keyvalue; let i = index"> Question {{i+1}}: Réponse {{(answer.value)?"correcte":"fausse"}}. </li>

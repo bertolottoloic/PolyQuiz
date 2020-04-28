@@ -8,7 +8,7 @@
       <h1>
         {{profile.firstName}} {{profile.lastName}}
       </h1>
-      <p *ngIf="profile.birthDate.toString()!=''">
+      <p *ngIf="profile.birthDate&&profile.birthDate.toString()!=''">
         Date de naissance : {{profile.birthDate | date : "dd/MM/yyyy"}}
       </p>
       <p>

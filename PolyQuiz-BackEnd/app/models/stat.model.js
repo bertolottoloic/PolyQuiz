@@ -11,5 +11,6 @@ module.exports = new BaseModel('Stat', {
   nbRightAnswers: Joi.number().required(),
   nbWrongAnswers: Joi.number().required(),
   date: Joi.string().required(),
-  resume: Joi.object().pattern(Joi.string(), Joi.boolean())
+  resume: Joi.object().pattern(Joi.string(), Joi.boolean()),
+  missclics: Joi.number(),
 })
