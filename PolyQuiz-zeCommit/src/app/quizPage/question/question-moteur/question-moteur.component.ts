@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { Trouble } from 'src/app/models/trouble.models';
 import {MatDialog} from '@angular/material/dialog';
 import { PopUpZoomComponent } from '../../../pop-up/pop-up-zoom/pop-up-zoom.component';
+import { PopUpConfirmAnswerComponent } from 'src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component';
 
 @Component({
   selector: 'app-question-moteur',
@@ -52,7 +53,8 @@ export class QuestionMoteurComponent extends Trouble implements OnInit {
 
 
   openDialogZoom(answer: Answer, isText: boolean){
-    const dialogRef = this.dialog.open(PopUpZoomComponent, {
+    this.clics-=1;
+    const dialogRef = this.dialog.open(PopUpConfirmAnswerComponent, {
       height: '80%',
       width: '80%',
       data: { answer, isText }
@@ -60,6 +62,7 @@ export class QuestionMoteurComponent extends Trouble implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       (res) => {
+        this.clics+=res.clics;
         if(res.validate){
           this.nextQuestion(res.answer)
         }

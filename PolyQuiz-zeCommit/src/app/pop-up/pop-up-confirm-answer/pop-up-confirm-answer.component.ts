@@ -1,8 +1,7 @@
-import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Answer } from 'src/app/models/answer.models';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
-import { Trouble } from 'src/app/models/trouble.models';
 
 export interface DialogData {
   answer?: Answer;
@@ -11,18 +10,19 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-pop-up-img',
-  templateUrl: './pop-up-zoom.component.html',
-  styleUrls: ['./pop-up-zoom.component.css']
+  selector: 'app-pop-up-confirm-answer',
+  templateUrl: './pop-up-confirm-answer.component.html',
+  styleUrls: ['./pop-up-confirm-answer.component.css']
 })
-export class PopUpZoomComponent extends Trouble implements OnInit {
+export class PopUpConfirmAnswerComponent implements OnInit {
   public answer: Answer;
   public img: string;
   public isText: boolean;
   public validate: boolean;
-  constructor(public dialogRef: MatDialogRef<PopUpZoomComponent>, public router: Router,
+  public clics:number=0;
+
+  constructor(public dialogRef: MatDialogRef<PopUpConfirmAnswerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    super(router);
     if (this.data.answer) {
       this.answer = this.data.answer;
       if (!data.isText) {
@@ -42,11 +42,12 @@ export class PopUpZoomComponent extends Trouble implements OnInit {
   }
 
   closeForAnswer() {
-    this.dialogRef.close({ validate: this.validate, answer: this.answer });
+    this.dialogRef.close({ validate: this.validate, answer: this.answer, clics:this.clics>0?this.clics-1:0 });
   }
 
-  closeForQuestion() {
-    this.dialogRef.close();
+  addClick(){
+    this.clics+=1;
   }
+
 
 }

@@ -47,6 +47,7 @@ import { SizeBoxDirectiveDirective } from './directives/size-box-directive.direc
 import { PopUpAnswerComponent } from './pop-up/pop-up-answer-component/pop-up-answer.component';
 import { PopUpZoomComponent } from './pop-up/pop-up-zoom/pop-up-zoom.component';
 import { QuestionMoteurComponent } from './quizPage/question/question-moteur/question-moteur.component';
+import { PopUpConfirmAnswerComponent } from './pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { QuestionMoteurComponent } from './quizPage/question/question-moteur/que
     PopUpAnswerComponent,
     SizeBoxDirectiveDirective,
     PopUpZoomComponent,
-    QuestionMoteurComponent
+    QuestionMoteurComponent,
+    PopUpConfirmAnswerComponent
 
   ],
   imports: [
@@ -114,7 +116,7 @@ import { QuestionMoteurComponent } from './quizPage/question/question-moteur/que
 
   ],
   entryComponents: [DisplayQuizComponent, PopUpDeleteComponent, PopUpWarningComponent, PopUpAnswerComponent, DisplayQuestionComponent,
-    AddThemeComponent, DisplayWindowComponent, PopUpZoomComponent],
+    AddThemeComponent, DisplayWindowComponent, PopUpZoomComponent,PopUpConfirmAnswerComponent],
 
   bootstrap: [AppComponent],
 

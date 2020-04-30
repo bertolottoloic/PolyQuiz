@@ -130,7 +130,9 @@ export class QuizPageVueComponent implements OnInit {
 
   openDialogAns(answer: boolean, completed: boolean) {
     const dialogRef = this.dialog.open(PopUpAnswerComponent, {
-      data: { answer, completed }
+      data: { answer, completed },
+      width:"50%",
+      height:"50%",
     });
 
     dialogRef.afterClosed().subscribe(
