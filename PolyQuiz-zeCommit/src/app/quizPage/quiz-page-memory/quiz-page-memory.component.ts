@@ -8,10 +8,10 @@ import {StatMemory} from 'src/app/models/stat-memory.models';
 import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
 import {ActivatedRoute} from '@angular/router';
-import { combineLatest, Observable } from 'rxjs';
-import { DatePipe } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog';
-import { PopUpAnswerComponent } from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
+import {combineLatest} from 'rxjs';
+import {DatePipe} from '@angular/common';
+import {MatDialog} from '@angular/material/dialog';
+import {PopUpAnswerComponent} from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
 
 
 @Component({

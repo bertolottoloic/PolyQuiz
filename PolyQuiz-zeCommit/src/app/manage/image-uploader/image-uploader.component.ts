@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { NgxImageCompressService } from 'ngx-image-compress';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 @Component({
   selector: 'app-image-uploader',

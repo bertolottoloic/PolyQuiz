@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { Handicap } from 'src/app/models/handicap.models';
-import { Trouble } from 'src/app/models/trouble.models';
+import {Trouble} from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-quiz-list-page',

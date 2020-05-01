@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router'
-import { QuizListService } from 'src/app/services/quizList.service';
-import { Handicap } from 'src/app/models/handicap.models';
-import { Trouble } from 'src/app/models/trouble.models';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {QuizListService} from 'src/app/services/quizList.service';
+import {Trouble} from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-quiz-create-page',

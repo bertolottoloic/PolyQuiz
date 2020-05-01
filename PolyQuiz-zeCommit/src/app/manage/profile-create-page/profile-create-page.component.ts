@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Quiz } from '../../models/quiz.models';
-import { ProfileService } from '../../services/profile.service';
-import { Handicap } from 'src/app/models/handicap.models';
-import {Router, ActivatedRoute} from '@angular/router';
-import { Profile } from '../../models/profile.models';
-import { Trouble } from 'src/app/models/trouble.models';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {ProfileService} from '../../services/profile.service';
+import {Handicap} from 'src/app/models/handicap.models';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Profile} from '../../models/profile.models';
+import {Trouble} from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-profile-create-page',

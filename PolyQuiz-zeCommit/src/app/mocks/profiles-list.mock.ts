@@ -1,4 +1,4 @@
-import {Profile, gender} from '../models/profile.models';
+import {gender, Profile} from '../models/profile.models';
 import {Handicap} from '../models/handicap.models';
 
 export const PROFILE_LIST: Profile[] = [

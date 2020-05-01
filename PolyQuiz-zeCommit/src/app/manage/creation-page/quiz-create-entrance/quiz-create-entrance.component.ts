@@ -1,20 +1,16 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import { QuizListService } from '../../../services/quizList.service';
-import { QuizCreatePageComponent } from '../quiz-create-page/quiz-create-page.component';
-import { Quiz } from '../../../models/quiz.models';
-import { EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Handicap } from 'src/app/models/handicap.models';
-import { Theme } from 'src/app/models/theme.models';
-import { ThemeService } from 'src/app/services/theme.service';
-import { MatDialog } from '@angular/material/dialog';
-import { AddThemeComponent } from 'src/app/manage/add-theme/add-theme.component';
-import { THEME_LIST } from 'src/app/mocks/theme.mock';
-import { Trouble } from 'src/app/models/trouble.models';
-import { PopUpDeleteComponent } from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
+import {QuizListService} from '../../../services/quizList.service';
+import {Quiz} from '../../../models/quiz.models';
+import {Observable} from 'rxjs';
+import {Theme} from 'src/app/models/theme.models';
+import {ThemeService} from 'src/app/services/theme.service';
+import {MatDialog} from '@angular/material/dialog';
+import {AddThemeComponent} from 'src/app/manage/add-theme/add-theme.component';
+import {Trouble} from 'src/app/models/trouble.models';
+import {PopUpDeleteComponent} from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
 
 @Component({
   selector: 'app-quiz-create-entrance',

@@ -1,19 +1,17 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Profile } from '../../models/profile.models';
-import { Quiz } from '../../models/quiz.models';
-import { Question } from '../../models/question.models';
-import { ProfileService } from '../../services/profile.service';
-import { QuizListService } from '../../services/quizList.service';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Profile} from '../../models/profile.models';
+import {Quiz} from '../../models/quiz.models';
+import {Question} from '../../models/question.models';
+import {ProfileService} from '../../services/profile.service';
+import {QuizListService} from '../../services/quizList.service';
+import {ActivatedRoute} from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
-import { combineLatest } from 'rxjs';
-import { StatVue } from 'src/app/models/stat-vue.models';
-import { DatePipe } from '@angular/common';
-import { Answer } from '../../models/answer.models';
-import { PopUpAnswerComponent } from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
-import { PopUpZoomComponent } from 'src/app/pop-up/pop-up-zoom/pop-up-zoom.component';
-import { StatMoteur } from 'src/app/models/stat-moteur.models';
+import {MatDialog} from '@angular/material/dialog';
+import {combineLatest} from 'rxjs';
+import {DatePipe} from '@angular/common';
+import {Answer} from '../../models/answer.models';
+import {PopUpAnswerComponent} from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
+import {StatMoteur} from 'src/app/models/stat-moteur.models';
 
 
 @Component({

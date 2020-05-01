@@ -249,5 +249,12 @@
     "quizId": 1588237316490,
     "answersAreText": false,
     "id": 1588237386326
+  },
+  {
+    "text": "test",
+    "image": "",
+    "quizId": 1586890560834,
+    "answersAreText": true,
+    "id": 1588332769088
   }
 ]

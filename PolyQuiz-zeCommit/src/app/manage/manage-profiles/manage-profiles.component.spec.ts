@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ManageProfilesComponent } from './manage-profiles.component';
+import {ManageProfilesComponent} from './manage-profiles.component';
 
 describe('ManageProfilesComponent', () => {
   let component: ManageProfilesComponent;

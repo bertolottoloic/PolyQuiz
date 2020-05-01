@@ -1,13 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PopUpWarningComponent, DialogData } from '../pop-up-warning/pop-up-warning.component';
-import { Quiz } from '../../models/quiz.models';
-import { QuizListService } from '../../services/quizList.service';
-import { Profile } from '../../models/profile.models';
-import { ProfileService } from '../../services/profile.service';
-import { Theme } from 'src/app/models/theme.models';
-import { ThemeService } from 'src/app/services/theme.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {PopUpWarningComponent} from '../pop-up-warning/pop-up-warning.component';
+import {Quiz} from '../../models/quiz.models';
+import {QuizListService} from '../../services/quizList.service';
+import {Profile} from '../../models/profile.models';
+import {ProfileService} from '../../services/profile.service';
+import {Theme} from 'src/app/models/theme.models';
+import {ThemeService} from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-pop-up-delete',

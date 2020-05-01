@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PopUpZoomComponent } from './pop-up-zoom.component';
+import {PopUpZoomComponent} from './pop-up-zoom.component';
 
 describe('PopUpImgComponent', () => {
   let component: PopUpZoomComponent;

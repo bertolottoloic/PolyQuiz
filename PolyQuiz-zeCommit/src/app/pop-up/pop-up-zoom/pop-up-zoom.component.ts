@@ -1,8 +1,8 @@
-import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Answer } from 'src/app/models/answer.models';
-import { Router } from '@angular/router';
-import { Trouble } from 'src/app/models/trouble.models';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {Answer} from 'src/app/models/answer.models';
+import {Router} from '@angular/router';
+import {Trouble} from 'src/app/models/trouble.models';
 
 export interface DialogData {
   answer?: Answer;

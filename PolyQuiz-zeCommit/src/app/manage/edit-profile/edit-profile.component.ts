@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Trouble } from 'src/app/models/trouble.models';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Profile } from 'src/app/models/profile.models';
-import { ProfileService } from 'src/app/services/profile.service';
-import { Handicap } from 'src/app/models/handicap.models';
-import { formatDate } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Trouble} from 'src/app/models/trouble.models';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {Profile} from 'src/app/models/profile.models';
+import {ProfileService} from 'src/app/services/profile.service';
+import {Handicap} from 'src/app/models/handicap.models';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-edit-profile',

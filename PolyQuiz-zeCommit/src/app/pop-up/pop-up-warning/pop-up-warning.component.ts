@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
-import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
-import { getLocaleMonthNames } from '@angular/common';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {ActivatedRoute, Router} from '@angular/router';
 
 export interface DialogData {
   path: 'accueil' | 'retour1' | 'retour2';

@@ -1,4 +1,4 @@
-import { SizeBoxDirectiveDirective } from './size-box-directive.directive';
+import {SizeBoxDirectiveDirective} from './size-box-directive.directive';
 
 describe('SizeBoxDirectiveDirective', () => {
   it('should create an instance', () => {

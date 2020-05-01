@@ -1,4 +1,4 @@
-import { Directive, Input, HostListener, ElementRef, OnInit } from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
 
 @Directive({
   selector: '[appSizeBoxDirective]'
@@ -14,11 +14,14 @@ export class SizeBoxDirectiveDirective implements OnInit{
    }
 
    ngOnInit() {
-    if (this.heightMax && this.heightMin) {
-      this.elementRef.nativeElement.style.height = (window.innerWidth > 990) ? this.heightMax : this.heightMin;
-    }
+    this.start();
    }
+
   @HostListener('window:resize') onWindowResize() {
+    this.start();
+  }
+
+  private start() {
     if (this.heightMax && this.heightMin) {
       this.elementRef.nativeElement.style.height = (window.innerWidth > 990) ? this.heightMax : this.heightMin;
     }

@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Theme } from '../../models/theme.models';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ThemeService } from '../../services/theme.service';
-import { Observable } from 'rxjs';
+import {Component, Inject} from '@angular/core';
+import {Theme} from '../../models/theme.models';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ThemeService} from '../../services/theme.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-add-theme',

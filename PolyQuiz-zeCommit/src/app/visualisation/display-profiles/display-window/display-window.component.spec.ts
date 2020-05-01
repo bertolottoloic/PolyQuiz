@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DisplayWindowComponent } from './display-window.component';
+import {DisplayWindowComponent} from './display-window.component';
 
 describe('DisplayWindowComponent', () => {
   let component: DisplayWindowComponent;

@@ -1,5 +1,5 @@
 import {Quiz} from './quiz.models';
-import { Profile } from './profile.models';
+import {Profile} from './profile.models';
 
 export abstract class Stat {
   id: number;

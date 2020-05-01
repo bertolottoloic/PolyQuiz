@@ -9,7 +9,7 @@
                     <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'"
                         maxlength="20" required>
                 </label>
-                <p [style.visibility]="invalidFirstName()?'visible':'hidden'" id="email_error" class="help-block">champ
+                <p [style.visibility]="invalidFirstName()?'visible':'hidden'" class="help-block">champ
                     vide *.</p>
             </div>
             <div class="form-group has-error">
@@ -18,7 +18,7 @@
                     <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'"
                         maxlength="20" required>
                 </label>
-                <p [style.visibility]="invalidLastName()?'visible':'hidden'" id="email_error" class="help-block">champ
+                <p [style.visibility]="invalidLastName()?'visible':'hidden'" class="help-block">champ
                     vide *.</p>
             </div>
         </div>

@@ -2,10 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from 'src/app/models/question.models';
 import {Answer} from 'src/app/models/answer.models';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Trouble } from 'src/app/models/trouble.models';
+import {Trouble} from 'src/app/models/trouble.models';
 import {MatDialog} from '@angular/material/dialog';
-import { PopUpZoomComponent } from '../../../pop-up/pop-up-zoom/pop-up-zoom.component';
-import { PopUpConfirmAnswerComponent } from 'src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component';
+import {PopUpConfirmAnswerComponent} from 'src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component';
 
 @Component({
   selector: 'app-question-moteur',

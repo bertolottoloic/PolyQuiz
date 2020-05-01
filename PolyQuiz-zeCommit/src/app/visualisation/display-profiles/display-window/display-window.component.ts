@@ -1,13 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DisplayQuestionComponent } from '../../display-question/display-question.component';
-import { Handicap } from '../../../models/handicap.models';
-import { Profile } from '../../../models/profile.models';
-import { Stat } from 'src/app/models/stat.models';
-import { Quiz } from 'src/app/models/quiz.models';
-import { QuizListService } from 'src/app/services/quizList.service';
-import { ProfileService } from 'src/app/services/profile.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {DisplayQuestionComponent} from '../../display-question/display-question.component';
+import {Handicap} from '../../../models/handicap.models';
+import {Profile} from '../../../models/profile.models';
+import {Quiz} from 'src/app/models/quiz.models';
+import {QuizListService} from 'src/app/services/quizList.service';
+import {ProfileService} from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-display-window',

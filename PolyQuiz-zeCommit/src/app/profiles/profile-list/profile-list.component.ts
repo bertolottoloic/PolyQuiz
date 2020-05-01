@@ -1,11 +1,8 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {ProfileService} from '../../services/profile.service';
 import {Profile} from '../../models/profile.models';
-import { Router } from '@angular/router';
-import { Handicap } from 'src/app/models/handicap.models';
-import { Subscriber, Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { Trouble } from 'src/app/models/trouble.models';
+import {Router} from '@angular/router';
+import {Trouble} from 'src/app/models/trouble.models';
 
 @Component({
   selector: 'app-profile-list',

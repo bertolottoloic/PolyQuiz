@@ -12,6 +12,8 @@ h1{
 }
 h2{
   text-align: center;
+  font-size: x-large;
+  cursor: pointer;
 
 }
 .closebtn{
@@ -56,11 +58,6 @@ img>ul{
 
 .deroulant-show > ul {
   display: block;
-}
-
-h2 {
-  font-size: x-large;
-  cursor: pointer;
 }
 
 

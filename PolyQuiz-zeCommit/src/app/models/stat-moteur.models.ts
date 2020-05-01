@@ -1,6 +1,6 @@
 import {Quiz} from './quiz.models';
-import { Profile } from './profile.models';
-import { Stat } from './stat.models';
+import {Profile} from './profile.models';
+import {Stat} from './stat.models';
 
 export class StatMoteur extends Stat {
 

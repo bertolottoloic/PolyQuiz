@@ -6,7 +6,7 @@
   font-size: 20px;
   }
 
-  app-question-moteur{
+.app-question-moteur{
     display: flex;
     justify-content: center;
     align-items: center;

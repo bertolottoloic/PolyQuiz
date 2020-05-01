@@ -1,5 +1,4 @@
-import {Component,EventEmitter, OnInit, Output} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-quiz-page-size-selection',

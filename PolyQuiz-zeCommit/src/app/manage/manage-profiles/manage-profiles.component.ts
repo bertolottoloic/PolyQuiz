@@ -1,11 +1,11 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import { ProfileService } from 'src/app/services/profile.service';
-import { Trouble } from 'src/app/models/trouble.models';
-import { Profile } from 'src/app/models/profile.models';
-import { MatDialog } from '@angular/material/dialog';
-import { DisplayWindowComponent } from 'src/app/visualisation/display-profiles/display-window/display-window.component';
-import { PopUpDeleteComponent } from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProfileService} from 'src/app/services/profile.service';
+import {Trouble} from 'src/app/models/trouble.models';
+import {Profile} from 'src/app/models/profile.models';
+import {MatDialog} from '@angular/material/dialog';
+import {DisplayWindowComponent} from 'src/app/visualisation/display-profiles/display-window/display-window.component';
+import {PopUpDeleteComponent} from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
 
 export enum State{
   Delete="delete",

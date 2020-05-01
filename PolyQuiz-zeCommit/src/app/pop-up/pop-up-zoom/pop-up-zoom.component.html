@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-sm-8 col-md-10 answer">
         <div *ngIf="!isText" class="image">
-            <img [src]="img" />
+            <img alt="image réponse non chargée" [src]="img" />
         </div>
         <div *ngIf="isText" class="text">
             <p>{{answer.text}}</p>

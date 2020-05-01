@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { Handicap } from 'src/app/models/handicap.models';
-import { Trouble } from 'src/app/models/trouble.models';
-import { EventEmitter } from '@angular/core';
+import {Trouble} from 'src/app/models/trouble.models';
 
 
 @Component({

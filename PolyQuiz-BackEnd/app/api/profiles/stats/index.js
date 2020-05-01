@@ -8,11 +8,11 @@ const router = new Router({mergeParams: true})
 
 router.get('/', (req, res) => {
   try {
-    stats = Stat.get().filter((stat) => stat.profileId == req.params.profileId)
+    let stats = Stat.get().filter((stat) => stat.profileId == req.params.profileId)
     console.log(stats)
-    statsToSend = []
+    let statsToSend = []
     stats.forEach((stat) => {
-      quiz = addQuiz(stat.quizId)
+      let quiz = addQuiz(stat.quizId)
       statsToSend.push({...stat, quiz})
     })
     console.log(statsToSend)

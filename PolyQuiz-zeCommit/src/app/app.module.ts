@@ -17,37 +17,37 @@ import {QuestionComponent} from './quizPage/question/question-memory/question-me
 import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
 import {EndQuizComponent} from './quizPage/end-quiz/end-quiz.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
-import { HighlightDirective } from './quizPage/quiz-page-vue/highlight/highlight.directive';
-import { QuizPageMoteurComponent } from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
-import { QuestionVueComponent } from './quizPage/question/question-vue/question-vue.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuizCreatePageComponent } from './manage/creation-page/quiz-create-page/quiz-create-page.component';
-import { QuizCreateEntranceComponent } from './manage/creation-page/quiz-create-entrance/quiz-create-entrance.component';
-import { QuizCreateQuestionComponent } from './manage/creation-page/quiz-create-question/quiz-create-question.component';
-import { QuizCreateQuestionPageComponent } from './manage/creation-page/quiz-create-question-page/quiz-create-question-page.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PopUpWarningComponent } from './pop-up/pop-up-warning/pop-up-warning.component';
-import { MatDialogModule,MatDialogRef} from'@angular/material/dialog';
-import { MenuComponent } from './menu/menu.component';
-import { ManageProfilesComponent } from './manage/manage-profiles/manage-profiles.component';
-import { ProfileCreatePageComponent } from './manage/profile-create-page/profile-create-page.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ManageQuizzesComponent } from './manage/manage-quizzes/manage-quizzes.component';
-import { DisplayQuestionComponent } from './visualisation/display-question/display-question.component';
-import { AddThemeComponent } from './manage/add-theme/add-theme.component';
-import { ImageUploaderComponent } from './manage/image-uploader/image-uploader.component';
-import { EditProfileComponent } from './manage/edit-profile/edit-profile.component';
-import { DisplayWindowComponent } from './visualisation/display-profiles/display-window/display-window.component';
-import { PopUpDeleteComponent } from './pop-up/pop-up-delete/pop-up-delete.component';
-import { DisplayQuizComponent } from './visualisation/display-quiz/display-quiz.component';
-import { FiltreQuizComponent } from './filtre-quiz/filtre-quiz.component';
-import { DisplayStatComponent } from './visualisation/display-profiles/display-stat/display-stat.component';
-import { NavbarQuestionComponent } from './navbar-question/navbar-question.component';
-import { SizeBoxDirectiveDirective } from './directives/size-box-directive.directive';
-import { PopUpAnswerComponent } from './pop-up/pop-up-answer-component/pop-up-answer.component';
-import { PopUpZoomComponent } from './pop-up/pop-up-zoom/pop-up-zoom.component';
-import { QuestionMoteurComponent } from './quizPage/question/question-moteur/question-moteur.component';
-import { PopUpConfirmAnswerComponent } from './pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component';
+import {HighlightDirective} from './quizPage/quiz-page-vue/highlight/highlight.directive';
+import {QuizPageMoteurComponent} from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
+import {QuestionVueComponent} from './quizPage/question/question-vue/question-vue.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {QuizCreatePageComponent} from './manage/creation-page/quiz-create-page/quiz-create-page.component';
+import {QuizCreateEntranceComponent} from './manage/creation-page/quiz-create-entrance/quiz-create-entrance.component';
+import {QuizCreateQuestionComponent} from './manage/creation-page/quiz-create-question/quiz-create-question.component';
+import {QuizCreateQuestionPageComponent} from './manage/creation-page/quiz-create-question-page/quiz-create-question-page.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PopUpWarningComponent} from './pop-up/pop-up-warning/pop-up-warning.component';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MenuComponent} from './menu/menu.component';
+import {ManageProfilesComponent} from './manage/manage-profiles/manage-profiles.component';
+import {ProfileCreatePageComponent} from './manage/profile-create-page/profile-create-page.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {ManageQuizzesComponent} from './manage/manage-quizzes/manage-quizzes.component';
+import {DisplayQuestionComponent} from './visualisation/display-question/display-question.component';
+import {AddThemeComponent} from './manage/add-theme/add-theme.component';
+import {ImageUploaderComponent} from './manage/image-uploader/image-uploader.component';
+import {EditProfileComponent} from './manage/edit-profile/edit-profile.component';
+import {DisplayWindowComponent} from './visualisation/display-profiles/display-window/display-window.component';
+import {PopUpDeleteComponent} from './pop-up/pop-up-delete/pop-up-delete.component';
+import {DisplayQuizComponent} from './visualisation/display-quiz/display-quiz.component';
+import {FiltreQuizComponent} from './filtre-quiz/filtre-quiz.component';
+import {DisplayStatComponent} from './visualisation/display-profiles/display-stat/display-stat.component';
+import {NavbarQuestionComponent} from './navbar-question/navbar-question.component';
+import {SizeBoxDirectiveDirective} from './directives/size-box-directive.directive';
+import {PopUpAnswerComponent} from './pop-up/pop-up-answer-component/pop-up-answer.component';
+import {PopUpZoomComponent} from './pop-up/pop-up-zoom/pop-up-zoom.component';
+import {QuestionMoteurComponent} from './quizPage/question/question-moteur/question-moteur.component';
+import {PopUpConfirmAnswerComponent} from './pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component';
 
 
 @NgModule({
@@ -116,7 +116,7 @@ import { PopUpConfirmAnswerComponent } from './pop-up/pop-up-confirm-answer/pop-
 
   ],
   entryComponents: [DisplayQuizComponent, PopUpDeleteComponent, PopUpWarningComponent, PopUpAnswerComponent, DisplayQuestionComponent,
-    AddThemeComponent, DisplayWindowComponent, PopUpZoomComponent,PopUpConfirmAnswerComponent],
+    AddThemeComponent, DisplayWindowComponent, PopUpZoomComponent, PopUpConfirmAnswerComponent],
 
   bootstrap: [AppComponent],
 

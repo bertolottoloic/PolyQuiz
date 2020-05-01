@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Handicap } from '../models/handicap.models';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Profile } from '../models/profile.models';
-import { PopUpWarningComponent } from '../pop-up/pop-up-warning/pop-up-warning.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Quiz } from '../models/quiz.models';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Profile} from '../models/profile.models';
+import {PopUpWarningComponent} from '../pop-up/pop-up-warning/pop-up-warning.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Quiz} from '../models/quiz.models';
 
 @Component({
   selector: 'app-navbar-question',

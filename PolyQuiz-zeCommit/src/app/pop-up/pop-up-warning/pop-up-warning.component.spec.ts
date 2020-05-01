@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatDialogRef} from '@angular/material/dialog';
 
-import { PopUpWarningComponent } from './pop-up-warning.component';
+import {PopUpWarningComponent} from './pop-up-warning.component';
 
 describe('PopUpWarningComponent', () => {
   let component: PopUpWarningComponent;

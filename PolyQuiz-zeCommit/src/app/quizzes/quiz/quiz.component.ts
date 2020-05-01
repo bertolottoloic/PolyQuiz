@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from 'src/app/models/quiz.models';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -25,6 +25,6 @@ export class QuizComponent implements OnInit {
   quizDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
 
-  
-  
+
+
 }

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Handicap } from '../models/handicap.models';
-import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {Handicap} from '../models/handicap.models';
+import {ActivatedRoute, Router} from '@angular/router';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   currentUrl;
 
 
-  constructor(private router: Router, private route: ActivatedRoute) { 
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.currentUrl=this.route
   }
 

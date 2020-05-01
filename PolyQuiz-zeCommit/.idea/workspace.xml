@@ -2,10 +2,117 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c27c7319-9623-4ef9-a8e3-7f74fbbfe5a5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/Manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/Manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/profiles/stats/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/profiles/stats/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/quizzes/questions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/quizzes/questions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/answer.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/answer.mocks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/question.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/question.mocks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/accueil/accueil.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/accueil/accueil.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/directives/size-box-directive.directive.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/directives/size-box-directive.directive.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/directives/size-box-directive.directive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/directives/size-box-directive.directive.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/filtre-quiz/filtre-quiz.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/filtre-quiz/filtre-quiz.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/filtre-quiz/filtre-quiz.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/filtre-quiz/filtre-quiz.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/add-theme/add-theme.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/add-theme/add-theme.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/add-theme/add-theme.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/add-theme/add-theme.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/add-theme/add-theme.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/add-theme/add-theme.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-entrance/quiz-create-entrance.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-entrance/quiz-create-entrance.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-entrance/quiz-create-entrance.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-entrance/quiz-create-entrance.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-entrance/quiz-create-entrance.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-entrance/quiz-create-entrance.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-page/quiz-create-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-page/quiz-create-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-page/quiz-create-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-page/quiz-create-page.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-page/quiz-create-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-page/quiz-create-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question-page/quiz-create-question-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question-page/quiz-create-question-page.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question-page/quiz-create-question-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question-page/quiz-create-question-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question/quiz-create-question.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question/quiz-create-question.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question/quiz-create-question.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/creation-page/quiz-create-question/quiz-create-question.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/edit-profile/edit-profile.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/edit-profile/edit-profile.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/edit-profile/edit-profile.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/edit-profile/edit-profile.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/edit-profile/edit-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/edit-profile/edit-profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/image-uploader/image-uploader.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/image-uploader/image-uploader.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/image-uploader/image-uploader.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/image-uploader/image-uploader.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/image-uploader/image-uploader.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/image-uploader/image-uploader.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/manage-profiles/manage-profiles.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/manage-profiles/manage-profiles.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/manage-profiles/manage-profiles.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/manage-profiles/manage-profiles.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/manage-quizzes/manage-quizzes.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/manage-quizzes/manage-quizzes.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/manage-quizzes/manage-quizzes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/manage-quizzes/manage-quizzes.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/profile-create-page/profile-create-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/menu/menu.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/menu/menu.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/menu/menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/menu/menu.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/mocks/profiles-list.mock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mocks/profiles-list.mock.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/mocks/theme.mock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mocks/theme.mock.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/profile.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/profile.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/quiz.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/quiz.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/stat-memory.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/stat-memory.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/stat-moteur.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/stat-moteur.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/stat-vue.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/stat-vue.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/stat.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/stat.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/trouble.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/trouble.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/navbar-question/navbar-question.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar-question/navbar-question.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/navbar-question/navbar-question.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar-question/navbar-question.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/navbar/navbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar/navbar.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/navbar/navbar.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar/navbar.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar/navbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-answer-component/pop-up-answer.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-answer-component/pop-up-answer.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-answer-component/pop-up-answer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-answer-component/pop-up-answer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-delete/pop-up-delete.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-delete/pop-up-delete.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-delete/pop-up-delete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-delete/pop-up-delete.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-warning/pop-up-warning.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-warning/pop-up-warning.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-warning/pop-up-warning.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-warning/pop-up-warning.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profiles/profile-list-page/profile-list-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profiles/profile-list-page/profile-list-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profiles/profile-list-page/profile-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profiles/profile-list-page/profile-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profiles/profile-list/profile-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profiles/profile-list/profile-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/end-quiz/end-quiz.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/end-quiz/end-quiz.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/question/question-moteur/question-moteur.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/question/question-moteur/question-moteur.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/question/question-moteur/question-moteur.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/question/question-moteur/question-moteur.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-memory/quiz-page-memory.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-memory/quiz-page-memory.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-memory/quiz-page-memory.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-memory/quiz-page-memory.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-memory/quiz-page-memory.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-memory/quiz-page-memory.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-moteur/quiz-page-moteur.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-moteur/quiz-page-moteur.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-moteur/quiz-page-moteur.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-moteur/quiz-page-moteur.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-moteur/quiz-page-moteur.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-moteur/quiz-page-moteur.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/highlight/highlight.directive.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/highlight/highlight.directive.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/highlight/highlight.directive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/highlight/highlight.directive.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/quiz-page-vue/quiz-page-vue.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizzes/quiz-list-page/quiz-list-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizzes/quiz-list-page/quiz-list-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizzes/quiz-list-page/quiz-list-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizzes/quiz-list-page/quiz-list-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizzes/quiz-list/quiz-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizzes/quiz-list/quiz-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/quizzes/quiz/quiz.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizzes/quiz/quiz.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/profile.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/profile.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/quizList.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/quizList.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/theme.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/theme.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-stat/display-stat.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-stat/display-stat.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-stat/display-stat.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-stat/display-stat.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-window/display-window.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-window/display-window.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-window/display-window.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-profiles/display-window/display-window.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-question/display-question.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-question/display-question.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-question/display-question.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-question/display-question.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visualisation/display-quiz/display-quiz.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +139,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -97,7 +205,8 @@
       <workItem from="1587314812961" duration="9643000" />
       <workItem from="1587400910474" duration="445000" />
       <workItem from="1587448912669" duration="16308000" />
-      <workItem from="1587656975948" duration="755000" />
+      <workItem from="1587656975948" duration="1122000" />
+      <workItem from="1588323016256" duration="4892000" />
     </task>
     <servers />
   </component>
@@ -109,6 +218,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1587470797391" />
+    <state x="585" y="388" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588323762142">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="585" y="388" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1680.1050@0.0.1680.1050" timestamp="1588323762142" />
     <state width="1659" height="220" key="GridCell.Tab.0.bottom" timestamp="1587487480510">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

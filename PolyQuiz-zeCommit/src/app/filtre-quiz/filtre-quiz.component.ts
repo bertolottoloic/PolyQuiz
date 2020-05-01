@@ -1,7 +1,7 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
-import { ThemeService } from '../services/theme.service';
-import { Theme } from '../models/theme.models';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ThemeService} from '../services/theme.service';
+import {Theme} from '../models/theme.models';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-filtre-quiz',

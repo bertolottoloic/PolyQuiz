@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PopUpDeleteComponent } from './pop-up-delete.component';
+import {PopUpDeleteComponent} from './pop-up-delete.component';
 
 describe('PopUpDeleteComponent', () => {
   let component: PopUpDeleteComponent;

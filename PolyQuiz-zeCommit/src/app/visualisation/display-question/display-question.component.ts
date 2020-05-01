@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../../pop-up/pop-up-warning/pop-up-warning.component';
-import { Question } from '../../models/question.models';
-import { Handicap } from '../../models/handicap.models';
+import {Component, Inject} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Question} from '../../models/question.models';
+import {Handicap} from '../../models/handicap.models';
 
 @Component({
   selector: 'app-display-question',

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { QuestionVueComponent } from './question-vue.component';
+import {QuestionVueComponent} from './question-vue.component';
 
 describe('QuestionVueComponent', () => {
   let component: QuestionVueComponent;

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PopUpConfirmAnswerComponent } from './pop-up-confirm-answer.component';
+import {PopUpConfirmAnswerComponent} from './pop-up-confirm-answer.component';
 
 describe('PopUpConfirmAnswerComponent', () => {
   let component: PopUpConfirmAnswerComponent;
