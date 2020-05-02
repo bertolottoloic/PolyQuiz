@@ -30,7 +30,6 @@ export class ThemeService {
   }
 
   deleteTheme(id: string) {
-    console.log(this.URL+"/"+id)
     return this.http.delete(this.URL+"/"+id, this.httpOptions)
   }
 

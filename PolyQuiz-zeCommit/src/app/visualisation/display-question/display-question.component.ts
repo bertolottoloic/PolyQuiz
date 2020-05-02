@@ -18,7 +18,6 @@ export class DisplayQuestionComponent{
     @Inject(MAT_DIALOG_DATA) public data) {
       this.question=data.quest;
       this.trouble=data.trouble;
-      console.log(this.question)
     }
 
 

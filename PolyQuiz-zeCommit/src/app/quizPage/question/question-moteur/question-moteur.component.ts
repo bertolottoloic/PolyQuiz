@@ -47,7 +47,6 @@ export class QuestionMoteurComponent extends Trouble implements OnInit {
 
   addClick(){
     this.clics+=1;
-    console.log(this.clics)
   }
 
 

@@ -40,7 +40,6 @@ export class ProfileService {
   }
 
   editProfile(profile: Profile) {
-    console.log(profile);
     return this.http.put<Profile>(this.URL + '/' + profile.id, profile, this.httpOptions).subscribe(() => {
       this.setProfilesFromUrl();
     });

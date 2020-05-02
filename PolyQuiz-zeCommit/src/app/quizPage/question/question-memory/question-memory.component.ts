@@ -28,7 +28,6 @@ export class QuestionComponent implements OnInit {
   lastQuestion: boolean;
 
   ngOnInit() {
-    console.log(this.question);
     this.setTrouble();
     this.setQuizSize();
   }
@@ -50,7 +49,6 @@ export class QuestionComponent implements OnInit {
   }
 
   setTrouble() {
-    console.log(this.router.url);
     if (this.router.url.startsWith('/memoire')) {
       this.trouble = 'Mémoire';
     }

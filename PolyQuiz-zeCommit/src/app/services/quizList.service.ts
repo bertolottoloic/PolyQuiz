@@ -46,7 +46,6 @@ export class QuizListService {
   }
 
   editQuiz(quiz: Quiz) {
-    console.log(quiz);
     return this.http.put<Quiz>(this.URL + '/' + quiz.id, quiz, this.httpOptions).subscribe(() => {
       this.setQuizzesFromUrl();
     });

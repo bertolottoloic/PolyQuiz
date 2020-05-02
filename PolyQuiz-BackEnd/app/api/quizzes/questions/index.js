@@ -59,7 +59,6 @@ router.post('/', (req, res) => {
 router.delete('/:questionId', (req, res) => {
   try {
     deleteAnswers(req.params.questionId)
-    console.log('question')
     res.status(200).json(Question.delete(req.params.questionId))
   } catch (err) {
     res.status(404).json(err)

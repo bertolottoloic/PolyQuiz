@@ -43,7 +43,6 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
                 this.questionType = this.formBuilder.group({
                   type: [this.question.answersAreText],
                 });
-                console.log(this.questionType.value.type);
                 if (this.question.answers.length > 0) {
                   this.fillQuestionForm();
                 }

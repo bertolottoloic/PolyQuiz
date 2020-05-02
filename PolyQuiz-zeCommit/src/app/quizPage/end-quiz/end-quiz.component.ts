@@ -21,7 +21,6 @@ export class EndQuizComponent extends Trouble implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.stats);
   }
 
 

@@ -54,7 +54,6 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     } else {
     quizToCreate.image = this.image;
   }
-    console.log(quizToCreate);
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result) => {
       this.quizListService.setQuizzesFromUrl();
@@ -82,7 +81,6 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     this.image = img;
     const imge = new Image();
     imge.src = img;
-    console.log(imge.width, imge.height);
   }
 
   editTheme(theme: Theme) {

@@ -70,7 +70,6 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
   }
 
   receiveImg(img: string) {
-    console.log(img);
     this.image = img;
   }
 

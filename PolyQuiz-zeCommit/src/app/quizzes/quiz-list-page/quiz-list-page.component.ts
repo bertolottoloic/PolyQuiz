@@ -30,7 +30,6 @@ export class QuizListPageComponent extends Trouble implements OnInit {
 
   applyFilterTheme($event){
     this.valueTheme=$event;
-    console.log($event)
   }
 
 }

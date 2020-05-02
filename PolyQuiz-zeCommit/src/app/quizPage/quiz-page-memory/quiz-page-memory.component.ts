@@ -132,7 +132,6 @@ export class QuizPageMemoryComponent implements OnInit {
 
   calculScore(){
     this.stats.score=Math.round((this.questionList.length/(this.stats.time/10000))*this.stats.nbRightAnswers*100)
-    console.log(this.stats.score)
   }
 
   openDialog(answer: boolean, completed: boolean) {
