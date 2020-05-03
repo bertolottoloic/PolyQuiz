@@ -14,12 +14,11 @@ import {PopUpConfirmAnswerComponent} from 'src/app/pop-up/pop-up-confirm-answer/
 export class QuestionMoteurComponent extends Trouble implements OnInit {
 
   public wrongAnswers: Answer[] = [];
-  @Input()
-  public clics: number;
+
+  public clics: number=0;
 
   constructor(public router: Router, private route: ActivatedRoute, public dialog: MatDialog) {
     super(router);
-    this.clics=0;
   }
 
   @Output()
@@ -33,6 +32,9 @@ export class QuestionMoteurComponent extends Trouble implements OnInit {
 
   @Input()
   size: number;
+
+  @Output()
+  public clic: EventEmitter<number> = new EventEmitter();
 
   ngOnInit() {
   }
@@ -50,6 +52,8 @@ export class QuestionMoteurComponent extends Trouble implements OnInit {
   }
 
 
+
+
   openDialogZoom(answer: Answer, isText: boolean){
     this.clics-=1;
     const dialogRef = this.dialog.open(PopUpConfirmAnswerComponent, {
@@ -63,6 +67,9 @@ export class QuestionMoteurComponent extends Trouble implements OnInit {
         this.clics+=res.clics;
         if(res.validate){
           this.nextQuestion(res.answer)
+          this.clic.emit(this.clics);
+          this.clics=0;
+
         }
     });
   }

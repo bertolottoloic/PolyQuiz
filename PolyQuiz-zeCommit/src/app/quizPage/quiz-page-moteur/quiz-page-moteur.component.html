@@ -6,7 +6,7 @@
   <div class="col-md-2 terminatebtn" *ngIf="!quizDone">
     <button id="finish" class="btn btn-danger" (click)="openDialogTerminate()" >Terminer le quiz</button>
   </div>
-  <app-question-moteur class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[indexGlobal]" (nextQ)="receiveQ($event)"></app-question-moteur>
+  <app-question-moteur class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[indexGlobal]" (nextQ)="receiveQ($event)" (clic)="receiveClic($event)"></app-question-moteur>
 
   <div class="col-md-2 numQuest" >
     <p>Question</p>

@@ -30,7 +30,7 @@ export class QuizPageMoteurComponent implements OnInit {
   public stats: StatMoteur;
   private timer: number;
   public indexGlobal: number;
-
+  public missclics:number=0;
 
   constructor(public profileService: ProfileService, public quizService: QuizListService,
     private route: ActivatedRoute, public dialog: MatDialog) {
@@ -73,6 +73,7 @@ export class QuizPageMoteurComponent implements OnInit {
   }
 
   terminateQuiz() {
+    this.stats.missclics=this.missclics;
     this.stats.time = Date.now() - this.timer;
     const pipe = new DatePipe('en-US');
     const currentDate = Date.now();
@@ -112,6 +113,10 @@ export class QuizPageMoteurComponent implements OnInit {
       this.openDialogAns(false, this.isCompleted());
 
     }
+  }
+
+  receiveClic($event){
+    this.missclics+=$event;
   }
 
 
