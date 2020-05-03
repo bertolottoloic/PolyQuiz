@@ -24,12 +24,12 @@ const routes: Routes = [
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz/quiz-page-size-selection/:size', component : QuizPageVueComponent},
   { path: ':trouble/profile-list-page/manage-quizzes/create', component : QuizCreatePageComponent },
   { path: ':trouble/profile-list-page/manage-quizzes/create/:quizId', component : QuizCreateQuestionComponent },
-  { path: ':trouble/profile-list-page/manage-quizzes/create/:quizId/add-question/:questionId', component : QuizCreateQuestionPageComponent },
+  { path: ':trouble/profile-list-page/manage-quizzes/create/:quizId/add-question/:questionId', component : QuizCreateQuestionPageComponent},
   { path: ':trouble/profile-list-page/manage-quizzes/create/:quizId/add-question', component : QuizCreateQuestionPageComponent },
-  { path:':trouble/profile-list-page/manage-profiles', component : ManageProfilesComponent},
-  { path:':trouble/profile-list-page/manage-quizzes', component : ManageQuizzesComponent},
-  { path:':trouble/profile-list-page/manage-profiles/edit/:profileId', component : EditProfileComponent},
-  { path:':trouble/profile-list-page/manage-profiles/create', component : ProfileCreatePageComponent},
+  { path: ':trouble/profile-list-page/manage-profiles', component : ManageProfilesComponent},
+  { path: ':trouble/profile-list-page/manage-quizzes', component : ManageQuizzesComponent},
+  { path: ':trouble/profile-list-page/manage-profiles/edit/:profileId', component : EditProfileComponent},
+  { path: ':trouble/profile-list-page/manage-profiles/create', component : ProfileCreatePageComponent},
   { path: 'vue/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageVueComponent},
   { path: 'moteur/profile-list-page/:idProfile/quiz-list-page/:idQuiz', component : QuizPageMoteurComponent}
 

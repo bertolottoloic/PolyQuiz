@@ -12,6 +12,7 @@ import {DatePipe} from '@angular/common';
 import {Answer} from '../../models/answer.models';
 import {PopUpAnswerComponent} from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
 import {StatMoteur} from 'src/app/models/stat-moteur.models';
+import { PopUpTerminateComponent } from 'src/app/pop-up/pop-up-terminate/pop-up-terminate.component';
 
 
 @Component({
@@ -134,6 +135,22 @@ export class QuizPageMoteurComponent implements OnInit {
         else {
           this.indexGlobal++;
         }
+      }
+    );
+  }
+
+  openDialogTerminate() {
+    const dialogRef = this.dialog.open(PopUpTerminateComponent, {
+      width:"50%",
+      height:"50%",
+    });
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+          if(data.terminate){
+            this.terminateQuiz();
+            this.quizDone=true;
+          }
       }
     );
   }

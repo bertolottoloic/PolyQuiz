@@ -7,7 +7,7 @@
 <div *ngIf="startQuiz && !quizDone&&stats" class="row">
 
   <div class="col-md-2 terminatebtn" *ngIf="!quizDone">
-    <button id="finish" class="btn btn-danger" (click)="terminateQuiz();quizDone=true;" >Terminer le quiz</button>
+    <button id="finish" class="btn btn-danger" (click)="openDialogTerminate()" >Terminer le quiz</button>
   </div>
   <app-question-vue class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[indexGlobal]" [size]="size"  (nextQ)="receiveQ($event)" [zoom]="zoom"></app-question-vue>
 

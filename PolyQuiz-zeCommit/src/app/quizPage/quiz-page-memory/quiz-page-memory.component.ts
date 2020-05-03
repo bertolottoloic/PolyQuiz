@@ -12,6 +12,7 @@ import {combineLatest} from 'rxjs';
 import {DatePipe} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
 import {PopUpAnswerComponent} from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
+import { PopUpTerminateComponent } from 'src/app/pop-up/pop-up-terminate/pop-up-terminate.component';
 
 
 @Component({
@@ -149,6 +150,21 @@ export class QuizPageMemoryComponent implements OnInit {
         else {
           this.searchNextQuestion();
         }
+      }
+    );
+  }
+
+  openDialogTerminate() {
+    const dialogRef = this.dialog.open(PopUpTerminateComponent, {
+      width:"50%",
+      height:"50%",
+    });
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+          if(data.terminate){
+            this.terminateQuiz();
+          }
       }
     );
   }

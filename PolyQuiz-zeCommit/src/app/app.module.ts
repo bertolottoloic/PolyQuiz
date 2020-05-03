@@ -48,6 +48,7 @@ import {PopUpAnswerComponent} from './pop-up/pop-up-answer-component/pop-up-answ
 import {PopUpZoomComponent} from './pop-up/pop-up-zoom/pop-up-zoom.component';
 import {QuestionMoteurComponent} from './quizPage/question/question-moteur/question-moteur.component';
 import {PopUpConfirmAnswerComponent} from './pop-up/pop-up-confirm-answer/pop-up-confirm-answer.component';
+import { PopUpTerminateComponent } from './pop-up/pop-up-terminate/pop-up-terminate.component';
 
 
 @NgModule({
@@ -94,7 +95,8 @@ import {PopUpConfirmAnswerComponent} from './pop-up/pop-up-confirm-answer/pop-up
     SizeBoxDirectiveDirective,
     PopUpZoomComponent,
     QuestionMoteurComponent,
-    PopUpConfirmAnswerComponent
+    PopUpConfirmAnswerComponent,
+    PopUpTerminateComponent
 
   ],
   imports: [
@@ -116,7 +118,7 @@ import {PopUpConfirmAnswerComponent} from './pop-up/pop-up-confirm-answer/pop-up
 
   ],
   entryComponents: [DisplayQuizComponent, PopUpDeleteComponent, PopUpWarningComponent, PopUpAnswerComponent, DisplayQuestionComponent,
-    AddThemeComponent, DisplayWindowComponent, PopUpZoomComponent, PopUpConfirmAnswerComponent],
+    AddThemeComponent, DisplayWindowComponent, PopUpZoomComponent, PopUpConfirmAnswerComponent,PopUpTerminateComponent],
 
   bootstrap: [AppComponent],
 

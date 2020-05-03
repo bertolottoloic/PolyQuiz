@@ -3,7 +3,7 @@
 </div>
 <div *ngIf="!quizDone&&stats" class="row">
   <div class="col-md-2 terminatebtn" *ngIf="!quizDone">
-    <button id="finish" class="btn btn-danger" (click)="terminateQuiz()">Terminer le quiz</button>
+    <button id="finish" class="btn btn-danger" (click)="openDialogTerminate()">Terminer le quiz</button>
   </div>
 
   <app-question-memory class="col-md-8 question" *ngIf="quiz&&!quizDone" [question]="questionList[index]"
