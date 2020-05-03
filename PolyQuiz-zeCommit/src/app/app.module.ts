@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import {AppComponent} from './app.component';
 import {AccueilComponent} from './accueil/accueil.component';
-import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from './app.routing.module';
 import {ProfileListPageComponent} from './selection-menu/profile-selection/profile-list-page/profile-list-page.component';
 import {ProfileListComponent} from './selection-menu/profile-selection/profile-list/profile-list.component';
@@ -55,7 +54,6 @@ import { PopUpTerminateComponent } from './pop-up/pop-up-terminate/pop-up-termin
   declarations: [
     AppComponent,
     AccueilComponent,
-    HeaderComponent,
     ProfileListPageComponent,
     ProfileListComponent,
     ProfileComponent,
