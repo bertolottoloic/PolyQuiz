@@ -22,7 +22,10 @@ router.get('/', (req, res) => {
 
 router.get('/:statId', (req, res) => {
   try {
-    res.status(200).json(Stat.getById(req.params.statId))
+    let stat = Stat.getById(req.params.statId)
+    if(stat.profileId == req.params.profileId)
+      res.status(200).json(stat)
+    else throw new Error   
   } catch (err) {
     res.status(404).json(err)
   }
