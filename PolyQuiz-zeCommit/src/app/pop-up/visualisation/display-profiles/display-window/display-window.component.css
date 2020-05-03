@@ -29,5 +29,15 @@ h1{
   flex-direction: column;
 }
 
+.buttons{
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
+.buttons > button{
+  height: 80px;
+  margin: 3%;
+}
 

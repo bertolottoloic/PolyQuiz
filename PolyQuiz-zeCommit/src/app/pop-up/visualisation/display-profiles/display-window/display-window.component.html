@@ -18,11 +18,15 @@
         trouble : {{trouble}}
       </p>
     </div>
-    <div *ngIf="stat.length>0" class="liste">
-      <div *ngFor="let history of stat.reverse()">
-        <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history">
-        </app-display-stat>
-      </div>
+  </div>
+  <div class="buttons">
+    <button class="btn btn-primary col-md-3" (click)="modify()">Modifier</button>
+    <button class="btn btn-danger col-md-3" (click)="openDialogDelete(profile)">Supprimer</button>
+  </div>
+  <div *ngIf="stat.length>0" class="liste">
+    <div *ngFor="let history of stat.reverse()">
+      <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history">
+      </app-display-stat>
     </div>
   </div>
 </div>

@@ -7,19 +7,12 @@ import {MatDialog} from '@angular/material/dialog';
 import {DisplayWindowComponent} from 'src/app/pop-up/visualisation/display-profiles/display-window/display-window.component';
 import {PopUpDeleteComponent} from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
 
-export enum State{
-  Delete="delete",
-  Modify="modify",
-  None="none"
-
-}
 @Component({
   selector: 'app-manage-profiles',
   templateUrl: './manage-profiles.component.html',
   styleUrls: ['./manage-profiles.component.css']
 })
 export class ManageProfilesComponent extends Trouble implements OnInit {
-  public state=State.None;
   public filter:string;
   public profileList:Profile[];
   public noFilterProfileList:Profile[];
@@ -35,44 +28,19 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
   ngOnInit() {
   }
 
-
-  changeState(state:State){
-    if(this.state==state){
-      this.state=State.None;}
-    else{
-      this.state=state;
-    }
-  }
-
-
-  action(profile:Profile){
-    if(this.state==State.None){
-      this.openDialog(profile)
-    }
-    if(this.state==State.Delete){
-      this.openDialogDelete(profile)
-    }
-    if(this.state==State.Modify){
-      this.router.navigate(["edit/"+profile.id],{ relativeTo: this.route })
-    }
-  }
-
   openDialog(profile:Profile) {
-    this.dialog.open(DisplayWindowComponent, {
+    const dialogRef = this.dialog.open(DisplayWindowComponent, {
       height: '80%',
       width: '80%',
       data: {
         profile:profile,
       }
     });
-  }
-
-  openDialogDelete(profile:Profile) {
-    this.dialog.open(PopUpDeleteComponent, {
-      data: {
-        profile:profile,
+    dialogRef.afterClosed().subscribe((res)=>{
+      if(res && res.route){
+        this.router.navigate([res.route],{ relativeTo: this.route })
       }
-    });
+    })
   }
 
   onKey(value: string) {
@@ -85,7 +53,5 @@ export class ManageProfilesComponent extends Trouble implements OnInit {
         this.profileList=this.noFilterProfileList
     }
   }
-
-
 
 }

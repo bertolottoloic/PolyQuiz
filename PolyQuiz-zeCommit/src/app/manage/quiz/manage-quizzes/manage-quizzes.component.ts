@@ -7,12 +7,6 @@ import {PopUpDeleteComponent} from 'src/app/pop-up/pop-up-delete/pop-up-delete.c
 import {QuizListService} from 'src/app/services/quizList.service';
 import {DisplayQuizComponent} from 'src/app/pop-up/visualisation/display-quiz/display-quiz.component';
 
-export enum State {
-  Delete= 'delete',
-  Modify= 'modify',
-  None= 'none'
-
-}
 @Component({
   selector: 'app-manage-quizzes',
   templateUrl: './manage-quizzes.component.html',
@@ -23,7 +17,6 @@ export class ManageQuizzesComponent extends Trouble implements OnInit {
 
   public filterTheme:number;
   public filter:string;
-  public state = State.None;
   public quizList: Quiz[];
   public noFilterQuizList:Quiz[];
 
@@ -38,40 +31,28 @@ export class ManageQuizzesComponent extends Trouble implements OnInit {
   ngOnInit() {
   }
 
-  changeState(state: State) {
-    if (this.state === state) {
-      this.state = State.None; } else {
-      this.state = state;
-    }
-  }
-
   openDialog(quiz: Quiz) {
-    this.dialog.open(PopUpDeleteComponent, {
+    const dialogRef = this.dialog.open(PopUpDeleteComponent, {
       data: {
         quiz,
       }
     });
+    
   }
+
   openDialogDisplay(quiz: Quiz) {
-    this.dialog.open(DisplayQuizComponent, {
+    const dialogRef = this.dialog.open(DisplayQuizComponent, {
       height: '80%',
       width: '80%',
       data: {
         quiz,
       }
     });
-  }
-
-  action(quiz: Quiz) {
-    if(this.state=='none'){
-      this.openDialogDisplay(quiz);
-    }
-    if (this.state === State.Delete) {
-      this.openDialog(quiz);
-    }
-    if (this.state === State.Modify) {
-      this.router.navigate(['create/' + quiz.id], { relativeTo: this.route });
-    }
+    dialogRef.afterClosed().subscribe((res)=>{
+      if(res && res.route){
+        this.router.navigate([res.route],{ relativeTo: this.route })
+      }
+    })
   }
 
   applyfilter(): void {

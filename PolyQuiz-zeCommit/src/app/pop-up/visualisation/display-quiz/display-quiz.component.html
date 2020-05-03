@@ -6,6 +6,10 @@
   <h1>Quiz : {{quiz.name}} - Thème : {{quiz.theme.name}}</h1>
   <img alt="image quiz" *ngIf="quiz.image" src={{quiz.image}}>
   </div>
+  <div class="buttons">
+    <button class="btn btn-primary col-md-3" (click)="modify()">Modifier</button>
+    <button class="btn btn-danger col-md-3" (click)="openDialogDelete(quiz)">Supprimer</button>
+  </div>
   <div class="liste">
     <div class="question" *ngFor="let quest of quiz.questions">
       <nav>

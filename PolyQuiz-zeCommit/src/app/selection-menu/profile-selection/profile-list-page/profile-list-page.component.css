@@ -39,7 +39,8 @@ p {
   justify-content: center;
   align-items: center;
   padding:0px;
-  background-color: rgba(110, 155, 194, 0.986);
+  /* background-color: rgba(110, 155, 194, 0.986); */
+  background-color: lightgray;
 }
 
 

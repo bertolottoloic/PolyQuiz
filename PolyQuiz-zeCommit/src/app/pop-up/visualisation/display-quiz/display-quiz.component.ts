@@ -1,7 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Quiz} from '../../../models/quiz.models';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef, MatDialog} from '@angular/material/dialog';
+import { PopUpDeleteComponent } from '../../pop-up-delete/pop-up-delete.component';
 
 @Component({
   selector: 'app-display-quiz',
@@ -14,7 +15,7 @@ export class DisplayQuizComponent implements OnInit {
   public quiz: Quiz;
   constructor(private router: Router, private route: ActivatedRoute,
     public dialogRef: MatDialogRef<DisplayQuizComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) {
+    @Inject(MAT_DIALOG_DATA) public data, public dialog: MatDialog) {
       this.quiz=data.quiz;
     }
 
@@ -38,6 +39,19 @@ export class DisplayQuizComponent implements OnInit {
       this.display=id;
     }
 
+  }
+
+  modify(){
+    this.dialogRef.close({route: 'create/' + this.quiz.id});
+  }
+
+  openDialogDelete(quiz:Quiz) {
+    const dialogRef = this.dialog.open(PopUpDeleteComponent, {
+      data: {
+        quiz: quiz,
+      }
+    });
+    dialogRef.afterClosed().subscribe(() => this.dialogRef.close());
   }
 
 }
