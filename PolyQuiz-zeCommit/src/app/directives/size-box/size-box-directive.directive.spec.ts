@@ -2,7 +2,8 @@ import {SizeBoxDirectiveDirective} from './size-box-directive.directive';
 
 describe('SizeBoxDirectiveDirective', () => {
   it('should create an instance', () => {
-    const directive = new SizeBoxDirectiveDirective();
+    const elMock = {nativeElement: document.activeElement};
+    const directive = new SizeBoxDirectiveDirective(elMock);
     expect(directive).toBeTruthy();
   });
 });
