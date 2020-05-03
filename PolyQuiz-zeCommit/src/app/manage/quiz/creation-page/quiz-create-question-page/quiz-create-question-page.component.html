@@ -8,7 +8,7 @@
       </label>
       <label for="image">
         Image <br>
-        <app-image-uploader (cardImageBase64Event)="receiveImg($event)" [imageLoad]="imageQuestion">
+        <app-image-uploader (imageBase64Event)="receiveImg($event)" [imageLoad]="imageQuestion">
         </app-image-uploader>
       </label>
       <p *ngIf="invalidQuestion()" id="text" class="help-block">champ vide *.</p>
@@ -33,7 +33,7 @@
             Réponse {{ i+1 }} <br />
             <input *ngIf="questionType.value.type" type="text" id="text" [formControlName]="'text'" maxlength="30">
 
-            <app-image-uploader *ngIf="!questionType.value.type" (cardImageBase64Event)="receiveImgAnsw($event,i)"
+            <app-image-uploader *ngIf="!questionType.value.type" (imageBase64Event)="receiveImgAnsw($event,i)"
               [imageLoad]="imageAnswers[i]"></app-image-uploader>
 
           </label>

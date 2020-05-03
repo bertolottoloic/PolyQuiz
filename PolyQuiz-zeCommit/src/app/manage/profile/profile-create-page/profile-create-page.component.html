@@ -56,7 +56,7 @@
         </div>
         <div class="row">
 
-            <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
+            <app-image-uploader (imageBase64Event)="receiveImg($event)"></app-image-uploader>
         </div>
         <button type="submit" [disabled]="!profileForm.valid" (click)="createProfile()"
             [class]="!profileForm.valid? 'btn btn-danger':'btn btn-success' ">Créer</button>

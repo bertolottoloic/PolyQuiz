@@ -14,7 +14,7 @@
         </select>
       </label>
       <br />
-      <app-image-uploader (cardImageBase64Event)="receiveImg($event)"></app-image-uploader>
+      <app-image-uploader (imageBase64Event)="receiveImg($event)"></app-image-uploader>
       <br />
       <button id="submit" type="submit" [class]="!(quizForm.valid) ? 'btn btn-danger':'btn btn-success' "
         [disabled]="!(quizForm.valid)" (click)="addQuiz()">Suivant</button>
