@@ -3,6 +3,8 @@ const { Question } = require('../models')
 const { Answer } = require('../models')
 const { Theme } = require('../models')
 
+const manageAllErrors = require('../utils/routes/error-management')
+
 const addQuiz = (id) => {
   let quiz
   let quizToSend
@@ -12,7 +14,7 @@ const addQuiz = (id) => {
     const theme = addThemes(quiz.themeId)
     quizToSend.theme = { name: theme.name }
   } catch (err) {
-    res.status(500).json(err)
+    manageAllErrors(res,err)
   }
   return quizToSend
 }
@@ -25,7 +27,7 @@ const addQuestions = (quizId) => {
       questions.push(nQues)
     })
   } catch (err) {
-    res.status(500).json(err)
+    manageAllErrors(res,err)
   }
   return questions
 }
@@ -35,7 +37,7 @@ const addAnswers = (questionId) => {
   try {
     answers = Answer.get().filter((ans) => ans.questionId == questionId)
   } catch (err) {
-    res.status(500).json(err)
+    manageAllErrors(res,err)
   }
   return answers
 }
@@ -45,7 +47,7 @@ const addThemes = (themeId) => {
   try {
     theme = Theme.get().find((ques) => ques.id == themeId)
   } catch (err) {
-    res.status(500).json(err)
+    manageAllErrors(res,err)
   }
   return theme
 }
@@ -57,7 +59,7 @@ const deleteQuestionsAndAnswers = (quizId) => {
       Question.delete(ques.id)
     })
   } catch (error) {
-    res.status(404).json(err)
+    manageAllErrors(res,err)
   }
 }
 
@@ -67,7 +69,7 @@ const deleteAnswers = (questionId) => {
       Answer.delete(ans.id)
     })
   } catch (error) {
-    res.status(404).json(err)
+    manageAllErrors(res,err)
   }
 }
 

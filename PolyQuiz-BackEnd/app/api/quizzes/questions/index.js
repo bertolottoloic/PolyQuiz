@@ -6,6 +6,8 @@ const { Answer } = require('../../../models')
 const AnswerRouter = require('./answers')
 const { addAnswers, deleteAnswers } = require('../../Manage')
 
+const manageAllErrors = require('../../../utils/routes/error-management')
+
 const router = new Router({ mergeParams: true })
 router.use('/:questionId/answers', AnswerRouter)
 
@@ -17,7 +19,7 @@ router.get('/', (req, res) => {
     })
     res.status(200).json(questions)
   } catch (err) {
-    res.status(500).json(err)
+    manageAllErrors(res, err)
   }
 })
 
@@ -29,7 +31,7 @@ router.get('/:questionId', (req, res) => {
       res.status(200).json(question)
     } else throw Error
   } catch (err) {
-    res.status(404).json(err)
+    manageAllErrors(res, err)
   }
 })
 
@@ -52,7 +54,7 @@ router.post('/', (req, res) => {
     }
     res.status(201).json(question)
   } catch (err) {
-    res.status(500).json(err)
+    manageAllErrors(res, err)
   }
 })
 
@@ -61,7 +63,7 @@ router.delete('/:questionId', (req, res) => {
     deleteAnswers(req.params.questionId)
     res.status(200).json(Question.delete(req.params.questionId))
   } catch (err) {
-    res.status(404).json(err)
+    manageAllErrors(res, err)
   }
 })
 
@@ -76,7 +78,7 @@ router.put('/:questionId', (req, res) => {
       text: req.body.text, answersAreText: req.body.answersAreText, image: req.body.image, quizId: req.params.quizId,
     }))
   } catch (err) {
-    res.status(404).json(err)
+    manageAllErrors(res, err)
   }
 })
 
