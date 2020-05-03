@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AccueilComponent} from './accueil/accueil.component';
-import {ProfileListPageComponent} from './profiles/profile-list-page/profile-list-page.component';
-import {QuizListPageComponent} from './quizzes/quiz-list-page/quiz-list-page.component';
-import {QuizCreatePageComponent} from './manage/creation-page/quiz-create-page/quiz-create-page.component';
+import {ProfileListPageComponent} from './selection-menu/profile-selection/profile-list-page/profile-list-page.component';
+import {QuizListPageComponent} from './selection-menu/quiz-selection/quiz-list-page/quiz-list-page.component';
+import {QuizCreatePageComponent} from './manage/quiz/creation-page/quiz-create-page/quiz-create-page.component';
 import {QuizPageMemoryComponent} from './quizPage/quiz-page-memory/quiz-page-memory.component';
 import {QuizPageSizeSelectionComponent} from './quizPage/quiz-page-vue/quiz-page-size-selection/quiz-page-size-selection.component';
 import {QuizPageVueComponent} from './quizPage/quiz-page-vue/quiz-page-vue.component';
 import {QuizPageMoteurComponent} from './quizPage/quiz-page-moteur/quiz-page-moteur.component';
-import {ManageProfilesComponent} from './manage/manage-profiles/manage-profiles.component';
-import {ProfileCreatePageComponent} from './manage/profile-create-page/profile-create-page.component';
-import {ManageQuizzesComponent} from './manage/manage-quizzes/manage-quizzes.component';
-import {QuizCreateQuestionPageComponent} from './manage/creation-page/quiz-create-question-page/quiz-create-question-page.component';
-import {QuizCreateQuestionComponent} from './manage/creation-page/quiz-create-question/quiz-create-question.component';
-import {EditProfileComponent} from './manage/edit-profile/edit-profile.component';
+import {ManageProfilesComponent} from './manage/profile/manage-profiles/manage-profiles.component';
+import {ProfileCreatePageComponent} from './manage/profile/profile-create-page/profile-create-page.component';
+import {ManageQuizzesComponent} from './manage/quiz/manage-quizzes/manage-quizzes.component';
+import {QuizCreateQuestionPageComponent} from './manage/quiz/creation-page/quiz-create-question-page/quiz-create-question-page.component';
+import {QuizCreateQuestionComponent} from './manage/quiz/creation-page/quiz-create-question/quiz-create-question.component';
+import {EditProfileComponent} from './manage/profile/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: '', component : AccueilComponent },
