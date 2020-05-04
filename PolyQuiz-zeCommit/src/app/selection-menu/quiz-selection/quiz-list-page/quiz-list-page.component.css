@@ -33,7 +33,7 @@ input{
 
 
 .filter{
-  background-color: rgba(110, 155, 194, 0.986);
+  background-color: lightgray;
   display:flex;
   flex-direction: column;
   align-items: center;
