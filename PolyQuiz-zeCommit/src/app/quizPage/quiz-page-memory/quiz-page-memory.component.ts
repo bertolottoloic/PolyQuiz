@@ -8,10 +8,11 @@ import {StatMemory} from 'src/app/models/stat-memory.models';
 import {Answer} from 'src/app/models/answer.models';
 import {Profile} from 'src/app/models/profile.models';
 import {ActivatedRoute} from '@angular/router';
-import { combineLatest, Observable } from 'rxjs';
-import { DatePipe } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog';
-import { PopUpAnswerComponent } from '../quiz-page-vue/pop-up-answer-component/pop-up-answer.component';
+import {combineLatest} from 'rxjs';
+import {DatePipe} from '@angular/common';
+import {MatDialog} from '@angular/material/dialog';
+import {PopUpAnswerComponent} from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
+import { PopUpTerminateComponent } from 'src/app/pop-up/pop-up-terminate/pop-up-terminate.component';
 
 
 @Component({
@@ -93,9 +94,9 @@ export class QuizPageMemoryComponent implements OnInit {
       this.stats.trial.set(asw.questionId, 0);
     }
     this.stats.trial.set(asw.questionId, this.stats.trial.get(asw.questionId) + 1);
-    if(asw.isCorrect){
-
-      if(this.stats.trial.get(asw.questionId)<=2){
+    if(asw.isCorrect||this.stats.trial.get(asw.questionId)>2){
+      this.stats.resume.set(asw.questionId, asw.isCorrect);
+      if(asw.isCorrect){
         this.stats.nbRightAnswers+=1
       }
       else{
@@ -132,12 +133,13 @@ export class QuizPageMemoryComponent implements OnInit {
 
   calculScore(){
     this.stats.score=Math.round((this.questionList.length/(this.stats.time/10000))*this.stats.nbRightAnswers*100)
-    console.log(this.stats.score)
   }
 
   openDialog(answer: boolean, completed: boolean) {
     const dialogRef = this.dialog.open(PopUpAnswerComponent, {
-      data: { answer, completed }
+      data: { answer, completed },
+      width:"50%",
+      height:"50%",
     });
 
     dialogRef.afterClosed().subscribe(
@@ -148,6 +150,21 @@ export class QuizPageMemoryComponent implements OnInit {
         else {
           this.searchNextQuestion();
         }
+      }
+    );
+  }
+
+  openDialogTerminate() {
+    const dialogRef = this.dialog.open(PopUpTerminateComponent, {
+      width:"50%",
+      height:"50%",
+    });
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+          if(data.terminate){
+            this.terminateQuiz();
+          }
       }
     );
   }

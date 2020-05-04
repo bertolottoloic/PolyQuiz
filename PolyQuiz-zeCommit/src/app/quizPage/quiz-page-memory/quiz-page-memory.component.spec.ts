@@ -1,5 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import { MatDialog} from '@angular/material/dialog'
+import {MatDialog} from '@angular/material/dialog';
 
 import {QuizPageMemoryComponent} from './quiz-page-memory.component';
 

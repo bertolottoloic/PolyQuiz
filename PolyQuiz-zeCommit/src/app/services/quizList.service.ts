@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Subject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Quiz } from '../models/quiz.models';
-import { QUIZ_LIST } from '../mocks/quizzes-list.mock';
-import { serverUrl, httpOptionsBase } from '../../configs/server.config';
-import { Handicap } from '../models/handicap.models';
-import { Question } from '../models/question.models';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Quiz} from '../models/quiz.models';
+import {QUIZ_LIST} from '../mocks/quizzes-list.mock';
+import {httpOptionsBase, serverUrl} from '../../configs/server.config';
+import {Question} from '../models/question.models';
 
 @Injectable({
     providedIn: 'root'
@@ -47,7 +46,6 @@ export class QuizListService {
   }
 
   editQuiz(quiz: Quiz) {
-    console.log(quiz);
     return this.http.put<Quiz>(this.URL + '/' + quiz.id, quiz, this.httpOptions).subscribe(() => {
       this.setQuizzesFromUrl();
     });

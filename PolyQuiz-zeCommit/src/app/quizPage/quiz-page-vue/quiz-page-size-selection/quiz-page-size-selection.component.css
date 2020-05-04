@@ -1,6 +1,5 @@
 .btn {
   padding: 20px 20px;
-  font-size: 20px;
   border-radius: 10px;
   font-size: 2em;
   margin: 20px;
@@ -25,21 +24,21 @@ div {
 }
 
 #button1 {
-   min-height: 100px;
+   min-height: 20px;
    min-width: 20%;
-   font-size: 3em;
+   font-size: 200%;
    margin-top: 20px;
 }
 #button2 {
-  min-height: 100px;
+  min-height: 50px;
   min-width: 20%;
-  font-size: 4em;
+  font-size: 300%;
   margin-top: 20px;
 }
 #button3 {
   min-height: 100px;
   min-width: 20%;
-  font-size: 5em;
+  font-size: 400%;
   margin-top: 20px;
 }
 

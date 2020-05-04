@@ -6,12 +6,12 @@
     font-size: 20px;
 
   }
-  button{
+.button{
     border: solid 5px;
 
   }
 
-  app-question-memory{
+.app-question-memory{
     display: flex;
     justify-content: center;
     align-items: center;

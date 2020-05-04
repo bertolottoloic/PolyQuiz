@@ -1,5 +1,4 @@
 import {Handicap} from './handicap.models';
-import {Stat} from './stat.models';
 
 export enum gender {
     male = 'homme',

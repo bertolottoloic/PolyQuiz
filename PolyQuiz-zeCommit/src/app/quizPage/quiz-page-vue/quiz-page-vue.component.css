@@ -6,7 +6,7 @@
   font-size: 20px;
   }
 
-  app-question-vue{
+.app-question-vue{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,4 +41,9 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .numQuest button{
+    width:80%;
+    height:10%;
   }

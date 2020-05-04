@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { httpOptionsBase, serverUrl } from '../../configs/server.config';
-import { PROFILE_LIST } from '../mocks/profiles-list.mock';
-import { Profile } from '../models/profile.models';
-import { Stat } from '../models/stat.models';
-import { Handicap } from '../models/handicap.models';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {httpOptionsBase, serverUrl} from '../../configs/server.config';
+import {PROFILE_LIST} from '../mocks/profiles-list.mock';
+import {Profile} from '../models/profile.models';
+import {Stat} from '../models/stat.models';
+import {Handicap} from '../models/handicap.models';
 
 
 @Injectable({
@@ -40,7 +40,6 @@ export class ProfileService {
   }
 
   editProfile(profile: Profile) {
-    console.log(profile);
     return this.http.put<Profile>(this.URL + '/' + profile.id, profile, this.httpOptions).subscribe(() => {
       this.setProfilesFromUrl();
     });
@@ -56,10 +55,10 @@ export class ProfileService {
   addStat(stat: any, trouble: Handicap) {
     const statToCreate = {...stat};
     if (trouble === Handicap.Memoire) {
-      let trial = statToCreate.trial;
-      trial = [...statToCreate.trial].reduce((o, [key, value]) => (o[key] = value, o), {});
+      let trial = [...statToCreate.trial].reduce((o, [key, value]) => (o[key] = value, o), {});
       statToCreate.trial = trial;
     }
+    statToCreate.resume = [...statToCreate.resume].reduce((o, [key, value]) => (o[key] = value, o), {});
     this.http.post<Stat>(this.URL + '/' + stat.profileId + '/stats', statToCreate, this.httpOptions).subscribe((stat$) => {
       this.createdStat = stat$;
       this.createdStat$.next(this.createdStat);

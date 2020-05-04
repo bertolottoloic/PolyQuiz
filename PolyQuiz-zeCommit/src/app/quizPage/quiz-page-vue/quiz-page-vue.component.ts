@@ -1,17 +1,18 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Profile } from '../../models/profile.models';
-import { Quiz } from '../../models/quiz.models';
-import { Question } from '../../models/question.models';
-import { ProfileService } from '../../services/profile.service';
-import { QuizListService } from '../../services/quizList.service';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Profile} from '../../models/profile.models';
+import {Quiz} from '../../models/quiz.models';
+import {Question} from '../../models/question.models';
+import {ProfileService} from '../../services/profile.service';
+import {QuizListService} from '../../services/quizList.service';
+import {ActivatedRoute} from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
-import { combineLatest } from 'rxjs';
-import { StatVue } from 'src/app/models/stat-vue.models';
-import { DatePipe } from '@angular/common';
-import { Answer } from '../../models/answer.models';
-import { PopUpAnswerComponent } from './pop-up-answer-component/pop-up-answer.component';
+import {MatDialog} from '@angular/material/dialog';
+import {combineLatest} from 'rxjs';
+import {StatVue} from 'src/app/models/stat-vue.models';
+import {DatePipe} from '@angular/common';
+import {Answer} from '../../models/answer.models';
+import {PopUpAnswerComponent} from '../../pop-up/pop-up-answer-component/pop-up-answer.component';
+import { PopUpTerminateComponent } from 'src/app/pop-up/pop-up-terminate/pop-up-terminate.component';
 
 
 @Component({
@@ -85,16 +86,16 @@ export class QuizPageVueComponent implements OnInit {
     const pipe = new DatePipe('en-US');
     const currentDate = Date.now();
     this.stats.date = pipe.transform(currentDate, 'short');
-    this.profileService.addStat(this.stats, this.profile.trouble);
     this.calculScore();
+    this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
   UpdateMapStats(asw: Answer): void {
-    if (this.stats.trial.get(asw.questionId) == null) {
-      this.stats.trial.set(asw.questionId, false);
+    if (this.stats.resume.get(asw.questionId) == null) {
+      this.stats.resume.set(asw.questionId, false);
     }
     if (asw.isCorrect) {
-      this.stats.trial.set(asw.questionId, true);
+      this.stats.resume.set(asw.questionId, true);
       this.stats.nbRightAnswers += 1;
     } else {
       this.stats.nbWrongAnswers += 1;
@@ -125,12 +126,13 @@ export class QuizPageVueComponent implements OnInit {
 
   calculScore() {
     this.stats.score = Math.round((this.questionList.length / (this.stats.time / 10000)) * this.stats.nbRightAnswers * 100);
-    console.log(this.stats.score);
   }
 
   openDialogAns(answer: boolean, completed: boolean) {
     const dialogRef = this.dialog.open(PopUpAnswerComponent, {
-      data: { answer, completed }
+      data: { answer, completed },
+      width:"50%",
+      height:"50%",
     });
 
     dialogRef.afterClosed().subscribe(
@@ -150,4 +152,19 @@ export class QuizPageVueComponent implements OnInit {
     this.zoom = !this.zoom;
   }
 
+  openDialogTerminate() {
+    const dialogRef = this.dialog.open(PopUpTerminateComponent, {
+      width:"50%",
+      height:"50%",
+    });
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+          if(data.terminate){
+            this.terminateQuiz();
+            this.quizDone = true;
+          }
+      }
+    );
+  }
 }

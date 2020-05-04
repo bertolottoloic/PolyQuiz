@@ -1,5 +1,5 @@
-import { Handicap } from './handicap.models';
-import { Router } from '@angular/router';
+import {Handicap} from './handicap.models';
+import {Router} from '@angular/router';
 
 export abstract class Trouble {
 

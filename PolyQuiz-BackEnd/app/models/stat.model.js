@@ -10,5 +10,7 @@ module.exports = new BaseModel('Stat', {
   questionsDone: Joi.array().required(),
   nbRightAnswers: Joi.number().required(),
   nbWrongAnswers: Joi.number().required(),
-  date: Joi.string().required()
+  date: Joi.string().required(),
+  resume: Joi.object().pattern(Joi.string(), Joi.boolean()),
+  missclics: Joi.number(),
 })

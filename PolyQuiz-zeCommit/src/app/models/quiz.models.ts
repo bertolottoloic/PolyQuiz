@@ -1,6 +1,6 @@
-import { Handicap } from './handicap.models';
-import { Question } from './question.models';
-import { Theme } from './theme.models';
+import {Handicap} from './handicap.models';
+import {Question} from './question.models';
+import {Theme} from './theme.models';
 
 export interface Quiz {
 

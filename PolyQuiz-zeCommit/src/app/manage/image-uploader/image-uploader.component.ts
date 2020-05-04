@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { NgxImageCompressService } from 'ngx-image-compress';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 @Component({
   selector: 'app-image-uploader',
@@ -11,7 +11,7 @@ export class ImageUploaderComponent implements OnInit {
   emptyLoaderUrl = './../../../assets/placeholder.png';
   localCompressedURl: any;
   isImageSaved: boolean;
-  @Output() cardImageBase64Event = new EventEmitter<string>();
+  @Output() imageBase64Event = new EventEmitter<string>();
   @Input() imageLoad: string;
 
   constructor(private imageCompress: NgxImageCompressService) {
@@ -24,7 +24,6 @@ export class ImageUploaderComponent implements OnInit {
     this.imageCompress.uploadFile().then(({image, orientation}) => {
       const img = new Image();
       img.src = image;
-      console.warn('Size in bytes was:', this.imageCompress.byteCount(img.src));
       let width: number;
       let height: number;
       img.addEventListener('load', () => {
@@ -36,8 +35,7 @@ export class ImageUploaderComponent implements OnInit {
         this.imageCompress.compressFile(img.src, orientation, ratio, 60).then(
           result => {
             this.localCompressedURl = result;
-            this.cardImageBase64Event.emit(result);
-            console.warn('Size in bytes is now:', this.imageCompress.byteCount(result));
+            this.imageBase64Event.emit(result);
           }
         );
         this.isImageSaved = true;
