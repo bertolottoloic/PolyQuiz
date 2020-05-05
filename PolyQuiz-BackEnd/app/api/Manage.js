@@ -2,6 +2,7 @@ const { Quiz } = require('../models')
 const { Question } = require('../models')
 const { Answer } = require('../models')
 const { Theme } = require('../models')
+const fs = require('fs')
 
 const manageAllErrors = require('../utils/routes/error-management')
 
@@ -56,6 +57,7 @@ const deleteQuestionsAndAnswers = (quizId) => {
   try {
     Question.get().filter((ques) => ques.quizId == quizId).forEach((ques) => {
       deleteAnswers(ques.id)
+      deleteAttachedImg(ques.image)
       Question.delete(ques.id)
     })
   } catch (error) {
@@ -66,10 +68,23 @@ const deleteQuestionsAndAnswers = (quizId) => {
 const deleteAnswers = (questionId) => {
   try {
     Answer.get().filter((ans) => ans.questionId == questionId).forEach((ans) => {
+      deleteAttachedImg(ans.image)
       Answer.delete(ans.id)
     })
   } catch (error) {
     manageAllErrors(res,err)
+  }
+}
+
+const deleteAttachedImg = (image) => {
+  if(image!=''){
+    let line = image.split('/')
+    fs.unlink(__dirname + '../../../assets/'+line[line.length-1], function(error) {
+        if (error) {
+            throw error;
+        }
+        console.log('Deleted '+line[line.length-1]+'!!');
+    });
   }
 }
 
@@ -80,4 +95,5 @@ module.exports = {
   deleteQuestionsAndAnswers,
   deleteAnswers,
   addThemes,
+  deleteAttachedImg
 }

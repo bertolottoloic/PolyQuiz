@@ -5,6 +5,9 @@ import {Answer} from 'src/app/models/answer.models';
 import {Question} from 'src/app/models/question.models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Trouble} from 'src/app/models/trouble.models';
+import { Observable, combineLatest } from 'rxjs';
+import { UploadService } from 'src/app/services/upload.service';
+import { serverUrlAssets } from 'src/configs/server.config';
 
 
 @Component({
@@ -21,11 +24,14 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   public questId: number;
   question: Question;
   public imageQuestion = '';
+  public receivedImageQuestion: FormData;
   public imageAnswers: string[] = [];
+  public receivedImageAnswers: FormData[] = [];
+  public images: Observable<string>[] = []
   public type: string;
   public answersAreText = true;
 
-  constructor(public formBuilder: FormBuilder, public quizListService: QuizListService, public route: ActivatedRoute, public router: Router) {
+  constructor(public formBuilder: FormBuilder, public quizListService: QuizListService, public route: ActivatedRoute, public router: Router, private uploadService: UploadService) {
     super(router);
     this.questionType = this.formBuilder.group({
       type: [true],
@@ -40,11 +46,13 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
               const quiz = value.find((val) => val.id == this.quizId);
               if (quiz) {
                 this.question = quiz.questions.find((ques) => ques.id == this.questId);
-                this.questionType = this.formBuilder.group({
-                  type: [this.question.answersAreText],
-                });
-                if (this.question.answers.length > 0) {
-                  this.fillQuestionForm();
+                if(this.question) {
+                    this.questionType = this.formBuilder.group({
+                    type: [this.question.answersAreText],
+                  });
+                  if (this.question.answers.length > 0) {
+                    this.fillQuestionForm();
+                  }
                 }
               }
             }
@@ -88,13 +96,20 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   addQuestion() {
     if (this.questionForm.valid && this.controlRightAnswer()) {
       const question = this.questionForm.getRawValue();
-      question.image = this.imageQuestion;
       question.answersAreText = this.questionType.value.type;
-      for (let i = 0; i < question.answers.length; i++) {
-        question.answers[i].image = (!question.answersAreText) ? this.imageAnswers[i] : '';
-        question.answers[i].text = (question.answersAreText) ? question.answers[i].text : '';
-      }
-      this.quizListService.addQuestion(this.quizId, question);
+      if(this.receivedImageQuestion) this.images.push(this.uploadService.addPicture(this.receivedImageQuestion));
+      else this.images.push(new Observable(observer => observer.next('')));
+      this.postImageAnswers(question);
+      combineLatest(this.images).subscribe((array)=>{
+        question.image = array[0]
+        for (let i = 1; i < array.length; i++) {
+          this.imageAnswers[i-1] = (array[i]=='') ? '' : serverUrlAssets +'/' + array[i]
+          question.answers[i-1].image = this.imageAnswers[i-1];
+          question.answers[i-1].text = (question.answersAreText) ? question.answers[i-1].text : '';
+        }
+        this.quizListService.addQuestion(this.quizId, question);
+      });
+      
       this.initializeQuestionForm();
       this.router.navigate(['../'], {relativeTo: this.route});
     }
@@ -103,20 +118,29 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
   changeQuestion() {
     if (this.questionForm.valid) {
       const question = this.questionForm.getRawValue();
-      question.image = this.imageQuestion;
+      question.id = this.question.id;
       question.answersAreText = this.questionType.value.type;
-      for (let i = 0; i < question.answers.length; i++) {
-        question.answers[i].image = (!question.answersAreText) ? this.imageAnswers[i] : '';
-        question.answers[i].text = (question.answersAreText) ? question.answers[i].text : '';
-      }
-      let validQuestion: any;
-      if (this.question.image || this.imageQuestion) {
-        validQuestion = question;
-      } else {
-        validQuestion = {text: question.text, quizId: question.quizId, answers: question.answers, answersAreText: question.answersAreText};
-      }
-      validQuestion.id = this.question.id;
-      this.quizListService.editQuestion(this.quizId, validQuestion);
+      if(this.receivedImageQuestion) this.images.push(this.uploadService.addPicture(this.receivedImageQuestion));
+      else this.images.push(new Observable(observer => observer.next('')));
+      this.postImageAnswers(question);
+      combineLatest(this.images).subscribe((array) => {
+        question.image = (array[0]=='') ? this.question.image : serverUrlAssets + '/' + array[0];
+        for(let i=1; i<array.length ; i++){
+          if(question.answersAreText) question.answers[i-1].image = '';
+          else{
+            question.answers[i-1].text = ''
+            if(array[i]=='') question.answers[i-1].image = this.question.answers[i-1].image
+            else {
+              this.imageAnswers[i-1] = serverUrlAssets + '/' + array[i];
+              question.answers[i-1].image = this.imageAnswers[i-1];
+            }
+          }
+        }
+        this.quizListService.editQuestion(this.quizId, question);
+      });
+
+      
+      
       this.initializeQuestionForm();
       this.router.navigate(['../..'], {relativeTo: this.route});
 
@@ -195,19 +219,27 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
 
   controlImage() {
     for (let i = 0; i < 4; i++) {
-      if (this.imageAnswers[i] == null) {
+      if (this.imageAnswers[i] == null && this.receivedImageAnswers[i]==null) {
         return false;
       }
     }
     return true;
   }
 
-  receiveImg(img: string) {
-    this.imageQuestion = img;
+  receiveImg(img: FormData) {
+    this.receivedImageQuestion = img;
   }
 
-  receiveImgAnsw($img: string, index) {
-    this.imageAnswers[index] = $img;
+  receiveImgAnsw($img: FormData, index) {
+    this.receivedImageAnswers[index] = $img;
+  }
+
+  postImageAnswers(question: any){
+
+    for(let i=0; i<question.answers.length; i++){
+      if(this.receivedImageAnswers && this.receivedImageAnswers[i]) this.images.push(this.uploadService.addPicture(this.receivedImageAnswers[i]))
+      else this.images.push(new Observable(observer => observer.next('')))
+    }
   }
 
 

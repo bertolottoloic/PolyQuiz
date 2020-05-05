@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgxImageCompressService} from 'ngx-image-compress';
+import { HttpClient } from '@angular/common/http';
+import {httpOptionsBase, serverUrlApi, serverUrlAssets} from '../../../configs/server.config';
 
 @Component({
   selector: 'app-image-uploader',
@@ -7,14 +9,15 @@ import {NgxImageCompressService} from 'ngx-image-compress';
   styleUrls: ['./image-uploader.component.css']
 })
 export class ImageUploaderComponent implements OnInit {
-
+  httpOtpions = httpOptionsBase;
+  serverUrl = serverUrlApi;
   emptyLoaderUrl = './../../../assets/placeholder.png';
   localCompressedURl: any;
   isImageSaved: boolean;
-  @Output() imageBase64Event = new EventEmitter<string>();
+  @Output() imageBase64Event = new EventEmitter<FormData>();
   @Input() imageLoad: string;
 
-  constructor(private imageCompress: NgxImageCompressService) {
+  constructor(private imageCompress: NgxImageCompressService, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -35,7 +38,10 @@ export class ImageUploaderComponent implements OnInit {
         this.imageCompress.compressFile(img.src, orientation, ratio, 60).then(
           result => {
             this.localCompressedURl = result;
-            this.imageBase64Event.emit(result);
+            let fd = new FormData();
+            let imgBlob = this.dataURItoBlob(result);
+            fd.append('photo', imgBlob);
+            this.imageBase64Event.emit(fd);
           }
         );
         this.isImageSaved = true;
@@ -43,4 +49,25 @@ export class ImageUploaderComponent implements OnInit {
     });
   }
 
+  dataURItoBlob(dataURI) {
+    
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+
+  }
 }

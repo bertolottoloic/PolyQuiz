@@ -3,14 +3,14 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Quiz} from '../models/quiz.models';
 import {QUIZ_LIST} from '../mocks/quizzes-list.mock';
-import {httpOptionsBase, serverUrl} from '../../configs/server.config';
+import {httpOptionsBase, serverUrlApi} from '../../configs/server.config';
 import {Question} from '../models/question.models';
 
 @Injectable({
     providedIn: 'root'
 })
 export class QuizListService {
-  private URL: string = serverUrl + '/quizzes';
+  private URL: string = serverUrlApi + '/quizzes';
   public createPageRoute = 'quiz';
   public createPageRoute$: BehaviorSubject<string> = new BehaviorSubject(this.createPageRoute);
   public postQuiz: Quiz;

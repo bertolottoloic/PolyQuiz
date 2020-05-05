@@ -11,6 +11,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddThemeComponent} from 'src/app/manage/quiz/add-theme/add-theme.component';
 import {Trouble} from 'src/app/models/trouble.models';
 import {PopUpDeleteComponent} from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
+import { UploadService } from 'src/app/services/upload.service';
+import { serverUrlAssets } from 'src/configs/server.config';
 
 @Component({
   selector: 'app-quiz-create-entrance',
@@ -24,10 +26,10 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
   public quizCreate$: Observable<Quiz>;
   public quizId: number;
   public themes: Theme[];
-  public image: string;
+  public image: FormData;
 
   // tslint:disable-next-line: max-line-length
-  constructor(public themeService: ThemeService, public formBuilder: FormBuilder, public quizListService: QuizListService, public router: Router, private route: ActivatedRoute, public dialog: MatDialog) {
+  constructor(public themeService: ThemeService, public formBuilder: FormBuilder, public quizListService: QuizListService, public router: Router, private route: ActivatedRoute, public dialog: MatDialog, private uploadService: UploadService) {
     super(router);
     this.themeService.themes$.subscribe((themes) => {
       if (themes) {
@@ -51,9 +53,17 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     quizToCreate.trouble = this.trouble;
     if (this.image == null) {
       quizToCreate.image = this.themes.find(value => value.id === quizToCreate.themeId).image;
+      this.postQuiz(quizToCreate);
     } else {
-    quizToCreate.image = this.image;
+      this.uploadService.addPicture(this.image).subscribe((res)=>{
+        quizToCreate.image = serverUrlAssets + '/' +res;
+        this.postQuiz(quizToCreate);
+      });
   }
+    
+  }
+
+  postQuiz(quizToCreate: Quiz){
     this.quizCreate$ = this.quizListService.addQuiz(quizToCreate);
     this.quizCreate$.subscribe((result) => {
       this.quizListService.setQuizzesFromUrl();
@@ -77,10 +87,8 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     });
   }
 
-  receiveImg(img: string) {
+  receiveImg(img: FormData) {
     this.image = img;
-    const imge = new Image();
-    imge.src = img;
   }
 
   editTheme(theme: Theme) {

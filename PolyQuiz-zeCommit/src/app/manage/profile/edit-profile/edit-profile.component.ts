@@ -7,6 +7,8 @@ import {Profile} from 'src/app/models/profile.models';
 import {ProfileService} from 'src/app/services/profile.service';
 import {Handicap} from 'src/app/models/handicap.models';
 import {formatDate} from '@angular/common';
+import { UploadService } from 'src/app/services/upload.service';
+import { serverUrlAssets } from 'src/configs/server.config';
 
 @Component({
   selector: 'app-edit-profile',
@@ -21,7 +23,8 @@ export class EditProfileComponent extends Trouble implements OnInit {
   public profileCreate$: Observable<Profile>;
   public profile: Profile;
   public image: string;
-  constructor(public router: Router, public formBuilder: FormBuilder, public profileService: ProfileService, public route: ActivatedRoute) {
+  public imageReceived: FormData;
+  constructor(public router: Router, public formBuilder: FormBuilder, public profileService: ProfileService, public route: ActivatedRoute, private uploadService: UploadService) {
     super(router);
     let id: number;
     this.route.paramMap.subscribe(params => {
@@ -56,18 +59,22 @@ export class EditProfileComponent extends Trouble implements OnInit {
   validProfile() {
     const profileToChange = this.profileForm.getRawValue();
     profileToChange.id = this.profile.id;
-    if (this.image != null) {
-      profileToChange.image = this.image;
+    if (this.imageReceived){     
+      this.uploadService.addPicture(this.imageReceived).subscribe((image)=>{
+        this.image = serverUrlAssets + '/' + image;
+        profileToChange.image = this.image;
+        this.profileService.editProfile(profileToChange);
+      });
     } else {
       profileToChange.image = this.profile.image;
+      this.profileService.editProfile(profileToChange);
     }
-    this.profileService.editProfile(profileToChange);
     this.router.navigate(['../..'], { relativeTo: this.route });
 
   }
 
-  receiveImg(img: string) {
-    this.image = img;
+  receiveImg(img: FormData) {
+    this.imageReceived = img;
   }
 
 }

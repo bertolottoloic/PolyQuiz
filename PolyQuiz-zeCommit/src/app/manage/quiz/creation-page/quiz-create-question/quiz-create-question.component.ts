@@ -10,6 +10,8 @@ import {Theme} from 'src/app/models/theme.models';
 import {ThemeService} from 'src/app/services/theme.service';
 import {AddThemeComponent} from 'src/app/manage/quiz/add-theme/add-theme.component';
 import {Trouble} from 'src/app/models/trouble.models';
+import { UploadService } from 'src/app/services/upload.service';
+import { serverUrlAssets } from 'src/configs/server.config';
 
 @Component({
   selector: 'app-quiz-create-question',
@@ -22,8 +24,10 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
   public themes: Theme[];
   public quizForm: FormGroup;
   public image: string;
+  public imageReceived: FormData;
 
-  constructor(public themeService: ThemeService, public quizService: QuizListService,  private route: ActivatedRoute, public formBuilder: FormBuilder, public router: Router, public dialog: MatDialog) {
+  constructor(public themeService: ThemeService, public quizService: QuizListService,  private route: ActivatedRoute, 
+    public formBuilder: FormBuilder, public router: Router, public dialog: MatDialog, private uploadService: UploadService) {
     super(router);
     this.loadQuiz();
     this.themeService.themes$.subscribe((themes) => {
@@ -84,19 +88,24 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
 
   sendQuiz() {
     const quizToCreate = this.quizForm.getRawValue();
-    if (this.image != null) {
-      quizToCreate.image = this.image;
-    } else {
-      quizToCreate.image = this.quiz.image;
-    }
     quizToCreate.id = this.quiz.id;
     quizToCreate.trouble = this.trouble;
-    this.quizService.editQuiz(quizToCreate);
+    if (this.imageReceived){   
+      this.uploadService.addPicture(this.imageReceived).subscribe((image)=>{
+        this.image = serverUrlAssets + '/' + image;
+        quizToCreate.image = this.image;
+        this.quizService.editQuiz(quizToCreate);
+      });
+    } else {
+      quizToCreate.image = this.quiz.image;
+      this.quizService.editQuiz(quizToCreate);
+    }
+    
     this.router.navigate(['../..'], { relativeTo: this.route });
 
   }
 
-  receiveImg(img: string) {
-    this.image = img;
+  receiveImg(img: FormData) {
+    this.imageReceived = img;
   }
 }

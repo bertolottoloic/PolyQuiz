@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 import {ProfileService} from '../../../services/profile.service';
 import {Handicap} from 'src/app/models/handicap.models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Profile} from '../../../models/profile.models';
 import {Trouble} from 'src/app/models/trouble.models';
+import { UploadService } from 'src/app/services/upload.service';
+import {serverUrlAssets} from 'src/configs/server.config'
 
 @Component({
   selector: 'app-profile-create-page',
@@ -18,13 +20,16 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
 
   public profileForm: FormGroup;
   public profileCreate$: Observable<Profile>;
-  private image;
+  private imageReceived: FormData;
+  private link: string;
+  private link$: BehaviorSubject<string> = new BehaviorSubject(this.link);
 
   constructor(
     public formBuilder: FormBuilder,
     public profileService: ProfileService,
     public router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private uploadService: UploadService) {
     super(router);
     this.profileForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -48,14 +53,20 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
 
   createProfile() {
     const profileToCreate: Profile = this.profileForm.getRawValue() as Profile;
-    if(this.image){
-      profileToCreate.image = this.image;
+    profileToCreate.image="assets/img/profil/";
+    profileToCreate.image+=profileToCreate.gender.toString()==="Homme"?"homme.png":"femme.png";
+    if(!this.imageReceived){
+      this.postProfile(profileToCreate);
     }
     else{
-      profileToCreate.image="assets/img/profil/";
-      profileToCreate.image+=profileToCreate.gender.toString()==="Homme"?"homme.png":"femme.png";
+      this.uploadService.addPicture(this.imageReceived).subscribe((res)=>{
+        profileToCreate.image = serverUrlAssets + '/' +res;
+        this.postProfile(profileToCreate);
+      });
     }
+  }
 
+  postProfile(profileToCreate: Profile){
     this.profileCreate$ = this.profileService.addProfile(profileToCreate);
     this.profileCreate$.subscribe((result) => {
       if (result != null) {
@@ -69,8 +80,8 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
-  receiveImg(img: string) {
-    this.image = img;
+  receiveImg(img: FormData) {
+    this.imageReceived = img;
   }
 
 

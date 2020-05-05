@@ -4,7 +4,7 @@ const { Question } = require('../../../models')
 const { Answer } = require('../../../models')
 
 const AnswerRouter = require('./answers')
-const { addAnswers, deleteAnswers } = require('../../Manage')
+const { addAnswers, deleteAnswers, deleteAttachedImg } = require('../../Manage')
 
 const manageAllErrors = require('../../../utils/routes/error-management')
 
@@ -61,6 +61,9 @@ router.post('/', (req, res) => {
 router.delete('/:questionId', (req, res) => {
   try {
     deleteAnswers(req.params.questionId)
+    console.log("before img")
+    deleteAttachedImg(Question.getById(req.params.questionId).image)    
+    console.log('after deleteImg')
     res.status(200).json(Question.delete(req.params.questionId))
   } catch (err) {
     manageAllErrors(res, err)
@@ -69,8 +72,11 @@ router.delete('/:questionId', (req, res) => {
 
 router.put('/:questionId', (req, res) => {
   try {
+    const question = Question.getById(req.params.questionId)
+    if(question.image!=req.body.image) deleteAttachedImg(question.image)
     const { answers } = req.body
     answers.forEach((answer) => {
+      if(Answer.getById(answer.id).image != answer.image) deleteAttachedImg(Answer.getById(answer.id).image)
       answer.questionId = parseInt(req.params.questionId, 10)
       Answer.update(answer.id, answer)
     })

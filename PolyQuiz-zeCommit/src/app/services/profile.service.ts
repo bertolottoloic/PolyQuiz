@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {httpOptionsBase, serverUrl} from '../../configs/server.config';
+import {httpOptionsBase, serverUrlApi} from '../../configs/server.config';
 import {PROFILE_LIST} from '../mocks/profiles-list.mock';
 import {Profile} from '../models/profile.models';
 import {Stat} from '../models/stat.models';
@@ -16,7 +16,7 @@ export class ProfileService {
 
   private profiles: Profile[] = PROFILE_LIST;
 
-  private URL: string = serverUrl + '/profiles';
+  private URL: string = serverUrlApi + '/profiles';
   public profiles$: BehaviorSubject<Profile[]> = new BehaviorSubject(this.profiles);
   private httpOptions = httpOptionsBase;
   public selectedStats: Stat[];

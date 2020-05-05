@@ -2,6 +2,8 @@ const { Router } = require('express')
 
 const { Theme, Quiz } = require('../../../models')
 
+const { deleteAttachedImg } = require('../../Manage')
+
 const manageAllErrors = require('../../../utils/routes/error-management')
 
 const router = new Router()
@@ -34,10 +36,13 @@ router.post('/', (req, res) => {
 
 router.delete('/:themeId', (req, res) => {
   try {
+    const theme =  Theme.getById(req.params.themeId);
     Quiz.get().filter((quiz)=>quiz.themeId==req.params.themeId).forEach(element => {
       element.themeId = 0
+      if(element.image==theme.image) element.image = Theme.getById(0).image
       Quiz.update(element.id,element)
     });
+    deleteAttachedImg(theme.image)
     res.status(200).json(Theme.delete(req.params.themeId))
   } catch (err) {
     manageAllErrors(res, err)
@@ -46,6 +51,12 @@ router.delete('/:themeId', (req, res) => {
 
 router.put('/:themeId', (req, res) => {
   try {
+    const theme =  Theme.getById(req.params.themeId);
+    Quiz.get().filter((quiz)=>quiz.themeId==req.params.themeId && quiz.image == theme.image).forEach(element => {
+      element.image = req.body.image
+      Quiz.update(element.id,element)
+    });
+    if(theme.image != req.body.image) deleteAttachedImg(theme.image)
     res.status(200).json(Theme.update(req.params.themeId,req.body))
   } catch (err) {
     manageAllErrors(res, err)

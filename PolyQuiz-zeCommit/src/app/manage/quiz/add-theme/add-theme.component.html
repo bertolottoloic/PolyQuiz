@@ -3,7 +3,7 @@
       Ajouter un theme <br>
       <input class="input-custom" type="text" id="name" [formControlName]="'name'" >
     </label>
-    <button type="submit" [class]="!themeForm.valid? 'btn btn-danger':'btn btn-success' " [disabled]="!themeForm.valid" (click)="addTheme()">Valider</button>
+    <button type="submit" [class]="!themeForm.valid? 'btn btn-danger':'btn btn-success' " [disabled]="!themeForm.valid" (click)="(themeToChange) ? editTheme():addTheme()">Valider</button>
 
 </form>
-<app-image-uploader (imageBase64Event)="receiveImg($event)" [imageLoad]="loadImage"></app-image-uploader>
+<app-image-uploader (imageBase64Event)="receiveImg($event)" [imageLoad]="image"></app-image-uploader>

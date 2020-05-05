@@ -2,6 +2,8 @@ const { Router } = require('express')
 
 const { Answer } = require('../../../../models')
 
+const { deleteAttachedImg } = require('../../../Manage')
+
 const manageAllErrors = require('../../../../utils/routes/error-management')
 
 const router = new Router({mergeParams: true})
@@ -35,6 +37,7 @@ router.get('/:answerId', (req, res) => {
   
   router.delete('/:answerId', (req, res) => {
     try {
+      deleteAttachedImg(Answer.getById(req.params.answerId).image)
       res.status(200).json(Answer.delete(req.params.answerId))
     } catch (err) {
       manageAllErrors(res, err)
@@ -43,6 +46,8 @@ router.get('/:answerId', (req, res) => {
   
   router.put('/:answerId', (req, res) => {
     try {
+      const answer = Answer.getById(req.params.answerId)
+      if(answer.image!=req.body.image) deleteAttachedImg(answer.image)
       res.status(200).json(Answer.update(req.params.answerId,req.body))
     } catch (err) {
       manageAllErrors(res, err)

@@ -1,6 +1,7 @@
 const { Router } = require('express')
 
 const { Profile, Stat } = require('../../models')
+const { deleteAttachedImg } = require('../Manage')
 const StatRouter = require('./stats')
 const manageAllErrors = require('../../utils/routes/error-management')
 
@@ -39,6 +40,7 @@ router.delete('/:profileId', (req, res) => {
     Stat.get().filter((stat)=> stat.profileId == req.params.profileId).forEach(stat => {
       Stat.delete(stat.id)
     });
+    deleteAttachedImg(Profile.getById(req.params.profileId).image)
     res.status(200).json(Profile.delete(req.params.profileId))
   } catch (err) {
     manageAllErrors(res, err)
@@ -47,6 +49,8 @@ router.delete('/:profileId', (req, res) => {
 
 router.put('/:profileId', (req, res) => {
   try {
+    const profile = Profile.getById(req.params.profileId)
+    if(profile.image!=req.body.image) deleteAttachedImg(profile.image)
     res.status(200).json(Profile.update(req.params.profileId,req.body))
   } catch (err) {
     manageAllErrors(res, err)

@@ -34,7 +34,7 @@
             <input *ngIf="questionType.value.type" type="text" id="text" [formControlName]="'text'" maxlength="30">
 
             <app-image-uploader *ngIf="!questionType.value.type" (imageBase64Event)="receiveImgAnsw($event,i)"
-              [imageLoad]="imageAnswers[i]"></app-image-uploader>
+              [imageLoad]="(imageAnswers)? imageAnswers[i]:null"></app-image-uploader>
 
           </label>
           <label for="isCorrect">
