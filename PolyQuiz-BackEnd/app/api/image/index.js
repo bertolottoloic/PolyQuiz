@@ -4,6 +4,7 @@ const formData = require('express-form-data');
 const { addExtension } = require('./Manage')
 const { deleteAttachedImg } = require("../Manage")
 const multer = require('multer')
+const { serverUrl } = require('../../server.config')
 
 const storage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -28,15 +29,6 @@ router.post('/', upload.single('photo'), (req, res) => {
     } catch(err) {
         manageAllErrors(err)
     }
-})
-
-router.delete('/:imageName', (req,res)=>{
-  try {
-    deleteAttachedImg(req.params.imageName)
-    res.status(200).json(req.params.imageName+' has been deleted')
-  } catch (error) {
-    manageAllErrors(error)
-  }
 })
 
 module.exports = router

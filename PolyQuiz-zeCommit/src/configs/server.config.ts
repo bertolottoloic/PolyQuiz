@@ -7,4 +7,3 @@ export const httpOptionsBase = {
 };
 
 export const serverUrlApi = 'http://localhost:9428/api';
-export const serverUrlAssets = 'http://localhost:9428/assets'

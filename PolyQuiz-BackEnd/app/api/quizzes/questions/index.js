@@ -4,7 +4,7 @@ const { Question } = require('../../../models')
 const { Answer } = require('../../../models')
 
 const AnswerRouter = require('./answers')
-const { addAnswers, deleteAnswers, deleteAttachedImg } = require('../../Manage')
+const { addAnswers, deleteAnswers, deleteAttachedImg, addImage } = require('../../Manage')
 
 const manageAllErrors = require('../../../utils/routes/error-management')
 
@@ -13,9 +13,12 @@ router.use('/:questionId/answers', AnswerRouter)
 
 router.get('/', (req, res) => {
   try {
-    let questions = Question.get().filter((ques) => ques.quizId == req.params.quizId)
-    questions.forEach((element) => {
-      element.answers = addAnswers(element.id)
+    const questions = []
+    Question.get().filter((ques) => ques.quizId == req.params.quizId).forEach((element) => {
+      let question = {...element}
+      question.answers = addAnswers(question.id)
+      question.image = addImage(question.image)
+      questions.push(question)
     })
     res.status(200).json(questions)
   } catch (err) {
@@ -25,9 +28,10 @@ router.get('/', (req, res) => {
 
 router.get('/:questionId', (req, res) => {
   try {
-    let question = Question.getById(req.params.questionId)
+    let question = {...Question.getById(req.params.questionId)}
     if (question.quizId == req.params.quizId) {
       question.answers = addAnswers(question.id)
+      question.image = addImage(question.image)
       res.status(200).json(question)
     } else throw Error
   } catch (err) {
@@ -61,9 +65,7 @@ router.post('/', (req, res) => {
 router.delete('/:questionId', (req, res) => {
   try {
     deleteAnswers(req.params.questionId)
-    console.log("before img")
     deleteAttachedImg(Question.getById(req.params.questionId).image)    
-    console.log('after deleteImg')
     res.status(200).json(Question.delete(req.params.questionId))
   } catch (err) {
     manageAllErrors(res, err)
@@ -73,6 +75,8 @@ router.delete('/:questionId', (req, res) => {
 router.put('/:questionId', (req, res) => {
   try {
     const question = Question.getById(req.params.questionId)
+    const line = req.body.image.split('/')
+    req.body.image = line[line.length-1]
     if(question.image!=req.body.image) deleteAttachedImg(question.image)
     const { answers } = req.body
     answers.forEach((answer) => {

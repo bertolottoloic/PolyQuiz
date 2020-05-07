@@ -2,8 +2,9 @@ const { Router } = require('express')
 
 const { Quiz, Stat, Theme } = require('../../models')
 const QuestionRouter = require('./questions')
-const { addQuestions, deleteQuestionsAndAnswers,addThemes, deleteAttachedImg } = require('../Manage')
+const { addQuestions, deleteQuestionsAndAnswers,addThemes, deleteAttachedImg, addImage } = require('../Manage')
 const manageAllErrors = require('../../utils/routes/error-management')
+
 
 const router = new Router()
 router.use('/:quizId/questions', QuestionRouter)
@@ -14,6 +15,7 @@ router.get('/', (req, res) => {
     let quizzesToSend = []
     quizzes.forEach(element => {
       let quiz = {...element,questions:addQuestions(element.id),theme:addThemes(element.themeId)}
+      quiz.image = addImage(quiz.image)
       quizzesToSend.push(quiz)
     });
     res.status(200).json(quizzesToSend)
@@ -27,6 +29,7 @@ router.get('/:quizId', (req, res) => {
     const quiz = {...Quiz.getById(req.params.quizId)}
     quiz.questions = addQuestions(quiz.id)
     quiz.theme=addThemes(quiz.themeId)
+    quiz.image = addImage(quiz.image)
     res.status(200).json(quiz)
   } catch (err) {
     manageAllErrors(res, err)
@@ -60,7 +63,9 @@ router.delete('/:quizId', (req, res) => {
 router.put('/:quizId', (req, res) => {
   try {
     const quiz = Quiz.getById(req.params.quizId)
-    if(!Theme.get().find((theme)=>theme.image == quiz.image) && quiz.image!=req.body.image) deleteAttachedImg(quiz.image)
+    const line = req.body.image.split('/')
+    req.body.image = line[line.length-1]
+    if(!Theme.get().find((theme)=>theme.image == quiz.image) && quiz.image!=req.body.image) deleteAttachedImg(quiz.image)  
     res.status(200).json(Quiz.update(req.params.quizId,req.body))
   } catch (err) {
     manageAllErrors(res, err)

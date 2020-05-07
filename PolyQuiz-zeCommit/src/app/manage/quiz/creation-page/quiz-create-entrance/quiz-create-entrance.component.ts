@@ -1,18 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-
-import {QuizListService} from '../../../../services/quizList.service';
-import {Quiz} from '../../../../models/quiz.models';
-import {Observable} from 'rxjs';
-import {Theme} from 'src/app/models/theme.models';
-import {ThemeService} from 'src/app/services/theme.service';
-import {MatDialog} from '@angular/material/dialog';
-import {AddThemeComponent} from 'src/app/manage/quiz/add-theme/add-theme.component';
-import {Trouble} from 'src/app/models/trouble.models';
-import {PopUpDeleteComponent} from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AddThemeComponent } from 'src/app/manage/quiz/add-theme/add-theme.component';
+import { Theme } from 'src/app/models/theme.models';
+import { Trouble } from 'src/app/models/trouble.models';
+import { PopUpDeleteComponent } from 'src/app/pop-up/pop-up-delete/pop-up-delete.component';
+import { ThemeService } from 'src/app/services/theme.service';
 import { UploadService } from 'src/app/services/upload.service';
-import { serverUrlAssets } from 'src/configs/server.config';
+import { Quiz } from '../../../../models/quiz.models';
+import { QuizListService } from '../../../../services/quizList.service';
+
 
 @Component({
   selector: 'app-quiz-create-entrance',
@@ -52,11 +51,12 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
     quizToCreate.themeId = parseInt(quizToCreate.themeId, 10);
     quizToCreate.trouble = this.trouble;
     if (this.image == null) {
-      quizToCreate.image = this.themes.find(value => value.id === quizToCreate.themeId).image;
+      let image = this.themes.find(value => value.id === quizToCreate.themeId).image.split('/');
+      quizToCreate.image = image[image.length-1]
       this.postQuiz(quizToCreate);
     } else {
       this.uploadService.addPicture(this.image).subscribe((res)=>{
-        quizToCreate.image = serverUrlAssets + '/' +res;
+        quizToCreate.image = res;
         this.postQuiz(quizToCreate);
       });
   }
@@ -94,7 +94,7 @@ export class QuizCreateEntranceComponent extends Trouble implements OnInit {
   editTheme(theme: Theme) {
     this.dialog.open(AddThemeComponent, {
       data: {
-        theme,
+        theme:theme,
       }
     });
   }

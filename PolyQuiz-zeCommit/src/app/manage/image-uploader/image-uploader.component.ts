@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { HttpClient } from '@angular/common/http';
-import {httpOptionsBase, serverUrlApi, serverUrlAssets} from '../../../configs/server.config';
+import {httpOptionsBase, serverUrlApi} from '../../../configs/server.config';
 
 @Component({
   selector: 'app-image-uploader',

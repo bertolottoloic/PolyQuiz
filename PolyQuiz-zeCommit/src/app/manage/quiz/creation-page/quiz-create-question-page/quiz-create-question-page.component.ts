@@ -1,13 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {QuizListService} from 'src/app/services/quizList.service';
-import {Answer} from 'src/app/models/answer.models';
-import {Question} from 'src/app/models/question.models';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Trouble} from 'src/app/models/trouble.models';
-import { Observable, combineLatest } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest, Observable } from 'rxjs';
+import { Answer } from 'src/app/models/answer.models';
+import { Question } from 'src/app/models/question.models';
+import { Trouble } from 'src/app/models/trouble.models';
+import { QuizListService } from 'src/app/services/quizList.service';
 import { UploadService } from 'src/app/services/upload.service';
-import { serverUrlAssets } from 'src/configs/server.config';
 
 
 @Component({
@@ -103,7 +102,7 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
       combineLatest(this.images).subscribe((array)=>{
         question.image = array[0]
         for (let i = 1; i < array.length; i++) {
-          this.imageAnswers[i-1] = (array[i]=='') ? '' : serverUrlAssets +'/' + array[i]
+          this.imageAnswers[i-1] = (array[i]=='') ? '' : array[i]
           question.answers[i-1].image = this.imageAnswers[i-1];
           question.answers[i-1].text = (question.answersAreText) ? question.answers[i-1].text : '';
         }
@@ -124,14 +123,14 @@ export class QuizCreateQuestionPageComponent extends Trouble implements OnInit {
       else this.images.push(new Observable(observer => observer.next('')));
       this.postImageAnswers(question);
       combineLatest(this.images).subscribe((array) => {
-        question.image = (array[0]=='') ? this.question.image : serverUrlAssets + '/' + array[0];
+        question.image = (array[0]=='') ? this.question.image : array[0];
         for(let i=1; i<array.length ; i++){
           if(question.answersAreText) question.answers[i-1].image = '';
           else{
             question.answers[i-1].text = ''
             if(array[i]=='') question.answers[i-1].image = this.question.answers[i-1].image
             else {
-              this.imageAnswers[i-1] = serverUrlAssets + '/' + array[i];
+              this.imageAnswers[i-1] = array[i];
               question.answers[i-1].image = this.imageAnswers[i-1];
             }
           }

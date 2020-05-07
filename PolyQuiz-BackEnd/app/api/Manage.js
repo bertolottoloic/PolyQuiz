@@ -4,6 +4,7 @@ const { Answer } = require('../models')
 const { Theme } = require('../models')
 const fs = require('fs')
 
+const { serverUrl } = require('../server.config')
 const manageAllErrors = require('../utils/routes/error-management')
 
 const addQuiz = (id) => {
@@ -14,6 +15,7 @@ const addQuiz = (id) => {
     quizToSend = { id: quiz.id, name: quiz.name, trouble: quiz.trouble }
     const theme = addThemes(quiz.themeId)
     quizToSend.theme = { name: theme.name }
+    quizToSend.image = addImage(quizToSend.image)
   } catch (err) {
     manageAllErrors(res,err)
   }
@@ -25,6 +27,7 @@ const addQuestions = (quizId) => {
   try {
     Question.get().filter((ques) => ques.quizId == quizId).forEach((ques) => {
       let nQues = { ...ques, answers: addAnswers(ques.id) }
+      nQues.image = addImage(nQues.image)
       questions.push(nQues)
     })
   } catch (err) {
@@ -36,7 +39,11 @@ const addQuestions = (quizId) => {
 const addAnswers = (questionId) => {
   let answers = []
   try {
-    answers = Answer.get().filter((ans) => ans.questionId == questionId)
+    Answer.get().filter((ans) => ans.questionId == questionId).forEach((res) => {
+      answer = {...res}
+      answer.image = addImage(answer.image)
+      answers.push(answer)
+    })
   } catch (err) {
     manageAllErrors(res,err)
   }
@@ -78,14 +85,24 @@ const deleteAnswers = (questionId) => {
 
 const deleteAttachedImg = (image) => {
   if(image!=''){
-    let line = image.split('/')
-    fs.unlink(__dirname + '../../../assets/'+line[line.length-1], function(error) {
+    fs.unlink(__dirname + '../../../assets/'+image, function(error) {
         if (error) {
             throw error;
         }
-        console.log('Deleted '+line[line.length-1]+'!!');
+        console.log('Deleted '+image+'!!');
     });
   }
+}
+
+const addImage = (image) => {
+  let imageToSend
+  if(image == ""){
+    imageToSend = ""
+  }
+  else {
+    imageToSend = serverUrl() + 'assets/' + image; 
+  }
+  return imageToSend
 }
 
 module.exports = {
@@ -95,5 +112,6 @@ module.exports = {
   deleteQuestionsAndAnswers,
   deleteAnswers,
   addThemes,
-  deleteAttachedImg
+  deleteAttachedImg,
+  addImage
 }

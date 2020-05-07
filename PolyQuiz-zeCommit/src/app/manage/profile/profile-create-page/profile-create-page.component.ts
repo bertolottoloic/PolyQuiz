@@ -1,13 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Observable, BehaviorSubject} from 'rxjs';
-import {ProfileService} from '../../../services/profile.service';
-import {Handicap} from 'src/app/models/handicap.models';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Profile} from '../../../models/profile.models';
-import {Trouble} from 'src/app/models/trouble.models';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Handicap } from 'src/app/models/handicap.models';
+import { Trouble } from 'src/app/models/trouble.models';
 import { UploadService } from 'src/app/services/upload.service';
-import {serverUrlAssets} from 'src/configs/server.config'
+import { Profile } from '../../../models/profile.models';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-profile-create-page',
@@ -60,7 +59,7 @@ export class ProfileCreatePageComponent extends Trouble implements OnInit {
     }
     else{
       this.uploadService.addPicture(this.imageReceived).subscribe((res)=>{
-        profileToCreate.image = serverUrlAssets + '/' +res;
+        profileToCreate.image = res;
         this.postProfile(profileToCreate);
       });
     }

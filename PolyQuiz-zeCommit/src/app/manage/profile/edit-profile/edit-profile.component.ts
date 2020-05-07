@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Trouble} from 'src/app/models/trouble.models';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {Profile} from 'src/app/models/profile.models';
-import {ProfileService} from 'src/app/services/profile.service';
-import {Handicap} from 'src/app/models/handicap.models';
-import {formatDate} from '@angular/common';
+import { formatDate } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Handicap } from 'src/app/models/handicap.models';
+import { Profile } from 'src/app/models/profile.models';
+import { Trouble } from 'src/app/models/trouble.models';
+import { ProfileService } from 'src/app/services/profile.service';
 import { UploadService } from 'src/app/services/upload.service';
-import { serverUrlAssets } from 'src/configs/server.config';
 
 @Component({
   selector: 'app-edit-profile',
@@ -61,7 +60,7 @@ export class EditProfileComponent extends Trouble implements OnInit {
     profileToChange.id = this.profile.id;
     if (this.imageReceived){     
       this.uploadService.addPicture(this.imageReceived).subscribe((image)=>{
-        this.image = serverUrlAssets + '/' + image;
+        this.image = image;
         profileToChange.image = this.image;
         this.profileService.editProfile(profileToChange);
       });

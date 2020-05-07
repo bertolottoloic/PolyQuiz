@@ -1,13 +1,12 @@
-import {Component, Inject} from '@angular/core';
-import {Theme} from '../../../models/theme.models';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ThemeService} from '../../../services/theme.service';
-import {Observable} from 'rxjs';
-import { UploadService } from 'src/app/services/upload.service';
-import { serverUrlAssets } from 'src/configs/server.config';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { QuizListService } from 'src/app/services/quizList.service';
+import { UploadService } from 'src/app/services/upload.service';
+import { Theme } from '../../../models/theme.models';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-add-theme',
@@ -41,7 +40,7 @@ export class AddThemeComponent {
     const themeToCreate: Theme = this.themeForm.getRawValue() as Theme;
     if (this.imageReceived != null) {
       this.uploadService.addPicture(this.imageReceived).subscribe((image)=>{
-        this.image = serverUrlAssets + '/' + image;
+        this.image = image;
         themeToCreate.image = this.image
         this.themeService.addTheme(themeToCreate).subscribe(() => {
           this.themeService.setThemesFromUrl();
@@ -62,7 +61,7 @@ export class AddThemeComponent {
     themeToUpdate.id = this.themeToChange.id;
     if(this.imageReceived){
       this.uploadService.addPicture(this.imageReceived).subscribe((image) => {
-        this.image = serverUrlAssets + '/' + image;
+        this.image = image;
         themeToUpdate.image = this.image;
         this.themeService.editTheme(themeToUpdate).subscribe(()=>{
           this.themeService.setThemesFromUrl();
@@ -74,6 +73,7 @@ export class AddThemeComponent {
       themeToUpdate.image = (this.image) ? this.image : '';
       this.themeService.editTheme(themeToUpdate).subscribe(()=>{
         this.themeService.setThemesFromUrl();
+        this.quizService.setQuizzesFromUrl();
         this.close();
       });
     }

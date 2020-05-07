@@ -1,17 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {QuizListService} from 'src/app/services/quizList.service';
-import {Quiz} from 'src/app/models/quiz.models';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Question} from 'src/app/models/question.models';
-import {MatDialog} from '@angular/material/dialog';
-import {DisplayQuestionComponent} from 'src/app/pop-up/visualisation/display-question/display-question.component';
-import {Theme} from 'src/app/models/theme.models';
-import {ThemeService} from 'src/app/services/theme.service';
-import {AddThemeComponent} from 'src/app/manage/quiz/add-theme/add-theme.component';
-import {Trouble} from 'src/app/models/trouble.models';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AddThemeComponent } from 'src/app/manage/quiz/add-theme/add-theme.component';
+import { Question } from 'src/app/models/question.models';
+import { Quiz } from 'src/app/models/quiz.models';
+import { Theme } from 'src/app/models/theme.models';
+import { Trouble } from 'src/app/models/trouble.models';
+import { DisplayQuestionComponent } from 'src/app/pop-up/visualisation/display-question/display-question.component';
+import { QuizListService } from 'src/app/services/quizList.service';
+import { ThemeService } from 'src/app/services/theme.service';
 import { UploadService } from 'src/app/services/upload.service';
-import { serverUrlAssets } from 'src/configs/server.config';
 
 @Component({
   selector: 'app-quiz-create-question',
@@ -92,7 +91,7 @@ export class QuizCreateQuestionComponent extends Trouble implements OnInit {
     quizToCreate.trouble = this.trouble;
     if (this.imageReceived){   
       this.uploadService.addPicture(this.imageReceived).subscribe((image)=>{
-        this.image = serverUrlAssets + '/' + image;
+        this.image = image;
         quizToCreate.image = this.image;
         this.quizService.editQuiz(quizToCreate);
       });

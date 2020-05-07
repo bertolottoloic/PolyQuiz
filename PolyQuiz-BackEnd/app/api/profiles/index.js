@@ -1,7 +1,7 @@
 const { Router } = require('express')
 
 const { Profile, Stat } = require('../../models')
-const { deleteAttachedImg } = require('../Manage')
+const { deleteAttachedImg, addImage } = require('../Manage')
 const StatRouter = require('./stats')
 const manageAllErrors = require('../../utils/routes/error-management')
 
@@ -11,7 +11,13 @@ router.use('/:profileId/stats', StatRouter)
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(Profile.get())
+    const profiles = []
+    Profile.get().forEach(pro => {
+      let profile = {...pro}
+      profile.image = addImage(profile.image)
+      profiles.push(profile)
+    })
+    res.status(200).json(profiles)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -20,7 +26,9 @@ router.get('/', (req, res) => {
 
 router.get('/:profileId', (req, res) => {
   try {
-    res.status(200).json(Profile.getById(req.params.profileId))
+    const profile = {...Profile.getById(req.params.profileId)}
+    profile.image = addImage(profile.image)
+    res.status(200).json(profile)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -50,6 +58,8 @@ router.delete('/:profileId', (req, res) => {
 router.put('/:profileId', (req, res) => {
   try {
     const profile = Profile.getById(req.params.profileId)
+    const line = req.body.image.split('/')
+    req.body.image = line[line.length-1]
     if(profile.image!=req.body.image) deleteAttachedImg(profile.image)
     res.status(200).json(Profile.update(req.params.profileId,req.body))
   } catch (err) {

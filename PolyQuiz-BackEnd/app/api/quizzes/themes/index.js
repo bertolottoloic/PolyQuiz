@@ -2,7 +2,7 @@ const { Router } = require('express')
 
 const { Theme, Quiz } = require('../../../models')
 
-const { deleteAttachedImg } = require('../../Manage')
+const { deleteAttachedImg, addImage } = require('../../Manage')
 
 const manageAllErrors = require('../../../utils/routes/error-management')
 
@@ -10,7 +10,13 @@ const router = new Router()
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(Theme.get())
+    const themes = []
+    Theme.get().forEach(theme => {
+      let themeToSend = {...theme}
+      themeToSend.image = addImage(themeToSend.image)
+      themes.push(themeToSend)
+    })
+    res.status(200).json(themes)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -19,7 +25,9 @@ router.get('/', (req, res) => {
 
 router.get('/:themeId', (req, res) => {
   try {
-    res.status(200).json(Theme.getById(req.params.themeId))
+    const theme = { ...Theme.getById(req.params.themeId)}
+    theme.image = addImage(theme.image)
+    res.status(200).json(theme)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -52,6 +60,8 @@ router.delete('/:themeId', (req, res) => {
 router.put('/:themeId', (req, res) => {
   try {
     const theme =  Theme.getById(req.params.themeId);
+    const line = req.body.image.split('/')
+    req.body.image = line[line.length-1]
     Quiz.get().filter((quiz)=>quiz.themeId==req.params.themeId && quiz.image == theme.image).forEach(element => {
       element.image = req.body.image
       Quiz.update(element.id,element)
