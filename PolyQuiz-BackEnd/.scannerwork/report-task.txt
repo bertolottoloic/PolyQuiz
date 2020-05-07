@@ -2,5 +2,5 @@ projectKey=PS6-PolyQuiz
 serverUrl=http://localhost:9000
 serverVersion=7.9.2.30863
 dashboardUrl=http://localhost:9000/dashboard?id=PS6-PolyQuiz
-ceTaskId=AXHubFJomHnmhn6oPMcs
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXHubFJomHnmhn6oPMcs
+ceTaskId=AXHuZ_qLmHnmhn6oPMcr
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXHuZ_qLmHnmhn6oPMcr
