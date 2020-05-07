@@ -10,7 +10,7 @@ module.exports = (cb) => {
   app.use(cors())
   app.use(bodyParser.json({limit:'50mb'}))
   app.use(morgan('[:date[iso]] :method :url :status :response-time ms - :res[content-length]'))
-  app.use('/assets',express.static('assets'))
+  app.use('/uploads',express.static('uploads'))
   app.use('/api', api)
   app.use('*', (req, res) => res.status(404).end())
   const server = app.listen(process.env.PORT || 9428, () => cb && cb(server))

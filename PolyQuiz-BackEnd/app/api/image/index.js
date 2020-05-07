@@ -8,7 +8,7 @@ const { serverUrl } = require('../../server.config')
 
 const storage = multer.diskStorage({
     destination: function (req, file, callback) {
-      callback(null, `${__dirname}/../../../assets/`)
+      callback(null, `${__dirname}/../../../uploads/`)
     },
     filename: function (req, file, callback) {
       callback(null, file.fieldname+Date.now()+addExtension(file))

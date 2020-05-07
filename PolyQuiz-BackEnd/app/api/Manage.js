@@ -85,7 +85,7 @@ const deleteAnswers = (questionId) => {
 
 const deleteAttachedImg = (image) => {
   if(image!=''){
-    fs.unlink(__dirname + '../../../assets/'+image, function(error) {
+    fs.unlink(__dirname + '../../../uploads/'+image, function(error) {
         if (error) {
             throw error;
         }
@@ -100,7 +100,7 @@ const addImage = (image) => {
     imageToSend = ""
   }
   else {
-    imageToSend = serverUrl() + 'assets/' + image; 
+    imageToSend = serverUrl() + 'uploads/' + image; 
   }
   return imageToSend
 }

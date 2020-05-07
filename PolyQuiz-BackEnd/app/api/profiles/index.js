@@ -35,7 +35,8 @@ router.get('/:profileId', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  try {
+  try {   
+    if(req.body.image == '') req.body.image = (req.body.gender == "Homme") ? 'homme.png' : 'femme.png';  
     const profile = Profile.create({ ...req.body })
     res.status(201).json(profile)
   } catch (err) {
@@ -48,7 +49,8 @@ router.delete('/:profileId', (req, res) => {
     Stat.get().filter((stat)=> stat.profileId == req.params.profileId).forEach(stat => {
       Stat.delete(stat.id)
     });
-    deleteAttachedImg(Profile.getById(req.params.profileId).image)
+    const profile = Profile.getById(req.params.profileId)
+    if(profile.image != 'homme.png' && profile.image != 'femme.png') deleteAttachedImg(Profile.getById(req.params.profileId).image)
     res.status(200).json(Profile.delete(req.params.profileId))
   } catch (err) {
     manageAllErrors(res, err)
