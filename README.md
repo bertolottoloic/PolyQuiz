@@ -2,6 +2,8 @@
 # PolyQuiz
 ## PS6 project
 Project of creating a website in the form of a quiz for an EHPAD taking into account different disabilities.
+![web site preview](https://github.com/2019-2020-ps6/2019-2020-ps6-rendu-zecommit/blob/master/preview.jpeg)
+
 
 ## Plan
 - [Team](#Team)
