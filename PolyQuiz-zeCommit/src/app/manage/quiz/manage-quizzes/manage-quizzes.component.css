@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background-color: rgb(191, 191, 191);
   height: 100%;
 }
@@ -65,7 +64,20 @@ cursor: pointer;
   width: 150px;
   height: 40px;
 }
+.cardManage{
+  border: 1px black solid;
+  justify-self: flex-start;
+  width: 80%;
+  top: 20px;
+  margin:20px;
+  border-radius: 10px;
+  background-color: white;
+}
 
+.cardManage p{
+  margin:10px;
+  font-size: 20px;
+}
 
 img {
   width: 100%;

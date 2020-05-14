@@ -1,7 +1,12 @@
-<app-navbar title="Selectionnez un quiz" [trouble]="trouble" path="../.."></app-navbar>
+<app-navbar title="Jouer" [trouble]="trouble" path="../.."></app-navbar>
 
 <div class="container">
   <div appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'35%'" class="col-md-3 filter">
+    <div id=cardMenuQuiz>
+      <p>
+        Selectionner un quiz pour jouer
+      </p>
+    </div>
     <app-filtre-quiz (filterTheme)="applyFilterTheme($event)" (filterName)="applyFilterName($event)"></app-filtre-quiz>
   </div>
   <div appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'65%'" class="quizlist col-md-9">

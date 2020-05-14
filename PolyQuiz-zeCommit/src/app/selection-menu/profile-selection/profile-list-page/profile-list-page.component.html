@@ -1,7 +1,14 @@
-<app-navbar title="Selectionnez un profil pour lancer un quiz" [trouble]="trouble" [Back]="false"></app-navbar>
+<app-navbar title="Jouer" [trouble]="trouble" [Back]="false"></app-navbar>
 
 <div class="container">
   <div appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'40%'" class="col-md-3">
+    <div id=cardMenu>
+      <p>
+        Selectionner un profil pour lancer un quiz
+      </p>
+    </div>
+    <br>
+
     <p>Rechercher par nom</p>
     <input class="filter" #box (keyup)="onKey(box.value)">
     <br>

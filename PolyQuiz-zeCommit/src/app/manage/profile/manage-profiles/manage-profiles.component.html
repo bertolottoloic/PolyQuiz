@@ -1,6 +1,12 @@
 <app-navbar title="Gestion des profils" [trouble]="trouble"></app-navbar>
 <div class="container">
   <div class="menu col-md-3" appSizeBoxDirective [heightMax]="'100%'" [heightMin]="'45%'">
+    <div class=cardManage>
+      <p>
+        Selectionner un profil à consulter - modifier - supprimer
+      </p>
+    </div>
+    <br>
     <p>Rechercher par nom</p>
     <input #box (keyup)="onKey(box.value)">
 

@@ -23,6 +23,10 @@
     <button class="btn btn-primary col-md-3" (click)="modify()">Modifier</button>
     <button class="btn btn-danger col-md-3" (click)="openDialogDelete(profile)">Supprimer</button>
   </div>
+  <h2>Historique des parties : </h2>
+  <p *ngIf="stat.length==0">
+    <em >Aucune partie enregistrée</em>
+  </p>
   <div *ngIf="stat.length>0" class="liste">
     <div *ngFor="let history of stat.reverse()">
       <app-display-stat [stat]="history" [display]="history===selectedStat" (click)="selectedStat=history">

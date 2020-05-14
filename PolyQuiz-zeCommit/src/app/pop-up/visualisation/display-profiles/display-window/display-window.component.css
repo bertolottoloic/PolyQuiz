@@ -5,11 +5,11 @@ img{
   max-height: 20%;
 
 }
-p{
+p, em{
   text-align: center;
   font-size: 20px;
 }
-h1{
+h1, h2{
   text-align: center;
 }
 .closebtn{

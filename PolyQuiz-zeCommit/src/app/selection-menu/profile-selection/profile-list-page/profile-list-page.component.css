@@ -4,6 +4,17 @@
     border-radius: 10px;
 }
 
+#cardMenu{
+  font-size: 10px;
+  border: 1px black solid;
+  justify-self: flex-start;
+  width: 80%;
+  top: 20px;
+  margin:20px;
+  border-radius: 10px;
+  background-color: white;
+}
+
 p {
     font-size: 2em;
     text-align: center;
@@ -18,8 +29,7 @@ p {
     padding: 0px;
 }
 .container{
-  align-items: flex-start;
-  justify-content: flex-start;
+
   height: 89%;
   width: 100%;
 }
@@ -36,7 +46,6 @@ p {
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding:0px;
   /* background-color: rgba(110, 155, 194, 0.986); */
