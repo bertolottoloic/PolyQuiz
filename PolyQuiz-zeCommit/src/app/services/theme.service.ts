@@ -18,19 +18,19 @@ export class ThemeService {
   private httpOptions = httpOptionsBase;
 
   constructor(private http:HttpClient) {
-    this.setThemesFromUrl()
+    this.setThemesFromUrl();
   }
 
   addTheme(theme: Theme){
-    return this.http.post<Theme>(this.URL, theme, this.httpOptions)
+    return this.http.post<Theme>(this.URL, theme, this.httpOptions);
   }
 
   editTheme(theme:Theme){
-    return this.http.put<Theme>(this.URL+"/"+(theme.id).toString(), theme, this.httpOptions)
+    return this.http.put<Theme>(this.URL+"/"+(theme.id).toString(), theme, this.httpOptions);
   }
 
   deleteTheme(id: string) {
-    return this.http.delete(this.URL+"/"+id, this.httpOptions)
+    return this.http.delete(this.URL+"/"+id, this.httpOptions);
   }
 
   setThemesFromUrl(){
