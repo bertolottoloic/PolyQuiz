@@ -41,6 +41,12 @@ flex-wrap: wrap;
 
 }
 
+.parameter{
+  width:30px;
+  height: 30px;
+  position: fixed;
+}
+
 
 .card {
 background-color: white;

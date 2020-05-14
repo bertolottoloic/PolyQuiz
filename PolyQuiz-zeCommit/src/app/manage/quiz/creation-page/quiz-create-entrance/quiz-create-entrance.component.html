@@ -1,5 +1,7 @@
 <div *ngIf="themes" class="container">
   <div class="col-md-6 quiz">
+    <h2>Gestion du quiz</h2>
+    <br>
     <form [formGroup]="quizForm">
       <label for="title">
         Titre du quiz <br>
@@ -14,6 +16,9 @@
         </select>
       </label>
       <br />
+      <label for="Image">
+        Image du quiz
+      </label>
       <app-image-uploader (imageBase64Event)="receiveImg($event)"></app-image-uploader>
       <br />
       <button id="submit" type="submit" [class]="!(quizForm.valid) ? 'btn btn-danger':'btn btn-success' "
