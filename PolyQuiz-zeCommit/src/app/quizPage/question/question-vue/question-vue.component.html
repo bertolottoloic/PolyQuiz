@@ -4,10 +4,10 @@
 
     <img appHighlight *ngIf="question.image" src={{question.image}} alt="image" (click)="openDialogImg(question.image)">
 
-    <div class="questionText{{size}}">{{question.text}}</div>
+    <div class="questionText{{size}}" (click)="openDialogQues(question.text)"><p class="questionText" appHighlight >{{question.text}}</p></div>
   </div>
   <div *ngIf="!question.image" class="questionOnly">
-    <div class="questionText{{size}}">{{question.text}}</div>
+    <div class="questionText{{size}}" (click)="openDialogQues(question.text)"><p class="questionText" appHighlight >{{question.text}}</p></div>
   </div>
 
 
@@ -15,12 +15,12 @@
     <div *ngIf="!question.answersAreText" class="answersImg">
       <div class="col-md-6" *ngFor="let answer of question.answers">
         <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer"
-          (click)="(zoom)?openDialogZoom(answer, false):nextQuestion(answer)">
+          (click)="openDialogZoom(answer, false)">
       </div>
     </div>
     <div *ngIf="question.answersAreText" class="answersTxt1">
       <div class="col-md-6" *ngFor="let answer of question.answers">
-        <button appHighlight class="btn answer" (click)="(zoom)?openDialogZoom(answer, true):nextQuestion(answer)">
+        <button appHighlight class="btn answer" (click)="openDialogZoom(answer, true)">
           {{answer.text}}
         </button>
       </div>
@@ -32,12 +32,12 @@
     <div *ngIf="!question.answersAreText" class="answersBigImg">
       <div class="col-md-6" *ngFor="let answer of question.answers">
         <img appHighlight *ngIf="answer.image" src={{answer.image}} alt="" class="answer"
-          (click)="(zoom)?openDialogZoom(answer, false):nextQuestion(answer)">
+          (click)="openDialogZoom(answer, false)">
       </div>
     </div>
     <div *ngIf="question.answersAreText" class="answersTxt1">
       <div class="col-md-6" *ngFor="let answer of question.answers">
-        <button appHighlight class="answer" (click)="(zoom)?openDialogZoom(answer, true):nextQuestion(answer)">
+        <button appHighlight class="answer" (click)="openDialogZoom(answer, true)">
           {{answer.text}}
         </button>
       </div>

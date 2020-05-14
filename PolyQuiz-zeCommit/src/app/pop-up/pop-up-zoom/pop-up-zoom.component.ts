@@ -8,6 +8,7 @@ export interface DialogData {
   answer?: Answer;
   isText?: boolean;
   img?: string;
+  ques?:string;
 }
 
 @Component({
@@ -19,6 +20,7 @@ export class PopUpZoomComponent extends Trouble implements OnInit {
   public answer: Answer;
   public img: string;
   public isText: boolean;
+  public ques: string;
   public validate: boolean;
   constructor(public dialogRef: MatDialogRef<PopUpZoomComponent>, public router: Router,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
@@ -33,6 +35,10 @@ export class PopUpZoomComponent extends Trouble implements OnInit {
     if (this.data.img) {
       this.img = this.data.img;
       this.isText = false;
+    }
+    if (this.data.ques){
+      this.ques = this.data.ques;
+      this.isText = true;
     }
 
     dialogRef.disableClose = true;

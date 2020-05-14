@@ -126,7 +126,10 @@ button {
   margin:0px;
 }
 
-
+.questionText{
+  cursor: pointer;
+  border: solid 10px transparent;
+}
 
 
 

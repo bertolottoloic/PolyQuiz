@@ -68,4 +68,12 @@ export class QuestionVueComponent extends Trouble implements OnInit {
     });
   }
 
+  openDialogQues(ques: string){
+    this.dialog.open(PopUpZoomComponent, {
+      height: '80%',
+      width: '80%',
+      data: { ques }
+    });
+  }
+
 }

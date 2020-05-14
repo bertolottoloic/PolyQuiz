@@ -4,7 +4,8 @@
             <img alt="image réponse non chargée" [src]="img" />
         </div>
         <div *ngIf="isText" class="text">
-            <p>{{answer.text}}</p>
+            <p *ngIf="ques">{{ques}}</p>
+            <p *ngIf="answer">{{answer.text}}</p>
         </div>
     </div>
     <div class="col-sm-4 col-md-2 buttons">
