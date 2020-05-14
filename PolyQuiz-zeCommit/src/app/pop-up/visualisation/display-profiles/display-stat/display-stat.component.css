@@ -21,4 +21,13 @@ nav{
   border-radius: 10px;
 }
 
+.liste > li {
+  font-weight: bold;
+  margin: 15px 0px 15px 0px;
+}
+
+.sous-liste > li {
+  font-weight: normal;
+  margin: 0px;
+}
 
