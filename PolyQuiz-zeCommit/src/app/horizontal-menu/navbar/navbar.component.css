@@ -8,6 +8,7 @@
 .trouble{
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .navbar{
@@ -41,3 +42,5 @@
   height: 100%;
 
 }
+
+
