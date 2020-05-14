@@ -5,7 +5,7 @@
       <p>Vous avez répondu à {{stats.questionsDone.length}} question{{stats.questionsDone.length>1?"s":""}}</p>
     </div>
 
-    <div>
+    <div *ngIf="trouble!=='Memoire'">
       <p>Vous avez {{stats.nbRightAnswers}} bonne{{stats.nbRightAnswers>1?"s":""}}
         réponse{{stats.nbRightAnswers>1?"s":""}}</p>
     </div>
