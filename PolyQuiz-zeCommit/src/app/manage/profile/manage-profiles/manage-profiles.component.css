@@ -13,6 +13,12 @@ button{
   margin-top: 20px;
 }
 
+.parameter{
+  width:30px;
+  height: 30px;
+  position: fixed;
+}
+
 .container{
 align-items: flex-start;
 justify-content: flex-start;

@@ -22,3 +22,7 @@ form{
   width: 100%;
   height: 50%;
 }
+
+#selectQtype{
+  margin:0px 15px 0px 15px;
+}
