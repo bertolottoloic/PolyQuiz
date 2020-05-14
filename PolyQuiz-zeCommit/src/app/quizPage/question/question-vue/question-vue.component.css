@@ -7,6 +7,8 @@
   text-align: center;
   flex-direction: column;
   align-items: center;
+  cursor: url(cursor2.cur) 2 2, auto;
+
 }
 
 .answers{
@@ -32,12 +34,14 @@
 
 
 button {
+  cursor: url(big_cursor.cur) 2 2, auto;
   width:80%;
   height:80%;
   font-size: 1em;
 }
 
 .question{
+  cursor: url(cursor2.cur) 2 2, auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,11 +91,12 @@ button {
   max-width: 100%;
   object-fit: cover;
   border:solid 5px white;
-  cursor: pointer;
+  cursor: url(big_cursor.cur) 2 2, auto;
 }
 
 
 .answersBigImg > .col-md-6 > img {
+  cursor: url(src/app/quizPage/question/question-vue/big_cursor.cur) 2 2, auto;
   object-fit: contain;
   width:80%;
   height:80%;
@@ -105,7 +110,6 @@ button {
 
 .answer{
   border: solid 10px white;
-  cursor: pointer;
   width: 90%;
   height: 90%;
 }
@@ -127,7 +131,7 @@ button {
 }
 
 .questionText{
-  cursor: pointer;
+  cursor: url(big_cursor.cur) 2 2, auto;
   border: solid 10px transparent;
 }
 
