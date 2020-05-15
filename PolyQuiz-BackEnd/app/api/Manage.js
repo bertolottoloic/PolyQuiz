@@ -40,7 +40,7 @@ const addAnswers = (questionId) => {
   let answers = []
   try {
     Answer.get().filter((ans) => ans.questionId == questionId).forEach((res) => {
-      answer = {...res}
+      let answer = {...res}
       answer.image = addImage(answer.image)
       answers.push(answer)
     })
@@ -100,7 +100,7 @@ const addImage = (image) => {
     imageToSend = ""
   }
   else {
-    imageToSend = serverUrl() + 'uploads/' + image; 
+    imageToSend = serverUrl() + 'uploads/' + image;
   }
   return imageToSend
 }

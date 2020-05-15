@@ -31,14 +31,6 @@ export class ManageQuizzesComponent extends Trouble implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(quiz: Quiz) {
-    const dialogRef = this.dialog.open(PopUpDeleteComponent, {
-      data: {
-        quiz,
-      }
-    });
-    
-  }
 
   openDialogDisplay(quiz: Quiz) {
     const dialogRef = this.dialog.open(DisplayQuizComponent, {

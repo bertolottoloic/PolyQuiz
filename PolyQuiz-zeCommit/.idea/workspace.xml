@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c27c7319-9623-4ef9-a8e3-7f74fbbfe5a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.scannerwork/report-task.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../.scannerwork/report-task.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/stat.mocks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/Manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/app/api/Manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/quiz.mocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../PolyQuiz-BackEnd/mocks/quiz.mocks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pop-up/pop-up-zoom/pop-up-zoom.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/quizPage/question/question-vue/question-vue.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/quiz/add-theme/add-theme.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/quiz/add-theme/add-theme.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/manage/quiz/manage-quizzes/manage-quizzes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/quiz/manage-quizzes/manage-quizzes.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +110,8 @@
       <workItem from="1588840712567" duration="106000" />
       <workItem from="1588842392010" duration="575000" />
       <workItem from="1589448722092" duration="641000" />
-      <workItem from="1589488319194" duration="3283000" />
+      <workItem from="1589488319194" duration="3665000" />
+      <workItem from="1589534859969" duration="1017000" />
     </task>
     <servers />
   </component>

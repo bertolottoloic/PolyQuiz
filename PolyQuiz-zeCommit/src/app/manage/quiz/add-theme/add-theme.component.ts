@@ -63,20 +63,15 @@ export class AddThemeComponent {
       this.uploadService.addPicture(this.imageReceived).subscribe((image) => {
         this.image = image;
         themeToUpdate.image = this.image;
-        this.themeService.editTheme(themeToUpdate).subscribe(()=>{
-          this.themeService.setThemesFromUrl();
-          this.quizService.setQuizzesFromUrl();
-          this.close();
-        });
       })
     } else {
       themeToUpdate.image = (this.image) ? this.image : '';
-      this.themeService.editTheme(themeToUpdate).subscribe(()=>{
-        this.themeService.setThemesFromUrl();
-        this.quizService.setQuizzesFromUrl();
-        this.close();
-      });
     }
+    this.themeService.editTheme(themeToUpdate).subscribe(()=>{
+      this.themeService.setThemesFromUrl();
+      this.quizService.setQuizzesFromUrl();
+      this.close();
+    });
   }
 
   onNoClick(): void {
