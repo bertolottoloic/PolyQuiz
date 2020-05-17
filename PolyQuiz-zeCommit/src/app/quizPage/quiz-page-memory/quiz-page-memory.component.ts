@@ -85,8 +85,8 @@ export class QuizPageMemoryComponent implements OnInit {
     const pipe = new DatePipe('en-US');
     const currentDate = Date.now();
     this.stats.date = pipe.transform(currentDate, 'short');
-    this.profileService.addStat(this.stats, this.profile.trouble);
     this.calculScore();
+    this.profileService.addStat(this.stats, this.profile.trouble);
   }
 
   UpdateMapStats(asw: Answer): void {
